@@ -1,0 +1,90 @@
+"use client";
+
+import Link from "next/link";
+import { useActionState } from "react";
+import { register } from "@/actions/auth";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
+
+export default function RegisterPage() {
+  const [state, formAction, isPending] = useActionState(register, null);
+
+  return (
+    <div className="flex flex-col w-full">
+      <div className="flex flex-col items-center text-center mb-8">
+        <Link href="/" className="flex items-center gap-2 mb-6 group">
+          <div className="w-8 h-8 bg-zinc-950 dark:bg-white rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span className="text-white dark:text-zinc-950 font-bold text-xl leading-none">A</span>
+          </div>
+          <span className="font-semibold text-xl tracking-tight text-zinc-950 dark:text-white">Atlas</span>
+        </Link>
+        <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">Create an account</h1>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-2">
+          Enter your details below to get started
+        </p>
+      </div>
+
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-sm">
+        <form action={formAction} className="flex flex-col gap-5">
+          <div className="flex flex-col gap-2.5">
+            <Label htmlFor="email" className="text-zinc-950 dark:text-zinc-300 font-medium">Email address</Label>
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="name@example.com"
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            <Label htmlFor="password" className="text-zinc-950 dark:text-zinc-300 font-medium">Password</Label>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              required
+              autoComplete="new-password"
+            />
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            <Label htmlFor="confirmPassword" className="text-zinc-950 dark:text-zinc-300 font-medium">Confirm password</Label>
+            <Input
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
+              required
+              autoComplete="new-password"
+            />
+          </div>
+
+          {state?.error && (
+            <p className="text-[13px] text-red-600 dark:text-red-400 font-medium bg-red-50 dark:bg-red-950/50 px-3 py-2 rounded-md border border-red-200 dark:border-red-900">
+              {state.error}
+            </p>
+          )}
+
+          <Button 
+            type="submit" 
+            disabled={isPending}
+            className="mt-2 w-full"
+          >
+            {isPending ? <Loader2 className="h-4 w-4 animate-spin mr-2" /> : null}
+            {isPending ? "Creating account..." : "Create account"}
+          </Button>
+        </form>
+      </div>
+
+      <p className="text-center text-sm text-zinc-500 dark:text-zinc-400 mt-8">
+        Already have an account?{" "}
+        <Link href="/login" className="font-medium text-zinc-950 dark:text-white hover:underline underline-offset-4 transition-all">
+          Sign in
+        </Link>
+      </p>
+    </div>
+  );
+}
