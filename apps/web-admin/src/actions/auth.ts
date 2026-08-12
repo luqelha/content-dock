@@ -10,7 +10,11 @@ export async function login(prevState: unknown, formData: FormData) {
   const password = formData.get("password");
 
   if (!email || !password) {
-    return { error: "Email and password are required" };
+    return {
+      error: "Email and password are required",
+      email: email?.toString(),
+      timestamp: Date.now(),
+    };
   }
 
   try {
@@ -25,7 +29,11 @@ export async function login(prevState: unknown, formData: FormData) {
     const data = await res.json();
 
     if (!res.ok) {
-      return { error: data.message || "Invalid credentials" };
+      return {
+        error: data.message || "Invalid credentials",
+        email: email?.toString(),
+        timestamp: Date.now(),
+      };
     }
 
     const cookieStore = await cookies();
@@ -48,7 +56,11 @@ export async function login(prevState: unknown, formData: FormData) {
     });
   } catch (error) {
     console.error("Login error:", error);
-    return { error: "An unexpected error occurred. Please try again." };
+    return {
+      error: "An unexpected error occurred. Please try again.",
+      email: email?.toString(),
+      timestamp: Date.now(),
+    };
   }
 
   // Redirect after successfully setting cookies (must be outside try/catch)
@@ -61,11 +73,19 @@ export async function register(prevState: unknown, formData: FormData) {
   const confirmPassword = formData.get("confirmPassword");
 
   if (!email || !password || !confirmPassword) {
-    return { error: "All fields are required" };
+    return {
+      error: "All fields are required",
+      email: email?.toString(),
+      timestamp: Date.now(),
+    };
   }
 
   if (password !== confirmPassword) {
-    return { error: "Passwords do not match" };
+    return {
+      error: "Passwords do not match",
+      email: email?.toString(),
+      timestamp: Date.now(),
+    };
   }
 
   try {
@@ -80,11 +100,19 @@ export async function register(prevState: unknown, formData: FormData) {
     const data = await res.json();
 
     if (!res.ok) {
-      return { error: data.message || "Registration failed" };
+      return {
+        error: data.message || "Registration failed",
+        email: email?.toString(),
+        timestamp: Date.now(),
+      };
     }
   } catch (error) {
     console.error("Register error:", error);
-    return { error: "An unexpected error occurred. Please try again." };
+    return {
+      error: "An unexpected error occurred. Please try again.",
+      email: email?.toString(),
+      timestamp: Date.now(),
+    };
   }
 
   // Auto-login or redirect to login

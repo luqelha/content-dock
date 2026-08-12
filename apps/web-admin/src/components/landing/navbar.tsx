@@ -28,10 +28,10 @@ export function Navbar() {
             Developers
           </Link>
           <Link
-            href="#pricing"
+            href="#community"
             className="hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors"
           >
-            Pricing
+            Community
           </Link>
         </nav>
         <div className="flex items-center gap-4 z-10">

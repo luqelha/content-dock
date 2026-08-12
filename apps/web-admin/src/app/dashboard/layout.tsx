@@ -1,7 +1,7 @@
-import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { DashboardHeader } from "@/components/dashboard/dashboard-header";
 
 export default function DashboardLayout({
   children,
@@ -13,12 +13,10 @@ export default function DashboardLayout({
       <SidebarProvider>
         <AppSidebar />
         <SidebarInset className="flex flex-1 flex-col overflow-hidden">
-          <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4">
-            <SidebarTrigger className="-ml-1" />
-            <div className="flex-1" />
-            <ThemeToggle />
-          </header>
-          <main className="flex-1 overflow-auto">{children}</main>
+          <DashboardHeader />
+          <main className="flex-1 overflow-y-auto overflow-x-hidden">
+            {children}
+          </main>
         </SidebarInset>
       </SidebarProvider>
     </TooltipProvider>

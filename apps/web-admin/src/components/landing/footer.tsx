@@ -24,7 +24,7 @@ export function Footer() {
               Product
             </h3>
             <ul className="space-y-3">
-              {["Features", "Integrations", "Pricing", "Changelog", "Docs"].map(
+              {["Features", "Integrations", "Community", "Changelog", "Docs"].map(
                 (item) => (
                   <li key={item}>
                     <Link

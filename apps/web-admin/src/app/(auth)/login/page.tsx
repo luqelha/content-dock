@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { login } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +12,23 @@ import { AnimatedNetworkIcon } from "@/components/landing/animated-network-icon"
 
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, null);
+  const [hiddenErrorTimestamp, setHiddenErrorTimestamp] = useState<
+    number | null
+  >(null);
+
+  useEffect(() => {
+    if (state?.error && state.timestamp) {
+      const timer = setTimeout(() => {
+        setHiddenErrorTimestamp(state.timestamp!);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [state?.error, state?.timestamp]);
+
+  const errorMsg =
+    state?.error && state.timestamp !== hiddenErrorTimestamp
+      ? state.error
+      : null;
 
   return (
     <div className="flex flex-col w-full">
@@ -40,12 +58,14 @@ export default function LoginPage() {
               Email address
             </Label>
             <Input
+              key={state?.timestamp || "email-input"}
               id="email"
               name="email"
               type="email"
               placeholder="name@mail.com"
               required
               autoComplete="email"
+              defaultValue={state?.email as string | undefined}
             />
           </div>
 
@@ -73,11 +93,21 @@ export default function LoginPage() {
             />
           </div>
 
-          {state?.error && (
-            <p className="text-[13px] text-red-600 dark:text-red-400 font-medium bg-red-50 dark:bg-red-950/50 px-3 py-2 rounded-md border border-red-200 dark:border-red-900">
-              {state.error}
-            </p>
-          )}
+          <AnimatePresence>
+            {errorMsg && (
+              <motion.div
+                initial={{ opacity: 0, height: 0, marginBottom: -20 }}
+                animate={{ opacity: 1, height: "auto", marginBottom: 0 }}
+                exit={{ opacity: 0, height: 0, marginBottom: -20 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <p className="text-[13px] text-red-600 dark:text-red-400 font-medium bg-red-50 dark:bg-red-950/50 px-3 py-2 rounded-md border border-red-200 dark:border-red-900">
+                  {errorMsg}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <Button type="submit" disabled={isPending} className="mt-2 w-full">
             {isPending ? (
