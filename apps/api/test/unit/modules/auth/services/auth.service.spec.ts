@@ -4,6 +4,7 @@ import { UserService } from '../../../../../src/modules/user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { ConflictException, UnauthorizedException } from '@nestjs/common';
+import { RedisService } from '../../../../../src/modules/redis/redis.service';
 import * as bcrypt from 'bcrypt';
 
 jest.mock('bcrypt');
@@ -37,6 +38,7 @@ describe('AuthService', () => {
         { provide: UserService, useValue: mockUserService },
         { provide: JwtService, useValue: mockJwtService },
         { provide: ConfigService, useValue: mockConfigService },
+        { provide: RedisService, useValue: { clearUserRbacCache: jest.fn() } },
       ],
     }).compile();
 

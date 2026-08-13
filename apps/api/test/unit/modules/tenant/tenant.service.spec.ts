@@ -75,12 +75,18 @@ describe('TenantService', () => {
 
   describe('findAllForUser', () => {
     it('should return tenants for a user', async () => {
-      const tenants = [{ id: '1', name: 'Tenant 1' }];
+      const tenants = [{ id: '1', name: 'Tenant 1', users: [{ role: 'ADMIN' }] }];
       mockPrismaService.tenant.findMany.mockResolvedValueOnce(tenants);
       const result = await service.findAllForUser('user-1');
-      expect(result).toEqual(tenants);
+      expect(result).toEqual([{ id: '1', name: 'Tenant 1', role: 'ADMIN', users: undefined }]);
       expect(mockPrismaService.tenant.findMany).toHaveBeenCalledWith({
         where: { users: { some: { userId: 'user-1' } } },
+        include: {
+          users: {
+            where: { userId: 'user-1' },
+            select: { role: true },
+          },
+        },
       });
     });
   });
