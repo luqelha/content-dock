@@ -42,8 +42,19 @@ export class TenantService {
           },
         },
       },
+      include: {
+        users: {
+          where: { userId },
+          select: { role: true },
+        },
+      },
     });
-    return tenants;
+
+    return tenants.map((t) => ({
+      ...t,
+      role: t.users[0]?.role,
+      users: undefined,
+    }));
   }
 
   async findOne(id: string) {

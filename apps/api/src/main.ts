@@ -53,7 +53,7 @@ async function bootstrap() {
   await app.startAllMicroservices();
 
   const port = process.env.PORT || 3000;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
   console.log(`🚀 Atlas Platform is running on: http://localhost:${port}/api`);
   console.log(`📚 Swagger documentation is available at: http://localhost:${port}/api/docs`);
 }

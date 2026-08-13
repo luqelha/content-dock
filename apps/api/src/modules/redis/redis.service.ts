@@ -41,4 +41,19 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   getClient(): RedisClientType {
     return this.client;
   }
+
+  async clearUserRbacCache(userId: string): Promise<void> {
+    try {
+      // Find all RBAC cache keys for this user across any tenant
+      const keys = await this.client.keys(`rbac:*:${userId}`);
+      if (keys.length > 0) {
+        await this.client.del(keys);
+        this.logger.log(`Cleared ${keys.length} RBAC cache entries for user ${userId}`);
+      } else {
+        this.logger.log(`No RBAC cache found for user ${userId} to clear`);
+      }
+    } catch (e) {
+      this.logger.error(`Failed to clear RBAC cache for user ${userId}`, e);
+    }
+  }
 }

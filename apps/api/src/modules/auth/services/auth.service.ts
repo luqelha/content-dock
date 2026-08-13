@@ -10,6 +10,7 @@ import { RegisterDto } from '../dto/register.dto';
 import { LoginDto } from '../dto/login.dto';
 import * as bcrypt from 'bcrypt';
 import { ConfigService } from '@nestjs/config';
+import { RedisService } from '../../redis/redis.service';
 
 @Injectable()
 export class AuthService {
@@ -17,6 +18,7 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
+    private readonly redisService: RedisService,
   ) {}
 
   async register(registerDto: RegisterDto) {
@@ -81,6 +83,7 @@ export class AuthService {
 
   async logout(userId: string) {
     await this.userService.updateRefreshToken(userId, null);
+    await this.redisService.clearUserRbacCache(userId);
     return { message: 'Logged out successfully' };
   }
 
