@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { DashboardClient } from "./dashboard-client";
+import { DashboardClient } from "@/components/dashboard/dashboard-client";
 import { fetchAnalytics } from "@/lib/api";
 
 export default async function DashboardPage() {

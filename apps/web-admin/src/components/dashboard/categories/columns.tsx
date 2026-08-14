@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -20,7 +21,11 @@ export type Category = {
   createdAt: string;
 };
 
-export const columns: ColumnDef<Category>[] = [
+export const getColumns = (
+  onEdit: (category: Category) => void,
+  onDelete: (category: Category) => void,
+  isAdmin: boolean = false,
+): ColumnDef<Category>[] => [
   {
     accessorKey: "name",
     header: "Name",
@@ -52,15 +57,33 @@ export const columns: ColumnDef<Category>[] = [
             <MoreHorizontal className="h-4 w-4" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(category.id)}
-            >
-              Copy ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Edit Category</DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+            <DropdownMenuGroup>
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              {isAdmin && (
+                <>
+                  <DropdownMenuItem
+                    onClick={() => navigator.clipboard.writeText(category.id)}
+                    onSelect={() => navigator.clipboard.writeText(category.id)}
+                  >
+                    Copy ID
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                </>
+              )}
+              <DropdownMenuItem
+                onClick={() => onEdit(category)}
+                onSelect={() => onEdit(category)}
+              >
+                Edit Category
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="text-red-600"
+                onClick={() => onDelete(category)}
+                onSelect={() => onDelete(category)}
+              >
+                Delete
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
       );

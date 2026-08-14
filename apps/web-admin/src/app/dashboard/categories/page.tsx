@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
-import { DataTable } from "./data-table";
-import { columns } from "./columns";
+import { CategoriesClient } from "@/components/dashboard/categories/categories-client";
 import { fetchCategories } from "@/lib/api";
 
 export default async function CategoriesPage() {
@@ -20,14 +19,7 @@ export default async function CategoriesPage() {
 
   return (
     <div className="p-4 sm:p-6 md:p-8 lg:p-10 max-w-7xl mx-auto space-y-6">
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Categories</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Manage categories for your content.
-        </p>
-      </div>
-
-      <DataTable columns={columns} data={categories} />
+      <CategoriesClient data={categories} />
     </div>
   );
 }
