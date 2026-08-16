@@ -51,8 +51,12 @@ export function CategoryModal({
     },
   });
 
-  useEffect(() => {
+  const handleClose = () => {
     setErrorMsg(null);
+    onClose();
+  };
+
+  useEffect(() => {
     if (category) {
       form.reset({
         name: category.name,
@@ -83,7 +87,7 @@ export function CategoryModal({
       if (result.error) {
         setErrorMsg(result.error);
       } else {
-        onClose();
+        handleClose();
       }
     } catch (err) {
       console.error(err);
@@ -102,7 +106,7 @@ export function CategoryModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={handleClose}
             className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
           />
 
@@ -123,7 +127,7 @@ export function CategoryModal({
                   variant="ghost"
                   size="icon"
                   className="rounded-full h-8 w-8 hover:bg-muted"
-                  onClick={onClose}
+                  onClick={handleClose}
                 >
                   <X className="h-4 w-4" />
                 </Button>
