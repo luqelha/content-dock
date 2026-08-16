@@ -9,6 +9,7 @@ import { Plus } from "lucide-react";
 import { deleteCategory } from "@/actions/categories";
 import { DeleteModal } from "./delete-modal";
 import { useTenant } from "@/components/providers/tenant-provider";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface CategoriesClientProps {
   data: Category[];
@@ -22,6 +23,7 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
   const [categoryToDelete, setCategoryToDelete] = useState<Category | null>(
     null,
   );
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const { activeTenant } = useTenant();
   const isAdmin = activeTenant?.role === "ADMIN";
@@ -38,11 +40,12 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
 
   const handleDeleteConfirm = async () => {
     if (!categoryToDelete) return;
+    setErrorMsg(null);
 
     const result = await deleteCategory(categoryToDelete.id);
     if (result.error) {
       console.error("Failed to delete category:", result.error);
-      alert(result.error);
+      setErrorMsg(result.error);
     }
     setCategoryToDelete(null);
   };
@@ -52,7 +55,13 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
   };
 
   return (
-    <>
+    <div className="space-y-4">
+      {errorMsg && (
+        <Alert variant="destructive">
+          <AlertDescription>{errorMsg}</AlertDescription>
+        </Alert>
+      )}
+
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
@@ -82,8 +91,9 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
         isOpen={!!categoryToDelete}
         onClose={() => setCategoryToDelete(null)}
         onConfirm={handleDeleteConfirm}
+        title="Delete Category"
         categoryName={categoryToDelete?.name || ""}
       />
-    </>
+    </div>
   );
 }

@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { X } from "lucide-react";
-import { createCategory, updateCategory } from "@/actions/categories";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,24 +14,24 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Category } from "./columns";
+import { createCategory, updateCategory } from "@/actions/categories";
+import { motion, AnimatePresence } from "framer-motion";
+import { X, Loader2 } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 
 const categorySchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  slug: z.string().min(2, "Slug must be at least 2 characters."),
+  name: z.string().min(1, "Name is required"),
+  slug: z.string().min(1, "Slug is required"),
   description: z.string().optional(),
 });
 
-export type CategoryFormValues = z.infer<typeof categorySchema>;
+type CategoryFormValues = z.infer<typeof categorySchema>;
 
 interface CategoryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  category?: {
-    id: string;
-    name: string;
-    slug: string;
-    description?: string | null;
-  } | null;
+  category?: Category | null;
 }
 
 export function CategoryModal({
@@ -44,6 +40,7 @@ export function CategoryModal({
   category,
 }: CategoryModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(categorySchema),
@@ -55,6 +52,7 @@ export function CategoryModal({
   });
 
   useEffect(() => {
+    setErrorMsg(null);
     if (category) {
       form.reset({
         name: category.name,
@@ -72,6 +70,7 @@ export function CategoryModal({
 
   async function onSubmit(data: CategoryFormValues) {
     setIsSubmitting(true);
+    setErrorMsg(null);
 
     try {
       let result;
@@ -82,14 +81,13 @@ export function CategoryModal({
       }
 
       if (result.error) {
-        console.error("Failed to save category:", result.error);
-        alert(result.error);
+        setErrorMsg(result.error);
       } else {
         onClose();
       }
     } catch (err) {
       console.error(err);
-      alert("An unexpected error occurred.");
+      setErrorMsg("An unexpected error occurred.");
     } finally {
       setIsSubmitting(false);
     }
@@ -105,7 +103,7 @@ export function CategoryModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
           />
 
           {/* Modal content */}
@@ -115,7 +113,7 @@ export function CategoryModal({
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-              className="w-full max-w-lg rounded-xl border bg-card text-card-foreground shadow-xl pointer-events-auto"
+              className="w-full max-w-lg rounded-2xl border border-border/80 dark:border-neutral-700/80 bg-card dark:bg-neutral-900 text-card-foreground shadow-2xl pointer-events-auto"
             >
               <div className="flex items-center justify-between border-b p-6">
                 <h2 className="text-xl font-semibold tracking-tight">
@@ -131,7 +129,13 @@ export function CategoryModal({
                 </Button>
               </div>
 
-              <div className="p-6">
+              <div className="p-6 space-y-4">
+                {errorMsg && (
+                  <Alert variant="destructive">
+                    <AlertDescription>{errorMsg}</AlertDescription>
+                  </Alert>
+                )}
+
                 <Form {...form}>
                   <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -201,6 +205,7 @@ export function CategoryModal({
                         Cancel
                       </Button>
                       <Button type="submit" disabled={isSubmitting}>
+                        {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                         {isSubmitting ? "Saving..." : "Save Category"}
                       </Button>
                     </div>

@@ -49,8 +49,8 @@ export default function LoginPage() {
             Log in to your account to continue
           </p>
         </div>
-        <form action={formAction} className="flex flex-col gap-5">
-          <div className="flex flex-col gap-2.5">
+        <form action={formAction} className="flex flex-col gap-5 border ">
+          <div className="flex flex-col gap-2.5 ">
             <Label
               htmlFor="email"
               className="text-zinc-950 dark:text-zinc-300 font-medium"
@@ -66,6 +66,7 @@ export default function LoginPage() {
               required
               autoComplete="email"
               defaultValue={state?.email as string | undefined}
+              className="border border-zinc-200 dark:border-zinc-800"
             />
           </div>
 
@@ -90,6 +91,7 @@ export default function LoginPage() {
               type="password"
               required
               autoComplete="current-password"
+              className="border border-zinc-200 dark:border-zinc-800"
             />
           </div>
 

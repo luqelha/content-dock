@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { AlertTriangle } from "lucide-react";
 
 interface DeleteModalProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => Promise<void>;
+  title?: string;
   categoryName: string;
 }
 
@@ -14,6 +16,7 @@ export function DeleteModal({
   isOpen,
   onClose,
   onConfirm,
+  title = "Delete Item",
   categoryName,
 }: DeleteModalProps) {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -28,14 +31,20 @@ export function DeleteModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
-      <div className="bg-background w-full max-w-md rounded-lg p-6 shadow-lg sm:max-w-106.25">
-        <h2 className="text-lg font-semibold mb-2">Delete Category</h2>
-        <p className="text-sm text-muted-foreground mb-6">
-          Are you sure you want to delete the category &quot;{categoryName}
-          &quot;? This action cannot be undone.
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm px-4 animate-in fade-in duration-200">
+      <div className="bg-card dark:bg-neutral-900 text-card-foreground border border-border/80 dark:border-neutral-700/80 w-full max-w-md rounded-2xl p-6 shadow-2xl transition-all">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10 text-destructive dark:bg-destructive/20">
+            <AlertTriangle className="h-5 w-5" />
+          </div>
+          <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
+        </div>
+
+        <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+          Are you sure you want to delete &quot;<span className="font-medium text-foreground">{categoryName}</span>&quot;? This action cannot be undone.
         </p>
-        <div className="flex justify-end gap-3">
+
+        <div className="flex justify-end gap-2.5">
           <Button variant="outline" onClick={onClose} disabled={isDeleting}>
             Cancel
           </Button>

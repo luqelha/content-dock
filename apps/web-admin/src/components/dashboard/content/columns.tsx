@@ -17,7 +17,7 @@ export type Content = {
   id: string;
   title: string;
   slug: string;
-  status: "DRAFT" | "PUBLISHED";
+  status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
   author: {
     name: string;
   };
@@ -29,6 +29,7 @@ export type Content = {
 
 export const getColumns = (
   onEdit: (content: Content) => void,
+  onDelete?: (content: Content) => void,
 ): ColumnDef<Content>[] => [
   {
     accessorKey: "title",
@@ -46,12 +47,22 @@ export const getColumns = (
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue("status") as string;
-      return (
-        <Badge variant={status === "PUBLISHED" ? "default" : "secondary"}>
-          {status}
-        </Badge>
-      );
+      const status = row.getValue("status") as
+        "DRAFT" | "PUBLISHED" | "ARCHIVED";
+      if (status === "PUBLISHED") {
+        return <Badge variant="default">Published</Badge>;
+      }
+      if (status === "ARCHIVED") {
+        return (
+          <Badge
+            variant="outline"
+            className="text-muted-foreground border-dashed"
+          >
+            Archived
+          </Badge>
+        );
+      }
+      return <Badge variant="secondary">Draft</Badge>;
     },
   },
   {
@@ -90,7 +101,12 @@ export const getColumns = (
             <DropdownMenuItem onClick={() => onEdit(content)}>
               Edit Content
             </DropdownMenuItem>
-            <DropdownMenuItem className="text-red-600">Delete</DropdownMenuItem>
+            <DropdownMenuItem
+              className="text-destructive focus:text-destructive"
+              onClick={() => onDelete?.(content)}
+            >
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

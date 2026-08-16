@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,38 +8,35 @@ datasource db {
 }
 
 model Tenant {
-  id        String   @id @default(uuid())
-  name      String
-  domain    String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  users      TenantUser[]
+  id         String       @id @default(uuid())
+  name       String
+  domain     String?      @unique
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
   categories Category[]
   contents   Content[]
   medias     Media[]
+  users      TenantUser[]
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
+  id           String       @id @default(uuid())
+  email        String       @unique
   passwordHash String
   refreshToken String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-
-  tenants  TenantUser[]
-  contents Content[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  contents     Content[]
+  tenants      TenantUser[]
 }
 
 model TenantUser {
   id       String @id @default(uuid())
   tenantId String
   userId   String
-  role     String @default("VIEWER") // e.g., ADMIN, EDITOR, VIEWER
-
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role     String @default("VIEWER")
+  tenant   Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([tenantId, userId])
 }
@@ -58,32 +52,23 @@ model AuditLog {
   ipAddress String?
   userAgent String?
   createdAt DateTime @default(now())
-
-  // We intentionally do not use hard foreign keys for user/tenant
-  // to ensure audit logs persist even if a user/tenant is deleted.
 }
 
 model Category {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   name        String
   slug        String
   description String?
   parentId    String?
   tenantId    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  parent   Category?  @relation("CategoryToCategory", fields: [parentId], references: [id], onDelete: SetNull)
-  children Category[] @relation("CategoryToCategory")
-  tenant   Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  contents Content[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  parent      Category?  @relation("CategoryToCategory", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryToCategory")
+  tenant      Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  contents    Content[]
 
   @@unique([tenantId, slug])
-}
-
-enum ContentStatus {
-  DRAFT
-  PUBLISHED
 }
 
 model Content {
@@ -98,10 +83,9 @@ model Content {
   categoryId  String?
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-
-  author   User      @relation(fields: [authorId], references: [id])
-  tenant   Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
-  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  author      User          @relation(fields: [authorId], references: [id])
+  category    Category?     @relation(fields: [categoryId], references: [id])
+  tenant      Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
   @@unique([tenantId, slug])
 }
@@ -109,9 +93,13 @@ model Content {
 model Media {
   id        String   @id @default(uuid())
   url       String
-  type      String   // e.g. "image/png", "application/pdf"
+  type      String
   tenantId  String
   createdAt DateTime @default(now())
+  tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+}
 
-  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
 }

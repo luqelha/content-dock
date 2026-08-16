@@ -30,8 +30,8 @@ export class AnalyticsService {
       totalContent,
       activeUsers,
       categoriesCount: categories.length,
-      storageUsed: "48.2 GB", // Mocked for now, as file sizes aren't fully tracked or require s3 integration
-      contentGrowth: "+24%", // Mocked for now
+      storageUsed: '48.2 GB', // Mocked for now, as file sizes aren't fully tracked or require s3 integration
+      contentGrowth: '+24%', // Mocked for now
     };
   }
 }

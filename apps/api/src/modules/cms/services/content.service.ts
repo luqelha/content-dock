@@ -83,6 +83,10 @@ export class ContentService {
       orderBy: { createdAt: order ? (order.toLowerCase() as Prisma.SortOrder) : 'desc' },
       skip,
       take,
+      include: {
+        category: true,
+        author: true,
+      },
     });
 
     const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto: queryContentDto });

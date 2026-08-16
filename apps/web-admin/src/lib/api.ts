@@ -66,5 +66,81 @@ export async function fetchContents(token: string, tenantId: string) {
   if (!res.ok) {
     return [];
   }
+  const json = await res.json();
+  return json.data || [];
+}
+
+export interface CreateContentInput {
+  title: string;
+  slug?: string;
+  body: string;
+  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  categoryId?: string;
+}
+
+export interface UpdateContentInput {
+  title?: string;
+  slug?: string;
+  body?: string;
+  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  categoryId?: string;
+}
+
+export async function getContent(
+  token: string,
+  tenantId: string,
+  contentId: string,
+) {
+  const res = await fetch(`${API_URL}/contents/${contentId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "x-tenant-id": tenantId,
+    },
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return null;
+  }
+  return res.json();
+}
+
+export async function createContent(
+  token: string,
+  tenantId: string,
+  data: CreateContentInput,
+) {
+  const res = await fetch(`${API_URL}/contents`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "x-tenant-id": tenantId,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to create content");
+  }
+  return res.json();
+}
+
+export async function updateContent(
+  token: string,
+  tenantId: string,
+  contentId: string,
+  data: UpdateContentInput,
+) {
+  const res = await fetch(`${API_URL}/contents/${contentId}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "x-tenant-id": tenantId,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to update content");
+  }
   return res.json();
 }
