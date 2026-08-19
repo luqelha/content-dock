@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createContent, updateContent } from "@/actions/contents";
+import { CategoryModal } from "@/components/dashboard/categories/category-modal";
 import { WYSIWYGEditor } from "@/components/ui/wysiwyg-editor";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -38,6 +39,8 @@ import {
   Save,
   Send,
   Sparkles,
+  Plus,
+  ExternalLink,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -110,6 +113,14 @@ export function ContentForm({
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Category state management for live updates
+  const [categoryList, setCategoryList] = useState<CategoryItem[]>(categories);
+  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+
+  useEffect(() => {
+    setCategoryList(categories);
+  }, [categories]);
 
   const form = useForm<ContentFormValues>({
     resolver: zodResolver(contentSchema),
@@ -189,6 +200,27 @@ export function ContentForm({
         .replace(/(^-|-$)+/g, "");
       form.setValue("slug", slug, { shouldValidate: true });
     }
+  };
+
+  const handleOpenCreateCategory = () => {
+    setCategoryModalOpen(true);
+  };
+
+  const handleCategorySaved = (savedCategory: CategoryItem) => {
+    setCategoryList((prev) => {
+      const exists = prev.some((c) => c.id === savedCategory.id);
+      if (exists) {
+        return prev.map((c) =>
+          c.id === savedCategory.id ? { ...c, ...savedCategory } : c,
+        );
+      } else {
+        return [savedCategory, ...prev];
+      }
+    });
+
+    // Auto select newly created category
+    form.setValue("categoryId", savedCategory.id, { shouldValidate: true });
+    router.refresh();
   };
 
   return (
@@ -364,43 +396,86 @@ export function ContentForm({
                   <FormField
                     control={form.control}
                     name="categoryId"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Category</FormLabel>
-                        <Select
-                          value={field.value ?? ""}
-                          onValueChange={field.onChange}
-                        >
-                          <FormControl>
-                            <SelectTrigger className="w-full">
-                              <SelectValue placeholder="Select a category">
-                                {field.value
-                                  ? categories.find((c) => c.id === field.value)
-                                      ?.name
-                                  : undefined}
-                              </SelectValue>
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            {categories.length === 0 ? (
-                              <div className="p-2 text-xs text-muted-foreground text-center">
-                                No categories created yet.
-                              </div>
-                            ) : (
-                              categories.map((category) => (
+                    render={({ field }) => {
+                      const selectedCategory = categoryList.find(
+                        (c) => c.id === field.value,
+                      );
+
+                      return (
+                        <FormItem>
+                          <div className="flex items-center justify-between">
+                            <FormLabel>Category</FormLabel>
+                            <Button
+                              type="button"
+                              variant="ghost"
+                              size="sm"
+                              className="h-auto p-0 text-xs text-primary hover:underline flex items-center gap-1 font-medium cursor-pointer"
+                              onClick={handleOpenCreateCategory}
+                            >
+                              <Plus className="h-3 w-3" />
+                              New Category
+                            </Button>
+                          </div>
+
+                          <Select
+                            value={field.value ?? "__none__"}
+                            onValueChange={(val) => {
+                              field.onChange(
+                                val === "__none__" ? undefined : val,
+                              );
+                            }}
+                          >
+                            <FormControl>
+                              <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Select a category">
+                                  {selectedCategory
+                                    ? selectedCategory.name
+                                    : "Uncategorized"}
+                                </SelectValue>
+                              </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                              <SelectItem
+                                value="__none__"
+                                className="text-muted-foreground italic text-xs"
+                              >
+                                None (Uncategorized)
+                              </SelectItem>
+                              {categoryList.map((category) => (
                                 <SelectItem
                                   key={category.id}
                                   value={category.id}
                                 >
                                   {category.name}
                                 </SelectItem>
-                              ))
+                              ))}
+                            </SelectContent>
+                          </Select>
+
+                          <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
+                            {selectedCategory ? (
+                              <span className="truncate">
+                                Slug:{" "}
+                                <span className="font-mono text-foreground/80">
+                                  {selectedCategory.slug || "n/a"}
+                                </span>
+                              </span>
+                            ) : (
+                              <span>No category assigned</span>
                             )}
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
+                            <Link
+                              href="/dashboard/categories"
+                              target="_blank"
+                              className="hover:text-primary transition-colors flex items-center gap-1 text-[11px]"
+                            >
+                              Manage all
+                              <ExternalLink className="h-2.5 w-2.5" />
+                            </Link>
+                          </div>
+                          <FormMessage />
+                        </FormItem>
+                      );
+                    }}
                   />
 
                   {/* Custom Slug */}
@@ -446,6 +521,13 @@ export function ContentForm({
           </div>
         </form>
       </Form>
+
+      {/* Category Create Modal */}
+      <CategoryModal
+        isOpen={categoryModalOpen}
+        onClose={() => setCategoryModalOpen(false)}
+        onSuccess={handleCategorySaved}
+      />
     </div>
   );
 }

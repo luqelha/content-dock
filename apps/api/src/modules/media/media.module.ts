@@ -20,8 +20,13 @@ import { v4 as uuidv4 } from 'uuid';
         fileSize: 5 * 1024 * 1024, // 5MB
       },
       fileFilter: (req, file, cb) => {
-        if (!file.mimetype.match(/\/(jpg|jpeg|png|gif|pdf)$/)) {
-          return cb(new BadRequestException('Only image files and PDFs are allowed!'), false);
+        if (!file.mimetype.match(/\/(jpg|jpeg|png|gif|pdf|webp|svg\+xml)$/i)) {
+          return cb(
+            new BadRequestException(
+              'Only image files (JPG, PNG, GIF, WebP, SVG) and PDFs are allowed!',
+            ),
+            false,
+          );
         }
         cb(null, true);
       },

@@ -18,10 +18,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { getColumns, Content } from "./columns";
+import { getColumns, Content, CategoryItemRef } from "./columns";
 import { Plus } from "lucide-react";
 import { DeleteModal } from "@/components/dashboard/categories/delete-modal";
+import { CategoryModal } from "@/components/dashboard/categories/category-modal";
 import { deleteContent } from "@/actions/contents";
+import { deleteCategory } from "@/actions/categories";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface DataTableProps {
@@ -31,6 +33,11 @@ interface DataTableProps {
 export function DataTable({ data }: DataTableProps) {
   const router = useRouter();
   const [contentToDelete, setContentToDelete] = useState<Content | null>(null);
+  const [categoryToEdit, setCategoryToEdit] = useState<CategoryItemRef | null>(
+    null,
+  );
+  const [categoryToDelete, setCategoryToDelete] =
+    useState<CategoryItemRef | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleEdit = (content: Content) => {
@@ -43,6 +50,14 @@ export function DataTable({ data }: DataTableProps) {
 
   const handleCreate = () => {
     router.push("/dashboard/content/create");
+  };
+
+  const handleEditCategory = (category: CategoryItemRef) => {
+    setCategoryToEdit(category);
+  };
+
+  const handleDeleteCategory = (category: CategoryItemRef) => {
+    setCategoryToDelete(category);
   };
 
   const handleDeleteConfirm = async () => {
@@ -59,10 +74,33 @@ export function DataTable({ data }: DataTableProps) {
     setContentToDelete(null);
   };
 
+  const handleCategoryDeleteConfirm = async () => {
+    if (!categoryToDelete) return;
+    setErrorMsg(null);
+
+    const result = await deleteCategory(categoryToDelete.id);
+    if (result.error) {
+      console.error("Failed to delete category:", result.error);
+      setErrorMsg(result.error);
+    } else {
+      router.refresh();
+    }
+    setCategoryToDelete(null);
+  };
+
+  const handleCategorySaved = () => {
+    router.refresh();
+  };
+
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data,
-    columns: getColumns(handleEdit, handleDelete),
+    columns: getColumns(
+      handleEdit,
+      handleDelete,
+      handleEditCategory,
+      handleDeleteCategory,
+    ),
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
@@ -129,8 +167,12 @@ export function DataTable({ data }: DataTableProps) {
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={6} className="h-32 text-center text-muted-foreground">
-                  No content found. Click &quot;Add Content&quot; to create your first post.
+                <TableCell
+                  colSpan={6}
+                  className="h-32 text-center text-muted-foreground"
+                >
+                  No content found. Click &quot;Add Content&quot; to create your
+                  first post.
                 </TableCell>
               </TableRow>
             )}
@@ -157,13 +199,30 @@ export function DataTable({ data }: DataTableProps) {
         </Button>
       </div>
 
-      {/* Reusable Delete Modal with dark theme styling */}
+      {/* Reusable Delete Modal for Content */}
       <DeleteModal
         isOpen={!!contentToDelete}
         onClose={() => setContentToDelete(null)}
         onConfirm={handleDeleteConfirm}
         title="Delete Content"
         categoryName={contentToDelete?.title || ""}
+      />
+
+      {/* Reusable Modal for Editing Category */}
+      <CategoryModal
+        isOpen={!!categoryToEdit}
+        onClose={() => setCategoryToEdit(null)}
+        category={categoryToEdit}
+        onSuccess={handleCategorySaved}
+      />
+
+      {/* Reusable Delete Modal for Category */}
+      <DeleteModal
+        isOpen={!!categoryToDelete}
+        onClose={() => setCategoryToDelete(null)}
+        onConfirm={handleCategoryDeleteConfirm}
+        title="Delete Category"
+        categoryName={categoryToDelete?.name || ""}
       />
     </div>
   );

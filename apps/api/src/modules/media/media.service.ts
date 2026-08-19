@@ -27,7 +27,7 @@ export class MediaService {
   }
 
   async deleteMedia(tenantId: string, id: string) {
-    const media = await this.prisma.media.findUnique({
+    const media = await this.prisma.media.findFirst({
       where: { id, tenantId },
     });
 

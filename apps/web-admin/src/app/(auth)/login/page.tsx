@@ -49,7 +49,7 @@ export default function LoginPage() {
             Log in to your account to continue
           </p>
         </div>
-        <form action={formAction} className="flex flex-col gap-5 border ">
+        <form action={formAction} className="flex flex-col gap-5">
           <div className="flex flex-col gap-2.5 ">
             <Label
               htmlFor="email"

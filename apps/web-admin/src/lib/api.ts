@@ -70,6 +70,38 @@ export async function fetchContents(token: string, tenantId: string) {
   return json.data || [];
 }
 
+export interface MediaItemResponse {
+  id: string;
+  url: string;
+  type: string;
+  tenantId: string;
+  createdAt: string;
+}
+
+export async function fetchMedia(
+  token: string,
+  tenantId: string,
+): Promise<MediaItemResponse[]> {
+  const res = await fetch(`${API_URL}/media`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "x-tenant-id": tenantId,
+    },
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    return [];
+  }
+  const items: MediaItemResponse[] = await res.json();
+  const apiBase = API_URL.replace(/\/api\/?$/, "");
+  return items.map((item: MediaItemResponse) => ({
+    ...item,
+    url: item.url.startsWith("http")
+      ? item.url
+      : `${apiBase}${item.url.startsWith("/") ? "" : "/"}${item.url}`,
+  }));
+}
+
 export interface CreateContentInput {
   title: string;
   slug?: string;

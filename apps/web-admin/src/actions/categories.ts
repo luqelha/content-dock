@@ -36,6 +36,7 @@ export async function createCategory(data: {
     }
 
     revalidatePath("/dashboard/categories");
+    revalidatePath("/dashboard/content");
     return { success: true, data: result };
   } catch (error) {
     console.error("Create category error:", error);
@@ -73,6 +74,7 @@ export async function updateCategory(
     }
 
     revalidatePath("/dashboard/categories");
+    revalidatePath("/dashboard/content");
     return { success: true, data: result };
   } catch (error) {
     console.error("Update category error:", error);
@@ -105,6 +107,7 @@ export async function deleteCategory(id: string) {
     }
 
     revalidatePath("/dashboard/categories");
+    revalidatePath("/dashboard/content");
     return { success: true, data: result };
   } catch (error) {
     console.error("Delete category error:", error);

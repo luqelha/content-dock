@@ -105,6 +105,18 @@ export class CategoryService {
   async remove(id: string, tenantId: string): Promise<Category> {
     await this.findOne(id, tenantId); // ensure it exists and belongs to tenant
 
+    // Unlink any contents referencing this category
+    await this.prisma.content.updateMany({
+      where: { categoryId: id },
+      data: { categoryId: null },
+    });
+
+    // Unlink any child categories referencing this category
+    await this.prisma.category.updateMany({
+      where: { parentId: id },
+      data: { parentId: null },
+    });
+
     return this.prisma.category.delete({
       where: { id },
     });

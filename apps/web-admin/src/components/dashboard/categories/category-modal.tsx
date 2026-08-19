@@ -31,13 +31,23 @@ type CategoryFormValues = z.infer<typeof categorySchema>;
 interface CategoryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  category?: Category | null;
+  category?:
+    | Category
+    | {
+        id?: string;
+        name: string;
+        slug?: string;
+        description?: string | null;
+      }
+    | null;
+  onSuccess?: (category: Category) => void;
 }
 
 export function CategoryModal({
   isOpen,
   onClose,
   category,
+  onSuccess,
 }: CategoryModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -59,8 +69,8 @@ export function CategoryModal({
   useEffect(() => {
     if (category) {
       form.reset({
-        name: category.name,
-        slug: category.slug,
+        name: category.name || "",
+        slug: category.slug || "",
         description: category.description || "",
       });
     } else {
@@ -78,7 +88,7 @@ export function CategoryModal({
 
     try {
       let result;
-      if (category) {
+      if (category && category.id) {
         result = await updateCategory(category.id, data);
       } else {
         result = await createCategory(data);
@@ -87,6 +97,9 @@ export function CategoryModal({
       if (result.error) {
         setErrorMsg(result.error);
       } else {
+        if (result.data) {
+          onSuccess?.(result.data);
+        }
         handleClose();
       }
     } catch (err) {

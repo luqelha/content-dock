@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: .
+      context: ./apps/api
       dockerfile: Dockerfile
     restart: always
     environment:
