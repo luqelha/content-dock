@@ -300,6 +300,7 @@ export function AppSidebar() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
+                render={<Link href="/dashboard/profile" />}
                 tooltip="Profile"
                 className="h-auto py-2 group/profile"
               >
