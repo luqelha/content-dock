@@ -1,11 +1,39 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  UseInterceptors,
+  UploadedFile,
+  Request,
+  BadRequestException,
+} from '@nestjs/common';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+  ApiConsumes,
+  ApiBody,
+} from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname, join } from 'path';
+import { unlink } from 'fs/promises';
+import { v4 as uuidv4 } from 'uuid';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @ApiTags('users')
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -40,6 +68,55 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'Return a user.', type: UserEntity })
   findOne(@Param('id') id: string) {
     return this.userService.findOne(id);
+  }
+
+  @Post('avatar')
+  @ApiOperation({ summary: 'Upload a user avatar' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: { type: 'string', format: 'binary' },
+      },
+    },
+  })
+  @ApiResponse({ status: 201, description: 'Avatar uploaded successfully' })
+  @UseInterceptors(
+    FileInterceptor('file', {
+      storage: diskStorage({
+        destination: './storage/uploads',
+        filename: (req, file, cb) => {
+          const uniqueName = `${uuidv4()}${extname(file.originalname)}`;
+          cb(null, uniqueName);
+        },
+      }),
+      fileFilter: (req, file, cb) => {
+        if (!file.mimetype.match(/\/(jpg|jpeg|png|webp)$/i)) {
+          return cb(new BadRequestException('Only image files are allowed!'), false);
+        }
+        cb(null, true);
+      },
+      limits: { fileSize: 2 * 1024 * 1024 }, // 2MB
+    }),
+  )
+  async uploadAvatar(@Request() req, @UploadedFile() file: Express.Multer.File) {
+    const userId = req.user.userId;
+    const user = await this.userService.findOne(userId);
+
+    if (user?.avatarUrl && user.avatarUrl.startsWith('/uploads/')) {
+      const filename = user.avatarUrl.replace('/uploads/', '');
+      const filePath = join(process.cwd(), 'storage', 'uploads', filename);
+      try {
+        await unlink(filePath);
+      } catch (err) {
+        console.error(`Failed to delete old avatar file: ${filePath}`, err);
+      }
+    }
+
+    const url = `/uploads/${file.filename}`;
+    await this.userService.update(userId, { avatarUrl: url });
+    return { avatarUrl: url };
   }
 
   @Patch(':id')

@@ -145,6 +145,7 @@ Thumbs.db
 # Excluded documents
 DEVELOPMENT.md
 fix.md
+DATA_FLOW.md
 
 # Storage (Zip Exports, Raw Logs, etc.)
 /apps/api/storage/

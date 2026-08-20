@@ -1,5 +1,6 @@
 "use client";
 
+import { useActionState, useEffect, useState } from "react";
 import { useTenant } from "@/components/providers/tenant-provider";
 import {
   Card,
@@ -13,11 +14,48 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Save, Lock } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Save, Lock, Loader2, Check, Camera } from "lucide-react";
+import { updateUserProfile, updateUserPassword } from "@/actions/profile";
+
+import { useRouter } from "next/navigation";
 
 export default function UserProfilePage() {
   const { user } = useTenant();
+  const [state, formAction, isPending] = useActionState(
+    updateUserProfile,
+    null,
+  );
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const [passwordState, passwordFormAction, isPasswordPending] = useActionState(
+    updateUserPassword,
+    null,
+  );
+  const [showPasswordSuccess, setShowPasswordSuccess] = useState(false);
+
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (state?.success) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setShowSuccess(true);
+      router.refresh();
+      const timer = setTimeout(() => setShowSuccess(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [state, router]);
+
+  useEffect(() => {
+    if (passwordState?.success) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setShowPasswordSuccess(true);
+      const timer = setTimeout(() => setShowPasswordSuccess(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [passwordState]);
 
   if (!user) {
     return (
@@ -40,108 +78,250 @@ export default function UserProfilePage() {
       </div>
 
       <div className="flex-1 min-h-0">
-        <div className="grid gap-6 md:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_2fr] md:h-full">
-          {/* Left Column: Avatar & Security */}
-          <div className="flex flex-col gap-6">
-            <Card className="shrink-0">
-              <CardHeader>
-                <CardTitle>Profile Picture</CardTitle>
-                <CardDescription>
-                  Your avatar visible to other users.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center gap-4">
-                <Avatar className="h-24 w-24">
-                  <AvatarFallback className="text-2xl bg-foreground text-background">
-                    {user.email?.substring(0, 2).toUpperCase() || "US"}
-                  </AvatarFallback>
-                </Avatar>
-                <Button variant="outline" size="sm" className="w-full">
-                  Change Avatar
-                </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  Recommended: 400x400px. Max 2MB.
-                </p>
-              </CardContent>
-            </Card>
+        <Tabs defaultValue="general" className="w-full">
+          <TabsList className="mb-6 grid w-full max-w-400px grid-cols-2">
+            <TabsTrigger value="general">General Information</TabsTrigger>
+            <TabsTrigger value="security">Security</TabsTrigger>
+          </TabsList>
 
-            <Card className="shrink-0">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lock className="w-4 h-4" />
-                  Security
-                </CardTitle>
-                <CardDescription>Update your password.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="current-password">Current Password</Label>
-                  <Input id="current-password" type="password" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="new-password">New Password</Label>
-                  <Input id="new-password" type="password" />
-                </div>
-              </CardContent>
-              <CardFooter className="border-t px-6 py-4">
-                <Button variant="secondary" className="w-full">
-                  Update Password
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-
-          {/* Right Column: Personal Information */}
-          <div className="md:h-full flex flex-col pb-6 md:pb-0">
-            <Card className="md:h-full flex flex-col flex-1">
-              <CardHeader className="shrink-0">
-                <CardTitle>Personal Information</CardTitle>
-                <CardDescription>
-                  Update your basic profile information and contact details.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6 flex-1 flex flex-col">
-                <div className="grid gap-4 md:grid-cols-2 shrink-0">
-                  <div className="space-y-2">
-                    <Label htmlFor="first-name">First Name</Label>
-                    <Input id="first-name" placeholder="John" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" placeholder="Doe" />
-                  </div>
-                </div>
-                <div className="space-y-2 shrink-0">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    defaultValue={user.email}
-                    disabled
-                  />
-                  <p className="text-[13px] text-muted-foreground">
-                    Your email address is used for login and cannot be changed
-                    here.
-                  </p>
+          <TabsContent
+            value="general"
+            className="focus-visible:outline-none focus-visible:ring-0"
+          >
+            <form action={formAction}>
+              <input
+                type="hidden"
+                name="userId"
+                value={user.id || user.userId || ""}
+              />
+              <div className="grid gap-6 md:grid-cols-2 items-start">
+                {/* Left Column: Avatar */}
+                <div className="flex flex-col gap-6">
+                  <Card className="shrink-0">
+                    <CardHeader>
+                      <CardTitle>Profile Picture</CardTitle>
+                      <CardDescription>
+                        Your avatar visible to other users.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="flex flex-col items-center gap-5 pt-6 pb-8">
+                      <div className="relative group">
+                        <Label
+                          htmlFor="avatarFile"
+                          className="cursor-pointer flex flex-col items-center"
+                        >
+                          <Avatar className="avatar-container h-28 w-28 border-4 border-background shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:border-primary/5">
+                            {(previewUrl || user.avatarUrl) && (
+                              <AvatarImage
+                                className="avatar-preview rounded-full"
+                                src={previewUrl || user.avatarUrl || undefined}
+                                alt="Profile Picture"
+                              />
+                            )}
+                            <AvatarFallback className="avatar-fallback text-3xl bg-muted text-muted-foreground font-medium">
+                              {user.firstName && user.lastName
+                                ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
+                                : user.email?.substring(0, 2).toUpperCase() ||
+                                  "US"}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="absolute inset-0 flex items-center justify-center rounded-full bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 ring-offset-background group-focus-within:ring-2 group-focus-within:ring-ring group-focus-within:ring-offset-2">
+                            <Camera className="w-8 h-8 text-white drop-shadow-sm" />
+                          </div>
+                        </Label>
+                        <Input
+                          key={`avatarFile-${user.avatarUrl || ""}`}
+                          id="avatarFile"
+                          name="avatarFile"
+                          type="file"
+                          accept="image/png, image/jpeg, image/webp"
+                          className="hidden"
+                          onChange={(e) => {
+                            const file = e.target.files?.[0];
+                            if (file) {
+                              setPreviewUrl(URL.createObjectURL(file));
+                            }
+                          }}
+                        />
+                      </div>
+                      <div className="text-center space-y-1">
+                        <p className="text-sm font-medium leading-none">
+                          Profile Picture
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          JPG, PNG or WebP. Max 2MB.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
 
-                <div className="space-y-1 h-full flex flex-col flex-1 min-h-30">
-                  <Label htmlFor="bio">Biography</Label>
-                  <Textarea
-                    id="bio"
-                    className="flex-1 resize-none mt-2"
-                    placeholder="Tell us a little bit about yourself..."
-                  />
+                {/* Right Column: Personal Information */}
+                <div className="flex flex-col pb-6 md:pb-0">
+                  <Card className="flex flex-col">
+                    <CardHeader className="shrink-0">
+                      <CardTitle>Personal Information</CardTitle>
+                      <CardDescription>
+                        Update your basic profile information and contact
+                        details.
+                      </CardDescription>
+                      {state?.error && (
+                        <div className="mt-2 text-sm text-red-500">
+                          {state.error}
+                        </div>
+                      )}
+                    </CardHeader>
+                    <CardContent className="space-y-6 flex-1 flex flex-col">
+                      <div className="grid gap-4 md:grid-cols-2 shrink-0">
+                        <div className="space-y-2">
+                          <Label htmlFor="firstName">First Name</Label>
+                          <Input
+                            key={`fn-${user.firstName || ""}`}
+                            id="firstName"
+                            name="firstName"
+                            defaultValue={user.firstName || ""}
+                            placeholder="John"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="lastName">Last Name</Label>
+                          <Input
+                            key={`ln-${user.lastName || ""}`}
+                            id="lastName"
+                            name="lastName"
+                            defaultValue={user.lastName || ""}
+                            placeholder="Doe"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2 shrink-0">
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input
+                          key={`email-${user.email}`}
+                          id="email"
+                          type="email"
+                          defaultValue={user.email}
+                          disabled
+                        />
+                        <p className="text-[13px] text-muted-foreground">
+                          Your email address is used for login and cannot be
+                          changed here.
+                        </p>
+                      </div>
+
+                      <div className="space-y-1 flex flex-col">
+                        <Label htmlFor="bio">Biography</Label>
+                        <Textarea
+                          key={`bio-${user.bio || ""}`}
+                          id="bio"
+                          name="bio"
+                          defaultValue={user.bio || ""}
+                          className="min-h-120px resize-none mt-2"
+                          placeholder="Tell us a little bit about yourself..."
+                        />
+                      </div>
+                    </CardContent>
+                    <CardFooter className="border-t px-6 py-4 shrink-0 mt-auto bg-muted/20">
+                      <Button
+                        type="submit"
+                        disabled={isPending}
+                        className="ml-auto min-w-140px shadow-sm transition-all duration-300"
+                      >
+                        {isPending ? (
+                          <Loader2
+                            className="animate-spin"
+                            data-icon="inline-start"
+                          />
+                        ) : showSuccess ? (
+                          <Check data-icon="inline-start" />
+                        ) : (
+                          <Save data-icon="inline-start" />
+                        )}
+                        {isPending
+                          ? "Saving..."
+                          : showSuccess
+                            ? "Saved!"
+                            : "Save Changes"}
+                      </Button>
+                    </CardFooter>
+                  </Card>
                 </div>
-              </CardContent>
-              <CardFooter className="border-t px-6 py-4 shrink-0 mt-auto">
-                <Button className="ml-auto">
-                  <Save className="mr-2 h-4 w-4" /> Save Changes
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
+              </div>
+            </form>
+          </TabsContent>
+
+          <TabsContent
+            value="security"
+            className="focus-visible:outline-none focus-visible:ring-0"
+          >
+            <form action={passwordFormAction}>
+              <input
+                type="hidden"
+                name="userId"
+                value={user.id || user.userId || ""}
+              />
+              <div className="max-w-2xl">
+                <Card className="shrink-0">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Lock className="w-4 h-4" />
+                      Security
+                    </CardTitle>
+                    <CardDescription>Update your password.</CardDescription>
+                    {passwordState?.error && (
+                      <div className="mt-2 text-sm text-red-500">
+                        {passwordState.error}
+                      </div>
+                    )}
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="currentPassword">Current Password</Label>
+                      <Input
+                        id="currentPassword"
+                        name="currentPassword"
+                        type="password"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="newPassword">New Password</Label>
+                      <Input
+                        id="newPassword"
+                        name="newPassword"
+                        type="password"
+                        required
+                        minLength={8}
+                      />
+                    </div>
+                  </CardContent>
+                  <CardFooter className="border-t px-6 py-4 bg-muted/20">
+                    <Button
+                      type="submit"
+                      disabled={isPasswordPending}
+                      variant="outline"
+                      className="w-auto shadow-sm transition-all duration-300 min-w-150px"
+                    >
+                      {isPasswordPending ? (
+                        <Loader2
+                          className="animate-spin"
+                          data-icon="inline-start"
+                        />
+                      ) : showPasswordSuccess ? (
+                        <Check data-icon="inline-start" />
+                      ) : null}
+                      {isPasswordPending
+                        ? "Updating..."
+                        : showPasswordSuccess
+                          ? "Updated!"
+                          : "Update Password"}
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </div>
+            </form>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

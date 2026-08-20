@@ -30,7 +30,7 @@ import {
   SidebarSeparator,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { logout } from "@/actions/auth";
 
@@ -306,8 +306,11 @@ export function AppSidebar() {
               >
                 <div className="relative">
                   <Avatar className="h-7 w-7 shrink-0">
+                    {user?.avatarUrl && <AvatarImage src={user.avatarUrl} />}
                     <AvatarFallback className="text-[10px] font-bold bg-foreground text-background">
-                      {user?.email?.substring(0, 2).toUpperCase() || "AD"}
+                      {user?.firstName && user?.lastName
+                        ? `${user.firstName[0]}${user.lastName[0]}`.toUpperCase()
+                        : user?.email?.substring(0, 2).toUpperCase() || "AD"}
                     </AvatarFallback>
                   </Avatar>
                   {/* Online indicator */}
@@ -315,7 +318,11 @@ export function AppSidebar() {
                 </div>
                 <div className="flex-1 min-w-0 group-data-[collapsible=icon]:hidden">
                   <p className="text-[13px] font-medium truncate">
-                    {user?.email ? user.email.split("@")[0] : "Admin User"}
+                    {user?.firstName || user?.lastName
+                      ? `${user.firstName || ""} ${user.lastName || ""}`.trim()
+                      : user?.email
+                        ? user.email.split("@")[0]
+                        : "Admin User"}
                   </p>
                   <p className="text-[11px] text-muted-foreground truncate">
                     {user?.email || "admin@atlas.io"}

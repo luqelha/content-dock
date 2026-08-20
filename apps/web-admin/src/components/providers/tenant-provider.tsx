@@ -10,12 +10,18 @@ export type Tenant = {
 };
 
 export type User = {
-  userId: string;
+  id?: string;
+  userId?: string;
   email: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  bio?: string | null;
+  avatarUrl?: string | null;
 };
 
 type TenantContextType = {
   user: User | null;
+  setUser: (user: User | null) => void;
   tenants: Tenant[];
   activeTenant: Tenant | null;
   setActiveTenant: (tenant: Tenant) => void;
@@ -23,6 +29,7 @@ type TenantContextType = {
 
 const TenantContext = createContext<TenantContextType>({
   user: null,
+  setUser: () => {},
   tenants: [],
   activeTenant: null,
   setActiveTenant: () => {},
@@ -41,6 +48,13 @@ export function TenantProvider({
   initialTenants: Tenant[];
   initialActiveTenantId?: string;
 }) {
+  const [user, setUser] = useState<User | null>(initialUser);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setUser(initialUser);
+  }, [initialUser]);
+
   const [activeTenant, setActiveTenant] = useState<Tenant | null>(() => {
     if (initialTenants.length === 0) return null;
 
@@ -66,7 +80,8 @@ export function TenantProvider({
   return (
     <TenantContext.Provider
       value={{
-        user: initialUser,
+        user,
+        setUser,
         tenants: initialTenants,
         activeTenant,
         setActiveTenant: handleSetActiveTenant,

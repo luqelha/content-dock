@@ -11,6 +11,55 @@ export async function fetchProfile(token: string) {
   if (!res.ok) {
     return null;
   }
+  const user = await res.json();
+  if (user && user.avatarUrl && !user.avatarUrl.startsWith("http")) {
+    const apiBase = API_URL.replace(/\/api\/?$/, "");
+    user.avatarUrl = `${apiBase}${user.avatarUrl.startsWith("/") ? "" : "/"}${user.avatarUrl}`;
+  }
+  return user;
+}
+
+export interface UpdateProfileInput {
+  firstName?: string;
+  lastName?: string;
+  bio?: string;
+  avatarUrl?: string;
+  password?: string;
+}
+
+export async function updateProfile(
+  token: string,
+  userId: string,
+  data: UpdateProfileInput,
+) {
+  const res = await fetch(`${API_URL}/users/${userId}`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    throw new Error("Failed to update profile");
+  }
+  return res.json();
+}
+
+export async function uploadAvatar(token: string, file: File) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const res = await fetch(`${API_URL}/users/avatar`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+  if (!res.ok) {
+    throw new Error("Failed to upload avatar");
+  }
   return res.json();
 }
 

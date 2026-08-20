@@ -46,9 +46,10 @@ export class AuthController {
   @ApiOperation({ summary: 'Get current user profile' })
   @ApiResponse({ status: 200, description: 'Current user profile.' })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
-  getProfile(@Request() req) {
+  async getProfile(@Request() req) {
     // req.user is populated by JwtStrategy
-    return req.user;
+    const user = await this.authService.getProfile(req.user.userId);
+    return user;
   }
 
   @Post('logout')
