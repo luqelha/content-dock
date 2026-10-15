@@ -1,8 +1,7 @@
-"use client";
-
+﻿"use client";
+import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,74 +13,59 @@ import {
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ThemeToggle } from "@/components/theme-toggle";
 
-function capitalize(s: string) {
-  return s.charAt(0).toUpperCase() + s.slice(1);
-}
-
+const labels: Record<string, string> = {
+  dashboard: "Dashboard",
+  users: "Members",
+  workspaces: "Workspaces",
+  new: "Create workspace",
+  audit: "Audit trail",
+  exports: "Exports",
+  content: "Content",
+  create: "Create",
+  media: "Media library",
+  categories: "Categories",
+  settings: "Settings",
+  profile: "Profile",
+  invitations: "Invitation",
+};
 export function DashboardHeader() {
-  const pathname = usePathname();
-
-  // Build breadcrumb segments from the pathname
-  // e.g. /dashboard/content → ["Dashboard", "Content"]
-  const parts = pathname.split("/").filter(Boolean);
-  const segments = parts.map((seg, i) => ({
-    label: capitalize(seg),
-    href: "/" + parts.slice(0, i + 1).join("/"),
-  }));
-
+  const parts = usePathname().split("/").filter(Boolean);
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -4 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-      className="flex h-12 sm:h-14 shrink-0 items-center gap-1.5 sm:gap-2 border-b border-border px-3 sm:px-4"
-    >
+    <header className="flex h-12 shrink-0 items-center gap-2 border-b px-3 sm:h-14 sm:px-4">
       <SidebarTrigger className="-ml-1" />
-
-      {/* Breadcrumb */}
-      <Breadcrumb className="flex-1 min-w-0">
+      <Breadcrumb className="min-w-0 flex-1">
         <BreadcrumbList className="flex-nowrap overflow-hidden">
-          {segments.map((seg, i) => {
-            const isLast = i === segments.length - 1;
-            // On mobile, only show the last breadcrumb segment
-            const mobileHidden = !isLast && segments.length > 1;
+          {parts.map((part, index) => {
+            const last = index === parts.length - 1;
+            const href = "/" + parts.slice(0, index + 1).join("/");
+            const label = labels[part] || "Record";
             return (
-              <motion.div
-                key={seg.href}
-                className={`flex items-center gap-1.5 ${mobileHidden ? "hidden sm:flex" : "flex"}`}
-                initial={{ opacity: 0, x: -6 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{
-                  duration: 0.25,
-                  delay: i * 0.06,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                {i > 0 && <BreadcrumbSeparator />}
-                <BreadcrumbItem>
-                  {isLast ? (
-                    <BreadcrumbPage className="text-[13px] font-medium truncate max-w-50 sm:max-w-none">
-                      {seg.label}
+              <Fragment key={href}>
+                {index > 0 && (
+                  <BreadcrumbSeparator className="hidden sm:block" />
+                )}
+                <BreadcrumbItem
+                  className={last ? "min-w-0" : "hidden sm:inline-flex"}
+                >
+                  {last ? (
+                    <BreadcrumbPage className="truncate text-[13px] font-medium">
+                      {label}
                     </BreadcrumbPage>
                   ) : (
                     <BreadcrumbLink
-                      render={<Link href={seg.href} />}
-                      className="text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                      render={<Link href={href} />}
+                      className="text-[13px]"
                     >
-                      {seg.label}
+                      {label}
                     </BreadcrumbLink>
                   )}
                 </BreadcrumbItem>
-              </motion.div>
+              </Fragment>
             );
           })}
         </BreadcrumbList>
       </Breadcrumb>
-
-      {/* Right side actions */}
-      <div className="flex items-center gap-1 shrink-0">
-        <ThemeToggle />
-      </div>
-    </motion.header>
+      <ThemeToggle />
+    </header>
   );
 }

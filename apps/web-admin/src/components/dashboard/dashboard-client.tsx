@@ -1,118 +1,248 @@
 "use client";
+import Link from "next/link";
+import {
+  FileText,
+  Users,
+  ImageIcon,
+  FolderTree,
+  Plus,
+  ArrowUpRight,
+} from "lucide-react";
+import { useTenant } from "@/components/providers/tenant-provider";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
+} from "@/components/ui/table";
 
-import { motion } from "framer-motion";
-import { FileText, Users, HardDrive, TrendingUp } from "lucide-react";
-import { MetricCard } from "@/components/dashboard/metric-card";
-import { ActivityChart } from "@/components/dashboard/activity-chart";
-import { RecentActivity } from "@/components/dashboard/recent-activity";
-import { ContentStatus } from "@/components/dashboard/content-status";
-import { QuickActions } from "@/components/dashboard/quick-actions";
-import { TopContent } from "@/components/dashboard/top-content";
-import { TeamOverview } from "@/components/dashboard/team-overview";
-
-interface DashboardStats {
-  totalContent?: number | string;
-  activeUsers?: number | string;
-  storageUsed?: string;
-  contentGrowth?: string;
+export interface DashboardStats {
+  totalContent: number;
+  activeUsers: number;
+  categoriesCount: number;
+  mediaCount: number;
+  published: number;
+  drafts: number;
+  recentContent: {
+    id: string;
+    title: string;
+    status: string;
+    updatedAt: string;
+    category: { name: string } | null;
+    author: {
+      email: string;
+      firstName: string | null;
+      lastName: string | null;
+    };
+  }[];
 }
-
-export function DashboardClient({ stats }: { stats: DashboardStats }) {
+export function DashboardClient({ stats }: { stats: DashboardStats | null }) {
+  const { activeTenant } = useTenant();
+  const canEdit =
+    activeTenant?.role === "ADMIN" || activeTenant?.role === "EDITOR";
+  if (!stats)
+    return (
+      <div className="p-6">
+        <h1 className="text-2xl font-semibold">Overview unavailable</h1>
+        <p className="mt-2 text-muted-foreground">
+          We could not load this workspace. Refresh the page to try again.
+        </p>
+      </div>
+    );
+  const metrics = [
+    {
+      label: "Content",
+      value: stats.totalContent,
+      detail: `${stats.drafts} awaiting publication`,
+      icon: FileText,
+    },
+    {
+      label: "Published",
+      value: stats.published,
+      detail: "Available through your content API",
+      icon: FolderTree,
+    },
+    {
+      label: "Media files",
+      value: stats.mediaCount,
+      detail: "Workspace library",
+      icon: ImageIcon,
+    },
+    {
+      label: "Members",
+      value: stats.activeUsers,
+      detail: "People with workspace access",
+      icon: Users,
+    },
+  ];
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 max-w-350 mx-auto space-y-5 sm:space-y-8">
-      {/* Page header */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="flex items-end justify-between">
+    <div className="mx-auto max-w-7xl space-y-6 p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <p className="mb-1 text-xs font-medium text-muted-foreground">
+            {activeTenant?.name}
+          </p>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Workspace overview
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Content, publishing, and access at a glance.
+          </p>
+        </div>
+        {canEdit && (
+          <Button render={<Link href="/dashboard/content/create" />}>
+            <Plus className="size-4" />
+            Create content
+          </Button>
+        )}
+      </div>
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {metrics.map((metric) => (
+          <section
+            key={metric.label}
+            className="rounded-lg border bg-card p-4 sm:p-5"
+          >
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              {metric.label}
+              <metric.icon className="size-4" />
+            </div>
+            <p className="my-3 text-3xl font-semibold tabular-nums">
+              {metric.value.toLocaleString()}
+            </p>
+            <p className="text-xs text-muted-foreground">{metric.detail}</p>
+          </section>
+        ))}
+      </div>
+      <section className="overflow-hidden rounded-lg border bg-card">
+        <div className="flex items-center justify-between border-b px-4 py-4 sm:px-5">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
-              Dashboard
-            </h1>
-            <p className="mt-1 text-[13px] sm:text-sm text-muted-foreground">
-              <span className="hidden sm:inline">
-                Welcome back. Here&apos;s what&apos;s happening across your
-                workspace.
-              </span>
-              <span className="sm:hidden">Your workspace overview.</span>
+            <h2 className="text-sm font-semibold">Recently updated content</h2>
+            <p className="mt-1 truncate text-xs text-muted-foreground">
+              The latest changes in this workspace.
             </p>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="hidden sm:flex items-center gap-1.5 text-xs text-muted-foreground"
+          <Link
+            href="/dashboard/content"
+            className="flex items-center gap-1 text-xs font-medium"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            All systems operational
-          </motion.div>
+            View all
+            <ArrowUpRight className="size-3.5" />
+          </Link>
         </div>
-      </motion.div>
-
-      {/* Metric cards row */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-        <MetricCard
-          label="Total Content"
-          value={stats?.totalContent?.toString() || "0"}
-          detail="+12% from last month"
-          detailType="positive"
-          icon={FileText}
-          index={0}
-        />
-        <MetricCard
-          label="Active Users"
-          value={stats?.activeUsers?.toString() || "0"}
-          detail="+3 new this week"
-          detailType="positive"
-          icon={Users}
-          index={1}
-        />
-        <MetricCard
-          label="Storage Used"
-          value={stats?.storageUsed || "0 GB"}
-          detail="85% of 56 GB limit"
-          detailType="neutral"
-          icon={HardDrive}
-          index={2}
-        />
-        <MetricCard
-          label="Content Growth"
-          value={stats?.contentGrowth || "0%"}
-          detail="vs. previous period"
-          detailType="positive"
-          icon={TrendingUp}
-          index={3}
-        />
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-muted/40">
+              <TableHead className="pl-5">Title</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Updated</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {stats.recentContent.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={4}
+                  className="h-40 text-center text-muted-foreground"
+                >
+                  No content yet.{" "}
+                  {canEdit
+                    ? "Create your first article to begin."
+                    : "Your team's content will appear here."}
+                </TableCell>
+              </TableRow>
+            ) : (
+              stats.recentContent.map((content) => (
+                <TableRow key={content.id}>
+                  <TableCell className="max-w-48 pl-5 sm:max-w-80">
+                    <Link
+                      href={`/dashboard/content/${content.id}`}
+                      className="block truncate font-medium hover:underline"
+                    >
+                      {content.title}
+                    </Link>
+                    <div className="mt-1 truncate text-xs text-muted-foreground">
+                      {[content.author.firstName, content.author.lastName]
+                        .filter(Boolean)
+                        .join(" ") || content.author.email}
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={
+                        content.status === "PUBLISHED" ? "default" : "secondary"
+                      }
+                    >
+                      {content.status === "PUBLISHED" ? "Published" : "Draft"}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {content.category?.name || "Uncategorized"}
+                  </TableCell>
+                  <TableCell className="whitespace-nowrap text-muted-foreground">
+                    {new Date(content.updatedAt).toLocaleDateString("en-GB", {
+                      timeZone: "UTC",
+                    })}
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </section>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <section className="rounded-lg border p-5">
+          <h2 className="text-sm font-semibold">Publishing workflow</h2>
+          <div className="mt-4 flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">Drafts</span>
+            <span className="font-medium tabular-nums">{stats.drafts}</span>
+          </div>
+          <div className="mt-3 flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">Published</span>
+            <span className="font-medium tabular-nums">{stats.published}</span>
+          </div>
+          <div className="mt-4 h-2 overflow-hidden rounded-full bg-muted">
+            <div
+              className="h-full bg-foreground"
+              style={{
+                width: `${stats.totalContent ? (stats.published / stats.totalContent) * 100 : 0}%`,
+              }}
+            />
+          </div>
+        </section>
+        <section className="rounded-lg border p-5">
+          <h2 className="text-sm font-semibold">Workspace directory</h2>
+          <div className="mt-4 space-y-3 text-sm">
+            <Link
+              className="flex justify-between hover:underline"
+              href="/dashboard/categories"
+            >
+              <span>Categories</span>
+              <span className="tabular-nums">{stats.categoriesCount}</span>
+            </Link>
+            <Link
+              className="flex justify-between hover:underline"
+              href="/dashboard/media"
+            >
+              <span>Media library</span>
+              <ArrowUpRight className="size-4" />
+            </Link>
+            {activeTenant?.role === "ADMIN" && (
+              <Link
+                className="flex justify-between hover:underline"
+                href="/dashboard/audit"
+              >
+                <span>Audit trail</span>
+                <ArrowUpRight className="size-4" />
+              </Link>
+            )}
+          </div>
+        </section>
       </div>
-
-      {/* Charts + Activity row */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-3 sm:gap-4">
-        <div className="lg:col-span-3">
-          <ActivityChart />
-        </div>
-        <div className="lg:col-span-2">
-          <ContentStatus />
-        </div>
-      </div>
-
-      {/* Bottom row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
-        <div className="lg:col-span-2">
-          <TopContent />
-        </div>
-        <div className="space-y-4">
-          <QuickActions />
-          <TeamOverview />
-        </div>
-      </div>
-
-      {/* Recent activity — full width */}
-      <RecentActivity />
     </div>
   );
 }

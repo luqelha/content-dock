@@ -143,9 +143,18 @@ Thumbs.db
 /prisma/client/
 
 # Excluded documents
-DEVELOPMENT.md
 fix.md
 DATA_FLOW.md
 
 # Storage (Zip Exports, Raw Logs, etc.)
 /apps/api/storage/
+
+# Local benchmark reports
+/artifacts/benchmark/
+
+# Local build and artifact tooling caches
+**/.turbo/
+/.tools/
+/playwright-report/
+/test-results/
+/.playwright-mcp/

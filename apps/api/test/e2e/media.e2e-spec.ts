@@ -4,6 +4,8 @@ import { PrismaService } from '../../src/database/prisma.service';
 import { createTestApp, clearDatabase, setupTestUserAndTenant } from './test-utils';
 import * as fs from 'fs';
 import * as path from 'path';
+import { createRequire } from 'node:module';
+const sharp: typeof import('sharp').default = createRequire(__filename)('sharp');
 
 describe('Media Module (e2e)', () => {
   let app: INestApplication;
@@ -16,9 +18,14 @@ describe('Media Module (e2e)', () => {
     app = await createTestApp();
     prisma = app.get(PrismaService);
 
-    // Create a dummy file for upload testing
+    // A real decoded PNG is required; MIME labels cannot make arbitrary bytes an image.
     testFilePath = path.join(__dirname, 'test-image.png');
-    fs.writeFileSync(testFilePath, 'dummy image content');
+    fs.writeFileSync(
+      testFilePath,
+      await sharp({ create: { width: 2, height: 2, channels: 3, background: '#ffffff' } })
+        .png()
+        .toBuffer(),
+    );
   });
 
   beforeEach(async () => {

@@ -41,28 +41,29 @@ export class TenantController {
     return this.tenantService.findAllForUser(userId);
   }
 
-  @Get(':id')
+  @Get(':tenantId')
+  @UseGuards(RbacGuard)
   @ApiOperation({ summary: 'Get a tenant by ID' })
   @ApiResponse({ status: 200, description: 'Return a tenant.' })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('tenantId') id: string) {
     return this.tenantService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch(':tenantId')
   @UseGuards(RbacGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Update a tenant' })
   @ApiResponse({ status: 200, description: 'The tenant has been successfully updated.' })
-  update(@Param('id') id: string, @Body() updateTenantDto: UpdateTenantDto) {
+  update(@Param('tenantId') id: string, @Body() updateTenantDto: UpdateTenantDto) {
     return this.tenantService.update(id, updateTenantDto);
   }
 
-  @Delete(':id')
+  @Delete(':tenantId')
   @UseGuards(RbacGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Delete a tenant' })
   @ApiResponse({ status: 200, description: 'The tenant has been successfully deleted.' })
-  remove(@Param('id') id: string) {
+  remove(@Param('tenantId') id: string) {
     return this.tenantService.remove(id);
   }
 }

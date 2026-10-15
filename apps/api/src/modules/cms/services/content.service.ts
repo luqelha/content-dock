@@ -25,7 +25,7 @@ export class ContentService {
   ): Promise<Content> {
     const slug = createContentDto.slug || this.generateSlug(createContentDto.title);
 
-    const existing = await this.prisma.content.findUnique({
+    const existing = await this.prisma.client.content.findUnique({
       where: {
         tenantId_slug: {
           tenantId,
@@ -39,7 +39,7 @@ export class ContentService {
     }
 
     if (createContentDto.categoryId) {
-      const category = await this.prisma.category.findUnique({
+      const category = await this.prisma.client.category.findUnique({
         where: { id: createContentDto.categoryId },
       });
       if (!category || category.tenantId !== tenantId) {
@@ -49,7 +49,7 @@ export class ContentService {
 
     const isPublished = createContentDto.status === ContentStatus.PUBLISHED;
 
-    return this.prisma.content.create({
+    return this.prisma.client.content.create({
       data: {
         ...createContentDto,
         slug,
@@ -76,16 +76,27 @@ export class ContentService {
       }),
     };
 
-    const itemCount = await this.prisma.content.count({ where });
+    const itemCount = await this.prisma.client.content.count({ where });
 
-    const data = await this.prisma.content.findMany({
+    const data = await this.prisma.client.content.findMany({
       where,
       orderBy: { createdAt: order ? (order.toLowerCase() as Prisma.SortOrder) : 'desc' },
       skip,
       take,
-      include: {
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        status: true,
+        publishedAt: true,
+        authorId: true,
+        tenantId: true,
+        categoryId: true,
+        createdAt: true,
+        updatedAt: true,
+        body: queryContentDto.summary !== 'true',
         category: true,
-        author: true,
+        author: { select: { id: true, email: true, firstName: true, lastName: true } },
       },
     });
 
@@ -95,7 +106,7 @@ export class ContentService {
   }
 
   async findOne(id: string, tenantId: string): Promise<Content> {
-    const content = await this.prisma.content.findUnique({
+    const content = await this.prisma.client.content.findUnique({
       where: { id },
     });
 
@@ -115,7 +126,7 @@ export class ContentService {
     }
 
     if (newSlug) {
-      const existing = await this.prisma.content.findUnique({
+      const existing = await this.prisma.client.content.findUnique({
         where: {
           tenantId_slug: {
             tenantId,
@@ -132,7 +143,7 @@ export class ContentService {
     }
 
     if (updateContentDto.categoryId) {
-      const category = await this.prisma.category.findUnique({
+      const category = await this.prisma.client.category.findUnique({
         where: { id: updateContentDto.categoryId },
       });
       if (!category || category.tenantId !== tenantId) {
@@ -152,7 +163,7 @@ export class ContentService {
       }
     }
 
-    return this.prisma.content.update({
+    return this.prisma.client.content.update({
       where: { id },
       data: {
         ...updateContentDto,
@@ -165,7 +176,7 @@ export class ContentService {
   async remove(id: string, tenantId: string): Promise<Content> {
     await this.findOne(id, tenantId); // ensure it exists and belongs to tenant
 
-    return this.prisma.content.delete({
+    return this.prisma.client.content.delete({
       where: { id },
     });
   }

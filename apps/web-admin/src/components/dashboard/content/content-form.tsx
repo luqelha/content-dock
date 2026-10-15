@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createContent, updateContent } from "@/actions/contents";
+import { categoryOptions } from "@/actions/category-options";
 import { CategoryModal } from "@/components/dashboard/categories/category-modal";
 import { WYSIWYGEditor } from "@/components/ui/wysiwyg-editor";
+import { useTenant } from "@/components/providers/tenant-provider";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -34,11 +36,9 @@ import {
   ArrowLeft,
   FileText,
   Globe,
-  Archive,
   Loader2,
   Save,
   Send,
-  Sparkles,
   Plus,
   ExternalLink,
 } from "lucide-react";
@@ -48,8 +48,8 @@ const contentSchema = z.object({
   title: z.string().min(1, "Title is required"),
   slug: z.string().optional(),
   body: z.string().min(1, "Content body is required"),
-  status: z.enum(["DRAFT", "PUBLISHED", "ARCHIVED"]),
-  categoryId: z.string().optional(),
+  status: z.enum(["DRAFT", "PUBLISHED"]),
+  categoryId: z.string().nullable().optional(),
 });
 
 export type ContentFormValues = z.infer<typeof contentSchema>;
@@ -66,7 +66,7 @@ export interface ContentInitialData {
   title?: string;
   slug?: string;
   body?: string;
-  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  status?: "DRAFT" | "PUBLISHED";
   categoryId?: string | null;
 }
 
@@ -81,7 +81,7 @@ const STATUS_DETAILS = {
     label: "Draft",
     icon: FileText,
     variant: "secondary" as const,
-    description: "Only visible to editors. Not accessible on public site.",
+    description: "Work in progress. Available to workspace members.",
     buttonLabel: "Save Draft",
     ButtonIcon: Save,
   },
@@ -89,17 +89,9 @@ const STATUS_DETAILS = {
     label: "Published",
     icon: Globe,
     variant: "default" as const,
-    description: "Live immediately. Accessible by all visitors and APIs.",
+    description: "Ready for delivery through your authenticated content API.",
     buttonLabel: "Publish Now",
     ButtonIcon: Send,
-  },
-  ARCHIVED: {
-    label: "Archived",
-    icon: Archive,
-    variant: "outline" as const,
-    description: "Hidden from public feeds. Preserved for your records.",
-    buttonLabel: "Save & Archive",
-    ButtonIcon: Archive,
   },
 } as const;
 
@@ -111,16 +103,41 @@ export function ContentForm({
   isEdit,
 }: ContentFormProps) {
   const router = useRouter();
+  const { activeTenant } = useTenant();
+  const canEdit =
+    activeTenant?.role === "ADMIN" || activeTenant?.role === "EDITOR";
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   // Category state management for live updates
   const [categoryList, setCategoryList] = useState<CategoryItem[]>(categories);
+  const [categoryPage, setCategoryPage] = useState(1);
+  const [categorySearch, setCategorySearch] = useState("");
+  const [categoryLoading, setCategoryLoading] = useState(false);
+  const [categoryHasNext, setCategoryHasNext] = useState(
+    categories.length >= 50,
+  );
+  const [categoryError, setCategoryError] = useState("");
+  const loadCategoryPage = async (page: number) => {
+    setCategoryLoading(true);
+    const result = await categoryOptions(page, categorySearch);
+    if (result.error) setCategoryError(result.error);
+    else if (result.data) {
+      setCategoryError("");
+      setCategoryPage(page);
+      setCategoryHasNext(result.data.length === 50);
+      const selected = categoryList.find(
+        (item) => item.id === form.getValues("categoryId"),
+      );
+      setCategoryList(
+        selected && !result.data.some((item) => item.id === selected.id)
+          ? [selected, ...result.data]
+          : result.data,
+      );
+    }
+    setCategoryLoading(false);
+  };
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
-
-  useEffect(() => {
-    setCategoryList(categories);
-  }, [categories]);
 
   const form = useForm<ContentFormValues>({
     resolver: zodResolver(contentSchema),
@@ -133,7 +150,6 @@ export function ContentForm({
     },
   });
 
-  // eslint-disable-next-line react-hooks/incompatible-library
   const watchedStatus = form.watch("status");
   const currentStatus: StatusKey =
     watchedStatus && watchedStatus in STATUS_DETAILS
@@ -156,6 +172,7 @@ export function ContentForm({
   const CurrentBadgeIcon = currentStatusInfo.icon;
 
   const handleSave = async () => {
+    if (!canEdit) return;
     const valid = await form.trigger();
     if (!valid) return;
 
@@ -222,6 +239,24 @@ export function ContentForm({
     form.setValue("categoryId", savedCategory.id, { shouldValidate: true });
     router.refresh();
   };
+
+  if (!canEdit)
+    return initialData ? (
+      <article className="mx-auto max-w-4xl space-y-4">
+        <h1 className="text-2xl font-semibold">{initialData.title}</h1>
+        <p className="text-sm text-muted-foreground">
+          Read-only access ·{" "}
+          {initialData.status === "PUBLISHED" ? "Published" : "Draft"}
+        </p>
+        <WYSIWYGEditor
+          value={initialData.body || ""}
+          onChange={() => {}}
+          readOnly
+        />
+      </article>
+    ) : (
+      <p>You have read-only access to this workspace.</p>
+    );
 
   return (
     <div className="max-w-5xl mx-auto py-6 space-y-6">
@@ -328,7 +363,7 @@ export function ContentForm({
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-base font-semibold flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 text-primary" />
+                    <Globe className="h-4 w-4 text-muted-foreground" />
                     Publishing Settings
                   </CardTitle>
                 </CardHeader>
@@ -375,12 +410,6 @@ export function ContentForm({
                                   <span>Published</span>
                                 </div>
                               </SelectItem>
-                              <SelectItem value="ARCHIVED">
-                                <div className="flex items-center gap-2">
-                                  <Archive className="h-4 w-4 text-amber-500" />
-                                  <span>Archived</span>
-                                </div>
-                              </SelectItem>
                             </SelectContent>
                           </Select>
                           <FormDescription className="text-xs">
@@ -420,9 +449,7 @@ export function ContentForm({
                           <Select
                             value={field.value ?? "__none__"}
                             onValueChange={(val) => {
-                              field.onChange(
-                                val === "__none__" ? undefined : val,
-                              );
+                              field.onChange(val === "__none__" ? null : val);
                             }}
                           >
                             <FormControl>
@@ -451,6 +478,59 @@ export function ContentForm({
                               ))}
                             </SelectContent>
                           </Select>
+
+                          <div className="space-y-2">
+                            <Input
+                              aria-label="Search categories"
+                              value={categorySearch}
+                              maxLength={100}
+                              onChange={(event) =>
+                                setCategorySearch(event.target.value)
+                              }
+                              placeholder="Find a category"
+                            />
+                            <div className="flex gap-2">
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant="outline"
+                                disabled={categoryLoading}
+                                onClick={() => void loadCategoryPage(1)}
+                              >
+                                Search
+                              </Button>
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant="ghost"
+                                disabled={categoryLoading || categoryPage === 1}
+                                onClick={() =>
+                                  void loadCategoryPage(categoryPage - 1)
+                                }
+                              >
+                                Previous
+                              </Button>
+                              <Button
+                                type="button"
+                                size="sm"
+                                variant="ghost"
+                                disabled={categoryLoading || !categoryHasNext}
+                                onClick={() =>
+                                  void loadCategoryPage(categoryPage + 1)
+                                }
+                              >
+                                Next
+                              </Button>
+                            </div>
+                            {categoryError && (
+                              <p
+                                role="alert"
+                                className="text-sm text-destructive"
+                              >
+                                {categoryError}
+                              </p>
+                            )}
+                          </div>
 
                           <div className="flex items-center justify-between text-xs text-muted-foreground pt-1">
                             {selectedCategory ? (

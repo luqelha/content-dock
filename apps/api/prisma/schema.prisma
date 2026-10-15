@@ -56,6 +56,7 @@ model AuditLog {
   ipAddress String?
   userAgent String?
   createdAt DateTime @default(now())
+  @@index([tenantId, createdAt])
 }
 
 model Category {
@@ -92,6 +93,7 @@ model Content {
   tenant      Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
 
   @@unique([tenantId, slug])
+  @@index([tenantId, createdAt])
 }
 
 model Media {
@@ -101,9 +103,26 @@ model Media {
   tenantId  String
   createdAt DateTime @default(now())
   tenant    Tenant   @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  @@index([tenantId, createdAt])
 }
 
 enum ContentStatus {
   DRAFT
   PUBLISHED
+}
+
+model ExportTask {
+  id          String   @id
+  tenantId    String
+  userId      String
+  status      String   @default("Pending")
+  payload     Json
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime
+  dispatchedAt DateTime?
+  leaseUntil  DateTime?
+  leaseToken  String?
+  @@index([status, dispatchedAt])
+  @@index([tenantId, createdAt])
+  @@index([expiresAt])
 }

@@ -8,14 +8,26 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test:security": "npm run test --workspace=@atlas/api -- --runInBand test/unit/security && node --test scripts/security/*.test.cjs",
+    "test:security:db": "node --test scripts/security/database-regression.cjs",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test:browser": "playwright test",
+    "audit:dependencies": "node scripts/security/dependency-audit.cjs",
+    "format:check:reliability": "prettier --check .github/workflows/ci.yml playwright.config.ts \"tests/browser/*.ts\" \"scripts/security/dependency-*.cjs\""
   },
   "devDependencies": {
-    "turbo": "^2.0.0",
-    "prettier": "^3.0.0"
+    "@playwright/test": "1.64.0",
+    "@types/node": "^26.6.5",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22.12"
   },
-  "packageManager": "npm@10.5.0"
+  "packageManager": "npm@10.5.0",
+  "overrides": {
+    "@nestjs/swagger@11.4.7": {
+      "js-yaml": "5.4.3"
+    }
+  }
 }

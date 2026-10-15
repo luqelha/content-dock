@@ -1,7 +1,6 @@
 import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_INTERCEPTOR, APP_GUARD } from '@nestjs/core';
+import { RateLimitGuard } from './common/guards/rate-limit.guard';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
@@ -19,6 +18,7 @@ import { CmsModule } from './modules/cms/cms.module';
 import { MediaModule } from './modules/media/media.module';
 import { RedisModule } from './modules/redis/redis.module';
 import { AnalyticsModule } from './modules/analytics/analytics.module';
+import { StorageModule } from './modules/storage/storage.module';
 
 @Module({
   imports: [
@@ -34,12 +34,18 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
             ? { target: 'pino-pretty', options: { colorize: true, singleLine: true } }
             : undefined,
         autoLogging: false,
+        redact: [
+          'req.headers.authorization',
+          'req.headers.cookie',
+          'res.headers["set-cookie"]',
+          'req.body.password',
+          'req.body.currentPassword',
+          'req.body.refresh_token',
+          'req.body.token',
+        ],
       },
     }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'storage', 'uploads'),
-      serveRoot: '/uploads',
-    }),
+    StorageModule,
     ExportModule,
     DatabaseModule,
     UserModule,
@@ -54,6 +60,7 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
   controllers: [AppController],
   providers: [
     AppService,
+    { provide: APP_GUARD, useClass: RateLimitGuard },
     {
       provide: APP_INTERCEPTOR,
       useClass: ActivityTrackingInterceptor,
@@ -62,6 +69,6 @@ import { AnalyticsModule } from './modules/analytics/analytics.module';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(TenantMiddleware).forRoutes('*');
+    consumer.apply(TenantMiddleware).forRoutes('{*path}');
   }
 }

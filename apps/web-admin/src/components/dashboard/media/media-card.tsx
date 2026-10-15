@@ -17,7 +17,11 @@ import {
 import { MediaItem } from "@/actions/media";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { downloadFile } from "@/lib/download";
 
 interface MediaCardProps {
@@ -100,7 +104,7 @@ export function MediaCard({
       >
         {/* Subtle checkerboard pattern for transparent graphics */}
         <div
-          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+          className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
           style={{
             backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
             backgroundSize: "12px 12px",
@@ -115,6 +119,8 @@ export function MediaCard({
         {isImage ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
+            loading="lazy"
+            decoding="async"
             src={media.url}
             alt={filename}
             onLoad={() => setImageLoaded(true)}
@@ -146,11 +152,15 @@ export function MediaCard({
             onToggleSelect(media.id);
           }}
           className={`absolute top-2.5 left-2.5 z-20 transition-opacity duration-200 ${
-            isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            isSelected
+              ? "opacity-100"
+              : "opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100"
           }`}
         >
           <button
             type="button"
+            aria-label={`Select ${filename}`}
+            aria-pressed={isSelected}
             className={`w-7 h-7 rounded-lg flex items-center justify-center backdrop-blur-md transition-colors ${
               isSelected
                 ? "bg-primary text-primary-foreground shadow-sm"
@@ -176,13 +186,14 @@ export function MediaCard({
         </div>
 
         {/* Hover Action Overlay */}
-        <div className="absolute inset-0 z-15 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-200 flex flex-col justify-end p-3 pointer-events-none group-hover:pointer-events-auto">
+        <div className="absolute inset-0 z-15 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200 flex flex-col justify-end p-3 pointer-events-auto sm:pointer-events-none group-hover:pointer-events-auto group-focus-within:pointer-events-auto">
           <div className="flex items-center justify-center gap-1.5 backdrop-blur-md bg-black/60 rounded-xl p-1.5 border border-white/15 w-fit mx-auto shadow-lg">
             <Tooltip>
               <TooltipTrigger
                 render={
                   <Button
                     size="icon"
+                    aria-label="Preview file"
                     variant="ghost"
                     onClick={() => onPreview(media)}
                     className="h-8 w-8 rounded-lg text-white hover:text-white hover:bg-white/20"
@@ -201,6 +212,7 @@ export function MediaCard({
                     size="icon"
                     variant="ghost"
                     onClick={handleCopyLink}
+                    aria-label="Copy file link"
                     className="h-8 w-8 rounded-lg text-white hover:text-white hover:bg-white/20"
                   >
                     {copied ? (
@@ -223,6 +235,7 @@ export function MediaCard({
                     size="icon"
                     variant="ghost"
                     onClick={handleDownload}
+                    aria-label="Download file"
                     disabled={isDownloading}
                     className="h-8 w-8 rounded-lg text-white hover:text-white hover:bg-white/20"
                   >
@@ -247,6 +260,7 @@ export function MediaCard({
                       e.stopPropagation();
                       onDelete(media);
                     }}
+                    aria-label="Delete file"
                     className="h-8 w-8 rounded-lg text-white hover:text-white hover:bg-destructive/80"
                   >
                     <Trash2 className="w-4 h-4" />

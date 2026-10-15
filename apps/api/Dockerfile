@@ -1,47 +1,26 @@
-# Dependencies Stage
-FROM node:20-slim AS deps
-RUN apt-get update -y && apt-get install -y openssl
-WORKDIR /usr/src/app
-COPY package*.json ./
-COPY prisma ./prisma/
-RUN npm ci
+FROM node:24-slim AS build
+RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY apps/api/package.json ./apps/api/package.json
+COPY apps/web-admin/package.json ./apps/web-admin/package.json
+RUN npm ci --workspace=@atlas/api --include-workspace-root=false
+COPY apps/api ./apps/api
+RUN npm run prisma:generate --workspace=@atlas/api && npm run build --workspace=@atlas/api
+RUN npm prune --omit=dev --workspace=@atlas/api --include-workspace-root=false
 
-# Build Stage
-FROM node:20-slim AS builder
-WORKDIR /usr/src/app
-COPY package*.json ./
-COPY --from=deps /usr/src/app/node_modules ./node_modules
-COPY . .
-RUN npm run prisma:generate
-RUN npm run build
-
-# Production Dependencies Stage
-FROM node:20-slim AS prod-deps
-RUN apt-get update -y && apt-get install -y openssl
-WORKDIR /usr/src/app
-COPY package*.json ./
-COPY prisma ./prisma/
-RUN npm ci --omit=dev && npm run prisma:generate
-
-# Production Runtime Stage
-FROM node:20-slim
-RUN apt-get update -y && apt-get install -y openssl
-WORKDIR /usr/src/app
-
-ENV NODE_ENV=production
-
-# Copy only necessary files
-COPY --from=prod-deps /usr/src/app/node_modules ./node_modules
-COPY --from=prod-deps /usr/src/app/prisma ./prisma
-COPY --from=builder /usr/src/app/dist ./dist
-COPY package*.json ./
-
-# Create storage directory for uploads and set permissions
-RUN mkdir -p ./storage/uploads && chown -R node:node ./storage
-
-# Use non-root user for security
+FROM node:24-slim AS runtime
+RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+ENV NODE_ENV=production PORT=4000
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/package.json ./package.json
+COPY --from=build /app/apps/api/node_modules ./apps/api/node_modules
+COPY --from=build /app/apps/api/dist ./apps/api/dist
+COPY --from=build /app/apps/api/prisma ./apps/api/prisma
+COPY --from=build /app/apps/api/package.json ./apps/api/package.json
+WORKDIR /app/apps/api
+RUN mkdir -p storage/uploads storage/exports && chown -R node:node storage
 USER node
-
-EXPOSE 3000
-
+EXPOSE 4000
 CMD ["node", "dist/main.js"]

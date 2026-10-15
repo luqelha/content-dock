@@ -1,95 +1,87 @@
-<div align="center">
-  
-# 🌍 Atlas Platform
+﻿# Atlas Platform
 
-**An Enterprise Multi-Tenant Headless CMS Platform**
+A multi-tenant headless CMS with an ERP-style administrative workspace. Atlas provides content publishing, categories, private media, member access, audit history, and asynchronous audit exports. The interface retains the existing neutral light/dark theme.
 
-_Equipped with asynchronous background processing, Redis caching, RabbitMQ workers, and automated CI/CD pipelines._
+## Run locally
 
-<br>
+Use Node.js 22.12+ (the container and CI use Node 24), npm, and Docker Desktop.
 
-### 🛠️ Tech Stack
+```sh
+npm ci
+cp apps/api/.env.example apps/api/.env
+cp apps/web-admin/.env.example apps/web-admin/.env.local
+docker compose up -d
+npm run prisma:generate --workspace=@atlas/api
+```
 
-![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
-![RabbitMQ](https://img.shields.io/badge/Rabbitmq-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
+Set unique JWT secrets in `apps/api/.env`. From `apps/api`, apply the migrations with `npx prisma migrate deploy`, then return to the repository root and run:
 
-</div>
+```sh
+npm run dev
+```
 
-## ✨ Key Features
+On Windows PowerShell, use `Copy-Item` instead of `cp` if preferred and `npm.cmd` / `npx.cmd` if script execution is disabled. The web app runs at **http://localhost:3000**, the API at **http://localhost:4000/api**, and Swagger at **http://localhost:4000/api/docs**. Infrastructure ports must be free; do not stop unrelated applications to reuse a port. Adapt the compose mapping and environment variables if necessary.
 
-- **🔐 Security & Auth:** JWT, Refresh Tokens, and robust RBAC (Role-Based Access Control).
-- **🏢 True Multi-Tenancy:** Secure tenant context isolation and management middleware.
-- **📝 Headless CMS:** Dynamic content management, hierarchical categories, and draft-to-publish workflows.
-- **⚙️ Background Processing:** RabbitMQ-powered workers for non-blocking asynchronous tasks (like ZIP exports).
-- **⚡ High Performance:** Sub-millisecond reads powered by Redis caching and highly optimized database queries.
+Register an account, create a workspace, and invite teammates from **Members**. Invitations are shareable links, valid for seven days. No email is sent automatically. An account can belong to multiple workspaces with different roles.
 
-## 📦 Getting Started
+## Working features
 
-### Prerequisites
+- **Overview:** live content, publication, media, and membership counts with recent records.
+- **Content:** rich text, categories, draft/published status, search, filters, and server pagination.
+- **Media:** image/PDF uploads, authenticated previews/downloads, encrypted storage, and deletion.
+- **Members:** invite, change role, or remove workspace access without exposing global user credentials.
+- **Audit:** action/entity filters, pagination, and metadata that excludes credentials and content bodies.
+- **Exports:** date-bounded tenant audit ZIPs, RabbitMQ processing, progress polling, and owner-only downloads.
+- **Settings:** persisted workspace name/domain, profile, avatar, and password changes.
+- **Access:** Admin, Editor, and Viewer permissions enforced by both server and interface.
 
-Ensure you have the following installed on your local machine:
+The workspace domain is an identifier; entering it does not configure DNS. Password recovery email, public asset delivery, billing, GraphQL, and revision history are not implemented or advertised as working features.
 
-<div align="center">
+## Repository
 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+| Path                   | Responsibility                                               |
+| ---------------------- | ------------------------------------------------------------ |
+| `apps/api/src`         | NestJS modules, guards, queue worker, private file vault     |
+| `apps/api/prisma`      | PostgreSQL schema and versioned migrations                   |
+| `apps/api/test`        | Unit, integration, and API end-to-end tests                  |
+| `apps/web-admin/src`   | Next.js interface, server actions, authentication proxy      |
+| `scripts`              | Reproducible API load smoke test                            |
+| `apps/api/docs`        | Architecture, API contract, security, tests, release notes   |
 
-</div>
+## Validation
 
-### Installation
+```sh
+npm run lint
+npm run build
+npm run test:cov --workspace=@atlas/api -- --runInBand
+```
 
-1. **Clone the repository:**
+Integration/API tests need a **dedicated test database**. Follow [TEST_STRATEGY.md](apps/api/docs/TEST_STRATEGY.md); the database cleanup helpers refuse normal database names. With the API and its infrastructure running against that database, `node scripts/benchmark.mjs` measures 1,000 authenticated reads and saves timings in `artifacts/benchmark`. Set `E2E_API_URL` to the test API URL (default: `http://127.0.0.1:4400/api`).
 
-   ```bash
-   git clone https://github.com/luqelha/atlas-platform.git
-   cd atlas-platform
-   ```
+See [PERFORMANCE_REPORT.md](apps/api/docs/PERFORMANCE_REPORT.md) for the actual measured workload and its limits. Local results do not establish a production availability SLA.
 
-2. **Install dependencies:**
+## Production preparation
 
-   ```bash
-   npm install
-   ```
+Copy `.env.production.example` to `.env.production`, configure credentials, hostname, and a persistent 32-byte storage encryption key (64 hexadecimal characters). Generate a key with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Back up that key securely with the database and files.
 
-3. **Environment Setup:**
-   Create a `.env` file in the root directory based on your configuration requirements (e.g., database credentials, JWT secrets).
+```sh
+docker compose --env-file .env.production -f docker-compose.prod.yml build
+```
 
-4. **Spin up Infrastructure:**
-   Start the Database, Redis, and RabbitMQ via Docker:
+Before starting the API, follow [runtime role provisioning](scripts/database/README.md): apply the additive migrations with the owner, provision or review `atlas_app`, grant the new `ExportTask` permissions, and verify `DATABASE_APP_URL` uses that restricted role. Configure distinct JWT secrets and `AUTH_PROXY_SECRET` (each at least 32 characters). After staging verification and deployment approval, start the reviewed stack with `docker compose --env-file .env.production -f docker-compose.prod.yml --profile tls up -d`.
 
-   ```bash
-   docker-compose up -d
-   ```
+The TLS profile requires DNS pointing to the server and available ports 80/443. Without that profile, Nginx is available only on `127.0.0.1:8080` for local inspection. Production session cookies require HTTPS except for browser loopback exceptions. The migration service runs before the API. PostgreSQL, Redis, and RabbitMQ have no published production ports.
 
-5. **Run Migrations:**
-   Apply the database schema:
+Existing installations must review volume names, credentials, and storage migration before running the new compose definition. See [release upgrade notes](apps/api/docs/RELEASE_NOTES.md). CI validates code and container builds; it does not deploy or publish GitHub releases automatically.
 
-   ```bash
-   npx prisma migrate dev
-   ```
+## Documentation
 
-6. **Start the Development Server:**
-   ```bash
-   npm run start:dev
-   ```
+- [Implementation roadmap](DEVELOPMENT.md)
+- [Architecture and fullstack diagram](apps/api/docs/ARCHITECTURE.md)
+- [API contract](apps/api/docs/API_SPECIFICATION.md)
+- [Security boundaries](apps/api/docs/SECURITY.md)
+- [Test strategy](apps/api/docs/TEST_STRATEGY.md)
+- [Design decisions](apps/api/docs/DECISION_LOG.md)
+- [Release candidate notes](apps/api/docs/RELEASE_NOTES.md)
 
-## 📚 Documentation
-
-Detailed API documentation is automatically generated via Swagger. Once the server is running, navigate to:
-
-👉 **`/api/docs`** _(Default Route)_
-
-You can also check out our planning documents:
-
-- [📝 Product Requirements (PRD)](PRODUCT_REQUIREMENTS.md)
-- [🗺️ Roadmap](ROADMAP.md)
-- [📅 Development Sprint Plan](DEVELOPMENT.md)
-
-## 📄 License
-
-This project is licensed under the [MIT License](LICENSE).
+MIT license: [LICENSE](LICENSE).

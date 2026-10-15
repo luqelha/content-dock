@@ -10,16 +10,12 @@ export default async function CreateContentPage() {
   let categories = [];
 
   if (token && activeTenantId) {
-    try {
-      categories = await fetchCategories(token, activeTenantId);
-    } catch (error) {
-      console.error("Failed to fetch categories:", error);
-    }
+    categories = await fetchCategories(token, activeTenantId);
   }
 
   return (
     <div className="p-4 sm:p-6 md:p-8 lg:p-10">
-      <ContentForm categories={categories} />
+      <ContentForm key={activeTenantId} categories={categories} />
     </div>
   );
 }

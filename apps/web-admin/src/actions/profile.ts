@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { updateProfile } from "@/lib/api";
+import { privateFileUrl } from "@/lib/files";
 import { revalidatePath } from "next/cache";
 
 export async function updateUserProfile(
@@ -11,8 +12,8 @@ export async function updateUserProfile(
   const firstName = formData.get("firstName")?.toString() || "";
   const lastName = formData.get("lastName")?.toString() || "";
   const bio = formData.get("bio")?.toString() || "";
-  let avatarUrl = formData.get("avatarUrl")?.toString() || "";
   const avatarFile = formData.get("avatarFile") as File | null;
+  let savedAvatarUrl: string | undefined;
   const userId = formData.get("userId")?.toString();
 
   if (!userId) {
@@ -39,7 +40,9 @@ export async function updateUserProfile(
       fileFormData.append("file", avatarFile);
 
       const API_URL =
-        process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+        process.env.API_URL ||
+        process.env.NEXT_PUBLIC_API_URL ||
+        "http://localhost:4000/api";
       const res = await fetch(`${API_URL}/users/avatar`, {
         method: "POST",
         headers: {
@@ -49,18 +52,21 @@ export async function updateUserProfile(
       });
 
       if (!res.ok) {
-        throw new Error("Failed to upload avatar");
+        const body = await res.json().catch(() => ({}));
+        throw new Error(
+          Array.isArray(body.message)
+            ? body.message.join(". ")
+            : body.message || "Failed to upload avatar",
+        );
       }
-
-      const data = await res.json();
-      avatarUrl = data.avatarUrl;
+      const uploaded = await res.json();
+      savedAvatarUrl = privateFileUrl(uploaded.avatarUrl);
     }
 
     await updateProfile(token, userId, {
       firstName,
       lastName,
       bio,
-      ...(avatarUrl ? { avatarUrl } : {}),
     });
 
     // Revalidate dashboard layout so the updated profile info is fetched
@@ -68,6 +74,7 @@ export async function updateUserProfile(
 
     return {
       success: "Profile updated successfully!",
+      avatarUrl: savedAvatarUrl,
       timestamp: Date.now(),
     };
   } catch (error: unknown) {
@@ -82,70 +89,31 @@ export async function updateUserProfile(
 export async function updateUserPassword(
   prevState: unknown,
   formData: FormData,
-) {
-  const currentPassword = formData.get("currentPassword")?.toString();
-  const newPassword = formData.get("newPassword")?.toString();
-  const userId = formData.get("userId")?.toString();
-
-  if (!userId || !currentPassword || !newPassword) {
+): Promise<{ error?: string; success?: string; timestamp: number }> {
+  const currentPassword = String(formData.get("currentPassword") || "");
+  const password = String(formData.get("newPassword") || "");
+  const id = String(formData.get("userId") || "");
+  if (!id || !currentPassword || !password)
     return {
-      error: "Missing required fields",
+      error: "All password fields are required.",
       timestamp: Date.now(),
     };
-  }
-
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token")?.value;
-
-  if (!token) {
-    return {
-      error: "Not authenticated",
-      timestamp: Date.now(),
-    };
-  }
-
   try {
-    // We can verify current password by making a login request
-    const API_URL =
-      process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
-
-    // We first need the user's email to login. Since we don't have it in the form,
-    // let's fetch the profile to get the email.
-    const profileRes = await fetch(`${API_URL}/auth/me`, {
-      headers: { Authorization: `Bearer ${token}` },
+    const { workspaceRequest } = await import("@/lib/workspace-api");
+    await workspaceRequest(`/users/${encodeURIComponent(id)}`, {
+      method: "PATCH",
+      body: JSON.stringify({ currentPassword, password }),
     });
-
-    if (!profileRes.ok) {
-      return { error: "Failed to fetch user profile", timestamp: Date.now() };
-    }
-
-    const user = await profileRes.json();
-
-    // Verify current password via login API
-    const loginRes = await fetch(`${API_URL}/auth/login`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: user.email, password: currentPassword }),
-    });
-
-    if (!loginRes.ok) {
-      return { error: "Incorrect current password", timestamp: Date.now() };
-    }
-
-    // Current password is correct, update to new password
-    await updateProfile(token, userId, {
-      password: newPassword,
-    });
-
+  } catch (error) {
     return {
-      success: "Password updated successfully!",
-      timestamp: Date.now(),
-    };
-  } catch (error: unknown) {
-    console.error("Failed to update password:", error);
-    return {
-      error: (error as Error).message || "Failed to update password",
+      error:
+        error instanceof Error ? error.message : "Could not update password.",
       timestamp: Date.now(),
     };
   }
+  const jar = await cookies();
+  jar.delete("access_token");
+  jar.delete("refresh_token");
+  const { redirect } = await import("next/navigation");
+  return redirect("/login?passwordChanged=true");
 }

@@ -14,6 +14,7 @@ import { CompressionService } from './compression.service';
         options: {
           urls: [process.env.RABBITMQ_URL || 'amqp://guest:guest@localhost:5672'],
           queue: process.env.QUEUE_NAME || 'log_export_queue',
+          persistent: true,
           queueOptions: {
             durable: true,
           },

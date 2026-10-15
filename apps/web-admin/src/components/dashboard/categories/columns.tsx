@@ -25,6 +25,7 @@ export const getColumns = (
   onEdit: (category: Category) => void,
   onDelete: (category: Category) => void,
   isAdmin: boolean = false,
+  canEdit: boolean = false,
 ): ColumnDef<Category>[] => [
   {
     accessorKey: "name",
@@ -70,19 +71,23 @@ export const getColumns = (
                   <DropdownMenuSeparator />
                 </>
               )}
-              <DropdownMenuItem
-                onClick={() => onEdit(category)}
-                onSelect={() => onEdit(category)}
-              >
-                Edit Category
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                className="text-red-600"
-                onClick={() => onDelete(category)}
-                onSelect={() => onDelete(category)}
-              >
-                Delete
-              </DropdownMenuItem>
+              {canEdit && (
+                <DropdownMenuItem
+                  onClick={() => onEdit(category)}
+                  onSelect={() => onEdit(category)}
+                >
+                  Edit Category
+                </DropdownMenuItem>
+              )}
+              {isAdmin && (
+                <DropdownMenuItem
+                  className="text-red-600"
+                  onClick={() => onDelete(category)}
+                  onSelect={() => onDelete(category)}
+                >
+                  Delete
+                </DropdownMenuItem>
+              )}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>

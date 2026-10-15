@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: atlas_db
     ports:
-      - '5432:5432'
+      - '127.0.0.1:5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
     image: redis:7-alpine
     container_name: atlas_redis
     ports:
-      - '6379:6379'
+      - '127.0.0.1:6379:6379'
     volumes:
       - redis_data:/data
     restart: unless-stopped
@@ -30,8 +30,8 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
     ports:
-      - '5672:5672' # AMQP protocol port
-      - '15672:15672' # HTTP management UI
+      - '127.0.0.1:5672:5672' # AMQP protocol port
+      - '127.0.0.1:15672:15672' # HTTP management UI
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
     restart: unless-stopped

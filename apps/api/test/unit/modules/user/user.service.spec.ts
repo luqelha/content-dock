@@ -12,7 +12,9 @@ describe('UserService', () => {
   const mockPrismaService = {
     user: {
       findUnique: jest.fn(),
+      findFirst: jest.fn(),
       create: jest.fn(),
+      createMany: jest.fn(),
       findMany: jest.fn(),
       update: jest.fn(),
       delete: jest.fn(),
@@ -20,12 +22,13 @@ describe('UserService', () => {
   };
 
   beforeEach(async () => {
+    mockPrismaService.user.findFirst.mockReset().mockResolvedValue(null);
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UserService,
         {
           provide: PrismaService,
-          useValue: mockPrismaService,
+          useValue: { client: mockPrismaService },
         },
       ],
     }).compile();
@@ -75,6 +78,41 @@ describe('UserService', () => {
       await expect(service.create(dto)).rejects.toThrow(ConflictException);
     });
   });
+
+  describe('registerCredentials', () => {
+    const dto = { email: 'new@example.com', password: 'a unique passphrase' };
+    it.each([0, 1])('hashes at cost 12 even when insert count is %s', async (count) => {
+      (bcrypt.hash as jest.Mock).mockResolvedValue('cost-12-hash');
+      mockPrismaService.user.createMany.mockResolvedValue({ count });
+      mockPrismaService.user.findUnique.mockResolvedValue({ id: 'new-id' });
+      const result = await service.registerCredentials(dto);
+      expect(bcrypt.hash).toHaveBeenCalledWith(dto.password, 12);
+      expect(mockPrismaService.user.createMany).toHaveBeenCalledWith({
+        data: { email: dto.email, passwordHash: 'cost-12-hash' },
+        skipDuplicates: true,
+      });
+      expect(result).toEqual(count ? { id: 'new-id' } : null);
+      if (!count) expect(mockPrismaService.user.findUnique).not.toHaveBeenCalled();
+      expect(mockPrismaService.user.update).not.toHaveBeenCalled();
+    });
+    it('does not insert or overwrite a legacy mixed-case account', async () => {
+      mockPrismaService.user.findFirst.mockResolvedValue({ id: 'legacy-user' });
+      expect(await service.registerCredentials(dto)).toBeNull();
+      expect(bcrypt.hash).toHaveBeenCalledWith(dto.password, 12);
+      expect(mockPrismaService.user.createMany).not.toHaveBeenCalled();
+      expect(mockPrismaService.user.update).not.toHaveBeenCalled();
+    });
+  });
+
+  it.each([[], [{ id: 'legacy-user' }], [{ id: 'one' }, { id: 'two' }]])(
+    'only authenticates an unambiguous case-insensitive email match: %j', async (...matches) => {
+      mockPrismaService.user.findMany.mockResolvedValue(matches);
+      expect(await service.findByEmailForAuth('legacy@example.com')).toEqual(matches.length === 1 ? matches[0] : null);
+      expect(mockPrismaService.user.findMany).toHaveBeenCalledWith({
+        where: { email: { equals: 'legacy@example.com', mode: 'insensitive' } }, take: 2,
+      });
+    },
+  );
 
   describe('findOne', () => {
     it('should return a user if found', async () => {

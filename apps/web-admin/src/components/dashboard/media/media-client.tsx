@@ -21,12 +21,16 @@ import { MediaPreviewModal } from "./media-preview-modal";
 import { MediaDeleteModal } from "./media-delete-modal";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { useTenant } from "@/components/providers/tenant-provider";
+import { Input } from "@/components/ui/input";
 
 interface MediaClientProps {
   initialData: MediaItem[];
+  page?: number;
 }
 
-export function MediaClient({ initialData }: MediaClientProps) {
+export function MediaClient({ initialData, page = 1 }: MediaClientProps) {
+  const { activeTenant } = useTenant();
   const [items, setItems] = useState<MediaItem[]>(initialData || []);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,14 +48,15 @@ export function MediaClient({ initialData }: MediaClientProps) {
   // Refresh items from server
   const refreshLibrary = useCallback(async () => {
     try {
-      const res = await getMediaList();
+      const res = await getMediaList(page);
+      if (res.error) setErrorMsg(res.error);
       if (res.data) {
         setItems(res.data);
       }
-    } catch (err) {
-      console.error("Failed to refresh media library:", err);
+    } catch {
+      setErrorMsg("Failed to refresh media library. Please retry.");
     }
-  }, []);
+  }, [page]);
 
   // Filter & Sort computation
   const filteredAndSortedItems = useMemo(() => {
@@ -157,12 +162,16 @@ export function MediaClient({ initialData }: MediaClientProps) {
       setErrorMsg(res.error);
     }
 
-    if (res.success) {
-      setItems((prev) => prev.filter((item) => !selectedIds.includes(item.id)));
-      if (previewMedia && selectedIds.includes(previewMedia.id)) {
+    if (res.deletedIds.length) {
+      setItems((prev) =>
+        prev.filter((item) => !res.deletedIds.includes(item.id)),
+      );
+      if (previewMedia && res.deletedIds.includes(previewMedia.id)) {
         setPreviewMedia(null);
       }
-      setSelectedIds([]);
+      setSelectedIds((prev) =>
+        prev.filter((id) => !res.deletedIds.includes(id)),
+      );
     }
   };
 
@@ -170,6 +179,49 @@ export function MediaClient({ initialData }: MediaClientProps) {
     Boolean(searchQuery.trim()) ||
     typeFilter !== "all" ||
     sortOption !== "newest";
+
+  if (activeTenant?.role === "VIEWER") {
+    return (
+      <div className="space-y-6">
+        <header>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Media library
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Browse files shared with this workspace. Your role provides read
+            access.
+          </p>
+        </header>
+        <Input
+          aria-label="Search media"
+          placeholder="Search files..."
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          className="max-w-sm"
+        />
+        <div className="divide-y rounded-md border">
+          {filteredAndSortedItems.length ? (
+            filteredAndSortedItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-wrap items-center justify-between gap-2 p-4 text-sm hover:bg-muted/50"
+              >
+                <span className="min-w-0 break-all">
+                  {item.url.split("/").pop()}
+                </span>
+                <span className="text-muted-foreground">{item.type}</span>
+              </a>
+            ))
+          ) : (
+            <p className="p-6 text-sm text-muted-foreground">No files found.</p>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">

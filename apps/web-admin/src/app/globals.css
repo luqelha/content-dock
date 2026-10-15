@@ -51,6 +51,8 @@
 }
 
 :root {
+  --font-sans: "Inter Variable", Arial, sans-serif;
+  --font-geist-mono: Consolas, monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -128,6 +130,36 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+.erp-select {
+  height: 2rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  padding: 0 0.625rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.8125rem;
+}
+.erp-select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.erp-select:disabled {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

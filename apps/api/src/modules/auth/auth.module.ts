@@ -20,6 +20,9 @@ import { RedisModule } from '../redis/redis.module';
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: {
+          issuer: 'atlas-platform',
+          audience: 'atlas-api',
+          algorithm: 'HS256',
           expiresIn: configService.get<string>('JWT_EXPIRATION', '15m') as any,
         },
       }),

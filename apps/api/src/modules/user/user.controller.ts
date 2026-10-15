@@ -11,6 +11,7 @@ import {
   UploadedFile,
   Request,
   BadRequestException,
+  Logger,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -21,49 +22,57 @@ import {
   ApiBody,
 } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import { extname, join } from 'path';
-import { unlink } from 'fs/promises';
+import { memoryStorage } from 'multer';
+import { FileVaultService } from '../storage/file-vault.service';
+import { validateUpload } from '../storage/validate-upload';
 import { v4 as uuidv4 } from 'uuid';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { SelfGuard } from '../../common/guards/self.guard';
+import { ForbiddenException } from '@nestjs/common';
+import { PrismaService } from '../../database/prisma.service';
 
 @ApiTags('users')
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard)
 @Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  private readonly logger = new Logger(UserController.name);
+  constructor(
+    private readonly userService: UserService,
+    private readonly vault: FileVaultService,
+    private readonly prisma: PrismaService,
+  ) {}
 
   @Post()
-  @ApiOperation({ summary: 'Create a new user' })
+  @ApiOperation({ summary: 'Disabled: use workspace invitations', deprecated: true })
   @ApiResponse({
-    status: 201,
-    description: 'The user has been successfully created.',
-    type: UserEntity,
+    status: 403,
+    description: 'Use workspace invitations to add members.',
   })
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.userService.create(createUserDto);
+  create() {
+    throw new ForbiddenException('Use workspace invitations to add members.');
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get all users' })
-  @ApiResponse({ status: 200, description: 'Return all users.', type: [UserEntity] })
+  @ApiOperation({ summary: 'Disabled: use workspace members', deprecated: true })
+  @ApiResponse({ status: 403, description: 'Use workspace members.' })
   findAll() {
-    return this.userService.findAll();
+    throw new ForbiddenException('Use the workspace members endpoint.');
   }
 
   @Get('profile/:id')
-  @ApiOperation({ summary: 'Get user profile (Placeholder for Day 8, requires ID)' })
+  @UseGuards(SelfGuard)
+  @ApiOperation({ summary: 'Get your own profile by ID' })
   @ApiResponse({ status: 200, description: 'Return user profile.', type: UserEntity })
   getProfile(@Param('id') id: string) {
     return this.userService.getProfile(id);
   }
 
   @Get(':id')
+  @UseGuards(SelfGuard)
   @ApiOperation({ summary: 'Get a user by ID' })
   @ApiResponse({ status: 200, description: 'Return a user.', type: UserEntity })
   findOne(@Param('id') id: string) {
@@ -84,15 +93,9 @@ export class UserController {
   @ApiResponse({ status: 201, description: 'Avatar uploaded successfully' })
   @UseInterceptors(
     FileInterceptor('file', {
-      storage: diskStorage({
-        destination: './storage/uploads',
-        filename: (req, file, cb) => {
-          const uniqueName = `${uuidv4()}${extname(file.originalname)}`;
-          cb(null, uniqueName);
-        },
-      }),
+      storage: memoryStorage(),
       fileFilter: (req, file, cb) => {
-        if (!file.mimetype.match(/\/(jpg|jpeg|png|webp)$/i)) {
+        if (!/^image\/(jpeg|png|webp)$/.test(file.mimetype)) {
           return cb(new BadRequestException('Only image files are allowed!'), false);
         }
         cb(null, true);
@@ -101,25 +104,39 @@ export class UserController {
     }),
   )
   async uploadAvatar(@Request() req, @UploadedFile() file: Express.Multer.File) {
+    if (!file) throw new BadRequestException('Choose an image to upload.');
     const userId = req.user.userId;
-    const user = await this.userService.findOne(userId);
+    const previousAvatar = (await this.userService.findOne(userId)).avatarUrl;
 
-    if (user?.avatarUrl && user.avatarUrl.startsWith('/uploads/')) {
-      const filename = user.avatarUrl.replace('/uploads/', '');
-      const filePath = join(process.cwd(), 'storage', 'uploads', filename);
-      try {
-        await unlink(filePath);
-      } catch (err) {
-        console.error(`Failed to delete old avatar file: ${filePath}`, err);
-      }
+    const extension = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' }[
+      file.mimetype
+    ];
+    file.filename = `avatar-${userId}-${uuidv4()}.${extension}`;
+    await this.vault.save(file.filename, await validateUpload(file, true));
+    this.prisma.afterRollback(() => this.vault.remove(file.filename));
+    const url = `/uploads/${file.filename}`;
+    try {
+      await this.userService.updateAvatar(userId, url);
+    } catch (error) {
+      await this.vault.remove(file.filename);
+      throw error;
     }
 
-    const url = `/uploads/${file.filename}`;
-    await this.userService.update(userId, { avatarUrl: url });
+    await this.prisma.afterCommit(async () => {
+      try {
+        if (previousAvatar?.startsWith('/uploads/'))
+          await this.vault.remove(previousAvatar.slice('/uploads/'.length));
+      } catch {
+        this.logger.warn({ event: 'AVATAR_CLEANUP_DEFERRED' });
+      }
+      // Other concurrent uploads may still be uncommitted: retention handles orphans.
+    });
+
     return { avatarUrl: url };
   }
 
   @Patch(':id')
+  @UseGuards(SelfGuard)
   @ApiOperation({ summary: 'Update a user' })
   @ApiResponse({
     status: 200,
@@ -131,9 +148,9 @@ export class UserController {
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a user' })
-  @ApiResponse({ status: 200, description: 'The user has been successfully deleted.' })
-  remove(@Param('id') id: string) {
-    return this.userService.remove(id);
+  @ApiOperation({ summary: 'Disabled: remove workspace membership', deprecated: true })
+  @ApiResponse({ status: 403, description: 'Remove workspace membership instead.' })
+  remove() {
+    throw new ForbiddenException('Remove membership through the workspace members endpoint.');
   }
 }

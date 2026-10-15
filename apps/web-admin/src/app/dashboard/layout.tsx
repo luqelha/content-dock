@@ -19,21 +19,17 @@ export default async function DashboardLayout({
   let initialTenants = [];
 
   if (token) {
-    try {
-      const [user, tenants] = await Promise.all([
-        fetchProfile(token),
-        fetchTenants(token),
-      ]);
-      initialUser = user;
-      initialTenants = tenants || [];
-    } catch (error) {
-      console.error("Failed to fetch user or tenants data:", error);
-    }
+    const [user, tenants] = await Promise.all([
+      fetchProfile(token),
+      fetchTenants(token),
+    ]);
+    initialUser = user;
+    initialTenants = tenants || [];
   }
 
   return (
-    <TenantProvider 
-      initialUser={initialUser} 
+    <TenantProvider
+      initialUser={initialUser}
       initialTenants={initialTenants}
       initialActiveTenantId={activeTenantId}
     >
@@ -42,9 +38,9 @@ export default async function DashboardLayout({
           <AppSidebar />
           <SidebarInset className="flex flex-1 flex-col overflow-hidden">
             <DashboardHeader />
-            <main className="flex-1 overflow-y-auto overflow-x-hidden">
+            <div className="flex-1 overflow-y-auto overflow-x-hidden">
               {children}
-            </main>
+            </div>
           </SidebarInset>
         </SidebarProvider>
       </TooltipProvider>

@@ -1,21 +1,19 @@
 import { cookies } from "next/headers";
-import { DashboardClient } from "@/components/dashboard/dashboard-client";
-import { fetchAnalytics } from "@/lib/api";
-
+import {
+  DashboardClient,
+  type DashboardStats,
+} from "@/components/dashboard/dashboard-client";
+import { workspaceRequest } from "@/lib/workspace-api";
+import { WorkspaceSettings } from "@/components/dashboard/workspace-settings";
 export default async function DashboardPage() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token")?.value;
-  const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value;
-
-  let stats = null;
-
-  if (token && activeTenantId) {
-    try {
-      stats = await fetchAnalytics(token, activeTenantId);
-    } catch (error) {
-      console.error("Failed to fetch analytics:", error);
-    }
-  }
-
+  const tenants = await workspaceRequest<{ id: string }[]>("/tenants");
+  if (!tenants.length) return <WorkspaceSettings create />;
+  const selected = (await cookies()).get("atlas_active_tenant_id")?.value;
+  const id = tenants.find((t) => t.id === selected)?.id || tenants[0].id;
+  const stats = await workspaceRequest<DashboardStats>(
+    "/analytics/dashboard",
+    {},
+    id,
+  );
   return <DashboardClient stats={stats} />;
 }

@@ -14,7 +14,7 @@ interface MediaDropzoneProps {
 export function MediaDropzone({
   onFilesSelected,
   maxFileSizeMb = 5,
-  accept = "image/png,image/jpeg,image/jpg,image/webp,image/gif,image/svg+xml,application/pdf",
+  accept = "image/png,image/jpeg,image/webp,image/gif,application/pdf",
   disabled = false,
 }: MediaDropzoneProps) {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -67,18 +67,25 @@ export function MediaDropzone({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      onClick={() => !disabled && fileInputRef.current?.click()}
       className={`relative rounded-2xl border-2 border-dashed transition-all duration-200 cursor-pointer overflow-hidden p-6 sm:p-10 flex flex-col items-center justify-center text-center select-none ${
         disabled
           ? "opacity-50 cursor-not-allowed border-muted"
           : isDragOver
-          ? "border-primary bg-muted/60 scale-[1.01]"
-          : "border-border/80 hover:border-foreground/30 bg-muted/20 hover:bg-muted/40"
+            ? "border-primary bg-muted/60 scale-[1.01]"
+            : "border-border/80 hover:border-foreground/30 bg-muted/20 hover:bg-muted/40"
       }`}
     >
+      <button
+        type="button"
+        aria-label="Choose files to upload"
+        disabled={disabled}
+        onClick={() => fileInputRef.current?.click()}
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-2 focus-visible:outline-ring"
+      />
       <input
         ref={fileInputRef}
         type="file"
+        aria-label="Upload files"
         multiple
         accept={accept}
         onChange={handleInputChange}
@@ -115,12 +122,14 @@ export function MediaDropzone({
           WEBP
         </span>
         <span className="px-2 py-0.5 rounded-md bg-background border border-border/60">
-          SVG
+          GIF
         </span>
         <span className="px-2 py-0.5 rounded-md bg-background border border-border/60">
           PDF
         </span>
-        <span className="text-muted-foreground/60">• Max {maxFileSizeMb}MB per file</span>
+        <span className="text-muted-foreground/60">
+          • Max {maxFileSizeMb}MB per file
+        </span>
       </div>
     </div>
   );

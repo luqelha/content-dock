@@ -1,3 +1,5 @@
+import { Query } from '@nestjs/common';
+import { ListPageDto } from '../../common/dto/list-page.dto';
 import {
   Controller,
   Post,
@@ -71,8 +73,8 @@ export class MediaController {
     description: 'List of media files',
     type: [MediaResponseDto],
   })
-  findAll(@CurrentTenant() tenant: any) {
-    return this.mediaService.listMedia(tenant.id);
+  findAll(@CurrentTenant() tenant: any, @Query() query: ListPageDto = new ListPageDto()) {
+    return this.mediaService.listMedia(tenant.id, query);
   }
 
   @Delete(':id')

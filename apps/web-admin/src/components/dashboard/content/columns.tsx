@@ -1,5 +1,6 @@
 "use client";
 
+import type { ContentStatus } from "@/lib/api";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   MoreHorizontal,
@@ -33,9 +34,12 @@ export type Content = {
   id: string;
   title: string;
   slug: string;
-  status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
+  status: ContentStatus;
   author: {
-    name: string;
+    name?: string;
+    email?: string;
+    firstName?: string | null;
+    lastName?: string | null;
   };
   category?: CategoryItemRef | null;
   createdAt: string;
@@ -77,7 +81,7 @@ export const getColumns = (
           </Badge>
           {(onEditCategory || onDeleteCategory) && (
             <DropdownMenu>
-              <DropdownMenuTrigger className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded hover:bg-accent text-muted-foreground hover:text-foreground">
+              <DropdownMenuTrigger className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity p-0.5 rounded hover:bg-accent text-muted-foreground hover:text-foreground">
                 <ChevronDown className="h-3 w-3" />
                 <span className="sr-only">Category options</span>
               </DropdownMenuTrigger>
@@ -114,21 +118,11 @@ export const getColumns = (
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue("status") as
-        "DRAFT" | "PUBLISHED" | "ARCHIVED";
+      const status = row.getValue("status") as ContentStatus;
       if (status === "PUBLISHED") {
         return <Badge variant="default">Published</Badge>;
       }
-      if (status === "ARCHIVED") {
-        return (
-          <Badge
-            variant="outline"
-            className="text-muted-foreground border-dashed"
-          >
-            Archived
-          </Badge>
-        );
-      }
+
       return <Badge variant="secondary">Draft</Badge>;
     },
   },

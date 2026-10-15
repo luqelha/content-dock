@@ -12,13 +12,12 @@ export class PrismaClientExceptionFilter implements ExceptionFilter {
     const request = ctx.getRequest<Request>();
 
     let status = HttpStatus.INTERNAL_SERVER_ERROR;
-    let message = exception.message.replace(/\n/g, '');
+    let message = 'An internal error occurred. Please try again later.';
 
     switch (exception.code) {
       case 'P2002':
         status = HttpStatus.CONFLICT;
-        const target = exception.meta?.target ? ` (${exception.meta.target})` : '';
-        message = `Unique constraint failed${target}`;
+        message = 'A record with these values already exists';
         break;
       case 'P2025':
         status = HttpStatus.NOT_FOUND;
@@ -26,23 +25,24 @@ export class PrismaClientExceptionFilter implements ExceptionFilter {
         break;
       case 'P2003':
         status = HttpStatus.BAD_REQUEST;
-        const field = exception.meta?.field_name ? ` (${exception.meta.field_name})` : '';
-        message = `Foreign key constraint failed${field}`;
+        message = 'A related record is missing or still in use';
         break;
       default:
         // default 500 status code
         break;
     }
 
-    this.logger.error(
-      `[${request.method}] ${request.url} - Prisma Error ${exception.code}: ${message}`,
-      exception.stack,
-    );
+    // Prisma messages/stacks can contain query values, credentials and schema details.
+    this.logger.error({
+      event: 'DATABASE_ERROR',
+      code: exception.code,
+      requestId: (request as any).id,
+    });
 
     response.status(status).json({
       statusCode: status,
       timestamp: new Date().toISOString(),
-      path: request.url,
+      path: request.path,
       message: message,
     });
   }

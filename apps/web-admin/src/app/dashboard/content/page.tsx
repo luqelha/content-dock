@@ -1,25 +1,39 @@
-import { cookies } from "next/headers";
 import { DataTable } from "@/components/dashboard/content/data-table";
-import { fetchContents } from "@/lib/api";
-
-export default async function ContentPage() {
-  const cookieStore = await cookies();
-  const token = cookieStore.get("access_token")?.value;
-  const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value;
-
-  let contents = [];
-
-  if (token && activeTenantId) {
-    try {
-      contents = await fetchContents(token, activeTenantId);
-    } catch (error) {
-      console.error("Failed to fetch contents:", error);
-    }
-  }
-
+import { workspaceRequest } from "@/lib/workspace-api";
+import { Content } from "@/components/dashboard/content/columns";
+export default async function ContentPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const params = await searchParams;
+  const page = Math.max(1, Number(params.page) || 1);
+  const search = typeof params.search === "string" ? params.search : "";
+  const status =
+    params.status === "DRAFT" || params.status === "PUBLISHED"
+      ? params.status
+      : "";
+  const query = new URLSearchParams({
+    page: String(page),
+    take: "20",
+    summary: "true",
+    ...(search ? { search } : {}),
+    ...(status ? { status } : {}),
+  });
+  const result = await workspaceRequest<{
+    data: Content[];
+    meta: { itemCount: number; pageCount: number };
+  }>(`/contents?${query}`);
   return (
-    <div className="p-4 sm:p-6 md:p-8 lg:p-10 max-w-7xl mx-auto space-y-6">
-      <DataTable data={contents} />
+    <div className="mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
+      <DataTable
+        data={result.data}
+        page={page}
+        total={result.meta.itemCount}
+        pageCount={result.meta.pageCount}
+        search={search}
+        status={status}
+      />
     </div>
   );
 }

@@ -2,9 +2,12 @@
 
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import { privateFileUrl } from "@/lib/files";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
-const API_BASE = API_URL.replace(/\/api\/?$/, "");
+const API_URL =
+  process.env.API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:4000/api";
 
 export interface MediaItem {
   id: string;
@@ -46,9 +49,7 @@ export async function uploadMedia(formData: FormData): Promise<{
 
     // Ensure full accessible URL
     const relativeUrl = result.url;
-    const fullUrl = relativeUrl.startsWith("http")
-      ? relativeUrl
-      : `${API_BASE}${relativeUrl.startsWith("/") ? "" : "/"}${relativeUrl}`;
+    const fullUrl = privateFileUrl(relativeUrl);
 
     revalidatePath("/dashboard/media");
 
@@ -66,7 +67,7 @@ export async function uploadMedia(formData: FormData): Promise<{
   }
 }
 
-export async function getMediaList(): Promise<{
+export async function getMediaList(page = 1): Promise<{
   data?: MediaItem[];
   error?: string;
 }> {
@@ -79,13 +80,16 @@ export async function getMediaList(): Promise<{
   }
 
   try {
-    const res = await fetch(`${API_URL}/media`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "x-tenant-id": tenantId,
+    const res = await fetch(
+      `${API_URL}/media?page=${Math.max(1, Math.floor(page))}&take=50`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "x-tenant-id": tenantId,
+        },
+        cache: "no-store",
       },
-      cache: "no-store",
-    });
+    );
 
     if (!res.ok) {
       return { error: "Failed to fetch media library" };
@@ -96,9 +100,7 @@ export async function getMediaList(): Promise<{
     // Map full URLs
     const formatted = items.map((item) => ({
       ...item,
-      url: item.url.startsWith("http")
-        ? item.url
-        : `${API_BASE}${item.url.startsWith("/") ? "" : "/"}${item.url}`,
+      url: privateFileUrl(item.url),
     }));
 
     return { data: formatted };
@@ -146,6 +148,8 @@ export async function deleteMultipleMedia(ids: string[]): Promise<{
   success?: boolean;
   deletedCount: number;
   failedCount: number;
+  deletedIds: string[];
+  failedIds: string[];
   error?: string;
 }> {
   const cookieStore = await cookies();
@@ -153,13 +157,19 @@ export async function deleteMultipleMedia(ids: string[]): Promise<{
   const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
-    return { error: "Unauthorized", deletedCount: 0, failedCount: ids.length };
+    return {
+      error: "Unauthorized",
+      deletedCount: 0,
+      failedCount: ids.length,
+      deletedIds: [],
+      failedIds: ids,
+    };
   }
 
-  let deletedCount = 0;
-  let failedCount = 0;
+  const deletedIds: string[] = [];
+  const failedIds: string[] = [];
 
-  for (const id of ids) {
+  for (const id of [...new Set(ids)]) {
     try {
       const res = await fetch(`${API_URL}/media/${id}`, {
         method: "DELETE",
@@ -170,20 +180,27 @@ export async function deleteMultipleMedia(ids: string[]): Promise<{
       });
 
       if (res.ok) {
-        deletedCount++;
+        deletedIds.push(id);
       } else {
-        failedCount++;
+        failedIds.push(id);
       }
     } catch {
-      failedCount++;
+      failedIds.push(id);
     }
   }
 
   revalidatePath("/dashboard/media");
 
   return {
-    success: deletedCount > 0,
-    deletedCount,
-    failedCount,
+    success: failedIds.length === 0,
+    deletedCount: deletedIds.length,
+    failedCount: failedIds.length,
+    deletedIds,
+    failedIds,
+    ...(failedIds.length
+      ? {
+          error: `${failedIds.length} item(s) could not be deleted. They remain selected for retry.`,
+        }
+      : {}),
   };
 }

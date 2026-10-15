@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { privateContentImages } from "@/lib/files";
 import { useEditor, EditorContent, type Editor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
@@ -24,6 +25,11 @@ import {
 interface WYSIWYGEditorProps {
   value: string;
   onChange: (value: string) => void;
+  readOnly?: boolean;
+  id?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
+  "aria-labelledby"?: string;
 }
 
 interface MenuBarProps {
@@ -71,6 +77,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
         }
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
         aria-label="Heading 2"
+        aria-pressed={editor.isActive("heading", { level: 2 })}
       >
         <Heading2 className="h-4 w-4" />
       </Button>
@@ -82,6 +89,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
         }
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
         aria-label="Heading 3"
+        aria-pressed={editor.isActive("heading", { level: 3 })}
       >
         <Heading3 className="h-4 w-4" />
       </Button>
@@ -92,6 +100,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("bold")}
         variant={editor.isActive("bold") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleBold().run()}
         aria-label="Toggle bold"
@@ -101,6 +110,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("italic")}
         variant={editor.isActive("italic") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleItalic().run()}
         aria-label="Toggle italic"
@@ -110,6 +120,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("strike")}
         variant={editor.isActive("strike") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleStrike().run()}
         aria-label="Toggle strikethrough"
@@ -119,6 +130,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("code")}
         variant={editor.isActive("code") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleCode().run()}
         aria-label="Toggle code"
@@ -132,6 +144,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("bulletList")}
         variant={editor.isActive("bulletList") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         aria-label="Toggle bullet list"
@@ -141,6 +154,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("orderedList")}
         variant={editor.isActive("orderedList") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         aria-label="Toggle ordered list"
@@ -150,6 +164,7 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
       <Button
         type="button"
         size="icon-xs"
+        aria-pressed={editor.isActive("blockquote")}
         variant={editor.isActive("blockquote") ? "secondary" : "ghost"}
         onClick={() => editor.chain().focus().toggleBlockquote().run()}
         aria-label="Toggle blockquote"
@@ -174,7 +189,15 @@ const MenuBar = ({ editor, onOpenImageModal }: MenuBarProps) => {
   );
 };
 
-export function WYSIWYGEditor({ value, onChange }: WYSIWYGEditorProps) {
+export function WYSIWYGEditor({
+  value,
+  onChange,
+  readOnly = false,
+  id,
+  "aria-describedby": describedBy,
+  "aria-invalid": invalid,
+  "aria-labelledby": labelledBy,
+}: WYSIWYGEditorProps) {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const editor = useEditor({
@@ -189,10 +212,14 @@ export function WYSIWYGEditor({ value, onChange }: WYSIWYGEditorProps) {
         allowBase64: true,
       }),
     ],
-    content: value,
+    content: privateContentImages(value),
+    editable: !readOnly,
     immediatelyRender: false,
     editorProps: {
       attributes: {
+        role: "textbox",
+        "aria-multiline": "true",
+        "aria-label": "Content body",
         class:
           "prose prose-sm sm:prose-base dark:prose-invert focus:outline-none min-h-[260px] max-w-none p-4",
       },
@@ -202,19 +229,41 @@ export function WYSIWYGEditor({ value, onChange }: WYSIWYGEditorProps) {
     },
   });
 
+  useEffect(() => {
+    if (!editor) return;
+    editor.setOptions({
+      editorProps: {
+        ...editor.options.editorProps,
+        attributes: {
+          ...(editor.options.editorProps.attributes as Record<string, string>),
+          id: id || "",
+          "aria-describedby": describedBy || "",
+          "aria-invalid": String(Boolean(invalid)),
+          ...(labelledBy ? { "aria-labelledby": labelledBy } : {}),
+        },
+      },
+    });
+  }, [editor, id, describedBy, invalid, labelledBy]);
+
   const handleSelectImage = (url: string, alt?: string) => {
     if (editor && url) {
-      editor.chain().focus().setImage({ src: url, alt: alt || "" }).run();
+      editor
+        .chain()
+        .focus()
+        .setImage({ src: url, alt: alt || "" })
+        .run();
     }
   };
 
   return (
     <>
       <div className="border border-border/80 dark:border-neutral-700/80 rounded-xl overflow-hidden flex flex-col bg-card dark:bg-neutral-900 shadow-sm focus-within:ring-2 focus-within:ring-primary/20 focus-within:border-primary/50 transition-all">
-        <MenuBar
-          editor={editor}
-          onOpenImageModal={() => setIsImageModalOpen(true)}
-        />
+        {!readOnly && (
+          <MenuBar
+            editor={editor}
+            onOpenImageModal={() => setIsImageModalOpen(true)}
+          />
+        )}
         <EditorContent editor={editor} className="flex-1 overflow-y-auto" />
       </div>
 

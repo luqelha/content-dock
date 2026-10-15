@@ -1,3 +1,5 @@
+import { Query } from '@nestjs/common';
+import { ListPageDto } from '../../../common/dto/list-page.dto';
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 import { CategoryService } from '../services/category.service';
@@ -38,8 +40,8 @@ export class CategoryController {
   @Permissions(Permission.READ_CATEGORY)
   @ApiOperation({ summary: 'Get all categories for the current tenant' })
   @ApiResponse({ status: 200, description: 'Return all categories.', type: [CategoryEntity] })
-  findAll(@CurrentTenant() tenant: any) {
-    return this.categoryService.findAll(tenant.id);
+  findAll(@CurrentTenant() tenant: any, @Query() query: ListPageDto = new ListPageDto()) {
+    return this.categoryService.findAll(tenant.id, query);
   }
 
   @Get(':id')

@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { createApplicationValidationPipe } from './common/pipes/application-validation.pipe';
 import * as compression from 'compression';
 import { AppModule } from './app.module';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
@@ -13,7 +13,9 @@ async function bootstrap() {
   app.useLogger(app.get(Logger));
 
   // Enable CORS
-  app.enableCors();
+  app.enableCors({ origin: (process.env.CORS_ORIGINS || 'http://localhost:3000').split(',') });
+  if (process.env.TRUST_PROXY === '1') app.getHttpAdapter().getInstance().set('trust proxy', 1);
+  app.enableShutdownHooks();
 
   // Enable Compression
   app.use(compression());
@@ -25,7 +27,7 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter(), new PrismaClientExceptionFilter());
 
   // Register Global Validation Pipe
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+  app.useGlobalPipes(createApplicationValidationPipe());
 
   // Set up Swagger
   const config = new DocumentBuilder()
@@ -47,12 +49,13 @@ async function bootstrap() {
         durable: true,
       },
       prefetchCount: 1,
+      noAck: false,
     },
   });
 
   await app.startAllMicroservices();
 
-  const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 4000;
   await app.listen(port, '0.0.0.0');
   console.log(`🚀 Atlas Platform is running on: http://localhost:${port}/api`);
   console.log(`📚 Swagger documentation is available at: http://localhost:${port}/api/docs`);
