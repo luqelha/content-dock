@@ -4,7 +4,7 @@ Tanggal: **15 Oktober 2026, Asia/Jakarta**. Status: **belum closed; release dita
 
 ## Identitas kandidat dan remote CI
 
-Snapshot kandidat revisi ketiga: `57bc8f46e5e9594a3d64f8ca6410339d6afe9837`, tree `86cd7a3a4ab62cfc81e15a27bbdc79ff9693cae6`, branch `release/phase-3f-20261015111027`. [Manifest kandidat terbaru](evidence/phase-3f/revision-3/candidate.json) mencatat 348 file beserta Git blob IDs, perubahan dari HEAD awal, pengecualian output lokal, serta hash index pengguna sebelum operasi. Riwayat parent mempertahankan [kandidat pertama](evidence/phase-3f/candidate.json) dan [revisi kedua](evidence/phase-3f/revision-2/candidate.json).
+Snapshot kandidat revisi keempat: `a9183dfb8b8202b043cb555c97f7e7f6dd5d8356`, tree `6dfcf750287e720543de9d37d7659c586de69e13`, branch `release/phase-3f-20261015112037`. [Manifest kandidat terbaru](evidence/phase-3f/revision-4/candidate.json) mencatat 348 file beserta Git blob IDs, perubahan dari HEAD awal, pengecualian output lokal, serta hash index pengguna sebelum operasi. Riwayat parent mempertahankan [kandidat pertama](evidence/phase-3f/candidate.json), [revisi kedua](evidence/phase-3f/revision-2/candidate.json), dan [revisi ketiga](evidence/phase-3f/revision-3/candidate.json).
 
 Kandidat dibuat memakai index Git sementara dan `commit-tree`, kemudian dipush tanpa force ke branch baru. Branch/index pengguna dan `main` dipertahankan. Filter push pada workflow diperluas untuk `release/phase-3f-*`, sehingga run memakai workflow kandidat tanpa memerlukan perubahan default branch atau PR. Tidak ada deployment job dalam workflow tersebut.
 
@@ -14,9 +14,13 @@ Run CI kandidat terikat pada SHA kandidat, bukan pada dirty working tree. URL ru
 
 [Run kedua](https://github.com/luqelha/atlas-platform/actions/runs/38724658176) **gagal** pada lint: 12 pelanggaran Prettier di `auth.service.ts`, `user.service.spec.ts`, dan `audit-attribution.spec.ts`. Ketiganya diformat; lint penuh API/web kemudian lulus lokal. [Pemeriksaan perbedaan format](evidence/phase-3f/formatting-verification.json) membandingkan canonical source dan emitted JavaScript untuk seluruh empat file dan semuanya identik sesudah normalisasi. Percobaan pembanding raw emit juga dipertahankan: emitter mempertahankan sebagian layout, sehingga raw output yang berbeda tidak dipakai sebagai bukti perubahan logika. Tidak ada assertion atau migration yang diubah.
 
-[Run ketiga](https://github.com/luqelha/atlas-platform/actions/runs/38725529650) memakai kandidat `57bc8f4`. Regresi unit lokal sesudah perbaikan format juga **lulus 180 tes / 24 suite**; perintah, waktu dan exit code ada pada [local-unit.json](evidence/phase-3f/local-unit.json). Hasil lokal ini tidak menggantikan kesimpulan CI remote.
+[Run ketiga](https://github.com/luqelha/atlas-platform/actions/runs/38725529650) pada kandidat `57bc8f4` **gagal** di satu tes browser (8 passed / 1 failed, termasuk kegagalan ulang pada retry). Semua tahap sebelumnya, termasuk typecheck, security/grants, audit, unit/coverage, integration, E2E dan build aplikasi, lulus. Build container dilewati karena browser gagal. Tes masih mencari pesan upstream `Invalid credentials`, sedangkan UI sengaja memetakan 401/403 ke pesan netral `Email or password is incorrect.`; kontrak ini juga diuji pada `scripts/security/web-auth.test.cjs`. Expectation browser diperbarui ke pesan netral yang tepat, dengan assertion fokus alert; pemeriksaan alert tetap terlihat setelah 5,5 detik dipertahankan. Logika UI/API, timeout dan retry tidak diubah. Kandidat keempat kemudian dipush untuk menguji perubahan tersebut.
+
+Regresi unit lokal sesudah perbaikan format juga **lulus 180 tes / 24 suite**; perintah, waktu dan exit code ada pada [local-unit.json](evidence/phase-3f/local-unit.json). Hasil lokal ini tidak menggantikan kesimpulan CI remote.
 
 Gangguan sementara pengambilan status/log API dan satu kegagalan pemeriksaan ref sebelum push dipisahkan dari kegagalan tes. Collector menyimpan error baru ke `collector-error-*.json`; status CI hanya diambil dari GitHub API, tidak ditebak dari error koneksi lokal.
+
+Pengambilan archive artifact run ketiga ke temp privat juga timeout; [hasil download](evidence/phase-3f/revision-3/artifact-download.json) tidak mengklaim digest lokal telah diverifikasi. Metadata artifact dari GitHub tetap merekam ID, ukuran, expiry dan digest, sedangkan job log berhasil disimpan serta di-hash. Trace sintetis tidak dipublikasikan ke repository.
 
 Run sukses historis [32331867993](https://github.com/luqelha/atlas-platform/actions/runs/32331867993) hanya menguji `e78af99` pada 20 Agustus 2026. Workflow remote saat discovery berbeda dari workflow lokal; run tersebut tidak diterima sebagai evidence Phase 3F.
 
@@ -56,5 +60,7 @@ Restore lokal 3E tetap valid dalam batas [evidence sebelumnya](evidence/phase-3e
 - [Runbook deployment/recovery](DEPLOYMENT-RUNBOOK.md): prosedur runtime yang tetap memerlukan target teridentifikasi.
 
 Prosedur filter branch diperiksa melalui Context7 pada [dokumentasi resmi GitHub Actions](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow). `workflow_dispatch` tidak digunakan karena workflow default branch belum menyediakannya; syaratnya dijelaskan pada [dokumentasi manual run](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow).
+
+Assertion browser memakai locator berdasarkan role dan assertion yang melakukan retry sesuai [dokumentasi resmi Playwright](https://github.com/microsoft/playwright/blob/main/docs/src/test-assertions-js.md), juga diperiksa melalui Context7. Tidak ada peningkatan retry atau pelonggaran timeout untuk membuat run lulus.
 
 Untuk menutup gate yang tersisa diperlukan target staging dan operator, host restore terpisah berikut backup/key custody dan RTO/RPO, serta pasangan image rollback kompatibel. Ini adalah penghambat eksekusi spesifik, bukan checklist yang dinyatakan lulus.
