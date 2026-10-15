@@ -115,10 +115,9 @@ test("login errors stay announced and protected pages require authentication", a
     .getByLabel("Password", { exact: true })
     .fill("Incorrect-Test-Password-428!");
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  const alert = page
-    .getByRole("alert")
-    .filter({ hasText: "Invalid credentials" });
-  await expect(alert).toBeVisible();
+  const alert = page.getByRole("alert");
+  await expect(alert).toHaveText("Email or password is incorrect.");
+  await expect(alert).toBeFocused();
   // Regression for the previous five-second auto-dismiss.
   await page.waitForTimeout(5500);
   await expect(alert).toBeVisible();
