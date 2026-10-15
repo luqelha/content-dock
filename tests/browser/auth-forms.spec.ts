@@ -130,5 +130,8 @@ test("auth forms fit a narrow viewport", async ({ page }, testInfo) => {
     viewport: innerWidth,
   }));
   expect(width.content).toBeLessThanOrEqual(width.viewport);
-  await page.screenshot({ path: testInfo.outputPath("register-mobile.png"), fullPage: true });
+  await page.screenshot({
+    path: testInfo.outputPath("register-mobile.png"),
+    fullPage: true,
+  });
 });
