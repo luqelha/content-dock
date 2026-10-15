@@ -1,5 +1,7 @@
 # Phase 3B ? Production & Disaster Recovery Gates
 
+> Pembaruan Phase 3F, 15 Oktober 2026: lihat [release evidence](PHASE-3F-RELEASE-EVIDENCE.md) dan [hasil gate JSON](evidence/phase-3f/release-evidence.json). Remote CI sudah dipicu pada snapshot kandidat terpisah; run historis pada HEAD lama tidak digunakan untuk kelulusan kandidat. Staging TLS/secrets/grants, recovery off-host dan rollback release kompatibel belum dieksekusi: target dan previous release belum teridentifikasi setelah discovery repo/operator. **Release tetap ditahan.** Status 3B/3E di bawah adalah bukti historis sesuai batas lingkungannya.
+
 **Pembaruan 15 Oktober 2026:** penilaian terkini ada pada [FINAL-IMPROVEMENT-REPORT.md](FINAL-IMPROVEMENT-REPORT.md). Bagian Phase 3B di bawah adalah bukti historis sebelum format archive/fencing 3C; status P3A-03 di sini telah ditutup oleh 3C. Regresi lokal 3E lulus, tetapi CI remote, TLS/secrets/grants target, recovery off-host dan rehearsal rollback release kompatibel tetap gate wajib. **Belum production-ready.**
 
 Image kandidat terbaru telah lulus smoke production-mode serta restore DB/vault/key pada 15 Oktober: [10/10 checkpoint](evidence/phase-3e/drill-1792059490242.json), exact row/file hash dan fresh worker sesudah restore. Ini memperbarui bukti restore lokal untuk format archive 3C, tanpa memverifikasi rollback ke release lama. Deviasi prosedural satu volume anonim baru milik probe registry dicatat transparan di laporan final; tidak ada volume existing yang dihapus.

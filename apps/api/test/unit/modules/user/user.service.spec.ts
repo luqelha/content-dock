@@ -105,11 +105,15 @@ describe('UserService', () => {
   });
 
   it.each([[], [{ id: 'legacy-user' }], [{ id: 'one' }, { id: 'two' }]])(
-    'only authenticates an unambiguous case-insensitive email match: %j', async (...matches) => {
+    'only authenticates an unambiguous case-insensitive email match: %j',
+    async (...matches) => {
       mockPrismaService.user.findMany.mockResolvedValue(matches);
-      expect(await service.findByEmailForAuth('legacy@example.com')).toEqual(matches.length === 1 ? matches[0] : null);
+      expect(await service.findByEmailForAuth('legacy@example.com')).toEqual(
+        matches.length === 1 ? matches[0] : null,
+      );
       expect(mockPrismaService.user.findMany).toHaveBeenCalledWith({
-        where: { email: { equals: 'legacy@example.com', mode: 'insensitive' } }, take: 2,
+        where: { email: { equals: 'legacy@example.com', mode: 'insensitive' } },
+        take: 2,
       });
     },
   );

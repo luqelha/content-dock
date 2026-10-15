@@ -73,15 +73,25 @@ describe('Audit attribution and cache invalidation', () => {
   });
   it('records the server-side registration actor while keeping public responses generic', async () => {
     reflect.get.mockReturnValue({ action: 'REGISTER', entity: 'User' });
-    const result = await lastValueFrom(interceptor.intercept(context({
-      method: 'POST', route: { path: '/api/auth/register' },
-      registrationUserId: 'new-user',
-      body: { email: 'a@b.test', password: 'secret' },
-    }), { handle: () => of({ message: 'Registration request received' }) }));
+    const result = await lastValueFrom(
+      interceptor.intercept(
+        context({
+          method: 'POST',
+          route: { path: '/api/auth/register' },
+          registrationUserId: 'new-user',
+          body: { email: 'a@b.test', password: 'secret' },
+        }),
+        { handle: () => of({ message: 'Registration request received' }) },
+      ),
+    );
     expect(result).toEqual({ message: 'Registration request received' });
-    expect(logActivity).toHaveBeenCalledWith(expect.objectContaining({
-      userId: 'new-user', entityId: 'new-user', details: { fields: ['email'] },
-    }));
+    expect(logActivity).toHaveBeenCalledWith(
+      expect.objectContaining({
+        userId: 'new-user',
+        entityId: 'new-user',
+        details: { fields: ['email'] },
+      }),
+    );
   });
   it('invalidates author representations across the authenticated users memberships', async () => {
     reflect.get.mockReturnValue(undefined);

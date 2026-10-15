@@ -1,5 +1,7 @@
 # Phase 3E — Final Verification
 
+> Pembaruan Phase 3F, 15 Oktober 2026: [release evidence](PHASE-3F-RELEASE-EVIDENCE.md) mencatat snapshot kandidat dan remote CI yang benar-benar dipicu di GitHub, termasuk run gagal dan hasil kandidat revisi. Status CI terkini berada pada [release-evidence.json](evidence/phase-3f/release-evidence.json). TLS/secrets/grants staging, restore off-host dan rollback release kompatibel tetap belum dieksekusi karena target/pasangan release belum teridentifikasi. Bagian 3E di bawah tetap laporan historis; belum production-ready.
+
 Tanggal: **14–15 Oktober 2026, Asia/Jakarta**. Regresi dijalankan 14 Oktober; finalisasi operasional dan laporan dilanjutkan 15 Oktober. Scope: working tree pada HEAD `e78af99e234687377d0f35a91128e66ac2ace72f`, termasuk perubahan pengguna sebelum sesi ini. Penamaan 3E mengikuti urutan pekerjaan pengguna; fase ini adalah final verification, bukan Phase E performance dalam brief awal.
 
 ## Kesimpulan dan readiness

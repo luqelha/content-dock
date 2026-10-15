@@ -4,11 +4,13 @@ Tanggal: **15 Oktober 2026, Asia/Jakarta**. Status: **belum closed; release dita
 
 ## Identitas kandidat dan remote CI
 
-Snapshot kandidat: `16d13ae50c5f4df7912e5b6da751e74cff4a7698`, tree `854434c354c3adeb00ff3d3f80845b74ef6c8c2f`, branch `release/phase-3f-20261015105810`. [Manifest kandidat](evidence/phase-3f/candidate.json) mencatat 347 file beserta Git blob IDs, perubahan dari parent, pengecualian output lokal, serta hash index pengguna sebelum operasi.
+Snapshot kandidat revisi: `ef2e90b207e3bad000ddb669f483ea363702261d`, tree `fc12baee632c93f856bb0d4670d15830c6b0b5ab`, branch `release/phase-3f-20261015110330`. [Manifest kandidat revisi](evidence/phase-3f/revision-2/candidate.json) mencatat 348 file beserta Git blob IDs, perubahan dari HEAD awal, pengecualian output lokal, serta hash index pengguna sebelum operasi. Parent-nya adalah [kandidat pertama](evidence/phase-3f/candidate.json), `16d13ae50c5f4df7912e5b6da751e74cff4a7698`.
 
 Kandidat dibuat memakai index Git sementara dan `commit-tree`, kemudian dipush tanpa force ke branch baru. Branch/index pengguna dan `main` dipertahankan. Filter push pada workflow diperluas untuk `release/phase-3f-*`, sehingga run memakai workflow kandidat tanpa memerlukan perubahan default branch atau PR. Tidak ada deployment job dalam workflow tersebut.
 
-[Run CI kandidat](https://github.com/luqelha/atlas-platform/actions/runs/38724067559) terikat pada SHA kandidat, bukan pada dirty working tree. Status terminal, step conclusions, log digest dan artifact metadata dicatat dalam [release evidence](evidence/phase-3f/release-evidence.json). Snapshot observasi `remote-ci-*.json` dipertahankan, termasuk status berjalan dan kegagalan bila ada. Log job `.log` berada lokal dan di-ignore Git.
+[Run CI kandidat revisi](https://github.com/luqelha/atlas-platform/actions/runs/38724658176) terikat pada SHA kandidat, bukan pada dirty working tree. Status terminal, step conclusions, log digest dan artifact metadata dicatat dalam [release evidence](evidence/phase-3f/release-evidence.json). Snapshot observasi `remote-ci-*.json` dipertahankan, termasuk status berjalan dan kegagalan. Log job `.log` berada lokal dan di-ignore Git.
+
+[Run pertama](https://github.com/luqelha/atlas-platform/actions/runs/38724067559) **gagal** pada `format:check:reliability`: `tests/browser/auth-forms.spec.ts` belum sesuai Prettier. Instalasi dependency, migration dan tiga tes database-role sudah berhasil sebelum tahap tersebut. Perbaikannya hanya membagi pemanggilan `page.screenshot` menjadi beberapa baris; assertion tidak diubah. Check format lokal lulus setelah perbaikan, kemudian snapshot revisi dipush ke branch baru. Run gagal, log dan hash-nya tetap dipertahankan.
 
 Run sukses historis [32331867993](https://github.com/luqelha/atlas-platform/actions/runs/32331867993) hanya menguji `e78af99` pada 20 Agustus 2026. Workflow remote saat discovery berbeda dari workflow lokal; run tersebut tidak diterima sebagai evidence Phase 3F.
 
