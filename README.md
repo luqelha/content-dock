@@ -1,6 +1,6 @@
-﻿# Atlas Platform / ContentDock
+# ContentDock
 
-A multi-tenant headless CMS with a Next.js administration interface branded **ContentDock** and a NestJS API. Manage content, private media, workspace members, audit history, and asynchronous audit exports from one workspace.
+ContentDock is a multi-tenant headless CMS with a Next.js administration interface and a NestJS API. Manage content, private media, workspace members, audit history, and asynchronous audit exports from one workspace.
 
 ## Features
 

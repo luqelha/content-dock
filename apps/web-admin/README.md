@@ -1,6 +1,6 @@
-﻿# ContentDock admin
+# ContentDock admin
 
-The Next.js frontend for [Atlas Platform](../../README.md), with workspace management, content publishing, private media, members, audit history, and exports.
+The Next.js frontend for [ContentDock](../../README.md), with workspace management, content publishing, private media, members, audit history, and exports.
 
 Install dependencies from the **repository root**, using the root `package-lock.json`. See the [root setup guide](../../README.md#local-development) for infrastructure, environment files, and migrations.
 
