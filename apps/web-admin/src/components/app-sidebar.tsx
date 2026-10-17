@@ -55,23 +55,24 @@ export function AppSidebar() {
   const { user, tenants, activeTenant, setActiveTenant, switching } =
     useTenant();
   const { setOpenMobile } = useSidebar();
+  const workspaceLabel = switching
+    ? "Switching workspace…"
+    : activeTenant?.name || "Select workspace";
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="h-14 justify-center border-b px-3">
         <DropdownMenu>
           <DropdownMenuTrigger
             disabled={switching}
-            aria-label={`Switch workspace: ${activeTenant?.name || "ContentDock"}`}
             className="flex min-w-0 items-center gap-2 rounded-md p-1 text-left focus-visible:outline-2 focus-visible:outline-ring"
           >
-            <span className="min-w-0 flex-1 group-data-[collapsible=icon]:hidden">
+            <span className="min-w-0 flex-1 group-data-[collapsible=icon]:sr-only">
               <span className="block text-sm font-semibold">ContentDock</span>
               <span className="block truncate text-xs text-muted-foreground">
-                {switching
-                  ? "Switching workspace…"
-                  : activeTenant?.name || "Select workspace"}
+                {workspaceLabel}
               </span>
             </span>
+            <span className="sr-only">Switch workspace</span>
             <ChevronsUpDown className="size-3.5 shrink-0 text-muted-foreground" />
           </DropdownMenuTrigger>
           <DropdownMenuContent align="start" className="w-64">

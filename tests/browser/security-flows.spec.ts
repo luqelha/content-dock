@@ -191,6 +191,10 @@ test("workspace dialogs support keyboard focus and export links survive refresh"
   await expect(page).toHaveURL(/\/dashboard/);
   const trigger = page.getByRole("button", { name: "Add Category" });
   await expect(trigger).toBeVisible();
+  // Voice control must be able to use the switcher's full visible label.
+  await expect(
+    page.getByRole("button", { name: /switch workspace/i }),
+  ).toHaveAccessibleName(/ContentDock\s+Browser review workspace/);
   await checkAccessibility(page, testInfo, "categories-light");
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
   await expect(page.locator("html")).toHaveClass(/dark/);
