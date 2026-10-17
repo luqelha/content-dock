@@ -1,229 +1,246 @@
 "use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-
+import { useState, useTransition } from "react";
+import { Plus } from "lucide-react";
+import { Content } from "./columns";
+import { useTenant } from "@/components/providers/tenant-provider";
+import { deleteContent } from "@/actions/contents";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import {
   Table,
-  TableBody,
-  TableCell,
-  TableHead,
   TableHeader,
+  TableBody,
   TableRow,
+  TableHead,
+  TableCell,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { getColumns, Content, CategoryItemRef } from "./columns";
-import { Plus } from "lucide-react";
-import { DeleteModal } from "@/components/dashboard/categories/delete-modal";
-import { CategoryModal } from "@/components/dashboard/categories/category-modal";
-import { deleteContent } from "@/actions/contents";
-import { deleteCategory } from "@/actions/categories";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-
-interface DataTableProps {
+export function DataTable({
+  data,
+  page,
+  total,
+  pageCount,
+  search,
+  status,
+}: {
   data: Content[];
-}
-
-export function DataTable({ data }: DataTableProps) {
+  page: number;
+  total: number;
+  pageCount: number;
+  search: string;
+  status: string;
+}) {
+  const { activeTenant } = useTenant();
   const router = useRouter();
-  const [contentToDelete, setContentToDelete] = useState<Content | null>(null);
-  const [categoryToEdit, setCategoryToEdit] = useState<CategoryItemRef | null>(
-    null,
-  );
-  const [categoryToDelete, setCategoryToDelete] =
-    useState<CategoryItemRef | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
-  const handleEdit = (content: Content) => {
-    router.push(`/dashboard/content/${content.id}`);
-  };
-
-  const handleDelete = (content: Content) => {
-    setContentToDelete(content);
-  };
-
-  const handleCreate = () => {
-    router.push("/dashboard/content/create");
-  };
-
-  const handleEditCategory = (category: CategoryItemRef) => {
-    setCategoryToEdit(category);
-  };
-
-  const handleDeleteCategory = (category: CategoryItemRef) => {
-    setCategoryToDelete(category);
-  };
-
-  const handleDeleteConfirm = async () => {
-    if (!contentToDelete) return;
-    setErrorMsg(null);
-
-    const result = await deleteContent(contentToDelete.id);
-    if (result.error) {
-      console.error("Failed to delete content:", result.error);
-      setErrorMsg(result.error);
-    } else {
-      router.refresh();
-    }
-    setContentToDelete(null);
-  };
-
-  const handleCategoryDeleteConfirm = async () => {
-    if (!categoryToDelete) return;
-    setErrorMsg(null);
-
-    const result = await deleteCategory(categoryToDelete.id);
-    if (result.error) {
-      console.error("Failed to delete category:", result.error);
-      setErrorMsg(result.error);
-    } else {
-      router.refresh();
-    }
-    setCategoryToDelete(null);
-  };
-
-  const handleCategorySaved = () => {
-    router.refresh();
-  };
-
-  // eslint-disable-next-line react-hooks/incompatible-library
-  const table = useReactTable({
-    data,
-    columns: getColumns(
-      handleEdit,
-      handleDelete,
-      handleEditCategory,
-      handleDeleteCategory,
-    ),
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-  });
-
+  const canEdit =
+    activeTenant?.role === "ADMIN" || activeTenant?.role === "EDITOR";
+  const [selected, setSelected] = useState<Content | null>(null);
+  const [pending, start] = useTransition();
+  const [error, setError] = useState("");
+  const href = (next: number) =>
+    `/dashboard/content?${new URLSearchParams({ page: String(next), ...(search ? { search } : {}), ...(status ? { status } : {}) })}`;
   return (
-    <div className="space-y-4">
-      {errorMsg && (
-        <Alert variant="destructive">
-          <AlertDescription>{errorMsg}</AlertDescription>
-        </Alert>
-      )}
-
-      <div className="flex items-center justify-between">
+    <div className="space-y-5">
+      <div className="flex flex-wrap justify-between gap-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
-            Content
-          </h1>
+          <h1 className="text-2xl font-semibold tracking-tight">Content</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Manage your articles, posts, and pages.
+            Manage articles, pages, and their publishing status.
           </p>
         </div>
-        <Button onClick={handleCreate}>
-          <Plus className="mr-2 h-4 w-4" /> Add Content
-        </Button>
+        {canEdit && (
+          <Button render={<Link href="/dashboard/content/create" />}>
+            <Plus className="size-4" />
+            Add content
+          </Button>
+        )}
       </div>
-
-      <div className="rounded-xl border border-border/80 dark:border-neutral-700/80 bg-card overflow-hidden shadow-sm">
+      <form key={search + status} className="flex flex-wrap gap-3">
+        <Input
+          name="search"
+          aria-label="Search content"
+          placeholder="Search content…"
+          defaultValue={search}
+          className="max-w-sm"
+        />
+        <select
+          name="status"
+          aria-label="Filter status"
+          className="erp-select"
+          defaultValue={status}
+        >
+          <option value="">All statuses</option>
+          <option value="DRAFT">Draft</option>
+          <option value="PUBLISHED">Published</option>
+        </select>
+        <Button type="submit" variant="outline">
+          Apply
+        </Button>
+        {(search || status) && (
+          <Link
+            href="/dashboard/content"
+            className="self-center text-xs underline"
+          >
+            Clear
+          </Link>
+        )}
+      </form>
+      {error && (
+        <p role="alert" className="text-sm text-destructive">
+          {error}
+        </p>
+      )}
+      <div className="overflow-hidden rounded-lg border">
         <Table>
-          <TableHeader className="bg-muted/50 dark:bg-neutral-900/50">
-            {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id} className="font-semibold">
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
-                    </TableHead>
-                  );
-                })}
-              </TableRow>
-            ))}
+          <TableHeader>
+            <TableRow className="bg-muted/40">
+              <TableHead className="pl-5">Title</TableHead>
+              <TableHead>Status</TableHead>
+              <TableHead>Category</TableHead>
+              <TableHead>Author</TableHead>
+              <TableHead>Created</TableHead>
+              <TableHead className="text-right pr-5">Actions</TableHead>
+            </TableRow>
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="hover:bg-muted/40 transition-colors"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
-            ) : (
+            {data.map((content) => (
+              <TableRow key={content.id}>
+                <TableCell className="max-w-80 pl-5">
+                  <Link
+                    href={`/dashboard/content/${content.id}`}
+                    className="font-medium hover:underline"
+                  >
+                    {content.title}
+                  </Link>
+                  <p className="mt-1 truncate text-xs text-muted-foreground">
+                    /{content.slug}
+                  </p>
+                </TableCell>
+                <TableCell>
+                  <Badge
+                    variant={
+                      content.status === "PUBLISHED" ? "default" : "secondary"
+                    }
+                  >
+                    {content.status === "PUBLISHED" ? "Published" : "Draft"}
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  {content.category?.name || "Uncategorized"}
+                </TableCell>
+                <TableCell className="text-xs text-muted-foreground">
+                  {content.author?.firstName || content.author?.email || "—"}
+                </TableCell>
+                <TableCell className="whitespace-nowrap text-xs text-muted-foreground">
+                  {new Date(content.createdAt).toLocaleDateString("en-GB", {
+                    timeZone: "UTC",
+                  })}
+                </TableCell>
+                <TableCell className="pr-5 text-right">
+                  <div className="flex justify-end gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      render={
+                        <Link href={`/dashboard/content/${content.id}`} />
+                      }
+                    >
+                      {canEdit ? "Edit" : "View"}
+                    </Button>
+                    {activeTenant?.role === "ADMIN" && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setSelected(content)}
+                      >
+                        Delete
+                      </Button>
+                    )}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+            {!data.length && (
               <TableRow>
                 <TableCell
                   colSpan={6}
-                  className="h-32 text-center text-muted-foreground"
+                  className="h-40 text-center text-muted-foreground"
                 >
-                  No content found. Click &quot;Add Content&quot; to create your
-                  first post.
+                  {search || status
+                    ? "No content matches these filters."
+                    : "No content yet."}
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-
-      <div className="flex items-center justify-end space-x-2 py-2">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+        <span>
+          {total} records · Page {page} of {Math.max(1, pageCount)}
+        </span>
+        <div className="flex gap-2">
+          {page > 1 && (
+            <Button
+              variant="outline"
+              size="sm"
+              render={<Link href={href(page - 1)} />}
+            >
+              Previous
+            </Button>
+          )}
+          {page < pageCount && (
+            <Button
+              variant="outline"
+              size="sm"
+              render={<Link href={href(page + 1)} />}
+            >
+              Next
+            </Button>
+          )}
+        </div>
       </div>
-
-      {/* Reusable Delete Modal for Content */}
-      <DeleteModal
-        isOpen={!!contentToDelete}
-        onClose={() => setContentToDelete(null)}
-        onConfirm={handleDeleteConfirm}
-        title="Delete Content"
-        categoryName={contentToDelete?.title || ""}
-      />
-
-      {/* Reusable Modal for Editing Category */}
-      <CategoryModal
-        isOpen={!!categoryToEdit}
-        onClose={() => setCategoryToEdit(null)}
-        category={categoryToEdit}
-        onSuccess={handleCategorySaved}
-      />
-
-      {/* Reusable Delete Modal for Category */}
-      <DeleteModal
-        isOpen={!!categoryToDelete}
-        onClose={() => setCategoryToDelete(null)}
-        onConfirm={handleCategoryDeleteConfirm}
-        title="Delete Category"
-        categoryName={categoryToDelete?.name || ""}
-      />
+      {selected && (
+        <section
+          role="alertdialog"
+          aria-labelledby="delete-content-title"
+          className="space-y-3 rounded-lg border border-destructive/30 p-5"
+        >
+          <h2 id="delete-content-title" className="text-sm font-semibold">
+            Delete “{selected.title}”?
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            This permanently removes the content from this workspace.
+          </p>
+          <div className="flex gap-2">
+            <Button
+              variant="destructive"
+              disabled={pending}
+              onClick={() =>
+                start(async () => {
+                  const result = await deleteContent(selected.id);
+                  if (result.error) setError(result.error);
+                  else {
+                    setSelected(null);
+                    router.refresh();
+                  }
+                })
+              }
+            >
+              Delete content
+            </Button>
+            <Button
+              variant="outline"
+              disabled={pending}
+              onClick={() => setSelected(null)}
+            >
+              Cancel
+            </Button>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

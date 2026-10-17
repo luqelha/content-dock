@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 import { Category } from '@prisma/client';
 
 export class CategoryEntity implements Category {
@@ -11,18 +11,18 @@ export class CategoryEntity implements Category {
   @ApiProperty()
   slug: string;
 
-  @ApiPropertyOptional()
+  @ApiProperty({ type: String, nullable: true })
   description: string | null;
 
-  @ApiPropertyOptional()
+  @ApiProperty({ type: String, nullable: true })
   parentId: string | null;
 
   @ApiProperty()
   tenantId: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: String, format: 'date-time' })
   createdAt: Date;
 
-  @ApiProperty()
+  @ApiProperty({ type: String, format: 'date-time' })
   updatedAt: Date;
 }

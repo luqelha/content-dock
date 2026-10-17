@@ -38,12 +38,22 @@ describe('AuthController', () => {
   describe('register', () => {
     it('should register a new user', async () => {
       const dto = { email: 'test@example.com', password: 'password123' };
-      const expectedResult = { id: '1', email: 'test@example.com' };
+      const expectedResult = { message: 'Registration received', user: { id: '1' } };
       mockAuthService.register.mockResolvedValueOnce(expectedResult);
 
-      const result = await controller.register(dto);
-      expect(result).toEqual(expectedResult);
+      const req = { registrationUserId: undefined };
+      const result = await controller.register(dto, req);
+      expect(result).toEqual({ message: expectedResult.message });
+      expect(req.registrationUserId).toBe('1');
       expect(mockAuthService.register).toHaveBeenCalledWith(dto);
+    });
+
+    it('never exposes account identifiers in the public registration response', async () => {
+      const dto = { email: 'test@example.com', password: 'a unique passphrase' };
+      for (const user of [{ id: '1' }, null]) {
+        mockAuthService.register.mockResolvedValueOnce({ message: 'Registration received', user });
+        expect(await controller.register(dto, {})).toEqual({ message: 'Registration received' });
+      }
     });
   });
 

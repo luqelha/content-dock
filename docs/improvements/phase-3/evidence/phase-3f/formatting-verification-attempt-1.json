@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-15T11:09:49.413Z",
+  "method": "Compare TypeScript emitted JavaScript before/after formatting with fixed compiler options; separate from regression tests",
+  "checks": [
+    {
+      "file": "tests/browser/auth-forms.spec.ts",
+      "referenceCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+      "beforeSha256": "686e451dff8c5ef4513b4f2150f2abe448883b16c28863da1e2aecc6924005e8",
+      "afterSha256": "655f4b7f81406ea8d12ca200bb53761068adad7dd18ab28700ebd21411ff13f3",
+      "emittedJavaScriptIdentical": false,
+      "emittedJavaScriptSha256": "e8c3da039751380535ba97d892ee3af7203e1835eacad477148a51cce1b2ed67"
+    },
+    {
+      "file": "apps/api/src/modules/auth/services/auth.service.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "beforeSha256": "c3c88e2f31b362f434bd90e52d2cbcca42dc2b19ce9f1a0f0f8db1b07a9a4cde",
+      "afterSha256": "7088013827600eb60ec67733bf1651fd9319c3b890d914c13e0f19fec7696359",
+      "emittedJavaScriptIdentical": true,
+      "emittedJavaScriptSha256": "bff8dc6b052f3a9322a2366efdc3f19315a5e2e688353c831d79a5c6ecd1ac4e"
+    },
+    {
+      "file": "apps/api/test/unit/modules/user/user.service.spec.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "beforeSha256": "2075587aee0a1127929c215fadf8020279adddc3cbd0cb3dd57bc2763cb5cd23",
+      "afterSha256": "15a72310c7882614def0a14427306298a1c48cf4693f5bb4c4d5097b259680b2",
+      "emittedJavaScriptIdentical": false,
+      "emittedJavaScriptSha256": "3d3b975ba969ac46ce285f1a7253b567cde337002ee14bfd286820b24fb2c698"
+    },
+    {
+      "file": "apps/api/test/unit/security/audit-attribution.spec.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "beforeSha256": "2728c6d6d8fae50dd8502553a8ae023a2e8c61d0b04ef6107cd0b19adf1e11ae",
+      "afterSha256": "cc663f762406dbcdac6cf290a3c81333df943454276230447e7272f76c7d1447",
+      "emittedJavaScriptIdentical": false,
+      "emittedJavaScriptSha256": "f1b27bb9ae7a19eea9e4047d5e9d5cc856943df6854d87623765614c1bb24947"
+    }
+  ],
+  "interpretation": "Raw TypeScript emitter preserves some source layout. Unequal raw output does not establish a logic change; see canonical formatting verification."
+}

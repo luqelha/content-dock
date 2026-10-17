@@ -1,0 +1,43 @@
+{
+  "at": "2026-10-15T11:41:10.285Z",
+  "baselineFiles": 501,
+  "unchanged": 493,
+  "modified": [
+    ".github/workflows/ci.yml",
+    "apps/api/src/modules/auth/services/auth.service.ts",
+    "apps/api/test/unit/modules/user/user.service.spec.ts",
+    "apps/api/test/unit/security/audit-attribution.spec.ts",
+    "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+    "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+    "tests/browser/auth-forms.spec.ts",
+    "tests/browser/security-flows.spec.ts"
+  ],
+  "missing": [],
+  "unexpectedModified": [],
+  "headUnchanged": true,
+  "branchUnchanged": true,
+  "indexUnchanged": true,
+  "runtimeAndDeploymentSourceMatchesCandidate": true,
+  "candidateDocumentationDrift": [
+    {
+      "path": "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+      "expected": "1c763f85b9586139fd1829e1223b69d78114e20c",
+      "actual": "c0e67fba25229505650d6591e36ac53831adddc8",
+      "documentationOnly": true
+    },
+    {
+      "path": "docs/improvements/phase-3/PHASE-3F-RELEASE-EVIDENCE.md",
+      "expected": "8d79329faf0f23ffdb8a0b95c2d980bee161fc55",
+      "actual": "5021f8fa0fd20484cd92fec1afebee074bb32f75",
+      "documentationOnly": true
+    },
+    {
+      "path": "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+      "expected": "14896686b01c43d2a29a22991dfde0deff9caf93",
+      "actual": "5e01d396bab50fcb5840d76f722fdcb1f1c24371",
+      "documentationOnly": true
+    }
+  ],
+  "unexpectedSourceDrift": [],
+  "unrepresentedSource": []
+}

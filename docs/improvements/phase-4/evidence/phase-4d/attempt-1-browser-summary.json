@@ -1,0 +1,731 @@
+{
+  "generatedAt": "2026-10-16T03:35:45.544Z",
+  "reportSha256": "a3b01f5dc91b953bd1d4b9cc81551bd4c9836fbda7018ee024caa479e640ead3",
+  "stats": {
+    "startTime": "2026-10-16T03:28:17.615Z",
+    "duration": 386612.277,
+    "expected": 22,
+    "skipped": 0,
+    "unexpected": 11,
+    "flaky": 0
+  },
+  "errors": [],
+  "tests": [
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "chromium",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in light-registration-error\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#fef2f2\",\n+               \"contrastRatio\": 4.36,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#e7000b\",\n+               \"fontSize\": \"9.8pt (13px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, "
+      ],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".border-red-200"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "chromium",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in dark-home\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 373\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#030303\",\n+               \"contrastRatio\": 4.22,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#717171\",\n+               \"fontSize\": \"9.0pt (12px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9."
+      ],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".hidden"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-3"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #717171, background color: #090909, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(1) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(2) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(3) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(4) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".py-6 > span"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".hover\\:text-foreground[href$=\"login\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "firefox",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in light-registration-error\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#fef2f2\",\n+               \"contrastRatio\": 4.36,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#e7000b\",\n+               \"fontSize\": \"9.8pt (13px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, "
+      ],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".border-red-200"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "firefox",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in dark-home\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 373\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#030303\",\n+               \"contrastRatio\": 4.22,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#717171\",\n+               \"fontSize\": \"9.0pt (12px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9."
+      ],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".hidden"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-3"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #717171, background color: #090909, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(1) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(2) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(3) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(4) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".py-6 > span"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".hover\\:text-foreground[href$=\"login\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in light-registration-error\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#fef2f2\",\n+               \"contrastRatio\": 4.36,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#e7000b\",\n+               \"fontSize\": \"9.8pt (13px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, "
+      ],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".border-red-200"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.36 (foreground color: #e7000b, background color: #fef2f2, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in dark-home\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 373\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#030303\",\n+               \"contrastRatio\": 4.22,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#717171\",\n+               \"fontSize\": \"9.0pt (12px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9."
+      ],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".hidden"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".uppercase"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".mt-3"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.07 (foreground color: #717171, background color: #090909, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(1) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(2) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(3) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    "article:nth-child(4) > div > .mt-2.leading-6"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".py-6 > span"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".hover\\:text-foreground[href$=\"login\"]"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.22 (foreground color: #717171, background color: #030303, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: expect(locator).toHaveAttribute(expected) failed\n\nLocator:  getByLabel('Password', { exact: true })\nExpected: \"password\"\nReceived: \"text\"\nTimeout:  5000ms\n\nCall log:\n  - Expect \"toHaveAttribute\" getByLabel('Password', { exact: true }) with timeout 5000ms\n  - waiting for getByLabel('Password', { exact: true })\n    13 × locator resolved to <input type=\"text\" required=\"\" id=\"password\" minlength=\"15\" maxlength=\"72\" name=\"password\" data-slot=\"input\" autocorrect=\"off\" spellcheck=\"false\" aria-invalid=\"false\" autocapitalize=\"none\" autocomplete=\"new-password\" aria-describedby=\"password-hint\" class=\"h-8 w-full min-w-0 rounded-lg bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus…/>\n       - unexpected value \"text\"\n\n\n  46 |     .click();\n  47 |   await expect(confirmation).toHaveAttribute(\"type\", \"text\");\n> 48 |   await expect(password).toHaveAttribute(\"type\", \"password\");\n     |                          ^\n  49 |   await page\n  50 |     .getByRole(\"button\", { name: \"Hide confirmation password\", exact: true })\n  51 |     "
+      ],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "chromium",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in categories-light\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#f5f5f5\",\n+               \"contrastRatio\": 4.34,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#737373\",\n+               \"fontSize\": \"7.5pt (10px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font siz"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "firefox",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in categories-light\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#f5f5f5\",\n+               \"contrastRatio\": 4.34,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#737373\",\n+               \"fontSize\": \"7.5pt (10px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font siz"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Test timeout of 90000ms exceeded.",
+        "Error: locator.click: Test timeout of 90000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Add Category' })\n\n\n  50 |   await switchTo(\"Isolation Alpha\");\n  51 |   await page.goto(\"/dashboard/categories\");\n> 52 |   await page.getByRole(\"button\", { name: \"Add Category\" }).click();\n     |                                                            ^\n  53 |   const dialog = page.getByRole(\"dialog\");\n  54 |   await dialog\n  55 |     .getByLabel(\"Name\", { exact: true })\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:52:60"
+      ],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in categories-light\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 58\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#f5f5f5\",\n+               \"contrastRatio\": 4.34,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#737373\",\n+               \"fontSize\": \"7.5pt (10px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font siz"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 4.34 (foreground color: #737373, background color: #f5f5f5, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

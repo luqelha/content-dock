@@ -1,0 +1,24 @@
+{
+  "operation": "alertmanager",
+  "startedAt": "2026-10-15T12:55:04.470Z",
+  "finishedAt": "2026-10-15T12:55:05.045Z",
+  "command": [
+    "docker",
+    "run",
+    "--name",
+    "atlas-phase4a-amcfg-1792068904470",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/bin/amtool",
+    "-v",
+    "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+    "prom/alertmanager:v0.34.1",
+    "check-config",
+    "/etc/atlas/alertmanager.yml"
+  ],
+  "exitCode": 0,
+  "log": "check-alertmanager-1792068905044.log",
+  "logSha256": "33963887004956360ba29e04eb58ec2d0ddb94e217355d4dd8e6718b3afe20fe",
+  "scope": "Working tree validation, not staging or production"
+}

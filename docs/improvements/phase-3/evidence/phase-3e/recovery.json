@@ -1,0 +1,10 @@
+{
+  "name": "recovery",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 84398,
+  "finishedAt": "2026-10-14T03:58:06.357Z"
+}

@@ -51,6 +51,8 @@
 }
 
 :root {
+  --font-sans: "Inter Variable", Arial, sans-serif;
+  --font-geist-mono: Consolas, monospace;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -62,7 +64,7 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: oklch(0.5 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
@@ -97,7 +99,7 @@
   --secondary: oklch(0.18 0 0);
   --secondary-foreground: oklch(0.94 0 0);
   --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.55 0 0);
+  --muted-foreground: oklch(0.68 0 0);
   --accent: oklch(0.18 0 0);
   --accent-foreground: oklch(0.94 0 0);
   --destructive: oklch(0.704 0.191 22.216);
@@ -128,6 +130,52 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+.erp-select {
+  height: 2rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-md);
+  padding: 0 0.625rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.8125rem;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border: 2px solid var(--foreground);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  background: var(--background);
+  color: var(--foreground);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+.erp-select:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+.erp-select:disabled {
+  opacity: 0.55;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

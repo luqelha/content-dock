@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-15T12:50:47.645Z",
+  "containerId": "339eda1787c432ff5660f52c01d2421a0b763af96c1824ab136d96bf41c1444d",
+  "name": "atlas-phase4a-portprobe-1792068644043",
+  "networkInternal": true,
+  "configured": {
+    "9091/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": ""
+      }
+    ]
+  },
+  "actual": {
+    "9091/tcp": []
+  },
+  "state": "running"
+}

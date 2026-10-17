@@ -1,0 +1,156 @@
+{
+  "startedAt": "2026-10-15T10:16:17.439Z",
+  "scope": "isolated-local-synthetic",
+  "steps": [
+    {
+      "name": "fresh project config, secrets separation, no published ports",
+      "status": "passed",
+      "at": "2026-10-15T10:16:18.375Z"
+    },
+    {
+      "name": "atlas-phase3e-source-4293c787fa: effective runtime grants and eight denied operations",
+      "status": "passed",
+      "at": "2026-10-15T10:16:38.497Z"
+    },
+    {
+      "name": "atlas-phase3e-source-4293c787fa: resource isolation",
+      "status": "passed",
+      "at": "2026-10-15T10:17:22.208Z"
+    },
+    {
+      "name": "atlas-phase3e-source-4293c787fa: seed smoke",
+      "status": "passed",
+      "at": "2026-10-15T10:17:23.727Z",
+      "mode": "seed",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "freshWorkerExport": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "quiesced DB plus encrypted vault backup",
+      "status": "passed",
+      "at": "2026-10-15T10:17:30.046Z",
+      "seconds": 0.997,
+      "databaseSha256": "db55bde876cc15cbf9fb1eeedab2fbd680673b525dcdfd3ecc1ce373f15bd906",
+      "vaultSha256": "6b98b79249c599392e84014cd71a9719535ef7ab5cb519a7b696e9bd6d87f5ae"
+    },
+    {
+      "name": "atlas-phase3e-restore-16df673b6b: effective runtime grants and eight denied operations",
+      "status": "passed",
+      "at": "2026-10-15T10:17:54.001Z"
+    },
+    {
+      "name": "atlas-phase3e-restore-16df673b6b: resource isolation",
+      "status": "passed",
+      "at": "2026-10-15T10:18:04.104Z"
+    },
+    {
+      "name": "atlas-phase3e-restore-16df673b6b: verify smoke",
+      "status": "passed",
+      "at": "2026-10-15T10:18:06.865Z",
+      "mode": "verify",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "freshWorkerExport": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "missing and incorrect encryption key negative controls",
+      "status": "passed",
+      "at": "2026-10-15T10:18:07.664Z"
+    },
+    {
+      "name": "restore DB rows, grants, encrypted files, saved key/config and application checks",
+      "status": "passed",
+      "at": "2026-10-15T10:18:07.665Z",
+      "seconds": 36.066,
+      "syntheticRpoLostRows": 0
+    }
+  ],
+  "dockerEndpointKind": "local named pipe",
+  "images": {
+    "candidate": {
+      "api": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "web": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1"
+    },
+    "previous": {}
+  },
+  "existingContainers": [
+    "19c7c475dcf8|atlas_postgres|postgres:15-alpine",
+    "2057b6d16f61|atlas_rabbitmq|rabbitmq:3-management-alpine",
+    "58f6c076a444|atlas_redis|redis:7-alpine"
+  ],
+  "unverified": [
+    "Rollback to a previous compatible release was not executed in Phase 3E"
+  ],
+  "vaultManifest": {
+    "storage/exports/export-73dfd6d9-690e-4dc8-b5d3-f597d5419e44-291f82c8-c51e-4e77-98de-3c84e8dcf7cf.zip.enc": "2f336356d8847295e8827fc3f3f564b51ebb5b9571c31d35d269f96fe23a1f51",
+    "storage/uploads/1516bf90-4b70-4883-a96f-2cd13fc3fba4.png.enc": "4783a3999b9d39952b31d6bf0aa62c31f48f231a6fa7db133a8b7c4aad177d49"
+  },
+  "databaseManifest": {
+    "Tenant": {
+      "rows": 2,
+      "sha256": "8130cafb3d04209a1076d11eb66938acfbcbd3f7b5da5f96b75e6ccd7de956e6"
+    },
+    "User": {
+      "rows": 2,
+      "sha256": "d57c1b4b30337840b15565f60a109a2f64d87824ce2985708cf9101b1794360a"
+    },
+    "TenantUser": {
+      "rows": 2,
+      "sha256": "3e5669e2f318e939f76693c21d0da21214695dd7630fa7f7a454568d1e4a77fb"
+    },
+    "Category": {
+      "rows": 1,
+      "sha256": "3db4e4008e67643bb18584e54c117869ef7a79c7573d0f5572c402a8e100a4d1"
+    },
+    "Content": {
+      "rows": 1,
+      "sha256": "8300f3757b7cc3fb7dd0e971874e6574a3a1510dc0e780474b9a603b57877d6d"
+    },
+    "Media": {
+      "rows": 1,
+      "sha256": "b8b66dd44431d36cfbb5cefb7de6fabfa56c97b275e93de40cf7adb8236b3638"
+    },
+    "AuditLog": {
+      "rows": 10,
+      "sha256": "73e9459bbad2cfd096404dd8bfea9ce57d7d225c3777f5767a79f75f81cfbcd8"
+    },
+    "ExportTask": {
+      "rows": 1,
+      "sha256": "b9fe03506e538b79869153fe84102920e2f792f85c0e2e7ba1056f3ff74e4db0"
+    },
+    "_prisma_migrations": {
+      "rows": 4,
+      "sha256": "64ff4470d250c074a58e03c6e22096cfe3c506327199cd4d89ed8e367dcf0172"
+    }
+  },
+  "status": "passed",
+  "projects": [
+    "atlas-phase3e-source-4293c787fa",
+    "atlas-phase3e-restore-16df673b6b"
+  ],
+  "privateArtifacts": {
+    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase3e-IWl6KP",
+    "warning": "Synthetic credentials/config; backup and fixture only when runtime drill executes. Never commit."
+  },
+  "finishedAt": "2026-10-15T10:18:10.241Z",
+  "resources": "Created project containers stopped; all volumes retained; no down -v or database reset."
+}

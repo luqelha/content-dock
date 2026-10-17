@@ -1,0 +1,13 @@
+{
+  "name": "lintApi",
+  "command": [
+    "npm",
+    "run",
+    "lint",
+    "--workspace=@atlas/api"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 42961,
+  "finishedAt": "2026-10-14T03:35:01.238Z"
+}

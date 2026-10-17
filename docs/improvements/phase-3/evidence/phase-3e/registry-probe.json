@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-15",
+  "scope": "temporary container; no data mount; Docker bridge",
+  "target": "https://registry.npmjs.org/-/ping",
+  "exitCode": 0,
+  "body": {},
+  "limitations": "Ping does not verify all tarballs or Prisma binary download endpoints."
+}

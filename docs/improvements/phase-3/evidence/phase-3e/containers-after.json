@@ -1,0 +1,149 @@
+{
+  "at": "2026-10-15T10:18:50.622Z",
+  "comparisonBaseline": "containers-resume-before.json; original October 14 baseline not comparable after interruption",
+  "existingChecked": 3,
+  "existingChanges": [],
+  "drillContainerCount": 14,
+  "drillContainersRunning": [],
+  "projectVolumes": [
+    {
+      "project": "atlas-phase3e-source-4293c787fa",
+      "volumes": [
+        "atlas-phase3e-source-4293c787fa_api_storage",
+        "atlas-phase3e-source-4293c787fa_postgres_data_prod",
+        "atlas-phase3e-source-4293c787fa_rabbitmq_data_prod",
+        "atlas-phase3e-source-4293c787fa_redis_data_prod"
+      ]
+    },
+    {
+      "project": "atlas-phase3e-restore-16df673b6b",
+      "volumes": [
+        "atlas-phase3e-restore-16df673b6b_api_storage",
+        "atlas-phase3e-restore-16df673b6b_postgres_data_prod",
+        "atlas-phase3e-restore-16df673b6b_rabbitmq_data_prod",
+        "atlas-phase3e-restore-16df673b6b_redis_data_prod"
+      ]
+    }
+  ],
+  "containers": [
+    {
+      "id": "a4f8ba8617e93cb62c64b598436fa1483ae9e8d12ac314c5edb4926eb319141a",
+      "name": "/atlas-phase3e-restore-16df673b6b-nginx-1",
+      "image": "sha256:72aeb3308ef6cb3118242fb16389518923916dfa206e32d1a8377acc328b9870",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "8c648e44794f7fd4ff0bae4eb014d1b30833f007c34bb3a4df6d9ac1bf4bb37f",
+      "name": "/atlas-phase3e-restore-16df673b6b-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "75d53fd0225970ae3c5b35cdea9e33bf0d31530ee583db955f857f340f27cae6",
+      "name": "/atlas-phase3e-restore-16df673b6b-vault",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "exited",
+      "project": null
+    },
+    {
+      "id": "c352c03fefa76b2486a6d52a94e840c17bd3cc5ab418b00107245540b158fd34",
+      "name": "/atlas-phase3e-restore-16df673b6b-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "3259985b65e9d9b74178a401313498307ddf9a63826c989f90e91956ad7d9f4d",
+      "name": "/atlas-phase3e-restore-16df673b6b-postgres-1",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "cb0a667c1e58e0bab0af983553f7f48a8c6d0be82e80892ccdfe84eb24da0a38",
+      "name": "/atlas-phase3e-restore-16df673b6b-rabbitmq-1",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "c2d434fba6bacfb904b67167a1138e27363a25d9725d4d7eb8bef5ec97c8bc0d",
+      "name": "/atlas-phase3e-restore-16df673b6b-redis-1",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "status": "exited",
+      "project": "atlas-phase3e-restore-16df673b6b"
+    },
+    {
+      "id": "1a6eb580f4c5d2f04dce490c8886251e3c2cca32cd1119e1cfd51ee7a9c32277",
+      "name": "/atlas-phase3e-source-4293c787fa-backup",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "exited",
+      "project": null
+    },
+    {
+      "id": "436bb68596c610120b06e7f8131b73043951f70ae07c8bb1c2f948bbdb8e3ded",
+      "name": "/atlas-phase3e-source-4293c787fa-nginx-1",
+      "image": "sha256:72aeb3308ef6cb3118242fb16389518923916dfa206e32d1a8377acc328b9870",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "0e670f69b6e4f5eea9bac6ce3e6795a416e171f7e9c8c1b91044e44a6ad6aaaf",
+      "name": "/atlas-phase3e-source-4293c787fa-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "41ff94d600e6f9723c3132f9c2e93e51874d4ee43d2b7b5806168f0286ca470f",
+      "name": "/atlas-phase3e-source-4293c787fa-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "bed2e245adbda663835d8a91315b139e29c8dbfeb1c9857b89ee44cf4c026f76",
+      "name": "/atlas-phase3e-source-4293c787fa-postgres-1",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "5b6fe8ae5303a6e3692c397afb9b4d84da2d6301d55b08d4ba355ecdd70dfad7",
+      "name": "/atlas-phase3e-source-4293c787fa-rabbitmq-1",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "35a8e8bee94f742a529596f72decf6d969e5706871b658cd8a084ad2dd0aa43f",
+      "name": "/atlas-phase3e-source-4293c787fa-redis-1",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "status": "exited",
+      "project": "atlas-phase3e-source-4293c787fa"
+    },
+    {
+      "id": "19c7c475dcf82b10bbd2c5972cfbb817223d53a61765bf3b57952ae7f757aa86",
+      "name": "/atlas_postgres",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "running",
+      "project": "atlas-platform"
+    },
+    {
+      "id": "2057b6d16f611f7cd9163a24bb91940db1e81239a71cf60b266301c58a081593",
+      "name": "/atlas_rabbitmq",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "running",
+      "project": "atlas-platform"
+    },
+    {
+      "id": "58f6c076a4448d4e112587d92f3e036e2452fcca0a0e0c9e9af1466b54da8a49",
+      "name": "/atlas_redis",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "status": "running",
+      "project": "atlas-platform"
+    }
+  ]
+}

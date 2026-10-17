@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-15T13:13:21.681Z",
+  "syntax": [
+    {
+      "file": "scripts/observability/alert-journal.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/build-dashboard.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/build-rule-tests.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/config.test.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/database-regression.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/isolate-test-vault.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/resilience-drill.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/summarize.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "scripts/observability/validate.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "ops/observability/alert-journal.cjs",
+      "exitCode": 0
+    }
+  ],
+  "formatPassed": true,
+  "links": {
+    "checked": 29,
+    "broken": []
+  },
+  "allAlertRulesHaveTests": true
+}

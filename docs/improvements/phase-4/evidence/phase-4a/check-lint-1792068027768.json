@@ -1,0 +1,16 @@
+{
+  "operation": "lint",
+  "startedAt": "2026-10-15T12:39:50.772Z",
+  "finishedAt": "2026-10-15T12:40:27.771Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd run lint --workspace=@atlas/api"
+  ],
+  "exitCode": 0,
+  "log": "check-lint-1792068027768.log",
+  "logSha256": "d0e48794271599a3164a2187bc55242dcc7e17b41e809639141ac44c554dcf5a",
+  "scope": "Working tree validation, not staging or production"
+}

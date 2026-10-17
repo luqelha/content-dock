@@ -1,0 +1,31 @@
+{
+  "measuredAt": "2026-10-15T21:52:47.973Z",
+  "results": [
+    {
+      "tenantId": "4ab24d3b-f679-4855-86ca-e695989c0548",
+      "countsAndRecentOrderMatchDatabase": true,
+      "publishedFilterAndSummaryValid": true
+    },
+    {
+      "tenantId": "c1acfd78-ce89-441c-af46-c2a9ef24701d",
+      "countsAndRecentOrderMatchDatabase": true,
+      "publishedFilterAndSummaryValid": true
+    },
+    {
+      "tenantId": "e53dee42-eca3-49eb-ae2e-d2cf087270b9",
+      "countsAndRecentOrderMatchDatabase": true,
+      "publishedFilterAndSummaryValid": true
+    },
+    {
+      "tenantId": "a596fae2-eb41-4c92-a55c-b481db32b386",
+      "countsAndRecentOrderMatchDatabase": true,
+      "publishedFilterAndSummaryValid": true
+    }
+  ],
+  "crossTenantContentDenied": true,
+  "crossTenantMediaDenied": true,
+  "freshDatabaseMigrationsPassed": true,
+  "freshDatabase": "atlas_phase4b_test_2eb6875e73_fresh_test",
+  "repeatedDeployPassed": true,
+  "validIndexes": 2
+}

@@ -1,0 +1,18 @@
+{
+  "operation": "imageApi",
+  "startedAt": "2026-10-15T12:32:59.646Z",
+  "finishedAt": "2026-10-15T12:40:51.280Z",
+  "command": [
+    "docker",
+    "build",
+    "-f",
+    "apps/api/Dockerfile",
+    "-t",
+    "atlas-api:phase4a",
+    "."
+  ],
+  "exitCode": 0,
+  "log": "check-imageApi-1792068051277.log",
+  "logSha256": "1378c531309b81b23cee870a957887068c42bd2af375aac2ffb154517c731d23",
+  "scope": "Working tree validation, not staging or production"
+}

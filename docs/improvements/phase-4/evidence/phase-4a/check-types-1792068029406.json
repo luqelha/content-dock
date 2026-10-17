@@ -1,0 +1,16 @@
+{
+  "operation": "types",
+  "startedAt": "2026-10-15T12:40:25.440Z",
+  "finishedAt": "2026-10-15T12:40:29.408Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd exec --workspace=@atlas/api -- tsc --noEmit"
+  ],
+  "exitCode": 0,
+  "log": "check-types-1792068029406.log",
+  "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+  "scope": "Working tree validation, not staging or production"
+}

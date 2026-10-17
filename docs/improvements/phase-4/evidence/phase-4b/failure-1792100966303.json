@@ -1,0 +1,6 @@
+{
+  "action": "indexes",
+  "label": "migrate",
+  "project": "atlas-phase4b-2eb6875e73",
+  "error": "time=\"2026-10-16T04:49:24+07:00\" level=warning msg=\"Found orphan containers (atlas-phase4b-2eb6875e73-migrate) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.\"\n Container atlas-phase4b-2eb6875e73-migrate-1792100964792 Creating \n Container atlas-phase4b-2eb6875e73-migrate-1792100964792 Created \nError: P3018\n\nA migration failed to apply. New migrations cannot be applied before the error is recovered from. Read more about how to resolve migration issues in a production database: https://pris.ly/d/migrate-resolve\n\nMigration name: 20261016000000_dashboard_query_indexes\n\nDatabase error code: 25001\n\nDatabase error:\nERROR: CREATE INDEX CONCURRENTLY cannot run inside a transaction block\n\nDbError { severity: \"ERROR\", parsed_severity: Some(Error), code: SqlState(E25001), message: \"CREATE INDEX CONCURRENTLY cannot run inside a transaction block\", detail: None, hint: None, position: None, where_: None, schema: None, table: None, column: None, datatype: None, constraint: None, file: Some(\"xact.c\"), line: Some(3486), routine: Some(\"PreventInTransactionBlock\") }\n\n\n\n"
+}

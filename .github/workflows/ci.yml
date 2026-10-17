@@ -1,87 +1,107 @@
-name: CI/CD Pipeline
-
+name: Fullstack validation
 on:
   push:
-    branches: [ "main" ]
+    branches: [main, "release/phase-3f-*"]
   pull_request:
-    branches: [ "main" ]
-
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build-and-test:
+  validate:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 50
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/atlas_test?schema=public
+      REDIS_URL: redis://127.0.0.1:6379
+      RABBITMQ_URL: amqp://guest:guest@127.0.0.1:5672
+      JWT_SECRET: ci-only-access-secret-not-for-production
+      JWT_REFRESH_SECRET: ci-only-refresh-secret-not-for-production
+      AUTH_PROXY_SECRET: ci-only-auth-proxy-secret-not-for-production
+      NODE_ENV: test
+      STORAGE_RETENTION_ENABLED: "false"
+      STORAGE_RETENTION_DRY_RUN: "true"
     services:
       postgres:
         image: postgres:15-alpine
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: atlas_db
-        ports:
-          - 5432:5432
+          POSTGRES_DB: atlas_test
+        ports: ["5432:5432"]
         options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
       redis:
         image: redis:7-alpine
-        ports:
-          - 6379:6379
+        ports: ["6379:6379"]
         options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 5s --health-retries 10
       rabbitmq:
         image: rabbitmq:3-management-alpine
-        env:
-          RABBITMQ_DEFAULT_USER: guest
-          RABBITMQ_DEFAULT_PASS: guest
-        ports:
-          - 5672:5672
-          - 15672:15672
-
+        ports: ["5672:5672"]
+        options: >-
+          --health-cmd "rabbitmq-diagnostics -q ping" --health-interval 10s --health-timeout 5s --health-retries 10
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '24'
-        cache: 'npm'
-
-    - name: Create .env file
-      run: cp apps/api/.env.example apps/api/.env
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Generate Prisma client
-      working-directory: apps/api
-      run: npm run prisma:generate
-
-    - name: Run database migrations
-      working-directory: apps/api
-      run: npx prisma db push
-
-    - name: Lint (Monorepo)
-      run: npm run lint
-
-    - name: Build (Monorepo)
-      run: npm run build
-
-    - name: Unit Tests
-      working-directory: apps/api
-      run: npm run test
-
-    - name: Integration Tests
-      working-directory: apps/api
-      run: npm run test:int
-
-    - name: E2E Tests
-      working-directory: apps/api
-      run: npm run test:e2e
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm install --global npm@10.9.9
+      - run: npm ci
+      - run: npm run prisma:generate --workspace=@atlas/api
+      - run: npx prisma migrate deploy
+        working-directory: apps/api
+      - name: Provision isolated runtime role
+        run: psql "$DATABASE_URL" -X -v ON_ERROR_STOP=1 -f scripts/database/create-runtime-role.sql
+        env:
+          # psql does not accept Prisma's schema query parameter.
+          DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/atlas_test
+          ATLAS_APP_PASSWORD: ci-only-runtime-password-not-for-production
+      - run: npm run test:security:db
+        env:
+          DATABASE_APP_URL: postgresql://atlas_app:ci-only-runtime-password-not-for-production@127.0.0.1:5432/atlas_test?schema=public
+      - run: npm run format:check:reliability
+      - run: npm run lint
+      - run: npm exec --workspace=@atlas/api -- tsc --noEmit
+      - run: npm run typecheck --workspace=@atlas/web-admin
+      - run: node --test scripts/contracts/*.test.cjs
+      - run: npm run test:security
+      - run: npm run test:observability
+      - run: npm audit --omit=dev --audit-level=moderate
+      - run: npm run audit:dependencies
+      - run: npm run maintenance:dependencies
+      - run: node --test scripts/maintenance/*.test.cjs
+      - run: npm run test:cov --workspace=@atlas/api -- --runInBand
+      - run: npm run test:int --workspace=@atlas/api
+      - run: npm run test:e2e --workspace=@atlas/api
+      - run: npm run build
+        env:
+          NODE_ENV: production
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run test:browser
+        timeout-minutes: 25
+        env:
+          DATABASE_APP_URL: postgresql://atlas_app:ci-only-runtime-password-not-for-production@127.0.0.1:5432/atlas_test?schema=public
+          STORAGE_ENCRYPTION_KEY: "1111111111111111111111111111111111111111111111111111111111111111"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: validation-results
+          path: |
+            apps/api/coverage
+            playwright-report
+            test-results
+            artifacts/dependency-audit
+            artifacts/maintenance
+            docs/improvements/phase-4/evidence/phase-4a/check-*.json
+            docs/improvements/phase-4/evidence/phase-4a/check-*.log
+          retention-days: 7
+      - name: Build API container
+        run: docker build -f apps/api/Dockerfile -t atlas-api:ci .
+      - name: Build web container
+        run: docker build -f apps/web-admin/Dockerfile -t atlas-web:ci .

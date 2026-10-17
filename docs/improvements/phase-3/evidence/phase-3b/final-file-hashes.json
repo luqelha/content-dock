@@ -1,0 +1,17 @@
+{
+  "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "scope": "working tree, not committed release",
+  "sha256": {
+    "scripts/security/phase3b-drill.cjs": "109b30e035bf7c87488da1718f041f81be01704f3f05a1099c7355a96c43cd9e",
+    "scripts/security/phase3b-smoke.cjs": "196cd2e8898b1ab0e28cf52ce1fae5219d4250e367b0ace35c154cfb41e0ac67",
+    "scripts/database/create-runtime-role.sql": "a2d76c93907999d665384ea6d1608dc72e63b282d673eb31b530982a113c0738",
+    "scripts/database/verify-runtime-role.sql": "bcd21059453c522811c5330aaf0ee2073b4b591ceba35357622ee99a0c51b641",
+    "docker-compose.prod.yml": "8be09e5cfd870b5696b8d33f782cd874b635765e999f75a38f64d87e938e86d7",
+    "apps/api/Dockerfile": "f18ae35e3fa4f83377222b81ebaf36d8a4d3f00cb3fa8c92d7cba62ca9cfcfda",
+    "apps/web-admin/Dockerfile": "d5c287b9f93adae9adb5704fff19725c8a8f22d7357e3a7d3d66b1657ce3229c",
+    "nginx/nginx.conf": "aa09df4650fa5cc783dd72d03fb74f5afdaf98430735a05967e275faa8f39138",
+    "package-lock.json": "48512135091df182440f5db90151c893cf4be7ff5fcd067f182e350b083d15a0",
+    "docs/improvements/phase-3/PRODUCTION-READINESS.md": "02c0090f21fcb1d5641e5a660c23443584740fccfa5c8687c6292a36c0d15fb6",
+    "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md": "37df9ecbefbf9762a5ea5a713bf7868be5ad773a41b9994f95bcff89c3b759dd"
+  }
+}

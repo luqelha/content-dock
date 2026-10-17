@@ -1,0 +1,12 @@
+{
+  "checkedFiles": 440,
+  "unchanged": 437,
+  "intentionalDocumentationChanges": [
+    "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md",
+    "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+    "docs/improvements/phase-3/TEST-COVERAGE-REPORT.md"
+  ],
+  "unexpectedChanges": [],
+  "missing": [],
+  "scope": "Existing non-ignored files; generated files and Docker state are separate"
+}

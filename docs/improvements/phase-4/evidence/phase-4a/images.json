@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-15T13:13:19.961Z",
+  "images": [
+    {
+      "id": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "tags": [
+        "atlas-api:phase4a"
+      ],
+      "repoDigests": [
+        "atlas-api@sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "id": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "tags": [
+        "atlas-alert-journal:phase4a"
+      ],
+      "repoDigests": [
+        "atlas-alert-journal@sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "id": "sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e",
+      "tags": [
+        "prom/prometheus:v3.15.0"
+      ],
+      "repoDigests": [
+        "prom/prometheus@sha256:efd719c99d83b060d9daefdcf00360461adf279f45ef5391f8d111892118753e"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "id": "sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a",
+      "tags": [
+        "prom/alertmanager:v0.34.1"
+      ],
+      "repoDigests": [
+        "prom/alertmanager@sha256:e9733bafb1bdef9b00e25a21f8f99dc26a22224bf16641ad754d1649f4c3357a"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "id": "sha256:dbbc38ea21103cefb50396340cd88afec779c7e070b0a7bf5a75b4ce46651d3f",
+      "tags": [
+        "grafana/grafana:13.2.4"
+      ],
+      "repoDigests": [
+        "grafana/grafana@sha256:dbbc38ea21103cefb50396340cd88afec779c7e070b0a7bf5a75b4ce46651d3f"
+      ],
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  ]
+}

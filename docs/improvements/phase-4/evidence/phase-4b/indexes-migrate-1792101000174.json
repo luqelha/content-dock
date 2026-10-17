@@ -1,0 +1,22 @@
+{
+  "measuredAt": "2026-10-15T21:50:00.174Z",
+  "project": "atlas-phase4b-2eb6875e73",
+  "label": "migrate",
+  "elapsedMs": 2228.8457,
+  "rows": [
+    {
+      "name": "Content_tenantId_updatedAt_idx",
+      "valid": true,
+      "bytes": 5447680,
+      "definition": "CREATE INDEX \"Content_tenantId_updatedAt_idx\" ON public.\"Content\" USING btree (\"tenantId\", \"updatedAt\")"
+    },
+    {
+      "name": "Content_tenantId_status_idx",
+      "valid": true,
+      "bytes": 606208,
+      "definition": "CREATE INDEX \"Content_tenantId_status_idx\" ON public.\"Content\" USING btree (\"tenantId\", status)"
+    }
+  ],
+  "migrationSha256": "59c62f7b29a552049f416b79562853535f0a173b617d0bc48d32651511120e1e",
+  "runtimeGrantsStillValid": true
+}

@@ -1,0 +1,185 @@
+{
+  "scope": "Phase 3C local validation",
+  "date": "2026-10-14",
+  "checks": {
+    "unit": {
+      "name": "unit",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 79955,
+      "finishedAt": "2026-10-13T11:39:25.791Z"
+    },
+    "security": {
+      "name": "security",
+      "exitCode": 0,
+      "durationMs": 74246,
+      "finishedAt": "2026-10-13T11:37:01.036Z"
+    },
+    "integration": {
+      "name": "integration",
+      "exitCode": 0,
+      "durationMs": 28013,
+      "finishedAt": "2026-10-13T11:34:50.970Z"
+    },
+    "e2e": {
+      "name": "e2e",
+      "exitCode": 0,
+      "durationMs": 41216,
+      "finishedAt": "2026-10-13T11:35:32.371Z"
+    },
+    "grants": {
+      "name": "grants",
+      "exitCode": 0,
+      "durationMs": 798,
+      "finishedAt": "2026-10-13T11:32:47.909Z"
+    },
+    "lint": {
+      "name": "lint",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 18021,
+      "finishedAt": "2026-10-13T11:39:43.910Z"
+    },
+    "typesApi": {
+      "name": "typesApi",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 5244,
+      "finishedAt": "2026-10-13T11:39:49.264Z"
+    },
+    "typesWeb": {
+      "name": "typesWeb",
+      "exitCode": 0,
+      "durationMs": 2894,
+      "finishedAt": "2026-10-13T11:35:22.146Z"
+    },
+    "format": {
+      "name": "format",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 691,
+      "finishedAt": "2026-10-14T03:21:09.763Z"
+    },
+    "audit": {
+      "name": "audit",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 3469,
+      "finishedAt": "2026-10-14T03:22:43.818Z"
+    },
+    "auditRuntime": {
+      "name": "auditRuntime",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 2402,
+      "finishedAt": "2026-10-14T03:22:09.021Z"
+    },
+    "build": {
+      "name": "build",
+      "exitCode": 0,
+      "durationMs": 137057,
+      "finishedAt": "2026-10-13T11:35:19.109Z"
+    },
+    "browser": {
+      "name": "browser",
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 61021,
+      "finishedAt": "2026-10-14T03:21:08.794Z"
+    }
+  },
+  "counts": {
+    "unit": 153,
+    "securityApi": 101,
+    "securityNode": 24,
+    "integration": 26,
+    "e2e": 19,
+    "grants": 3,
+    "browser": 3
+  },
+  "recovery": {
+    "scope": "fresh local synthetic stack only",
+    "steps": [
+      {
+        "name": "Broker outage retains committed Pending export",
+        "status": "passed"
+      },
+      {
+        "name": "Broker reconnect and outbox deliver the pending export",
+        "status": "passed"
+      },
+      {
+        "name": "Fresh worker reclaims expired Processing lease and serves a decryptable ZIP",
+        "status": "passed"
+      }
+    ],
+    "node": "v22.18.0",
+    "finishedAt": "2026-10-13T11:43:18.285Z"
+  },
+  "coverageBefore": {
+    "lines": {
+      "total": 1567,
+      "covered": 658,
+      "skipped": 0,
+      "pct": 41.99
+    },
+    "statements": {
+      "total": 1756,
+      "covered": 732,
+      "skipped": 0,
+      "pct": 41.68
+    },
+    "functions": {
+      "total": 249,
+      "covered": 87,
+      "skipped": 0,
+      "pct": 34.93
+    },
+    "branches": {
+      "total": 405,
+      "covered": 142,
+      "skipped": 0,
+      "pct": 35.06
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "coverageAfter": {
+    "lines": {
+      "total": 1589,
+      "covered": 811,
+      "skipped": 0,
+      "pct": 51.03
+    },
+    "statements": {
+      "total": 1782,
+      "covered": 898,
+      "skipped": 0,
+      "pct": 50.39
+    },
+    "functions": {
+      "total": 254,
+      "covered": 103,
+      "skipped": 0,
+      "pct": 40.55
+    },
+    "branches": {
+      "total": 410,
+      "covered": 183,
+      "skipped": 0,
+      "pct": 44.63
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "remoteCiVerified": false,
+  "productionReady": false
+}

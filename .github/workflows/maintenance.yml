@@ -1,0 +1,34 @@
+name: Long-term maintenance
+on:
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm install --global npm@10.9.9
+      - run: npm ci --ignore-scripts
+      - run: npm run maintenance:dependencies:registry
+      - run: npm run audit:dependencies
+        if: ${{ !cancelled() }}
+      - run: npm audit --omit=dev --package-lock-only --audit-level=moderate --fetch-retries=0 --fetch-timeout=30000
+        if: ${{ !cancelled() }}
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: maintenance-review
+          path: |
+            artifacts/maintenance
+            artifacts/dependency-audit
+          retention-days: 14

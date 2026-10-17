@@ -1,0 +1,66 @@
+# Apply after docker-compose.prod.yml. No management service is exposed to the WAN.
+services:
+  rabbitmq:
+    volumes:
+      - ./ops/observability/rabbitmq-enabled-plugins:/etc/rabbitmq/enabled_plugins:ro
+  prometheus:
+    image: prom/prometheus:v3.15.0
+    command:
+      [
+        "--config.file=/etc/prometheus/prometheus.yml",
+        "--storage.tsdb.retention.time=15d",
+        "--storage.tsdb.retention.size=2GB",
+      ]
+    volumes:
+      - ./ops/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./ops/observability/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus_data:/prometheus
+    ports: ["127.0.0.1:9090:9090"]
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1
+  alertmanager:
+    image: prom/alertmanager:v0.34.1
+    command:
+      [
+        "--config.file=/etc/alertmanager/alertmanager.yml",
+        "--cluster.listen-address=",
+      ]
+    volumes:
+      - ./ops/observability/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - alertmanager_data:/alertmanager
+    ports: ["127.0.0.1:9093:9093"]
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.5
+  alert-journal:
+    build:
+      context: .
+      dockerfile: ops/observability/alert-journal.Dockerfile
+    image: atlas-alert-journal:phase4a
+    volumes: [alert_journal_data:/data]
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.25
+  grafana:
+    image: grafana/grafana:13.2.4
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-atlas-operator}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set a separate GRAFANA_ADMIN_PASSWORD}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+    volumes:
+      - ./ops/observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./ops/observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    ports: ["127.0.0.1:3301:3000"]
+    restart: unless-stopped
+    mem_limit: 384m
+    cpus: 0.5
+volumes:
+  prometheus_data:
+  alertmanager_data:
+  alert_journal_data:
+  grafana_data:

@@ -1,0 +1,10 @@
+{
+  "name": "maintenance",
+  "startedAt": "2026-10-16T03:58:13.370Z",
+  "finishedAt": "2026-10-16T03:58:13.522Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/maintenance/*.test.cjs scripts/security/dependency-policy.test.cjs",
+  "cwd": ".",
+  "log": "check-maintenance.log",
+  "logSha256": "885769134201e77d16ed2c305f64a135bc01de6f56d443b7cedd125e7b9cfd2c"
+}

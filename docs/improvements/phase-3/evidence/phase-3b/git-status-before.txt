@@ -1,0 +1,242 @@
+ M .github/workflows/ci.yml
+ M .gitignore
+ M README.md
+ M apps/api/.env.example
+ M apps/api/Dockerfile
+ M apps/api/docs/API_SPECIFICATION.md
+ M apps/api/docs/README.md
+ M apps/api/docs/SECURITY.md
+ M apps/api/docs/TEST_STRATEGY.md
+ M apps/api/nginx/nginx.conf
+ M apps/api/package.json
+ M apps/api/prisma/schema.prisma
+ M apps/api/src/app.controller.ts
+ M apps/api/src/app.module.ts
+ M apps/api/src/common/filters/http-exception.filter.ts
+ M apps/api/src/common/filters/prisma-client-exception.filter.ts
+ M apps/api/src/common/guards/rbac.guard.ts
+ M apps/api/src/common/interceptors/activity-tracking.interceptor.ts
+ M apps/api/src/common/interceptors/cache.interceptor.ts
+ M apps/api/src/config/env.validation.ts
+ M apps/api/src/database/prisma.service.ts
+ M apps/api/src/main.ts
+ M apps/api/src/modules/analytics/analytics.service.ts
+ M apps/api/src/modules/audit/audit.service.ts
+ M apps/api/src/modules/audit/dto/get-audit-logs.dto.ts
+ M apps/api/src/modules/auth/auth.module.ts
+ M apps/api/src/modules/auth/controllers/auth.controller.ts
+ M apps/api/src/modules/auth/dto/register.dto.ts
+ M apps/api/src/modules/auth/services/auth.service.ts
+ M apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts
+ M apps/api/src/modules/auth/strategies/jwt.strategy.ts
+ M apps/api/src/modules/cms/controllers/category.controller.ts
+ M apps/api/src/modules/cms/dto/query-content.dto.ts
+ M apps/api/src/modules/cms/services/category.service.ts
+ M apps/api/src/modules/cms/services/content.service.ts
+ M apps/api/src/modules/export/compression.service.ts
+ M apps/api/src/modules/export/export.controller.ts
+ M apps/api/src/modules/export/export.module.ts
+ M apps/api/src/modules/export/export.service.ts
+ M apps/api/src/modules/export/worker.controller.ts
+ M apps/api/src/modules/media/media.controller.ts
+ M apps/api/src/modules/media/media.module.ts
+ M apps/api/src/modules/media/media.service.ts
+ M apps/api/src/modules/tenant/dto/create-tenant.dto.ts
+ M apps/api/src/modules/tenant/tenant.controller.ts
+ M apps/api/src/modules/tenant/tenant.module.ts
+ M apps/api/src/modules/tenant/tenant.service.ts
+ M apps/api/src/modules/user/dto/update-user.dto.ts
+ M apps/api/src/modules/user/user.controller.ts
+ M apps/api/src/modules/user/user.service.ts
+ M apps/api/test/e2e/media.e2e-spec.ts
+ M apps/api/test/e2e/test-utils.ts
+ M apps/api/test/integration/category.service.int-spec.ts
+ M apps/api/test/integration/int-test-utils.ts
+ M apps/api/test/unit/modules/audit/audit.service.spec.ts
+ M apps/api/test/unit/modules/auth/services/auth.service.spec.ts
+ M apps/api/test/unit/modules/media/media.service.spec.ts
+ M apps/api/test/unit/modules/tenant/tenant.service.spec.ts
+ M apps/api/test/unit/modules/user/user.controller.spec.ts
+ M apps/api/test/unit/modules/user/user.service.spec.ts
+ M apps/api/tsconfig.json
+ M apps/web-admin/next.config.ts
+ M apps/web-admin/package.json
+ M apps/web-admin/src/actions/auth.ts
+ M apps/web-admin/src/actions/categories.ts
+ M apps/web-admin/src/actions/contents.ts
+ M apps/web-admin/src/actions/media.ts
+ M apps/web-admin/src/actions/profile.ts
+ M apps/web-admin/src/app/(auth)/forgot-password/page.tsx
+ M apps/web-admin/src/app/(auth)/layout.tsx
+ M apps/web-admin/src/app/(auth)/login/page.tsx
+ M apps/web-admin/src/app/(auth)/register/page.tsx
+ M apps/web-admin/src/app/dashboard/categories/page.tsx
+ M apps/web-admin/src/app/dashboard/content/[id]/page.tsx
+ M apps/web-admin/src/app/dashboard/content/create/page.tsx
+ M apps/web-admin/src/app/dashboard/content/page.tsx
+ M apps/web-admin/src/app/dashboard/layout.tsx
+ M apps/web-admin/src/app/dashboard/media/page.tsx
+ M apps/web-admin/src/app/dashboard/page.tsx
+ M apps/web-admin/src/app/dashboard/profile/page.tsx
+ M apps/web-admin/src/app/dashboard/settings/page.tsx
+ M apps/web-admin/src/app/globals.css
+ M apps/web-admin/src/app/layout.tsx
+ M apps/web-admin/src/app/page.tsx
+ M apps/web-admin/src/components/app-sidebar.tsx
+ D apps/web-admin/src/components/dashboard/activity-chart.tsx
+ M apps/web-admin/src/components/dashboard/categories/categories-client.tsx
+ M apps/web-admin/src/components/dashboard/categories/category-modal.tsx
+ M apps/web-admin/src/components/dashboard/categories/columns.tsx
+ M apps/web-admin/src/components/dashboard/categories/delete-modal.tsx
+ D apps/web-admin/src/components/dashboard/content-status.tsx
+ M apps/web-admin/src/components/dashboard/content/columns.tsx
+ M apps/web-admin/src/components/dashboard/content/content-form.tsx
+ M apps/web-admin/src/components/dashboard/content/data-table.tsx
+ M apps/web-admin/src/components/dashboard/dashboard-client.tsx
+ M apps/web-admin/src/components/dashboard/dashboard-header.tsx
+ M apps/web-admin/src/components/dashboard/media/media-card.tsx
+ M apps/web-admin/src/components/dashboard/media/media-client.tsx
+ M apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx
+ M apps/web-admin/src/components/dashboard/media/media-dropzone.tsx
+ M apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx
+ M apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx
+ D apps/web-admin/src/components/dashboard/metric-card.tsx
+ D apps/web-admin/src/components/dashboard/quick-actions.tsx
+ D apps/web-admin/src/components/dashboard/recent-activity.tsx
+ D apps/web-admin/src/components/dashboard/team-overview.tsx
+ D apps/web-admin/src/components/dashboard/top-content.tsx
+ D apps/web-admin/src/components/landing/animated-network-icon.tsx
+ D apps/web-admin/src/components/landing/animations.ts
+ D apps/web-admin/src/components/landing/bento-card.tsx
+ D apps/web-admin/src/components/landing/cta-section.tsx
+ D apps/web-admin/src/components/landing/developer-experience.tsx
+ D apps/web-admin/src/components/landing/features.tsx
+ D apps/web-admin/src/components/landing/footer.tsx
+ D apps/web-admin/src/components/landing/hero.tsx
+ D apps/web-admin/src/components/landing/marquee.tsx
+ D apps/web-admin/src/components/landing/navbar.tsx
+ M apps/web-admin/src/components/providers/tenant-provider.tsx
+ M apps/web-admin/src/components/ui/button.tsx
+ M apps/web-admin/src/components/ui/image-picker-modal.tsx
+ M apps/web-admin/src/components/ui/wysiwyg-editor.tsx
+ M apps/web-admin/src/lib/api.ts
+ D apps/web-admin/src/middleware.ts
+ M docker-compose.prod.yml
+ M docker-compose.yml
+ M nginx/nginx.conf
+ M package-lock.json
+ M package.json
+?? .audit-artifacts/dependency-map.json
+?? .audit-artifacts/file-inventory.txt
+?? .audit-artifacts/npm-audit-production.json
+?? .audit-artifacts/npm-audit.json
+?? .audit-artifacts/source-import-map.json
+?? .dockerignore
+?? .env.production.example
+?? Caddyfile
+?? DEVELOPMENT.md
+?? SECURITY-REMEDIATION-PHASE-1.md
+?? SECURITY-REMEDIATION-PHASE-2.md
+?? apps/api/docs/ARCHITECTURE.md
+?? apps/api/docs/DECISION_LOG.md
+?? apps/api/docs/IMPLEMENTATION_AUDIT.md
+?? apps/api/docs/PERFORMANCE_REPORT.md
+?? apps/api/docs/RELEASE_NOTES.md
+?? apps/api/prisma/migrations/20261005000000_profile_and_query_indexes/migration.sql
+?? apps/api/prisma/migrations/20261011000100_durable_export_tasks/migration.sql
+?? apps/api/src/common/decorators/auth-rate-limit.decorator.ts
+?? apps/api/src/common/dto/list-page.dto.ts
+?? apps/api/src/common/guards/auth-client-identity.ts
+?? apps/api/src/common/guards/rate-limit.guard.ts
+?? apps/api/src/common/guards/self.guard.ts
+?? apps/api/src/common/pipes/application-validation.pipe.ts
+?? apps/api/src/modules/export/export-job.ts
+?? apps/api/src/modules/storage/file-vault.service.ts
+?? apps/api/src/modules/storage/files.controller.ts
+?? apps/api/src/modules/storage/storage-retention.service.ts
+?? apps/api/src/modules/storage/storage.module.ts
+?? apps/api/src/modules/storage/validate-upload.ts
+?? apps/api/src/modules/tenant/dto/member.dto.ts
+?? apps/api/src/modules/tenant/membership.controller.ts
+?? apps/api/src/modules/tenant/membership.service.ts
+?? apps/api/test/database-safety.ts
+?? apps/api/test/e2e/security.e2e-spec.ts
+?? apps/api/test/integration/durability.int-spec.ts
+?? apps/api/test/unit/file-vault.spec.ts
+?? apps/api/test/unit/security/application-validation.spec.ts
+?? apps/api/test/unit/security/audit-attribution.spec.ts
+?? apps/api/test/unit/security/auth-client-identity.spec.ts
+?? apps/api/test/unit/security/auth-rate-limit.spec.ts
+?? apps/api/test/unit/security/config-and-errors.spec.ts
+?? apps/api/test/unit/security/runtime-dependencies.spec.ts
+?? apps/api/test/unit/security/storage-retention.spec.ts
+?? apps/api/test/unit/security/upload-content.spec.ts
+?? apps/web-admin/AGENTS.md
+?? apps/web-admin/CLAUDE.md
+?? apps/web-admin/Dockerfile
+?? apps/web-admin/src/actions/category-options.ts
+?? apps/web-admin/src/actions/workspace.ts
+?? apps/web-admin/src/app/api/exports/[id]/route.ts
+?? apps/web-admin/src/app/api/files/[filename]/route.ts
+?? apps/web-admin/src/app/dashboard/audit/page.tsx
+?? apps/web-admin/src/app/dashboard/error.tsx
+?? apps/web-admin/src/app/dashboard/exports/page.tsx
+?? apps/web-admin/src/app/dashboard/invitations/page.tsx
+?? apps/web-admin/src/app/dashboard/loading.tsx
+?? apps/web-admin/src/app/dashboard/users/page.tsx
+?? apps/web-admin/src/app/dashboard/workspaces/new/page.tsx
+?? apps/web-admin/src/app/error.tsx
+?? apps/web-admin/src/components/atlas-mark.tsx
+?? apps/web-admin/src/components/dashboard/exports-client.tsx
+?? apps/web-admin/src/components/dashboard/list-pagination.tsx
+?? apps/web-admin/src/components/dashboard/members-client.tsx
+?? apps/web-admin/src/components/dashboard/workspace-settings.tsx
+?? apps/web-admin/src/components/ui/accessible-dialog.tsx
+?? apps/web-admin/src/lib/auth-client-headers.ts
+?? apps/web-admin/src/lib/files.ts
+?? apps/web-admin/src/lib/workspace-api.ts
+?? apps/web-admin/src/proxy.ts
+?? artifacts/security-phase2/CHANGED-FILES.md
+?? artifacts/security-phase2/backup-restore-test.json
+?? artifacts/security-phase2/browser-dialog-desktop.png
+?? artifacts/security-phase2/browser-export-mobile.png
+?? artifacts/security-phase2/browser-fix-checks.json
+?? artifacts/security-phase2/browser-fix-web-checks.json
+?? artifacts/security-phase2/browser-verification.json
+?? artifacts/security-phase2/changed-files.json
+?? artifacts/security-phase2/dev-bindings-verified.json
+?? artifacts/security-phase2/validation-summary.json
+?? docker-compose.test.yml
+?? docs/improvements/phase-3/BASELINE-ASSESSMENT.md
+?? docs/improvements/phase-3/IMPROVEMENT-PLAN.md
+?? docs/improvements/phase-3/evidence/README.md
+?? docs/improvements/phase-3/evidence/audit-all.json
+?? docs/improvements/phase-3/evidence/audit-runtime.json
+?? docs/improvements/phase-3/evidence/coverage-summary.json
+?? docs/improvements/phase-3/evidence/dependency-paths.json
+?? docs/improvements/phase-3/evidence/docker-state.json
+?? docs/improvements/phase-3/evidence/git-status-before.txt
+?? docs/improvements/phase-3/evidence/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3b/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase2-integrity.json
+?? docs/improvements/phase-3/evidence/preservation-check.json
+?? docs/improvements/phase-3/evidence/validation-summary.json
+?? docs/improvements/phase-3/evidence/worker-lease-probe.cjs
+?? playwright.config.ts
+?? scripts/benchmark-safety.mjs
+?? scripts/benchmark.mjs
+?? scripts/database/README.md
+?? scripts/database/create-runtime-role.sql
+?? scripts/database/grant-export-task.sql
+?? scripts/database/verify-runtime-role.sql
+?? scripts/security/benchmark-safety.test.cjs
+?? scripts/security/database-regression.cjs
+?? scripts/security/deployment.test.cjs
+?? scripts/security/export-archive.test.cjs
+?? scripts/security/proxy-smoke.cjs
+?? scripts/security/runtime-smoke.cjs
+?? scripts/security/web-auth.test.cjs
+?? scripts/security/web-data.test.cjs
+?? scripts/storage-retention.cjs
+?? tests/browser/fixtures/upload.png
+?? tests/browser/security-flows.spec.ts

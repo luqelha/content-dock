@@ -1,0 +1,1013 @@
+{
+  "generatedAt": "2026-10-16T03:47:32.228Z",
+  "reportSha256": "df794b7e2f26818d6e34b379e017651def1412c0d87cc8093f7e391952f22d27",
+  "stats": {
+    "startTime": "2026-10-16T03:37:26.347Z",
+    "duration": 578887.3380000001,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "errors": [],
+  "tests": [
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "chromium",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in category-dialog-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 z-50 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in content-editor-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 84\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure links have discernible text\",\n+     \"help\": \"Links must have discernible text\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/link-name?application=playwright\",\n+     \"id\": \"link-name\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": null,\n+             \"id\": \"has-visible-text\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element does not have text that is visible to screen readers\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-label\",\n+             \"impact\": \"serious\",\n+             \"message\": \"aria-label attribute does not exist or is empty\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-labelledby\",\n+             \"impact\": \"serious\",\n+             \"message\": \"",
+        "Error: Accessibility violations in upload-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in preview-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 235\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/70 backdrop-blur-sm\\\" style=\\\"opacity: 0;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-4 > .border-border.dark\\:border-input.dark\\:hover\\:bg-input\\/50"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [
+            {
+              "id": "link-name",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".size-8"
+                  ],
+                  "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".dark\\:border-input"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 9
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/70"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "button-name",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".h-7.w-7.hover\\:bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            },
+            {
+              "id": "label",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-transparent"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "firefox",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in category-dialog-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 z-50 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in content-editor-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 84\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure links have discernible text\",\n+     \"help\": \"Links must have discernible text\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/link-name?application=playwright\",\n+     \"id\": \"link-name\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": null,\n+             \"id\": \"has-visible-text\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element does not have text that is visible to screen readers\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-label\",\n+             \"impact\": \"serious\",\n+             \"message\": \"aria-label attribute does not exist or is empty\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-labelledby\",\n+             \"impact\": \"serious\",\n+             \"message\": \"",
+        "Error: Accessibility violations in upload-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 0;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in preview-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 235\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/70 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-4 > .border-border.dark\\:border-input.dark\\:hover\\:bg-input\\/50"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [
+            {
+              "id": "link-name",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".size-8"
+                  ],
+                  "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".dark\\:border-input"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 10
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/70"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "button-name",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".h-7.w-7.hover\\:bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            },
+            {
+              "id": "label",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-transparent"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in category-dialog-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 z-50 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in content-editor-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 84\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure links have discernible text\",\n+     \"help\": \"Links must have discernible text\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/link-name?application=playwright\",\n+     \"id\": \"link-name\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": null,\n+             \"id\": \"has-visible-text\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element does not have text that is visible to screen readers\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-label\",\n+             \"impact\": \"serious\",\n+             \"message\": \"aria-label attribute does not exist or is empty\",\n+             \"relatedNodes\": Array [],\n+           },\n+           Object {\n+             \"data\": null,\n+             \"id\": \"aria-labelledby\",\n+             \"impact\": \"serious\",\n+             \"message\": \"",
+        "Error: Accessibility violations in upload-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -  1\n+ Received  + 85\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/60 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+   ",
+        "Error: Accessibility violations in preview-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 235\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure ARIA attributes are not prohibited for an element's role\",\n+     \"help\": \"Elements must only use permitted ARIA attributes\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=playwright\",\n+     \"id\": \"aria-prohibited-attr\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [],\n+         \"failureSummary\": \"Fix all of the following:\n+   aria-label attribute cannot be used on \\\"div\\\" elements with no valid role attribute.\",\n+         \"html\": \"<div aria-label=\\\"Close dialog\\\" class=\\\"fixed inset-0 bg-black/70 backdrop-blur-sm\\\" style=\\\"opacity: 1;\\\"></div>\",\n+         \"impact\": \"serious\",\n+         \"none\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"messageKey\": \"noRoleSingular\",\n+               \"nodeName\": \"div\",\n+               \"prohibited\": Array [\n+                 \"aria-label\",\n+               ],\n+               \"role\": null,\n+",
+        "Test timeout of 180000ms exceeded.",
+        "Error: page.waitForEvent: Test ended.\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n\n  263 |     .click();\n  264 |   await expect(page).toHaveURL(/[?&]job=[a-f0-9-]{36}/);\n> 265 |   const url = page.url();\n      |                          ^\n  266 |   await page.reload();\n  267 |   await expect(page).toHaveURL(url);\n  268 |   await expect(page.getByRole(\"link\", { name: /download/i })).toBeVisible({\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:265:32"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".pt-4 > .border-border.dark\\:border-input.dark\\:hover\\:bg-input\\/50"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [
+            {
+              "id": "link-name",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".size-8"
+                  ],
+                  "summary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/60"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "label-content-name-mismatch",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".dark\\:border-input"
+                  ],
+                  "summary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 9
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "aria-prohibited-attr",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-black\\/70"
+                  ],
+                  "summary": "Fix all of the following:\n  aria-label attribute cannot be used on \"div\" elements with no valid role attribute."
+                }
+              ]
+            },
+            {
+              "id": "button-name",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".h-7.w-7.hover\\:bg-muted"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            },
+            {
+              "id": "label",
+              "impact": "critical",
+              "nodes": [
+                {
+                  "target": [
+                    ".bg-transparent"
+                  ],
+                  "summary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    }
+  ]
+}

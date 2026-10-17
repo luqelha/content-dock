@@ -1,3 +1,6 @@
+import type { Tenant } from '@prisma/client';
+import { Query } from '@nestjs/common';
+import { ListPageDto } from '../../../common/dto/list-page.dto';
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth, ApiHeader } from '@nestjs/swagger';
 import { CategoryService } from '../services/category.service';
@@ -30,7 +33,10 @@ export class CategoryController {
     description: 'The category has been successfully created.',
     type: CategoryEntity,
   })
-  create(@CurrentTenant() tenant: any, @Body() createCategoryDto: CreateCategoryDto) {
+  create(
+    @CurrentTenant() tenant: Pick<Tenant, 'id'>,
+    @Body() createCategoryDto: CreateCategoryDto,
+  ) {
     return this.categoryService.create(tenant.id, createCategoryDto);
   }
 
@@ -38,15 +44,18 @@ export class CategoryController {
   @Permissions(Permission.READ_CATEGORY)
   @ApiOperation({ summary: 'Get all categories for the current tenant' })
   @ApiResponse({ status: 200, description: 'Return all categories.', type: [CategoryEntity] })
-  findAll(@CurrentTenant() tenant: any) {
-    return this.categoryService.findAll(tenant.id);
+  findAll(
+    @CurrentTenant() tenant: Pick<Tenant, 'id'>,
+    @Query() query: ListPageDto = new ListPageDto(),
+  ) {
+    return this.categoryService.findAll(tenant.id, query);
   }
 
   @Get(':id')
   @Permissions(Permission.READ_CATEGORY)
   @ApiOperation({ summary: 'Get a category by ID' })
   @ApiResponse({ status: 200, description: 'Return a category.', type: CategoryEntity })
-  findOne(@CurrentTenant() tenant: any, @Param('id') id: string) {
+  findOne(@CurrentTenant() tenant: Pick<Tenant, 'id'>, @Param('id') id: string) {
     return this.categoryService.findOne(id, tenant.id);
   }
 
@@ -59,7 +68,7 @@ export class CategoryController {
     type: CategoryEntity,
   })
   update(
-    @CurrentTenant() tenant: any,
+    @CurrentTenant() tenant: Pick<Tenant, 'id'>,
     @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
@@ -74,7 +83,7 @@ export class CategoryController {
     description: 'The category has been successfully deleted.',
     type: CategoryEntity,
   })
-  remove(@CurrentTenant() tenant: any, @Param('id') id: string) {
+  remove(@CurrentTenant() tenant: Pick<Tenant, 'id'>, @Param('id') id: string) {
     return this.categoryService.remove(id, tenant.id);
   }
 }

@@ -1,0 +1,44 @@
+[
+    {
+        "Name":  "/atlas_postgres",
+        "Mounts":  "atlas-platform_postgres_data",
+        "Ports":  {
+                      "5432/tcp":  [
+                                       {
+                                           "HostIp":  "127.0.0.1",
+                                           "HostPort":  "5432"
+                                       }
+                                   ]
+                  }
+    },
+    {
+        "Name":  "/atlas_redis",
+        "Mounts":  "atlas-platform_redis_data",
+        "Ports":  {
+                      "6379/tcp":  [
+                                       {
+                                           "HostIp":  "127.0.0.1",
+                                           "HostPort":  "6379"
+                                       }
+                                   ]
+                  }
+    },
+    {
+        "Name":  "/atlas_rabbitmq",
+        "Mounts":  "atlas-platform_rabbitmq_data",
+        "Ports":  {
+                      "15672/tcp":  [
+                                        {
+                                            "HostIp":  "127.0.0.1",
+                                            "HostPort":  "15672"
+                                        }
+                                    ],
+                      "5672/tcp":  [
+                                       {
+                                           "HostIp":  "127.0.0.1",
+                                           "HostPort":  "5672"
+                                       }
+                                   ]
+                  }
+    }
+]

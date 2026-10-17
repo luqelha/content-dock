@@ -1,0 +1,26 @@
+{
+  "measuredAt": "2026-10-15T21:52:37.251Z",
+  "results": [
+    {
+      "completedMs": 1348.0061,
+      "downloadAndValidateMs": 134.67219999999998,
+      "zipBytes": 1283659,
+      "rows": 25000,
+      "sha256": "10efb12a9e238868bd358b323909c57acc75bb5054a9f63fb537f22a5e79a582"
+    },
+    {
+      "completedMs": 1329.5266000000001,
+      "downloadAndValidateMs": 91.61819999999989,
+      "zipBytes": 1283165,
+      "rows": 25000,
+      "sha256": "ab4f55cf5cd95ff1dec1b07c7eae6002505558c0b66a29cc381e5d08bbef32d7"
+    },
+    {
+      "completedMs": 1345.0433999999996,
+      "downloadAndValidateMs": 75.66200000000026,
+      "zipBytes": 1283639,
+      "rows": 25000,
+      "sha256": "e9852d143b69d86fd024c6e8d45139c2b75ea9cff245e65981cec76d3ac51949"
+    }
+  ]
+}

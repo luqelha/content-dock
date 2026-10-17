@@ -1,0 +1,11 @@
+{
+  "at": "2026-10-15T11:28:16.716Z",
+  "runId": 38726724972,
+  "jobId": 116394301998,
+  "logFile": "remote-ci-38726724972-job-116394301998.log",
+  "logSha256": "25cfecdf126ef176dcd29361484d2a7910d4434bd4d08f5d74a989f491dd5798",
+  "expectedMessageWasRendered": true,
+  "strictModeAmbiguity": true,
+  "competingNextRouteAnnouncer": true,
+  "fix": "Scope getByRole(alert) to the login form. Retain exact text, focus, and 5.5-second persistence assertions."
+}

@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-15T13:07:03.562Z",
+  "method": "SHA-256 of all emitted .js files after CRLF normalization; source maps and root CLI scripts are outside this comparison",
+  "imageId": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+  "container": "atlas-phase4a-codeverify-1792069622968",
+  "compiledFiles": 105,
+  "identical": true,
+  "differences": [],
+  "compiledManifestSha256": "ca61c3efda471700f4a312c8f98e46fa4f2050f5f766bc50a63bab5c9e6c98f3"
+}

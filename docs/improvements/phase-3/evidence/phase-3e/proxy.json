@@ -1,0 +1,10 @@
+{
+  "name": "proxy",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "scripts/security/proxy-smoke.cjs"
+  ],
+  "exitCode": 0,
+  "durationMs": 7416,
+  "finishedAt": "2026-10-14T03:55:10.666Z"
+}

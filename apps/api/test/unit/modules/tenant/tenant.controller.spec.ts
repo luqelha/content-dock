@@ -45,7 +45,7 @@ describe('TenantController', () => {
   describe('create', () => {
     it('should create a tenant', async () => {
       const dto = { name: 'Test' };
-      const req = { user: { sub: 'user-1' } };
+      const req = { user: { userId: 'user-1' } };
       mockTenantService.create.mockResolvedValueOnce({ id: '1', ...dto });
 
       const result = await controller.create(dto, req);

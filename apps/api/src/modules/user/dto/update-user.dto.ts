@@ -3,7 +3,11 @@ import { CreateUserDto } from './create-user.dto';
 import { IsOptional, IsString } from 'class-validator';
 import { ApiPropertyOptional } from '@nestjs/swagger';
 
-export class UpdateUserDto extends PartialType(CreateUserDto) {
+export class UpdateUserDto extends PartialType(CreateUserDto, { skipNullProperties: false }) {
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  currentPassword?: string;
   @ApiPropertyOptional()
   @IsOptional()
   @IsString()
@@ -18,9 +22,4 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsOptional()
   @IsString()
   bio?: string;
-
-  @ApiPropertyOptional()
-  @IsOptional()
-  @IsString()
-  avatarUrl?: string;
 }

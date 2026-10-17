@@ -1,0 +1,13 @@
+{
+  "name": "grants",
+  "command": [
+    "node",
+    "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test:security:db"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 947,
+  "finishedAt": "2026-10-14T03:52:27.815Z"
+}

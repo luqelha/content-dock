@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-15T12:54:44.318Z",
+  "sourceReport": "docs/improvements/phase-4/evidence/phase-4a/drill-1792068691002.json",
+  "project": "atlas-phase4a-730ac3d36d",
+  "status": "interrupted",
+  "reason": "Runner exited 0 before a terminal report; no runner process remained. Manual read-only health probes returned 200 ready for API and Prometheus. No fault checkpoint had started.",
+  "cleanup": [
+    {
+      "id": "dd2428c6cfade596527c578f33330ab805289dbab1b096be29e7eefa2937580c",
+      "name": "/atlas-phase4a-730ac3d36d-api-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "aca418264d9de7017edf44ba726caec1594852dc44ffe4616efa416cd68a00e7",
+      "name": "/atlas-phase4a-730ac3d36d-migrate",
+      "finalState": "exited"
+    },
+    {
+      "id": "be33c152a0339831a7c04fb6eb30f2c6e9a99ea787d7702ec21c06b00c202425",
+      "name": "/atlas-phase4a-730ac3d36d-postgres-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "9968cc5eb147996354caf8f4c661ccf26d5be543e838ef0ca850e5f8bd35af7e",
+      "name": "/atlas-phase4a-730ac3d36d-prometheus-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "50a2600a5b68895d5ccd42ad052339f6e8b0ecbe1262869e9c94f1e1fc1742dd",
+      "name": "/atlas-phase4a-730ac3d36d-alert-journal-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "ef65765673cdd2728b0e306664a54658ed1d35c62c7340ce28976cbca9ed2b53",
+      "name": "/atlas-phase4a-730ac3d36d-rabbitmq-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "bee01d19007d9e25da1e6da3222c0b55b97fba0210acd75b9fe6cca7844d8f33",
+      "name": "/atlas-phase4a-730ac3d36d-redis-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "3cd69e6f995f1b7ca5fb7b043d169efda13fb4a9cdc6bdb103a462edf91f7273",
+      "name": "/atlas-phase4a-730ac3d36d-alertmanager-1",
+      "finalState": "exited"
+    },
+    {
+      "id": "04ef0c201f3fc858179d632270c8f71e140ca5ea17cf46eb922a8fa9c33cf89e",
+      "name": "/atlas-phase4a-730ac3d36d-vault-keeper-1",
+      "finalState": "exited"
+    }
+  ],
+  "volumesRetained": true
+}

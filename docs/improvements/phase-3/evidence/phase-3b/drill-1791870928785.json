@@ -1,0 +1,244 @@
+{
+  "startedAt": "2026-10-13T05:53:36.635Z",
+  "scope": "isolated-local-synthetic",
+  "steps": [
+    {
+      "name": "fresh project config, secrets separation, no published ports",
+      "status": "passed",
+      "at": "2026-10-13T05:53:37.706Z"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: effective runtime grants and eight denied operations",
+      "status": "passed",
+      "at": "2026-10-13T05:53:56.423Z"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: resource isolation",
+      "status": "passed",
+      "at": "2026-10-13T05:54:05.488Z"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: seed smoke",
+      "status": "passed",
+      "at": "2026-10-13T05:54:06.958Z",
+      "mode": "seed",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: resource isolation",
+      "status": "passed",
+      "at": "2026-10-13T05:54:21.646Z"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: effective runtime grants and eight denied operations",
+      "status": "passed",
+      "at": "2026-10-13T05:54:26.560Z"
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: verify smoke",
+      "status": "passed",
+      "at": "2026-10-13T05:54:27.737Z",
+      "mode": "verify",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "coordinated rollback to previous API/web IDs; schema unchanged",
+      "status": "passed",
+      "at": "2026-10-13T05:54:32.318Z",
+      "seconds": 20.771
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d: verify smoke",
+      "status": "passed",
+      "at": "2026-10-13T05:54:41.898Z",
+      "mode": "verify",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "quiesced DB plus encrypted vault backup",
+      "status": "passed",
+      "at": "2026-10-13T05:54:48.839Z",
+      "seconds": 1.152,
+      "databaseSha256": "746d5dec817c3b7ab1607e07bf20f9d7dc49945d31ff816e2005edc8502896a6",
+      "vaultSha256": "8285734b4187b2bdd998c1b88a6eef6f881c86b42af60c0ca18c3050179d3263"
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea: effective runtime grants and eight denied operations",
+      "status": "passed",
+      "at": "2026-10-13T05:55:14.320Z"
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea: resource isolation",
+      "status": "passed",
+      "at": "2026-10-13T05:55:24.079Z"
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea: verify smoke",
+      "status": "passed",
+      "at": "2026-10-13T05:55:25.694Z",
+      "mode": "verify",
+      "production": true,
+      "restrictedRole": true,
+      "health": "passed",
+      "frontend": "passed",
+      "authentication": "passed",
+      "tenantIsolation": "passed",
+      "uploadDownload": "passed",
+      "exportDownload": "passed",
+      "exportRecords": 5,
+      "bff": "passed",
+      "validationErrors": "passed"
+    },
+    {
+      "name": "missing and incorrect encryption key negative controls",
+      "status": "passed",
+      "at": "2026-10-13T05:55:26.247Z"
+    },
+    {
+      "name": "restore DB rows, grants, encrypted files, saved key/config and application checks",
+      "status": "passed",
+      "at": "2026-10-13T05:55:26.247Z",
+      "seconds": 35.842,
+      "syntheticRpoLostRows": 0
+    }
+  ],
+  "dockerEndpointKind": "local named pipe",
+  "images": {
+    "candidate": {
+      "api": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "web": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91"
+    },
+    "previous": {
+      "api": "sha256:e3508017701c11ab1feac562435988bb314820e4abf684e77b0315fd571bb9ce",
+      "web": "sha256:fcc261a20be480d96ad552b60c885f2ad5526bbdd8ebeacf953fcbe6d86d7579"
+    }
+  },
+  "existingContainers": [
+    "b62bc1def188|atlas-phase3b-restore-095f73d819-postgres-1|postgres:15-alpine",
+    "7a282de9235e|atlas-phase3b-restore-095f73d819-rabbitmq-1|rabbitmq:3-management-alpine",
+    "3f2a1d3d89ed|atlas-phase3b-restore-095f73d819-redis-1|redis:7-alpine",
+    "67e79a03fbdc|atlas-phase3b-source-e224cd2d8f-backup|postgres:15-alpine",
+    "7df39c20a51e|atlas-phase3b-source-e224cd2d8f-web-1|e77b3c0de20f",
+    "f6e87a0d2242|atlas-phase3b-source-e224cd2d8f-api-1|f518cb7120a1",
+    "89da18d0bd2e|atlas-phase3b-source-e224cd2d8f-nginx-1|nginx:alpine",
+    "68ceb5f87fb1|atlas-phase3b-source-e224cd2d8f-rabbitmq-1|rabbitmq:3-management-alpine",
+    "af5725699197|atlas-phase3b-source-e224cd2d8f-postgres-1|postgres:15-alpine",
+    "e424e6806c88|atlas-phase3b-source-e224cd2d8f-redis-1|redis:7-alpine",
+    "671af2e721c4|atlas-phase3b-source-4404328cb1-rabbitmq-1|rabbitmq:3-management-alpine",
+    "8d7ddbaca3c9|atlas-phase3b-source-4404328cb1-postgres-1|postgres:15-alpine",
+    "a918fb3d633d|atlas-phase3b-source-4404328cb1-redis-1|redis:7-alpine",
+    "548b36a61083|atlas-phase2-production-mode-review|atlas-api:security-phase2",
+    "d0f2b1bdab25|atlas_postgres|postgres:15-alpine",
+    "fd3d808f9fb4|atlas_rabbitmq|rabbitmq:3-management-alpine",
+    "278591c7bf0c|atlas_redis|redis:7-alpine",
+    "126ffed29130|atlas-phase2-api-review|atlas-api:security-phase2",
+    "ffd41f8981bb|atlas-security-phase2-20261011-postgres-1|postgres:15-alpine",
+    "6001339dc3ef|atlas-security-phase2-20261011-redis-1|redis:7-alpine",
+    "3e9b1f30169d|atlas-security-phase2-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "cfc3361320a5|atlas-security-phase1-api-final|atlas-api:security-phase1",
+    "b6268c8a66a3|atlas-security-phase1-20261011-redis-1|redis:7-alpine",
+    "97c42253a208|atlas-security-phase1-api|7e5f88923546",
+    "37c6a5f3e3a8|atlas-security-phase1-20261011-postgres-1|postgres:15-alpine",
+    "e1b91c7f52ac|atlas-security-phase1-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "138bde452bb6|atlas-review-web|atlas-web:review",
+    "f175f24b8c17|atlas-review-api|atlas-api:review",
+    "4d238769769a|atlas-review-rabbitmq|rabbitmq:3-management-alpine",
+    "b2ddbff7720a|atlas-review-redis|redis:7-alpine",
+    "5d19607301cb|atlas-review-postgres|postgres:15-alpine",
+    "04a003f7ad92|pln-n8n|n8nio/n8n:latest",
+    "e179d0aa565a|pln-ollama-pull|ollama/ollama:latest",
+    "ac3d7d5f89bf|pln-postgres|postgres:16-alpine",
+    "699834dc9d8c|pln-mailpit|axllent/mailpit",
+    "34caec472a55|pln-ollama|ollama/ollama:latest",
+    "8d3946bed999|atlas-platform-api-1|atlas-platform-api",
+    "74a75827fd79|atlas-platform-api-2|atlas-platform-api",
+    "c6f7742ed06c|atlas_nginx|nginx:alpine",
+    "21b34e185cd8|api-gateway|asynclog-api",
+    "bbe8bf51cc73|worker-service|asynclog-worker",
+    "266c8a34481a|rabbitmq|rabbitmq:3-management",
+    "975ebc8eeead|redis|redis:7-alpine"
+  ],
+  "vaultManifest": {
+    "storage/exports/export-ee32212f-32ef-4d83-b43b-1e55f833b0a9.zip.enc": "68d2eee360db5f99d376ab2342886cb74f30fa62a34dd75a801633fd95b5710f",
+    "storage/uploads/620358a4-40bb-4166-93c0-bf34d8bd1e01.png.enc": "80a4c2c065c9bfe10b1984da21cd9755565134603e14cbc18b98a739e59ac39b"
+  },
+  "databaseManifest": {
+    "Tenant": {
+      "rows": 2,
+      "sha256": "a3bcd2190f7c961647e10c2d0e80dd65d5332afe355ad2b2dca2f9379fb6c326"
+    },
+    "User": {
+      "rows": 2,
+      "sha256": "8a6e797140ada04c92a57127ce9a97e08cb45d2b87ca553d603e5eb169e5d717"
+    },
+    "TenantUser": {
+      "rows": 2,
+      "sha256": "731e18938890d65b46ef521733f53f616e6ace9c8b64fbf32928cedc9f40c0a7"
+    },
+    "Category": {
+      "rows": 1,
+      "sha256": "b271f46442442dcb7da7aa05d448436d1d57c6bbc8ce0dcb6f8304b2c4504e6f"
+    },
+    "Content": {
+      "rows": 1,
+      "sha256": "850b4e1755f9063a5bf6a5d28ee51d84504b3351957f71d7971b711a46b114e1"
+    },
+    "Media": {
+      "rows": 1,
+      "sha256": "529a63237b80211a3f984b3cf30ee2c237f36b341a4bdac0a0de8c1d4b9759aa"
+    },
+    "AuditLog": {
+      "rows": 10,
+      "sha256": "77449430f567c2d81f213096cc440d2cce64db0210e9d871f52f99736b132c8a"
+    },
+    "ExportTask": {
+      "rows": 1,
+      "sha256": "f28c4ba4eb8cd31fdec3fd2083fb39f60ebd5b7c6010f112c6749140da8f9e86"
+    },
+    "_prisma_migrations": {
+      "rows": 3,
+      "sha256": "36811188f08199ad863f191a88c03cb77ae51c19e2cba5b360af5700e65594ba"
+    }
+  },
+  "status": "passed",
+  "projects": [
+    "atlas-phase3b-source-d0d4214e1d",
+    "atlas-phase3b-restore-f0074729ea"
+  ],
+  "privateArtifacts": {
+    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase3b-fqWda9",
+    "warning": "Synthetic credentials/config; backup and fixture only when runtime drill executes. Never commit."
+  },
+  "finishedAt": "2026-10-13T05:55:28.785Z",
+  "resources": "Created project containers stopped; all volumes retained; no down -v or database reset."
+}

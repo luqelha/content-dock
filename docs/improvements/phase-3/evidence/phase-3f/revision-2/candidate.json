@@ -1,0 +1,2358 @@
+{
+  "createdAt": "2026-10-15T11:03:30.148Z",
+  "commit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+  "tree": "fc12baee632c93f856bb0d4670d15830c6b0b5ab",
+  "branch": "release/phase-3f-20261015110330",
+  "originalHead": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "parentCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+  "originalBranch": "main",
+  "originalIndexSha256": "4c7c9045d1974fcb271315976f4c08333866e947f6ae513461fd595f9b7ba46a",
+  "originalIndexUnchanged": true,
+  "sourceFileCount": 348,
+  "changedPaths": [
+    ".dockerignore",
+    ".env.production.example",
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    "Caddyfile",
+    "DEVELOPMENT.md",
+    "README.md",
+    "SECURITY-REMEDIATION-PHASE-1.md",
+    "SECURITY-REMEDIATION-PHASE-2.md",
+    "apps/api/.env.example",
+    "apps/api/Dockerfile",
+    "apps/api/docs/API_SPECIFICATION.md",
+    "apps/api/docs/ARCHITECTURE.md",
+    "apps/api/docs/DECISION_LOG.md",
+    "apps/api/docs/IMPLEMENTATION_AUDIT.md",
+    "apps/api/docs/PERFORMANCE_REPORT.md",
+    "apps/api/docs/README.md",
+    "apps/api/docs/RELEASE_NOTES.md",
+    "apps/api/docs/SECURITY.md",
+    "apps/api/docs/TEST_STRATEGY.md",
+    "apps/api/nginx/nginx.conf",
+    "apps/api/package.json",
+    "apps/api/prisma/migrations/20261005000000_profile_and_query_indexes/migration.sql",
+    "apps/api/prisma/migrations/20261011000100_durable_export_tasks/migration.sql",
+    "apps/api/prisma/migrations/20261013000000_export_lease_token/migration.sql",
+    "apps/api/prisma/schema.prisma",
+    "apps/api/src/app.controller.ts",
+    "apps/api/src/app.module.ts",
+    "apps/api/src/common/decorators/auth-rate-limit.decorator.ts",
+    "apps/api/src/common/dto/list-page.dto.ts",
+    "apps/api/src/common/filters/http-exception.filter.ts",
+    "apps/api/src/common/filters/prisma-client-exception.filter.ts",
+    "apps/api/src/common/guards/auth-client-identity.ts",
+    "apps/api/src/common/guards/rate-limit.guard.ts",
+    "apps/api/src/common/guards/rbac.guard.ts",
+    "apps/api/src/common/guards/self.guard.ts",
+    "apps/api/src/common/interceptors/activity-tracking.interceptor.ts",
+    "apps/api/src/common/interceptors/cache.interceptor.ts",
+    "apps/api/src/common/pipes/application-validation.pipe.ts",
+    "apps/api/src/common/validators/password-policy.ts",
+    "apps/api/src/config/env.validation.ts",
+    "apps/api/src/database/prisma.service.ts",
+    "apps/api/src/main.ts",
+    "apps/api/src/modules/analytics/analytics.service.ts",
+    "apps/api/src/modules/audit/audit.service.ts",
+    "apps/api/src/modules/audit/dto/get-audit-logs.dto.ts",
+    "apps/api/src/modules/auth/auth.module.ts",
+    "apps/api/src/modules/auth/controllers/auth.controller.ts",
+    "apps/api/src/modules/auth/dto/login.dto.ts",
+    "apps/api/src/modules/auth/dto/register.dto.ts",
+    "apps/api/src/modules/auth/services/auth.service.ts",
+    "apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts",
+    "apps/api/src/modules/auth/strategies/jwt.strategy.ts",
+    "apps/api/src/modules/cms/controllers/category.controller.ts",
+    "apps/api/src/modules/cms/dto/query-content.dto.ts",
+    "apps/api/src/modules/cms/services/category.service.ts",
+    "apps/api/src/modules/cms/services/content.service.ts",
+    "apps/api/src/modules/export/compression.service.ts",
+    "apps/api/src/modules/export/export-filename.ts",
+    "apps/api/src/modules/export/export-job.ts",
+    "apps/api/src/modules/export/export.controller.ts",
+    "apps/api/src/modules/export/export.module.ts",
+    "apps/api/src/modules/export/export.service.ts",
+    "apps/api/src/modules/export/worker.controller.ts",
+    "apps/api/src/modules/media/media.controller.ts",
+    "apps/api/src/modules/media/media.module.ts",
+    "apps/api/src/modules/media/media.service.ts",
+    "apps/api/src/modules/storage/file-vault.service.ts",
+    "apps/api/src/modules/storage/files.controller.ts",
+    "apps/api/src/modules/storage/storage-retention.service.ts",
+    "apps/api/src/modules/storage/storage.module.ts",
+    "apps/api/src/modules/storage/validate-upload.ts",
+    "apps/api/src/modules/tenant/dto/create-tenant.dto.ts",
+    "apps/api/src/modules/tenant/dto/member.dto.ts",
+    "apps/api/src/modules/tenant/membership.controller.ts",
+    "apps/api/src/modules/tenant/membership.service.ts",
+    "apps/api/src/modules/tenant/tenant.controller.ts",
+    "apps/api/src/modules/tenant/tenant.module.ts",
+    "apps/api/src/modules/tenant/tenant.service.ts",
+    "apps/api/src/modules/user/dto/create-user.dto.ts",
+    "apps/api/src/modules/user/dto/update-user.dto.ts",
+    "apps/api/src/modules/user/user.controller.ts",
+    "apps/api/src/modules/user/user.service.ts",
+    "apps/api/test/database-safety.ts",
+    "apps/api/test/e2e/media.e2e-spec.ts",
+    "apps/api/test/e2e/security.e2e-spec.ts",
+    "apps/api/test/e2e/test-utils.ts",
+    "apps/api/test/integration/category.service.int-spec.ts",
+    "apps/api/test/integration/durability.int-spec.ts",
+    "apps/api/test/integration/int-test-utils.ts",
+    "apps/api/test/unit/file-vault.spec.ts",
+    "apps/api/test/unit/modules/audit/audit.service.spec.ts",
+    "apps/api/test/unit/modules/auth/controllers/auth.controller.spec.ts",
+    "apps/api/test/unit/modules/auth/services/auth.service.spec.ts",
+    "apps/api/test/unit/modules/media/media.service.spec.ts",
+    "apps/api/test/unit/modules/tenant/tenant.service.spec.ts",
+    "apps/api/test/unit/modules/user/user.controller.spec.ts",
+    "apps/api/test/unit/modules/user/user.service.spec.ts",
+    "apps/api/test/unit/security/application-validation.spec.ts",
+    "apps/api/test/unit/security/audit-attribution.spec.ts",
+    "apps/api/test/unit/security/auth-client-identity.spec.ts",
+    "apps/api/test/unit/security/auth-rate-limit.spec.ts",
+    "apps/api/test/unit/security/auth-validation.spec.ts",
+    "apps/api/test/unit/security/config-and-errors.spec.ts",
+    "apps/api/test/unit/security/export-download.spec.ts",
+    "apps/api/test/unit/security/export-recovery.spec.ts",
+    "apps/api/test/unit/security/rbac-boundaries.spec.ts",
+    "apps/api/test/unit/security/refresh-recovery.spec.ts",
+    "apps/api/test/unit/security/runtime-dependencies.spec.ts",
+    "apps/api/test/unit/security/storage-retention.spec.ts",
+    "apps/api/test/unit/security/upload-content.spec.ts",
+    "apps/api/tsconfig.json",
+    "apps/web-admin/AGENTS.md",
+    "apps/web-admin/CLAUDE.md",
+    "apps/web-admin/Dockerfile",
+    "apps/web-admin/next.config.ts",
+    "apps/web-admin/package.json",
+    "apps/web-admin/src/actions/auth.ts",
+    "apps/web-admin/src/actions/categories.ts",
+    "apps/web-admin/src/actions/category-options.ts",
+    "apps/web-admin/src/actions/contents.ts",
+    "apps/web-admin/src/actions/media.ts",
+    "apps/web-admin/src/actions/profile.ts",
+    "apps/web-admin/src/actions/workspace.ts",
+    "apps/web-admin/src/app/(auth)/forgot-password/page.tsx",
+    "apps/web-admin/src/app/(auth)/layout.tsx",
+    "apps/web-admin/src/app/(auth)/login/page.tsx",
+    "apps/web-admin/src/app/(auth)/register/page.tsx",
+    "apps/web-admin/src/app/api/exports/[id]/route.ts",
+    "apps/web-admin/src/app/api/files/[filename]/route.ts",
+    "apps/web-admin/src/app/dashboard/audit/page.tsx",
+    "apps/web-admin/src/app/dashboard/categories/page.tsx",
+    "apps/web-admin/src/app/dashboard/content/[id]/page.tsx",
+    "apps/web-admin/src/app/dashboard/content/create/page.tsx",
+    "apps/web-admin/src/app/dashboard/content/page.tsx",
+    "apps/web-admin/src/app/dashboard/error.tsx",
+    "apps/web-admin/src/app/dashboard/exports/page.tsx",
+    "apps/web-admin/src/app/dashboard/invitations/page.tsx",
+    "apps/web-admin/src/app/dashboard/layout.tsx",
+    "apps/web-admin/src/app/dashboard/loading.tsx",
+    "apps/web-admin/src/app/dashboard/media/page.tsx",
+    "apps/web-admin/src/app/dashboard/page.tsx",
+    "apps/web-admin/src/app/dashboard/profile/page.tsx",
+    "apps/web-admin/src/app/dashboard/settings/page.tsx",
+    "apps/web-admin/src/app/dashboard/users/page.tsx",
+    "apps/web-admin/src/app/dashboard/workspaces/new/page.tsx",
+    "apps/web-admin/src/app/error.tsx",
+    "apps/web-admin/src/app/globals.css",
+    "apps/web-admin/src/app/layout.tsx",
+    "apps/web-admin/src/app/page.tsx",
+    "apps/web-admin/src/components/app-sidebar.tsx",
+    "apps/web-admin/src/components/atlas-mark.tsx",
+    "apps/web-admin/src/components/auth-feedback.tsx",
+    "apps/web-admin/src/components/dashboard/activity-chart.tsx",
+    "apps/web-admin/src/components/dashboard/categories/categories-client.tsx",
+    "apps/web-admin/src/components/dashboard/categories/category-modal.tsx",
+    "apps/web-admin/src/components/dashboard/categories/columns.tsx",
+    "apps/web-admin/src/components/dashboard/categories/delete-modal.tsx",
+    "apps/web-admin/src/components/dashboard/content-status.tsx",
+    "apps/web-admin/src/components/dashboard/content/columns.tsx",
+    "apps/web-admin/src/components/dashboard/content/content-form.tsx",
+    "apps/web-admin/src/components/dashboard/content/data-table.tsx",
+    "apps/web-admin/src/components/dashboard/dashboard-client.tsx",
+    "apps/web-admin/src/components/dashboard/dashboard-header.tsx",
+    "apps/web-admin/src/components/dashboard/exports-client.tsx",
+    "apps/web-admin/src/components/dashboard/list-pagination.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-card.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-client.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-dropzone.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx",
+    "apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx",
+    "apps/web-admin/src/components/dashboard/members-client.tsx",
+    "apps/web-admin/src/components/dashboard/metric-card.tsx",
+    "apps/web-admin/src/components/dashboard/quick-actions.tsx",
+    "apps/web-admin/src/components/dashboard/recent-activity.tsx",
+    "apps/web-admin/src/components/dashboard/team-overview.tsx",
+    "apps/web-admin/src/components/dashboard/top-content.tsx",
+    "apps/web-admin/src/components/dashboard/workspace-settings.tsx",
+    "apps/web-admin/src/components/landing/animated-network-icon.tsx",
+    "apps/web-admin/src/components/landing/animations.ts",
+    "apps/web-admin/src/components/landing/bento-card.tsx",
+    "apps/web-admin/src/components/landing/cta-section.tsx",
+    "apps/web-admin/src/components/landing/developer-experience.tsx",
+    "apps/web-admin/src/components/landing/features.tsx",
+    "apps/web-admin/src/components/landing/footer.tsx",
+    "apps/web-admin/src/components/landing/hero.tsx",
+    "apps/web-admin/src/components/landing/marquee.tsx",
+    "apps/web-admin/src/components/landing/navbar.tsx",
+    "apps/web-admin/src/components/providers/tenant-provider.tsx",
+    "apps/web-admin/src/components/ui/accessible-dialog.tsx",
+    "apps/web-admin/src/components/ui/button.tsx",
+    "apps/web-admin/src/components/ui/image-picker-modal.tsx",
+    "apps/web-admin/src/components/ui/password-input.tsx",
+    "apps/web-admin/src/components/ui/wysiwyg-editor.tsx",
+    "apps/web-admin/src/lib/api.ts",
+    "apps/web-admin/src/lib/auth-client-headers.ts",
+    "apps/web-admin/src/lib/auth-validation.ts",
+    "apps/web-admin/src/lib/files.ts",
+    "apps/web-admin/src/lib/workspace-api.ts",
+    "apps/web-admin/src/middleware.ts",
+    "apps/web-admin/src/proxy.ts",
+    "docker-compose.prod.yml",
+    "docker-compose.test.yml",
+    "docker-compose.yml",
+    "docs/improvements/phase-3/BASELINE-ASSESSMENT.md",
+    "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md",
+    "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+    "docs/improvements/phase-3/IMPROVEMENT-PLAN.md",
+    "docs/improvements/phase-3/PERFORMANCE-REPORT.md",
+    "docs/improvements/phase-3/PHASE-3C-REPORT.md",
+    "docs/improvements/phase-3/PHASE-3D-VERIFICATION.md",
+    "docs/improvements/phase-3/PHASE-3F-RELEASE-EVIDENCE.md",
+    "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+    "docs/improvements/phase-3/RELIABILITY-REVIEW.md",
+    "docs/improvements/phase-3/SECURITY-DEPENDENCY-REVIEW.md",
+    "docs/improvements/phase-3/TEST-COVERAGE-REPORT.md",
+    "nginx/nginx.conf",
+    "package-lock.json",
+    "package.json",
+    "playwright.config.ts",
+    "scripts/benchmark-safety.mjs",
+    "scripts/benchmark.mjs",
+    "scripts/database/README.md",
+    "scripts/database/create-runtime-role.sql",
+    "scripts/database/grant-export-task.sql",
+    "scripts/database/verify-runtime-role.sql",
+    "scripts/security/benchmark-safety.test.cjs",
+    "scripts/security/database-regression.cjs",
+    "scripts/security/dependency-audit.cjs",
+    "scripts/security/dependency-policy.cjs",
+    "scripts/security/dependency-policy.test.cjs",
+    "scripts/security/deployment.test.cjs",
+    "scripts/security/export-archive.test.cjs",
+    "scripts/security/phase3b-drill.cjs",
+    "scripts/security/phase3b-smoke.cjs",
+    "scripts/security/phase3c-recovery.cjs",
+    "scripts/security/phase3f-release-audit.cjs",
+    "scripts/security/proxy-smoke.cjs",
+    "scripts/security/runtime-smoke.cjs",
+    "scripts/security/web-auth.test.cjs",
+    "scripts/security/web-data.test.cjs",
+    "scripts/storage-retention.cjs",
+    "tests/browser/auth-forms.spec.ts",
+    "tests/browser/fixtures/upload.png",
+    "tests/browser/security-flows.spec.ts"
+  ],
+  "excludedDirectories": [
+    ".audit-artifacts",
+    "artifacts",
+    "docs/improvements/phase-3/evidence"
+  ],
+  "secretPathFindings": [],
+  "credentialPatternFindings": [],
+  "blobs": [
+    {
+      "path": ".dockerignore",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1792497fd85217672790be42017736cc51144dd0"
+    },
+    {
+      "path": ".env.production.example",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c626477308d966cfd85228b5f1aa19214fbc7991"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bf95a8432ee2572602770434c247fb6e3bf2d6b7"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "477722a97c7ce5699bec3fc2474abe34485c25d0"
+    },
+    {
+      "path": ".turbo/cache/415b183cac3ebff4-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "eef38465107ddfb6f538219f8ef694e3f609bd3b"
+    },
+    {
+      "path": ".turbo/cache/415b183cac3ebff4-meta.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "518835917ef5b2a08cccf228c5cd6d096cf36437"
+    },
+    {
+      "path": ".turbo/cache/415b183cac3ebff4.tar.zst",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a4697c6263789a42b232ed5d27fe68765757e8f9"
+    },
+    {
+      "path": ".turbo/cache/dbfd0895c3069748-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "26021b77e1ae1c4b615dfc91989a49228e2a5190"
+    },
+    {
+      "path": ".turbo/cache/dbfd0895c3069748-meta.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c1710adc54248d416ec0e664fc9429919e9fb774"
+    },
+    {
+      "path": ".turbo/cache/dbfd0895c3069748.tar.zst",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1f8fefdd019b440304e1a5619b28fce6ad986151"
+    },
+    {
+      "path": "Caddyfile",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "08182dafde2ef30e80156ef13621c15145687a01"
+    },
+    {
+      "path": "DEVELOPMENT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "afeb14c523aac95840c8364f2c14d3b76608ede1"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3356a96576014fcc2d288a3d0950afafe1df58c8"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "42578950dbdbea52f51e0bea58cda27e7468e421"
+    },
+    {
+      "path": "SECURITY-REMEDIATION-PHASE-1.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4c6afedfded6282059f184a446ad8b8eb9558e44"
+    },
+    {
+      "path": "SECURITY-REMEDIATION-PHASE-2.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bea6f66efb736b3483bf570c6e5313f3d9b8fd9f"
+    },
+    {
+      "path": "apps/api/.dockerignore",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3b0cc769f87cd0f82dfde652d2865ae9f8e03c98"
+    },
+    {
+      "path": "apps/api/.env.example",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "89acd2313660a8df1c86515b35f014536788ab7e"
+    },
+    {
+      "path": "apps/api/.eslintrc.js",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "608ebaa1c3b939665da976009e0f528d32154f86"
+    },
+    {
+      "path": "apps/api/.prettierrc",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2fec1f28d2c49363e50f8647225fb868b463768c"
+    },
+    {
+      "path": "apps/api/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ac8626534e2a9af3c616f623c6c6d7fa3e8b7eb2"
+    },
+    {
+      "path": "apps/api/docker/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/docs/API_SPECIFICATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3def02a388a35b83232136377100ff87413ef0e2"
+    },
+    {
+      "path": "apps/api/docs/ARCHITECTURE.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ef7fae1323950efdbb0d10600c330fc098322e74"
+    },
+    {
+      "path": "apps/api/docs/DATABASE_DESIGN.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ed773ec0cda31bbfb6466fff834203a19ef2f65b"
+    },
+    {
+      "path": "apps/api/docs/DECISION_LOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e4285fa166e73a3e48acffe60b69ce24c2a7f7fe"
+    },
+    {
+      "path": "apps/api/docs/IMPLEMENTATION_AUDIT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f01af0a256e3f34da0e5b70e0e394da637485245"
+    },
+    {
+      "path": "apps/api/docs/PERFORMANCE_REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "91b049bdc8720734740f5d0dbe1f4f547b69635d"
+    },
+    {
+      "path": "apps/api/docs/PRODUCT_REQUIREMENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5030d9c09f18a7538923fb7342c3989ea99585bd"
+    },
+    {
+      "path": "apps/api/docs/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8b59b4136a473105717f0bd76a8693fb2e9157a8"
+    },
+    {
+      "path": "apps/api/docs/RELEASE_NOTES.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "510b37713ce01b3a66c4d9b3590839adfefeaf89"
+    },
+    {
+      "path": "apps/api/docs/ROADMAP.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8677b3914411be64affd539ea81471e327e52a87"
+    },
+    {
+      "path": "apps/api/docs/SECURITY.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b4c580cc2554aeaaf2e36ee9be977b54bc8b0978"
+    },
+    {
+      "path": "apps/api/docs/SOLUTION_DESIGN.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a7a2b3170ff4060d80b7736a79ad7fc9aed49d50"
+    },
+    {
+      "path": "apps/api/docs/TEST_STRATEGY.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4a8bc7d11c07aa1f3e22186097489b1092f3aeb2"
+    },
+    {
+      "path": "apps/api/nest-cli.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f9aa683b1ad5cffc76da9ad4b77c562ac4c2b399"
+    },
+    {
+      "path": "apps/api/nginx/nginx.conf",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "537445f7b6f4f6fd9a4cd0cf3afb6d43c960970b"
+    },
+    {
+      "path": "apps/api/package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "51eb156d936c0ca8e8b9cade7f3d6bcb98235660"
+    },
+    {
+      "path": "apps/api/package.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "64e4d557a311d3f0ebe5ce6531bb0cb2d59ebe8b"
+    },
+    {
+      "path": "apps/api/prisma/migrations/20260811021610_init/migration.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3928d0c9b192c33516571ce06023f65cb856bfdc"
+    },
+    {
+      "path": "apps/api/prisma/migrations/20261005000000_profile_and_query_indexes/migration.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "22c3958bac9b4d3b4481092a07175fdb8106ef2b"
+    },
+    {
+      "path": "apps/api/prisma/migrations/20261011000100_durable_export_tasks/migration.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "60c6e893027750446fbb689b7988ea20e7836ca8"
+    },
+    {
+      "path": "apps/api/prisma/migrations/20261013000000_export_lease_token/migration.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e68e3c9c51fcde0f24995118eb1a448302c84d5e"
+    },
+    {
+      "path": "apps/api/prisma/migrations/migration_lock.toml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fbffa92c2bb7c748d6fc78f9f9dcac604dabb87d"
+    },
+    {
+      "path": "apps/api/prisma/schema.prisma",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6e50bf934503c6bae63a07032d4e866f651f6151"
+    },
+    {
+      "path": "apps/api/scripts/benchmark.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/scripts/cleanup.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/scripts/seed.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/app.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "87a9294d7e63422bc4c95b32de66288a2fb6516d"
+    },
+    {
+      "path": "apps/api/src/app.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5aed87fd77a4d94930c398bbf75004dd96f8ca60"
+    },
+    {
+      "path": "apps/api/src/app.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d9e5ed2015238c18c8beb5de936e4caec0c9e25d"
+    },
+    {
+      "path": "apps/api/src/common/constants/role-permissions.constant.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7e621bae3cda4804e1611d0228d610bebcb8ac9e"
+    },
+    {
+      "path": "apps/api/src/common/decorators/auth-rate-limit.decorator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c35c0e1af3b8862c944841ddf47070d42ccab23d"
+    },
+    {
+      "path": "apps/api/src/common/decorators/current-tenant.decorator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5e1f5378576135641269347b8d42233ca4d47763"
+    },
+    {
+      "path": "apps/api/src/common/decorators/permissions.decorator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "cf352cf27ed27b12e512b96d58ef3bdddfb9741f"
+    },
+    {
+      "path": "apps/api/src/common/decorators/roles.decorator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e108a9c507c665ebe855b468dc5d4e118020f482"
+    },
+    {
+      "path": "apps/api/src/common/decorators/track-activity.decorator.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "38f2efe62c18bc9d7edd5414bc5437db62f9fd7c"
+    },
+    {
+      "path": "apps/api/src/common/dto/list-page.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a4b0f9fd7d760b7a93cb3fc22397934f2ebb3dc8"
+    },
+    {
+      "path": "apps/api/src/common/dto/page-meta-dto-parameters.interface.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "403cc6334326ba508b82222207bcdf49acbb5c15"
+    },
+    {
+      "path": "apps/api/src/common/dto/page-meta.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a5dfbb84020d64b249583a4478960fd684e4a0aa"
+    },
+    {
+      "path": "apps/api/src/common/dto/page-options.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4e9a7960921ee0f436188a2053a3767b1ffcea68"
+    },
+    {
+      "path": "apps/api/src/common/dto/page.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5382df4072a28f5a7f1b151a94b345ee26a6b3fa"
+    },
+    {
+      "path": "apps/api/src/common/enums/permission.enum.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f57866674fb7e5ce398622d8d91f72dd7412cb27"
+    },
+    {
+      "path": "apps/api/src/common/enums/role.enum.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f76e8edd6b4d4aff1c4664a4feafb3cf625ed2e7"
+    },
+    {
+      "path": "apps/api/src/common/filters/http-exception.filter.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "90223c9a5d5216987a895d9eb98035dc6aa1c38e"
+    },
+    {
+      "path": "apps/api/src/common/filters/prisma-client-exception.filter.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "86927687625e4dbb9c9b4b1d753017372575887f"
+    },
+    {
+      "path": "apps/api/src/common/guards/auth-client-identity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b9f7fae23692ce28aeed83c98a9b128bab31603c"
+    },
+    {
+      "path": "apps/api/src/common/guards/rate-limit.guard.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bf70e0931636ec10992473327e7b468d2852e858"
+    },
+    {
+      "path": "apps/api/src/common/guards/rbac.guard.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d3d96a65efe8c273d4a69139ec309ee8727d86a4"
+    },
+    {
+      "path": "apps/api/src/common/guards/self.guard.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "160adf6dff9b5474f12c5d1b84755ecca08e501f"
+    },
+    {
+      "path": "apps/api/src/common/interceptors/activity-tracking.interceptor.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3e9db8a2ef53434aeefacf597f480d331a3be0c7"
+    },
+    {
+      "path": "apps/api/src/common/interceptors/cache.interceptor.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "91c08cdc3aa8c41e3db47b1a3f93eecc570bbdb9"
+    },
+    {
+      "path": "apps/api/src/common/middleware/tenant.middleware.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1f4d16bbefbb26faf76ef3cce74b6abd42b7797a"
+    },
+    {
+      "path": "apps/api/src/common/pipes/application-validation.pipe.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "41dabcc34818201e4c59020139015111ccecb115"
+    },
+    {
+      "path": "apps/api/src/common/validators/password-policy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "68c47e764f145e7fbe9a3ddf272db459d8df6c5b"
+    },
+    {
+      "path": "apps/api/src/config/app.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/config/database.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/config/env.validation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "128c731f5e50b6754129d29ba5bf1b583b9a5f6a"
+    },
+    {
+      "path": "apps/api/src/config/jwt.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/config/rabbitmq.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/config/redis.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/database/database.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e8a91797094769ba4e2052e7480cca22e36fdd69"
+    },
+    {
+      "path": "apps/api/src/database/migration.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/database/prisma.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "755a27e01ef81b6ee5b582e2d1639c405534362f"
+    },
+    {
+      "path": "apps/api/src/database/seed.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1df38990e4614fe3cad080bc99e2ff62b7e598a7"
+    },
+    {
+      "path": "apps/api/src/modules/analytics/analytics.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0e2d88e2cb6757642eec173030a0b2416824bd92"
+    },
+    {
+      "path": "apps/api/src/modules/analytics/analytics.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "481085dfb277ae675eace7c2ab5abb1353f49e92"
+    },
+    {
+      "path": "apps/api/src/modules/analytics/analytics.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d8ed1de15a2d156b006bb4b010053f358989ad51"
+    },
+    {
+      "path": "apps/api/src/modules/audit/audit.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f0f4f8685690dbdc5f2a33d4c6d5473ef9977a22"
+    },
+    {
+      "path": "apps/api/src/modules/audit/audit.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c295813419038e731402648f461cdba722156a24"
+    },
+    {
+      "path": "apps/api/src/modules/audit/audit.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "973ef2974f75e183da7d88128e4d0c77be004df7"
+    },
+    {
+      "path": "apps/api/src/modules/audit/dto/create-audit-log.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "325886b492eaa0940bc20728d23746697a54ac37"
+    },
+    {
+      "path": "apps/api/src/modules/audit/dto/get-audit-logs.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ea8d4d611da575225b3ee2d5c8726d36d95cb9b0"
+    },
+    {
+      "path": "apps/api/src/modules/auth/auth.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "27d61092bff081c12a987243537ffbc62c575440"
+    },
+    {
+      "path": "apps/api/src/modules/auth/controllers/auth.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "eb0cd9516b01546df7c6cb1a0111e66b36c0fd09"
+    },
+    {
+      "path": "apps/api/src/modules/auth/dto/login.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "965a4dde241429eec496b4bde334bdc1dbf0cdd5"
+    },
+    {
+      "path": "apps/api/src/modules/auth/dto/register.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fb080da9fc56ef54c456dcde4b30465e579afa8e"
+    },
+    {
+      "path": "apps/api/src/modules/auth/guards/jwt-auth.guard.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2155290edea420d9d7e339f20679f3114d4c2d69"
+    },
+    {
+      "path": "apps/api/src/modules/auth/guards/jwt-refresh.guard.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ed74420cd769f25b201360e39f46a38a28d6749c"
+    },
+    {
+      "path": "apps/api/src/modules/auth/services/auth.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4430db766542675c41ea82fbae8b6926423f2c63"
+    },
+    {
+      "path": "apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "42d9bec97152bf69b0689032ae84eb026a766d86"
+    },
+    {
+      "path": "apps/api/src/modules/auth/strategies/jwt.strategy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "569ce16e51fd68a5d43be8357fd4285bed9b3baa"
+    },
+    {
+      "path": "apps/api/src/modules/cms/cms.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d3fb7a40611baab5274359d58b2fd19fb6e8ca53"
+    },
+    {
+      "path": "apps/api/src/modules/cms/controllers/category.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a48fd427e84125ddaa865ba7046b491a5b21a8a2"
+    },
+    {
+      "path": "apps/api/src/modules/cms/controllers/content.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b102c074c6a6cbd3240ebaed59165e6d59b26ca1"
+    },
+    {
+      "path": "apps/api/src/modules/cms/dto/create-category.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "901bef2b30f532e492002e041193729b701b7804"
+    },
+    {
+      "path": "apps/api/src/modules/cms/dto/create-content.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a15aa36b0636bb9a2a37a8a037ee46331a68e0ec"
+    },
+    {
+      "path": "apps/api/src/modules/cms/dto/query-content.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2e2096ec3ba3fb0fd96651d4a44547db1019a29c"
+    },
+    {
+      "path": "apps/api/src/modules/cms/dto/update-category.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d713b9b900cd1d580baedbf636a1dd8470c04296"
+    },
+    {
+      "path": "apps/api/src/modules/cms/dto/update-content.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5c949b22ba2d67207a9d4ec005e7875f591ff587"
+    },
+    {
+      "path": "apps/api/src/modules/cms/entities/category.entity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a354c24192e2d30ae8fabc75ab80a51374769468"
+    },
+    {
+      "path": "apps/api/src/modules/cms/entities/content.entity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0e793e08815f4d7624e7678b814e233ef5561180"
+    },
+    {
+      "path": "apps/api/src/modules/cms/services/category.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "933b21ea8c68e783f5cefb688c9192e1cb304c65"
+    },
+    {
+      "path": "apps/api/src/modules/cms/services/content.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "353276fbfc2a8283cea634e402bdda38224e3d37"
+    },
+    {
+      "path": "apps/api/src/modules/export/compression.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "084f908c41f7829702a8c38d143b3e65d8af12b4"
+    },
+    {
+      "path": "apps/api/src/modules/export/export-filename.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5d3c8e8fa73e861e1c9410d6bdbf5a6cbb31eeef"
+    },
+    {
+      "path": "apps/api/src/modules/export/export-job.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "22491d2c2556c95d970272c1cadddab329884cec"
+    },
+    {
+      "path": "apps/api/src/modules/export/export.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ee82e544832608832d4abcbe1dee086d6c366cf3"
+    },
+    {
+      "path": "apps/api/src/modules/export/export.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e2c22c08021ab9b9f74b6f87d841111c73211059"
+    },
+    {
+      "path": "apps/api/src/modules/export/export.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "10e9fd2ea2835b6a828f22043cfd2648e0b36344"
+    },
+    {
+      "path": "apps/api/src/modules/export/worker.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "76f22977fe4e56faa20359249ae39b86b9ec5460"
+    },
+    {
+      "path": "apps/api/src/modules/media/dto/media.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "94eb50dc45254185ff7be24bfd43feac2caee1b4"
+    },
+    {
+      "path": "apps/api/src/modules/media/media.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "36780e7b6a335ea66532b9b7b45b46372a01251f"
+    },
+    {
+      "path": "apps/api/src/modules/media/media.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b3866052ccc546e513e084b69a43f58b31a9841f"
+    },
+    {
+      "path": "apps/api/src/modules/media/media.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8db4d523720dd7b0c66136b578a32e7d99ed66e9"
+    },
+    {
+      "path": "apps/api/src/modules/redis/redis.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b9cfabfe04c4c1b5d957c8d451e7611de4b98988"
+    },
+    {
+      "path": "apps/api/src/modules/redis/redis.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "56468889c84dc7ec5518f8b50927b994c923d5b3"
+    },
+    {
+      "path": "apps/api/src/modules/storage/file-vault.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d3806a0b882d3632f7342fe5e12a0beadcf95ebe"
+    },
+    {
+      "path": "apps/api/src/modules/storage/files.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "71e9461042e87e02da39af0e000b806eeb4e3a82"
+    },
+    {
+      "path": "apps/api/src/modules/storage/storage-retention.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d6b783d9add130f9eba8a15da21267fbcc134036"
+    },
+    {
+      "path": "apps/api/src/modules/storage/storage.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b086e2941a1d75480252d10a2ff29e3094581c46"
+    },
+    {
+      "path": "apps/api/src/modules/storage/validate-upload.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4ef8162775a9e9a8f0a9f38923dc1e0ea23f17ed"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/dto/create-tenant.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "426f99db423c2b44026ef1a0a5e37f606afa9ff2"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/dto/member.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "63cf8558f04df4fb4d0294b02b994dbf332d6cde"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/dto/update-tenant.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "da52ccb2a5cb68b928d43943e3808cd815027304"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/membership.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f1106a0c61bc9917ba35467f3d0c0d74f84fe44f"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/membership.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1df852cfae43dcf9674cc43915a9d2f74c47069c"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/tenant.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0701c7ee44dfc6eb9e79d5a9c98b62e996101583"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/tenant.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fa20c09fc163304c944348d8fae68e449b293fc4"
+    },
+    {
+      "path": "apps/api/src/modules/tenant/tenant.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "957f6537f6c556daf1aa20349428ea9f393b17f4"
+    },
+    {
+      "path": "apps/api/src/modules/user/dto/create-user.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "91ea0bc25effe870fdd0c4082e5af2c9e97ade8c"
+    },
+    {
+      "path": "apps/api/src/modules/user/dto/update-user.dto.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7ea0dacd7bdc7906cf7e25c76dad77396f1856fd"
+    },
+    {
+      "path": "apps/api/src/modules/user/entities/user.entity.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "982f3b3498694d3ce7183da4c282311d734f7b22"
+    },
+    {
+      "path": "apps/api/src/modules/user/user.controller.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "36461007b8490d94a7b6b9ebe293bb6241647a99"
+    },
+    {
+      "path": "apps/api/src/modules/user/user.module.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c4bfdc253060006c46ab28bba7d1ee22f7211ee0"
+    },
+    {
+      "path": "apps/api/src/modules/user/user.service.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4ec7b04917ecbbfee100cba8bb6a633505a03f6a"
+    },
+    {
+      "path": "apps/api/test/database-safety.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9354dfc383a5a36a4c010dbbe3f5cb1d8dbfe284"
+    },
+    {
+      "path": "apps/api/test/e2e/__mocks__/archiver.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "201631fe642c79a9cc164324bdcf2f451cd90000"
+    },
+    {
+      "path": "apps/api/test/e2e/__mocks__/uuid.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "20bc25d38472852e0317d65ea72b41b38431caed"
+    },
+    {
+      "path": "apps/api/test/e2e/cms.e2e-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1881e60b9c4fba54e5152e28cac81aaa0d2c4baf"
+    },
+    {
+      "path": "apps/api/test/e2e/media.e2e-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "62e0a00bb398f8054945155bf0191fdabccc517f"
+    },
+    {
+      "path": "apps/api/test/e2e/security.e2e-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c4985eff4cb42cd129298093b2520285c7a1892d"
+    },
+    {
+      "path": "apps/api/test/e2e/test-utils.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b1ddd0bd875ad7938a91f32ed79b14656be1804a"
+    },
+    {
+      "path": "apps/api/test/integration/category.service.int-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e2fcb51c5cd0cd8ae995b59e1ca9ae36a71189b7"
+    },
+    {
+      "path": "apps/api/test/integration/content.service.int-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8f136bda15346d4275522320fff586d13c8f8f64"
+    },
+    {
+      "path": "apps/api/test/integration/durability.int-spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f7e0ac0e00e4b202b786f94337c92e8c75a21708"
+    },
+    {
+      "path": "apps/api/test/integration/int-test-utils.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e4b2573da0cd71a110e45368ee16f66feae852da"
+    },
+    {
+      "path": "apps/api/test/jest-e2e.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4712f59bff2c90c81691148059cf6390684373d3"
+    },
+    {
+      "path": "apps/api/test/jest-int.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8de1f3680207124cade037786c70fddd22911c0a"
+    },
+    {
+      "path": "apps/api/test/unit/file-vault.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9b19e7b077557634522ae89936eb253ee33adc5f"
+    },
+    {
+      "path": "apps/api/test/unit/modules/audit/audit.controller.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "51b5d7d04b60e60d6e114bdd88975dac1b98077a"
+    },
+    {
+      "path": "apps/api/test/unit/modules/audit/audit.service.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4fdf39d4e83735157b7de41df7294da81ae35a51"
+    },
+    {
+      "path": "apps/api/test/unit/modules/auth/controllers/auth.controller.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "22c84c2af3baf2a57de5b85605a88ad01a4f8ae4"
+    },
+    {
+      "path": "apps/api/test/unit/modules/auth/services/auth.service.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c853a85f6a3816123788e1e849fa8f20060bcec9"
+    },
+    {
+      "path": "apps/api/test/unit/modules/media/media.controller.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "40158deeb8cf5efdb15b73d90e461384a041bcf0"
+    },
+    {
+      "path": "apps/api/test/unit/modules/media/media.service.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5df31d814e6ed5f8b315475991bf326fe46bc7fb"
+    },
+    {
+      "path": "apps/api/test/unit/modules/tenant/tenant.controller.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "12e3616783d7f3cf16bea0aa811ab397d4e97e38"
+    },
+    {
+      "path": "apps/api/test/unit/modules/tenant/tenant.service.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "99b5ec91136da6f000b01428c523f71c58e17d56"
+    },
+    {
+      "path": "apps/api/test/unit/modules/user/user.controller.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "554f66b320f3443f1ac9d5615404fa089ccef56e"
+    },
+    {
+      "path": "apps/api/test/unit/modules/user/user.service.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "cd16503104abfbe312878e88ca4c2a206a605357"
+    },
+    {
+      "path": "apps/api/test/unit/security/application-validation.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "72df3096e8e6083e0f101a2b0ac3c6efe757708b"
+    },
+    {
+      "path": "apps/api/test/unit/security/audit-attribution.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0b753f2e3325ad5e9960b4140af7d8217ea1c6f7"
+    },
+    {
+      "path": "apps/api/test/unit/security/auth-client-identity.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ec09de8c70a58426f8a7330c62ecb8a6afd0c1fc"
+    },
+    {
+      "path": "apps/api/test/unit/security/auth-rate-limit.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d75be9d6f0d2eaad657bcc6a0ebc0df0ef9e334a"
+    },
+    {
+      "path": "apps/api/test/unit/security/auth-validation.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6bd1f00435bb9d29538988fc3d1a49bb157b9e1b"
+    },
+    {
+      "path": "apps/api/test/unit/security/config-and-errors.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c5ac10ef9ffb7137bec79fa35ace4059c4c8e29c"
+    },
+    {
+      "path": "apps/api/test/unit/security/export-download.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e877361dcafc2a80405be1e54b85eee029d0237c"
+    },
+    {
+      "path": "apps/api/test/unit/security/export-recovery.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bcec242caef2561ebc3e057e617333a01253d199"
+    },
+    {
+      "path": "apps/api/test/unit/security/rbac-boundaries.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a5739db120013734d5f04103affb589a67451b0c"
+    },
+    {
+      "path": "apps/api/test/unit/security/refresh-recovery.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "129fefd66b870990936f9c853e5ef3b9b7dd39b7"
+    },
+    {
+      "path": "apps/api/test/unit/security/runtime-dependencies.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3b77cd2d2a85d866fffe0156778149dce4161cb9"
+    },
+    {
+      "path": "apps/api/test/unit/security/storage-retention.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7d5d172a96dd87d682296d39524b0f7abe9e63c3"
+    },
+    {
+      "path": "apps/api/test/unit/security/upload-content.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bb11e1267b2c7a8e181757ef522c826a9915b272"
+    },
+    {
+      "path": "apps/api/tsconfig.build.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "64f86c6bd2bb30e3d22e752295eb7c7923fc191e"
+    },
+    {
+      "path": "apps/api/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6dafa9be6364451fc2409da24e3a90c6d2fa095b"
+    },
+    {
+      "path": "apps/web-admin/.gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5ef6a520780202a1d6addd833d800ccb1ecac0bb"
+    },
+    {
+      "path": "apps/web-admin/AGENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "643577dfaef36ee8032915ef80a0f0638f7beda0"
+    },
+    {
+      "path": "apps/web-admin/CLAUDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "43c994c2d3617f947bcb5adf1933e21dabe46bb5"
+    },
+    {
+      "path": "apps/web-admin/Dockerfile",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f6254930d1dc6a31c6cd4fc94f6be8c2967fb3d2"
+    },
+    {
+      "path": "apps/web-admin/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e215bc4ccf138bbc38ad58ad57e92135484b3c0f"
+    },
+    {
+      "path": "apps/web-admin/components.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8d886db5756307e013bc8ae97c05220fb7b6ab7a"
+    },
+    {
+      "path": "apps/web-admin/eslint.config.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d9a6040ac2dee210c17f96733da091fe084b9605"
+    },
+    {
+      "path": "apps/web-admin/next.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bca939e86ac1090ed92ab1bbfdd939a11b900f21"
+    },
+    {
+      "path": "apps/web-admin/package.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a58c85217455701e369002a0b0a0e1e301ff74ee"
+    },
+    {
+      "path": "apps/web-admin/postcss.config.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "61e36849cf7cfa9f1f71b4a3964a4953e3e243d3"
+    },
+    {
+      "path": "apps/web-admin/public/file.svg",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "004145cddf3f9db91b57b9cb596683c8eb420862"
+    },
+    {
+      "path": "apps/web-admin/public/globe.svg",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "567f17b0d7c7fb662c16d4357dd74830caf2dccb"
+    },
+    {
+      "path": "apps/web-admin/public/next.svg",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5174b28c565c285e3e312ec5178be64fbeca8398"
+    },
+    {
+      "path": "apps/web-admin/public/vercel.svg",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "77053960334e2e34dc584dea8019925c3b4ccca9"
+    },
+    {
+      "path": "apps/web-admin/public/window.svg",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b2b2a44f6ebc70c450043c05a002e7a93ba5d651"
+    },
+    {
+      "path": "apps/web-admin/scripts/open-browser.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "cf48f8130442f617aa9222d5d6066abf5742b2c5"
+    },
+    {
+      "path": "apps/web-admin/src/actions/auth.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d6cf55fc59830d367bd6b91b5705a8c14c478003"
+    },
+    {
+      "path": "apps/web-admin/src/actions/categories.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "372c902dadda5f09f1d2bf920953d8ab16576fd9"
+    },
+    {
+      "path": "apps/web-admin/src/actions/category-options.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "543801e391b32dc61292fb2c36e2792ff0ef9462"
+    },
+    {
+      "path": "apps/web-admin/src/actions/contents.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0c95d348545a765227a81571373e1e92221c95c0"
+    },
+    {
+      "path": "apps/web-admin/src/actions/media.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0c1ec0c08c75c298800e4cb670617e4ff01c10d3"
+    },
+    {
+      "path": "apps/web-admin/src/actions/profile.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8023a9410f7d684b418eba8a0793b4335d8196e3"
+    },
+    {
+      "path": "apps/web-admin/src/actions/workspace.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "43bcd4b6a947f8d241e4843301598abdb2007c97"
+    },
+    {
+      "path": "apps/web-admin/src/app/(auth)/forgot-password/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "68dd1abac718f66d172852f7b4f0a6324f483b72"
+    },
+    {
+      "path": "apps/web-admin/src/app/(auth)/layout.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "05b35963ac83c468ea333b88f02b15b93de01a01"
+    },
+    {
+      "path": "apps/web-admin/src/app/(auth)/login/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "65c0e17936b95f15f60ec1be6b9dd0872cb76609"
+    },
+    {
+      "path": "apps/web-admin/src/app/(auth)/register/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "72ea0efd53c7a5c637689ed33da2be9dd0cd76d2"
+    },
+    {
+      "path": "apps/web-admin/src/app/api/exports/[id]/route.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ee732a0acdb659c9f132a7adce933c90fa0c1294"
+    },
+    {
+      "path": "apps/web-admin/src/app/api/files/[filename]/route.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b746bef86dd8f600aa75b77978cbbe7aef3c9d62"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/audit/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "35ae5e339437a757e5620a8bf5d9282274d1ba07"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/categories/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "30a12d69d476fa27bb5b5a00697e8085389b7a40"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/content/[id]/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "08e09bd86619f64970d7f9ef6056884161d86823"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/content/create/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ed5e170b80df1adf97ceca27cf458c182ad5910a"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/content/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "db4d39df3b67bba8845b751a823952357ab62bab"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/error.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "63c11de372b92a4429695203ec1e9bbcd8466d8e"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/exports/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ef93cfec2492d6fea3cbecf3fac8b34ebeaef1b2"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/invitations/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d06ae85830477f91505c8c5e631d33b42a903add"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/layout.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5ccf57e0fa4ceed62051fd89a3c817aacf21c2d6"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/loading.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "367bab44d322213b439a29ed48f5c020d56823aa"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/media/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "69f2ef1d1291311656934bc78235b8830e98c867"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a7e93c3df72be0afd70e46699f9025a19c3291c2"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/profile/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c9e89396cd7a69cce57473fc7e114b5814c691a0"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/settings/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "603165006be0e99b2db6af9c65f4b5d5d01bd9c8"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/users/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b655f9474e4a2ed6946d37a02c86eaf91de73824"
+    },
+    {
+      "path": "apps/web-admin/src/app/dashboard/workspaces/new/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6513c12615d08b3052c530df60166181f99df2df"
+    },
+    {
+      "path": "apps/web-admin/src/app/error.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7456161b49ac5e65d19e6a0a9e02a8f36bbaa1c1"
+    },
+    {
+      "path": "apps/web-admin/src/app/favicon.ico",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "718d6fea4835ec2d246af9800eddb7ffb276240c"
+    },
+    {
+      "path": "apps/web-admin/src/app/globals.css",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "542a7efa60433ef492e48b52fb1a1714f7e0d32e"
+    },
+    {
+      "path": "apps/web-admin/src/app/layout.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3d071be64bbbbbb4c1c73881ff72d8136aeaac9e"
+    },
+    {
+      "path": "apps/web-admin/src/app/page.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bfa2ae8b3ec6f2856cade7d01a8c12e89230123f"
+    },
+    {
+      "path": "apps/web-admin/src/components/app-sidebar.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "60a2180ad11c21a7c9527ff532db09797c5be720"
+    },
+    {
+      "path": "apps/web-admin/src/components/atlas-mark.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "977566e4e5aa382158e058b06397a887efede8e4"
+    },
+    {
+      "path": "apps/web-admin/src/components/auth-feedback.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "01d85154087d65aaf554b01e8150e933188bf297"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/categories/categories-client.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8ca58426732f7f0c8b9cf97b9586b89a291c3e9e"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/categories/category-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7b714ea3303da429e5faf6cb2370b7f4d13eeacf"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/categories/columns.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b7fd97ccf5aa3d3f23477e6ec3a6de76e29262bd"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/categories/data-table.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d9ecf3eaf547a7897107d3a70df8a9bfe2ab595f"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/categories/delete-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e1bb5baa7a6e2784f66cd0c0a38a1a4c227c174e"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/content/columns.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1f3c51baed3168d2afa69ed418459fd40f1bcc6d"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/content/content-form.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "71b23f5b9bdb6819f8e10fbc0ef9ec503efcb86e"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/content/data-table.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a68c55a3417bc52aeac52770710c91c77e13c386"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/dashboard-client.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d3814915968470792ecf36fa9065f5080807f2bf"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/dashboard-header.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e960faa76ddd41743cb3e625ee3c5e56ec925aaa"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/exports-client.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fe83a69d52fca1299b5dc7d9d47337dab6283616"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/list-pagination.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3a9ef839b70ec065a617f2c9830de9acaf9dfe11"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/empty-media.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2ab60c6ff53059649f8c5e952c1b8d9301ff7f78"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-card.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "131e88028f139fcd29ae0d700205019892747cdf"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-client.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d6afd19d0c48e9b3f71087968c41e50d41695b77"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7a4ab4edae503fd2ce9e45955e8189e5b2d226f9"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-dropzone.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d52efeb9d0cb2d3f6232f893d4d648c941d802bd"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-grid.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f2d495a14b7b7c1191801fcca1136b84368be5e3"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-header.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "18277523a03c431aaada5e8a6329bb0929cea4cc"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-list.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9244668aee78c68178be5a8dd58eec7d3049666f"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b25cfafe2e2a7b0491bad57019138f699f1becf1"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-toolbar.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "82961c05b036587a692d811f336cccf1d3920304"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f968eb0e26e924ca18f74083b243b3c69337a57c"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/members-client.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f9f06f2d0ba330cee201234e068812945ca6905e"
+    },
+    {
+      "path": "apps/web-admin/src/components/dashboard/workspace-settings.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "830b0dbf23fd26e19c2089603dd83e858b9380c3"
+    },
+    {
+      "path": "apps/web-admin/src/components/providers/tenant-provider.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c48ccba118755a07ae859cec4bf4948cfcdac4fd"
+    },
+    {
+      "path": "apps/web-admin/src/components/theme-provider.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6a1ffe4d075183dc1b3ffcc854b392b29354710e"
+    },
+    {
+      "path": "apps/web-admin/src/components/theme-toggle.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "48117796aa955426fe15724d55b7f92aefb1c266"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/accessible-dialog.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f99639b5b6f4fce300733194655c09eed04f0cd5"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/alert.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8b0f0df3f14fb233a9bb151fe4126525021a4359"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/avatar.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e4fed865cf75e3f46d920d554204faa7b6639200"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/badge.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b20959dd775e40754a5f66940c62ee4f7feaef36"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/breadcrumb.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3d85c18d40167b7557648fca076127bce4f024db"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/button.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "08c6253e12e9953b9e8f9b46893cc7d3ce4fb278"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/card.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4458dae19f243f9fd6f8ccd60c52033d241a5f60"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/dropdown-menu.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "4d9bcb2436d52451490d02287b6393628751896a"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/form.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "40f7d5b830e1233c23b37b3eb5ed476ac2976d40"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/image-picker-modal.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5c276fd71825a3d545a1df036a1b85811411288d"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/input.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7d21babba91655ac1cd6a5ea630eb2ec18d2b52b"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/label.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "74da65c33b49c2921947376aa11634a403c833fd"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/password-input.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e1b759f8b287624a7f7339a93d4507b9cb287d4b"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/progress.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "986f3463a4715a2c27eec0ba55ade09e3391cf54"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/select.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "548425c30504bba6086b21bcff70b1943c0611f6"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/separator.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6e1369e43cce8be3da7ef04940b79dd276245290"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/sheet.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "78c0a76494aafe3256c8e1dd76991584b985ac38"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/sidebar.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9a0cd604e18c830aa47d59e2f3a806e4b8b2a5fa"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/skeleton.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0118624f6e6a64b90c24502a4e2b8c5513098072"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/switch.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9b8b44b1d19a3904b56c6ac9a3e9230d46be9dbc"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/table.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "11deb2b4bfbe1b2988e60ecc0f92d20b3087440d"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/tabs.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1b96022ff71d9aab2efba26b651ad19d8e0993e3"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/textarea.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "12c91369ec954edcda9106b1b5b9d26213009379"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/tooltip.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "69e8a822c0e10629683093292a1b3b5de14ccb08"
+    },
+    {
+      "path": "apps/web-admin/src/components/ui/wysiwyg-editor.tsx",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ca24c2776dd42793113147ca2d17736e108264f2"
+    },
+    {
+      "path": "apps/web-admin/src/hooks/use-mobile.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8a36345123d239f7b6150b7c3f834f54b12e984c"
+    },
+    {
+      "path": "apps/web-admin/src/hooks/use-scroll-reveal.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "7e8e573829ba45e0f9d80e742447a823dbaad783"
+    },
+    {
+      "path": "apps/web-admin/src/lib/api.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "85269e1fdf0ead9eabfd92bc55825f7390a08847"
+    },
+    {
+      "path": "apps/web-admin/src/lib/auth-client-headers.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5259ab68f7acf41ac2031ea2aa2e4b52ae3a643e"
+    },
+    {
+      "path": "apps/web-admin/src/lib/auth-validation.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d12c522719fbad41621e6427b14e2b97a3ed7391"
+    },
+    {
+      "path": "apps/web-admin/src/lib/download.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ce90965d8c521892607e7ce18844ac895e187db7"
+    },
+    {
+      "path": "apps/web-admin/src/lib/files.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "88870857e156d8a577da80eb5ffda5d62153aef8"
+    },
+    {
+      "path": "apps/web-admin/src/lib/utils.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "bd0c391ddd1088e9067844c48835bf4abcd61783"
+    },
+    {
+      "path": "apps/web-admin/src/lib/workspace-api.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "60c6ca6a5973a6c07d39fff955baacecdb9fc823"
+    },
+    {
+      "path": "apps/web-admin/src/proxy.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "be71d9e8ed506a7b07278f6dcf617f2829a56bac"
+    },
+    {
+      "path": "apps/web-admin/tsconfig.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "cf9c65d3e0676a0169374d827f7abb97497789ef"
+    },
+    {
+      "path": "docker-compose.prod.yml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2d5eea997f31a3bf17c4e6d45ea466cdd916cbe8"
+    },
+    {
+      "path": "docker-compose.test.yml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5522927924ebecd7717e52a5d8a220ce096e19c2"
+    },
+    {
+      "path": "docker-compose.yml",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e19fb2b631a0e173e5cc94dc523c608db5c075db"
+    },
+    {
+      "path": "docs/improvements/phase-3/BASELINE-ASSESSMENT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "01a0d6765834d95b8e442e5c87ebf036ad1f7553"
+    },
+    {
+      "path": "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0c0b193d47b406c3863c3e66b7188f6055258328"
+    },
+    {
+      "path": "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "0201caaec8211532a961fbc8b03a30b77ff0139e"
+    },
+    {
+      "path": "docs/improvements/phase-3/IMPROVEMENT-PLAN.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a276467bf08f810538def91f671f67ea768fa6e2"
+    },
+    {
+      "path": "docs/improvements/phase-3/PERFORMANCE-REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "117f9efb8fff9d53924e509e1352eec014d3f744"
+    },
+    {
+      "path": "docs/improvements/phase-3/PHASE-3C-REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "38afcd119f531f7f85cb96e6bdde1aeade2865ee"
+    },
+    {
+      "path": "docs/improvements/phase-3/PHASE-3D-VERIFICATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2eb81186a6054bc9017d9b3cabe7f70a56b1db07"
+    },
+    {
+      "path": "docs/improvements/phase-3/PHASE-3F-RELEASE-EVIDENCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f2197c57c148b06c78bd5b1474f9ac6898fed5b8"
+    },
+    {
+      "path": "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1e404e24c7045ceb848c0eea6c05f1fd7417f626"
+    },
+    {
+      "path": "docs/improvements/phase-3/RELIABILITY-REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "39cce98087d363d4196dbf61510590e74b97a665"
+    },
+    {
+      "path": "docs/improvements/phase-3/SECURITY-DEPENDENCY-REVIEW.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "727dce3f3f07c8242f37b10360758f09e4c40731"
+    },
+    {
+      "path": "docs/improvements/phase-3/TEST-COVERAGE-REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "d5976aa610886a6c24b7a4620d85fdae5472abf0"
+    },
+    {
+      "path": "nginx/nginx.conf",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "56028b3e6e03e20bb6a75d4594cc664b2a269231"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "22d35feb5f60bd0240f491b7a687ade88416fd33"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c1e40d2e48357d34a53ef7e91dcb810952667399"
+    },
+    {
+      "path": "playwright.config.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "e8358ced87fa533a2436c33b186d7fe98401478d"
+    },
+    {
+      "path": "scripts/benchmark-safety.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8757fb5cc7b1f39f05a19a031866b1fb0d850912"
+    },
+    {
+      "path": "scripts/benchmark.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "fff5db2bc741685649b15ba1f7b985f938c04501"
+    },
+    {
+      "path": "scripts/database/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "8e2aee08b8b68065554b6c9de8249f2b39a20034"
+    },
+    {
+      "path": "scripts/database/create-runtime-role.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "ca3bac18c301e48774bb756729d92c4c43979a6a"
+    },
+    {
+      "path": "scripts/database/grant-export-task.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "36bbe9545dc8c8137f340d919749e876fad4c540"
+    },
+    {
+      "path": "scripts/database/verify-runtime-role.sql",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1ff8832814a5d848376643930fb4f0ece6fc354f"
+    },
+    {
+      "path": "scripts/security/benchmark-safety.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "9091aa2f50fc0b06f47990d26f4d96d9df524a7e"
+    },
+    {
+      "path": "scripts/security/database-regression.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c9e1d99d18ca93c21bbf1d494fc3f5a8afcc241e"
+    },
+    {
+      "path": "scripts/security/dependency-audit.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "b88b5b4d0ee4ea391b415bf3d5782c9d422d1edb"
+    },
+    {
+      "path": "scripts/security/dependency-policy.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "53fff575fede91cc1b7fb70300b2a1f2f8c09b44"
+    },
+    {
+      "path": "scripts/security/dependency-policy.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "3cedcade7d0240ace85d84f83735257b25b9e5f7"
+    },
+    {
+      "path": "scripts/security/deployment.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "97b7d522d631ccd4cf918ff0c9f09bfcc0f9a474"
+    },
+    {
+      "path": "scripts/security/export-archive.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c1924ae0615fa3a11f47807155fb42de0b4791ef"
+    },
+    {
+      "path": "scripts/security/phase3b-drill.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2f652ec63b49c502b818f7d0619486d1d6e5c957"
+    },
+    {
+      "path": "scripts/security/phase3b-smoke.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1c0cdcad1e2645f2ea86c41fcf084a7543d06af6"
+    },
+    {
+      "path": "scripts/security/phase3c-recovery.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a92230864bd34ac5e6d06fb1f3503eab2f8b8c81"
+    },
+    {
+      "path": "scripts/security/phase3f-release-audit.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "f390e6c45511d9e22733c8560e22c249d9c71922"
+    },
+    {
+      "path": "scripts/security/proxy-smoke.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2d611c20a6ba4e5cf30e372b7a428e93eb1c0dae"
+    },
+    {
+      "path": "scripts/security/runtime-smoke.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "201fdbffabed67a964577f7a14993fd469b3e6ca"
+    },
+    {
+      "path": "scripts/security/web-auth.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "2eef77975dd5ffdc62b1c66c1dce99564305be44"
+    },
+    {
+      "path": "scripts/security/web-data.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "698b2f9e33cb603f1e4322c16efcf7f8adffbe21"
+    },
+    {
+      "path": "scripts/storage-retention.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "6b279fb8800a992a4e50e4b11dcc1de56307d3f3"
+    },
+    {
+      "path": "tests/browser/auth-forms.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "a8f61bf33590483d284800e9e01cda35b5a849c4"
+    },
+    {
+      "path": "tests/browser/fixtures/upload.png",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "1e6acad084bd8e0dd3b9d8a1061a5096d1b78c82"
+    },
+    {
+      "path": "tests/browser/security-flows.spec.ts",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "c938d2e386745fe94531765f535e63123fbb89a7"
+    },
+    {
+      "path": "turbo.json",
+      "mode": "100644",
+      "type": "blob",
+      "oid": "5581572b1e72b92fd37b5455417aee7976a8bf2c"
+    }
+  ],
+  "note": "Candidate snapshot excludes local evidence/audit outputs. No checkout, staging into user index, or commit on current branch."
+}

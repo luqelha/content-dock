@@ -1,0 +1,71 @@
+{
+  "startedAt": "2026-10-13T05:42:59.450Z",
+  "scope": "isolated-local-synthetic",
+  "steps": [
+    {
+      "name": "fresh project config, secrets separation, no published ports",
+      "status": "passed",
+      "at": "2026-10-13T05:43:00.158Z"
+    }
+  ],
+  "dockerEndpointKind": "local named pipe",
+  "images": {
+    "candidate": {
+      "api": "atlas-api:phase3b-candidate",
+      "web": "atlas-web:phase3b-candidate"
+    },
+    "previous": {
+      "api": "atlas-api:security-phase2",
+      "web": "atlas-web:security-phase2"
+    }
+  },
+  "existingContainers": [
+    "548b36a61083|atlas-phase2-production-mode-review|atlas-api:security-phase2",
+    "d0f2b1bdab25|atlas_postgres|postgres:15-alpine",
+    "fd3d808f9fb4|atlas_rabbitmq|rabbitmq:3-management-alpine",
+    "278591c7bf0c|atlas_redis|redis:7-alpine",
+    "126ffed29130|atlas-phase2-api-review|atlas-api:security-phase2",
+    "ffd41f8981bb|atlas-security-phase2-20261011-postgres-1|postgres:15-alpine",
+    "6001339dc3ef|atlas-security-phase2-20261011-redis-1|redis:7-alpine",
+    "3e9b1f30169d|atlas-security-phase2-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "cfc3361320a5|atlas-security-phase1-api-final|atlas-api:security-phase1",
+    "b6268c8a66a3|atlas-security-phase1-20261011-redis-1|redis:7-alpine",
+    "97c42253a208|atlas-security-phase1-api|7e5f88923546",
+    "37c6a5f3e3a8|atlas-security-phase1-20261011-postgres-1|postgres:15-alpine",
+    "e1b91c7f52ac|atlas-security-phase1-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "138bde452bb6|atlas-review-web|atlas-web:review",
+    "f175f24b8c17|atlas-review-api|atlas-api:review",
+    "4d238769769a|atlas-review-rabbitmq|rabbitmq:3-management-alpine",
+    "b2ddbff7720a|atlas-review-redis|redis:7-alpine",
+    "5d19607301cb|atlas-review-postgres|postgres:15-alpine",
+    "04a003f7ad92|pln-n8n|n8nio/n8n:latest",
+    "e179d0aa565a|pln-ollama-pull|ollama/ollama:latest",
+    "ac3d7d5f89bf|pln-postgres|postgres:16-alpine",
+    "699834dc9d8c|pln-mailpit|axllent/mailpit",
+    "34caec472a55|pln-ollama|ollama/ollama:latest",
+    "8d3946bed999|atlas-platform-api-1|atlas-platform-api",
+    "74a75827fd79|atlas-platform-api-2|atlas-platform-api",
+    "c6f7742ed06c|atlas_nginx|nginx:alpine",
+    "21b34e185cd8|api-gateway|asynclog-api",
+    "bbe8bf51cc73|worker-service|asynclog-worker",
+    "266c8a34481a|rabbitmq|rabbitmq:3-management",
+    "975ebc8eeead|redis|redis:7-alpine"
+  ],
+  "status": "preflight-passed-runtime-not-executed",
+  "unverified": [
+    "production-mode startup",
+    "effective DB privileges",
+    "tenant isolation",
+    "backup/restore",
+    "deployment rollback"
+  ],
+  "projects": [
+    "atlas-phase3b-source-04639255ef"
+  ],
+  "privateArtifacts": {
+    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase3b-gYFkiU",
+    "warning": "Synthetic credentials/config; backup and fixture only when runtime drill executes. Never commit."
+  },
+  "finishedAt": "2026-10-13T05:43:00.158Z",
+  "resources": "No runtime containers or volumes created or stopped."
+}

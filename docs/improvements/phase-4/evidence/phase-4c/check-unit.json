@@ -1,0 +1,10 @@
+{
+  "name": "unit",
+  "startedAt": "2026-10-16T02:50:10.464Z",
+  "finishedAt": "2026-10-16T02:50:57.518Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\jest\\bin\\jest.js --runInBand --coverage --json --outputFile=<repo>\\docs\\improvements\\phase-4\\evidence\\phase-4c\\unit-results.json",
+  "cwd": "apps\\api",
+  "log": "check-unit.log",
+  "logSha256": "fa6e5ae528988923fad0149ccc81a4f56067c565d3e91cd6128f6e36e166483a"
+}

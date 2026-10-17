@@ -1,0 +1,291 @@
+{
+  "at": "2026-10-14T03:36:12.358Z",
+  "limitations": "Controller OpenAPI generated in isolated Nest container. Guards replaced solely for schema generation, no requests/auth tested. Service projections use a Prisma stub, not SQL.",
+  "contentList200": {
+    "description": "Return paginated contents."
+  },
+  "mediaList200": {
+    "description": "List of media files",
+    "content": {
+      "application/json": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/MediaResponseDto"
+          }
+        }
+      }
+    }
+  },
+  "contentListHasResponseSchema": false,
+  "mediaListHasResponseSchema": true,
+  "pagination": {
+    "defaults": {
+      "page": 1,
+      "take": 50
+    },
+    "invalidInputsRejected": 4,
+    "mediaQuery": {
+      "where": {
+        "tenantId": "fixture-tenant"
+      },
+      "orderBy": [
+        {
+          "createdAt": "desc"
+        },
+        {
+          "id": "desc"
+        }
+      ],
+      "skip": 100,
+      "take": 100
+    }
+  },
+  "contentProjection": {
+    "summaryHasBody": false,
+    "fullHasBody": true,
+    "calls": [
+      {
+        "operation": "count",
+        "args": {
+          "where": {
+            "tenantId": "fixture-tenant"
+          }
+        }
+      },
+      {
+        "operation": "findMany",
+        "args": {
+          "where": {
+            "tenantId": "fixture-tenant"
+          },
+          "orderBy": {
+            "createdAt": "desc"
+          },
+          "skip": 0,
+          "take": 10,
+          "select": {
+            "id": true,
+            "title": true,
+            "slug": true,
+            "status": true,
+            "publishedAt": true,
+            "authorId": true,
+            "tenantId": true,
+            "categoryId": true,
+            "createdAt": true,
+            "updatedAt": true,
+            "body": false,
+            "category": true,
+            "author": {
+              "select": {
+                "id": true,
+                "email": true,
+                "firstName": true,
+                "lastName": true
+              }
+            }
+          }
+        }
+      },
+      {
+        "operation": "count",
+        "args": {
+          "where": {
+            "tenantId": "fixture-tenant"
+          }
+        }
+      },
+      {
+        "operation": "findMany",
+        "args": {
+          "where": {
+            "tenantId": "fixture-tenant"
+          },
+          "orderBy": {
+            "createdAt": "desc"
+          },
+          "skip": 0,
+          "take": 10,
+          "select": {
+            "id": true,
+            "title": true,
+            "slug": true,
+            "status": true,
+            "publishedAt": true,
+            "authorId": true,
+            "tenantId": true,
+            "categoryId": true,
+            "createdAt": true,
+            "updatedAt": true,
+            "body": true,
+            "category": true,
+            "author": {
+              "select": {
+                "id": true,
+                "email": true,
+                "firstName": true,
+                "lastName": true
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "inventory": {
+    "api": {
+      "sourceFiles": 98,
+      "explicitAnyCount": 35,
+      "jsonMethodCalls": 2,
+      "occurrences": [
+        {
+          "file": "apps/api/src/common/filters/http-exception.filter.ts",
+          "line": 26
+        },
+        {
+          "file": "apps/api/src/common/filters/http-exception.filter.ts",
+          "line": 31
+        },
+        {
+          "file": "apps/api/src/common/filters/prisma-client-exception.filter.ts",
+          "line": 39
+        },
+        {
+          "file": "apps/api/src/common/guards/auth-client-identity.ts",
+          "line": 4
+        },
+        {
+          "file": "apps/api/src/common/interceptors/activity-tracking.interceptor.ts",
+          "line": 19
+        },
+        {
+          "file": "apps/api/src/common/interceptors/activity-tracking.interceptor.ts",
+          "line": 42
+        },
+        {
+          "file": "apps/api/src/common/interceptors/cache.interceptor.ts",
+          "line": 9
+        },
+        {
+          "file": "apps/api/src/common/middleware/tenant.middleware.ts",
+          "line": 6
+        },
+        {
+          "file": "apps/api/src/modules/analytics/analytics.controller.ts",
+          "line": 17
+        },
+        {
+          "file": "apps/api/src/modules/audit/audit.controller.ts",
+          "line": 27
+        },
+        {
+          "file": "apps/api/src/modules/audit/audit.service.ts",
+          "line": 36
+        },
+        {
+          "file": "apps/api/src/modules/audit/dto/create-audit-log.dto.ts",
+          "line": 7
+        },
+        {
+          "file": "apps/api/src/modules/auth/auth.module.ts",
+          "line": 26
+        },
+        {
+          "file": "apps/api/src/modules/auth/services/auth.service.ts",
+          "line": 51
+        },
+        {
+          "file": "apps/api/src/modules/auth/services/auth.service.ts",
+          "line": 68
+        },
+        {
+          "file": "apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts",
+          "line": 21
+        },
+        {
+          "file": "apps/api/src/modules/auth/strategies/jwt.strategy.ts",
+          "line": 19
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+          "line": 35
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+          "line": 43
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+          "line": 51
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+          "line": 64
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+          "line": 79
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 49
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 50
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 60
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 68
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 81
+        },
+        {
+          "file": "apps/api/src/modules/cms/controllers/content.controller.ts",
+          "line": 96
+        },
+        {
+          "file": "apps/api/src/modules/media/media.controller.ts",
+          "line": 64
+        },
+        {
+          "file": "apps/api/src/modules/media/media.controller.ts",
+          "line": 76
+        },
+        {
+          "file": "apps/api/src/modules/media/media.controller.ts",
+          "line": 84
+        },
+        {
+          "file": "apps/api/src/modules/redis/redis.service.ts",
+          "line": 33
+        },
+        {
+          "file": "apps/api/src/modules/tenant/tenant.controller.ts",
+          "line": 31
+        },
+        {
+          "file": "apps/api/src/modules/tenant/tenant.controller.ts",
+          "line": 39
+        },
+        {
+          "file": "apps/api/src/modules/user/user.service.ts",
+          "line": 64
+        }
+      ]
+    },
+    "web-admin": {
+      "sourceFiles": 95,
+      "explicitAnyCount": 0,
+      "jsonMethodCalls": 30,
+      "occurrences": []
+    }
+  }
+}

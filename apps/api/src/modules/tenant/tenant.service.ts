@@ -9,7 +9,7 @@ export class TenantService {
 
   async create(createTenantDto: CreateTenantDto, userId: string) {
     if (createTenantDto.domain) {
-      const existing = await this.prisma.tenant.findUnique({
+      const existing = await this.prisma.client.tenant.findUnique({
         where: { domain: createTenantDto.domain },
       });
       if (existing) {
@@ -17,7 +17,7 @@ export class TenantService {
       }
     }
 
-    const tenant = await this.prisma.tenant.create({
+    const tenant = await this.prisma.client.tenant.create({
       data: {
         name: createTenantDto.name,
         domain: createTenantDto.domain,
@@ -34,7 +34,7 @@ export class TenantService {
   }
 
   async findAllForUser(userId: string) {
-    const tenants = await this.prisma.tenant.findMany({
+    const tenants = await this.prisma.client.tenant.findMany({
       where: {
         users: {
           some: {
@@ -58,7 +58,7 @@ export class TenantService {
   }
 
   async findOne(id: string) {
-    const tenant = await this.prisma.tenant.findUnique({
+    const tenant = await this.prisma.client.tenant.findUnique({
       where: { id },
     });
 
@@ -73,7 +73,7 @@ export class TenantService {
     await this.findOne(id);
 
     if (updateTenantDto.domain) {
-      const existing = await this.prisma.tenant.findUnique({
+      const existing = await this.prisma.client.tenant.findUnique({
         where: { domain: updateTenantDto.domain },
       });
       if (existing && existing.id !== id) {
@@ -81,7 +81,7 @@ export class TenantService {
       }
     }
 
-    return this.prisma.tenant.update({
+    return this.prisma.client.tenant.update({
       where: { id },
       data: updateTenantDto,
     });
@@ -90,7 +90,7 @@ export class TenantService {
   async remove(id: string) {
     await this.findOne(id);
 
-    await this.prisma.tenant.delete({
+    await this.prisma.client.tenant.delete({
       where: { id },
     });
 

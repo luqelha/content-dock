@@ -1,0 +1,256 @@
+{
+  "at": "2026-10-14T03:36:43.155Z",
+  "node": "v22.18.0",
+  "platform": "win32",
+  "cpu": "13th Gen Intel(R) Core(TM) i5-13450HX",
+  "logicalCpus": 16,
+  "method": "Fresh child per case. Deterministic tiled RGB gradient/XOR fixture; highly compressible, not representative photos. Two warmups then 12 samples. CPU is process CPU across threads; RSS includes runtime, raw fixture and libvips cache. Native memory peaks between samples may be missed. p95/p99 both select max at n=12. No upload/network/storage/auth/queue latency. No before/after optimization comparison.",
+  "results": [
+    {
+      "side": 512,
+      "format": "jpeg",
+      "inputBytes": 11634,
+      "outputBytes": 12410,
+      "outputDimensions": [
+        512,
+        512
+      ],
+      "samples": 12,
+      "concurrency": 1,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 52.7278,
+      "operationsPerSecond": 227.58393105724113,
+      "p50Ms": 4.19,
+      "p95Ms": 6.03,
+      "p99Ms": 6.03,
+      "cpuMs": 63,
+      "cpuCoreEquivalentPercent": 119.48156380505161,
+      "baselineRssBytes": 96436224,
+      "peakSampledRssBytes": 98758656,
+      "lifetimeMaxRssKiB": 99968,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 2,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 87,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    },
+    {
+      "side": 512,
+      "format": "jpeg",
+      "inputBytes": 11634,
+      "outputBytes": 12410,
+      "outputDimensions": [
+        512,
+        512
+      ],
+      "samples": 12,
+      "concurrency": 4,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 24.601200000000006,
+      "operationsPerSecond": 487.7810838495682,
+      "p50Ms": 7.07,
+      "p95Ms": 11,
+      "p99Ms": 11,
+      "cpuMs": 16,
+      "cpuCoreEquivalentPercent": 65.0374778466091,
+      "baselineRssBytes": 100450304,
+      "peakSampledRssBytes": 111628288,
+      "lifetimeMaxRssKiB": 113692,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 8,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 87,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    },
+    {
+      "side": 2048,
+      "format": "png",
+      "inputBytes": 1597964,
+      "outputBytes": 1597964,
+      "outputDimensions": [
+        2048,
+        2048
+      ],
+      "samples": 12,
+      "concurrency": 1,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 344.5642,
+      "operationsPerSecond": 34.826601254570264,
+      "p50Ms": 28.41,
+      "p95Ms": 30.73,
+      "p99Ms": 30.73,
+      "cpuMs": 735,
+      "cpuCoreEquivalentPercent": 213.31293268424287,
+      "baselineRssBytes": 116891648,
+      "peakSampledRssBytes": 154968064,
+      "lifetimeMaxRssKiB": 153740,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 19,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 100,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    },
+    {
+      "side": 2048,
+      "format": "png",
+      "inputBytes": 1597964,
+      "outputBytes": 1597964,
+      "outputDimensions": [
+        2048,
+        2048
+      ],
+      "samples": 12,
+      "concurrency": 4,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 140.8576999999999,
+      "operationsPerSecond": 85.19236080100703,
+      "p50Ms": 45.69,
+      "p95Ms": 50.05,
+      "p99Ms": 50.05,
+      "cpuMs": 797,
+      "cpuCoreEquivalentPercent": 565.8192629866884,
+      "baselineRssBytes": 116875264,
+      "peakSampledRssBytes": 210182144,
+      "lifetimeMaxRssKiB": 208004,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 74,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 100,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    },
+    {
+      "side": 4000,
+      "format": "jpeg",
+      "inputBytes": 693435,
+      "outputBytes": 755008,
+      "outputDimensions": [
+        4000,
+        4000
+      ],
+      "samples": 12,
+      "concurrency": 1,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 973.6596999999999,
+      "operationsPerSecond": 12.324634572017308,
+      "p50Ms": 82.03,
+      "p95Ms": 86.45,
+      "p99Ms": 86.45,
+      "cpuMs": 1766,
+      "cpuCoreEquivalentPercent": 181.37753878485472,
+      "baselineRssBytes": 151560192,
+      "peakSampledRssBytes": 281341952,
+      "lifetimeMaxRssKiB": 281036,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 38,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 87,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    },
+    {
+      "side": 4000,
+      "format": "jpeg",
+      "inputBytes": 693435,
+      "outputBytes": 755008,
+      "outputDimensions": [
+        4000,
+        4000
+      ],
+      "samples": 12,
+      "concurrency": 4,
+      "failed": 0,
+      "failures": [],
+      "elapsedMs": 500.7718,
+      "operationsPerSecond": 23.963010696688592,
+      "p50Ms": 162.57,
+      "p95Ms": 178.11,
+      "p99Ms": 178.11,
+      "cpuMs": 3358,
+      "cpuCoreEquivalentPercent": 670.5649159956691,
+      "baselineRssBytes": 151441408,
+      "peakSampledRssBytes": 661000192,
+      "lifetimeMaxRssKiB": 645892,
+      "sharpConcurrency": 16,
+      "sharpCache": {
+        "memory": {
+          "current": 0,
+          "high": 133,
+          "max": 50
+        },
+        "files": {
+          "current": 0,
+          "max": 20
+        },
+        "items": {
+          "current": 0,
+          "max": 100
+        }
+      },
+      "sharpVersion": "0.35.5"
+    }
+  ]
+}

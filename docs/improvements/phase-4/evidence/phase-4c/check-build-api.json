@@ -1,0 +1,10 @@
+{
+  "name": "build-api",
+  "startedAt": "2026-10-15T22:15:46.901Z",
+  "finishedAt": "2026-10-15T22:16:06.700Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\@nestjs\\cli\\bin\\nest.js build",
+  "cwd": "apps\\api",
+  "log": "check-build-api.log",
+  "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+}

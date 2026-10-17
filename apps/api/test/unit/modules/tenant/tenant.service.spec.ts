@@ -22,7 +22,7 @@ describe('TenantService', () => {
         TenantService,
         {
           provide: PrismaService,
-          useValue: mockPrismaService,
+          useValue: { client: mockPrismaService },
         },
       ],
     }).compile();

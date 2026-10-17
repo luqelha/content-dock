@@ -1,0 +1,13 @@
+{
+  "resumedOn": "2026-10-15",
+  "timezone": "Asia/Jakarta",
+  "previousRestore": "No completion report or active session found; neither passed nor failed can be established.",
+  "dockerEnvironment": "Old fixture containers and candidate images unavailable; three existing infrastructure containers have new identities.",
+  "cause": "Not established; no claim about who changed the environment.",
+  "sourcePreservationAtResume": {
+    "checkedFiles": 440,
+    "changed": 0,
+    "missing": 0
+  },
+  "action": "Keep October 14 results; rebuild candidate images with separate resume logs and run a fresh restore-only drill. Do not recreate or reset the old test fixture."
+}

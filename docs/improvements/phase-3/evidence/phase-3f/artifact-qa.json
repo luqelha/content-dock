@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-15T11:41:11.330Z",
+  "syntax": [
+    {
+      "file": "scripts/security/phase3f-release-audit.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "docs\\improvements\\phase-3\\evidence\\phase-3f\\download-browser-artifact.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "docs\\improvements\\phase-3\\evidence\\phase-3f\\remote-ci.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "docs\\improvements\\phase-3\\evidence\\phase-3f\\finalize.cjs",
+      "exitCode": 0
+    }
+  ],
+  "formatExitCode": 0,
+  "links": {
+    "checked": 19,
+    "missing": []
+  }
+}

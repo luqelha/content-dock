@@ -8,14 +8,38 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "test:security": "npm run test --workspace=@atlas/api -- --runInBand test/unit/security && node --test scripts/security/*.test.cjs",
+    "test:security:db": "node --test scripts/security/database-regression.cjs",
+    "test:observability": "node --test scripts/observability/*.test.cjs && node scripts/observability/validate.cjs rules && node scripts/observability/validate.cjs prometheus && node scripts/observability/validate.cjs alertmanager",
+    "drill:resilience": "node scripts/observability/resilience-drill.cjs --run-isolated",
+    "benchmark:phase4b": "node scripts/performance/phase4b.cjs",
+    "benchmark:phase4b:compare": "node scripts/performance/compare-phase4b.cjs",
+    "test:observability:db": "node scripts/observability/database-regression.cjs",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "test:browser": "playwright test",
+    "audit:dependencies": "node scripts/security/dependency-audit.cjs",
+    "format:check:reliability": "prettier --check .github/workflows/ci.yml playwright.config.ts \"tests/browser/*.ts\" \"scripts/security/dependency-*.cjs\"",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test:contracts": "npm run test --workspace=@atlas/api -- --runInBand --testPathPattern=contracts && node --test scripts/contracts/*.test.cjs",
+    "test:quality:db": "node scripts/quality/phase4c-database.cjs",
+    "maintenance:dependencies": "node scripts/maintenance/dependency-lifecycle.cjs",
+    "maintenance:dependencies:registry": "node scripts/maintenance/dependency-lifecycle.cjs --outdated",
+    "test:maintenance:browser": "node scripts/maintenance/phase4d-browser.cjs"
   },
   "devDependencies": {
-    "turbo": "^2.0.0",
-    "prettier": "^3.0.0"
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.64.0",
+    "@types/node": "^26.6.5",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0"
   },
   "engines": {
-    "node": ">=18"
+    "node": "^22.12.0 || ^24.0.0"
   },
-  "packageManager": "npm@10.5.0"
+  "packageManager": "npm@10.9.9",
+  "overrides": {
+    "@nestjs/swagger@11.4.7": {
+      "js-yaml": "5.4.3"
+    }
+  }
 }

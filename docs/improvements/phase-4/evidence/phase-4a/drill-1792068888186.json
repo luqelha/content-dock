@@ -1,0 +1,947 @@
+{
+  "startedAt": "2026-10-15T12:54:48.186Z",
+  "scope": "New isolated local synthetic stack; not staging or a production SLA",
+  "project": "atlas-phase4a-765b8399c3",
+  "privateConfigDirectory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase4a-765b8399c3-NipCyi",
+  "checkpoints": [
+    {
+      "name": "fresh isolated fixture, migrations and restricted grants",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:54:48.721Z",
+      "elapsedSeconds": 17.0375658,
+      "details": {
+        "apiImage": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+        "vaultDriver": "local",
+        "vaultOptions": {
+          "device": "tmpfs",
+          "o": "size=67108864,uid=1000,gid=1000,mode=0700",
+          "type": "tmpfs"
+        },
+        "retentionEnabled": false,
+        "runtimeRole": "atlas_app",
+        "ports": {
+          "api": "http://127.0.0.1:32778",
+          "management": "http://127.0.0.1:32779",
+          "prometheus": "http://127.0.0.1:32773",
+          "alertmanager": "http://127.0.0.1:32772",
+          "grafana": "http://127.0.0.1:32780"
+        }
+      }
+    },
+    {
+      "name": "metrics privacy, private management, real worker and durable canary",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:55:05.762Z",
+      "elapsedSeconds": 0.7706019999999989,
+      "details": {
+        "canaryJob": "9f85ca44-092a-413b-9a56-d9b6eadfcce3",
+        "plaintextZipSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697",
+        "managementPublished": "fixture loopback only; production has no published management port"
+      }
+    },
+    {
+      "name": "redis outage is observed, alerted, and recovered",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:55:06.539Z",
+      "elapsedSeconds": 88.1466312,
+      "details": {
+        "containerId": "48e2499f5fdc13528447c7efcb83bb35d753a81ec37fe49a4b6cb097e7aa5225",
+        "firingReceivedAt": "2026-10-15T12:56:04.351Z",
+        "resolvedReceivedAt": "2026-10-15T12:56:34.350Z",
+        "elapsedSeconds": 88.069
+      }
+    },
+    {
+      "name": "broker outage is observed, alerted, and recovered",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:56:34.687Z",
+      "elapsedSeconds": 89.71729630000002,
+      "details": {
+        "containerId": "5e5726cc63586beb7ddce28f1abb7634a60c884e6dd09cfc9ae81d901bd6de62",
+        "firingReceivedAt": "2026-10-15T12:57:34.333Z",
+        "resolvedReceivedAt": "2026-10-15T12:58:04.332Z",
+        "elapsedSeconds": 89.644,
+        "retainedPendingJob": "44ebfd6e-3e3b-4eb7-a6d1-988291cfaaa7",
+        "recoveredStatus": "Completed"
+      }
+    },
+    {
+      "name": "database outage is observed, alerted, and recovered",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:58:04.410Z",
+      "elapsedSeconds": 90.67788999999999,
+      "details": {
+        "containerId": "477248b37bf419fb3f455f111b196e7a35a3710904ac513cd41f94296023d6c3",
+        "firingReceivedAt": "2026-10-15T12:59:04.331Z",
+        "resolvedReceivedAt": "2026-10-15T12:59:34.328Z",
+        "elapsedSeconds": 90.585
+      }
+    },
+    {
+      "name": "bounded full-vault failure is alerted and existing archives survive",
+      "status": "passed",
+      "startedAt": "2026-10-15T12:59:35.090Z",
+      "elapsedSeconds": 90.79620119999996,
+      "details": {
+        "filledMiB": 64,
+        "failedJob": "f1244200-9ab1-43e5-9312-7c80c94d9351",
+        "recoveredJob": "81e371b0-6bc9-41b2-ba73-62f5b4a8c3e6",
+        "existingArchiveSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697"
+      }
+    },
+    {
+      "name": "API crash, missing scrape alert, expired lease recovery and retained vault",
+      "status": "passed",
+      "startedAt": "2026-10-15T13:01:05.890Z",
+      "elapsedSeconds": 121.50333649999997,
+      "details": {
+        "recoveredLeaseJob": "9394f8fc-df37-4449-9153-363f0002e490",
+        "leaseCleared": true,
+        "existingArchiveSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697"
+      }
+    },
+    {
+      "name": "SIGTERM drains an active worker before closing the database",
+      "status": "passed",
+      "startedAt": "2026-10-15T13:03:07.397Z",
+      "elapsedSeconds": 13.384833299999999,
+      "details": {
+        "activeJob": "b02e5cc4-aa0c-4c60-90cb-4bc2435ff62c",
+        "shutdownExitCode": 0,
+        "completedBeforeExit": true
+      }
+    },
+    {
+      "name": "Grafana provisioned dashboard, datasource, and PromQL are executable",
+      "status": "passed",
+      "startedAt": "2026-10-15T13:03:20.784Z",
+      "elapsedSeconds": 28.10966889999993,
+      "details": {
+        "uid": "atlas-operations",
+        "provisioned": true,
+        "panels": [
+          {
+            "title": "API scrape availability",
+            "series": 1
+          },
+          {
+            "title": "Worker dependencies",
+            "series": 1
+          },
+          {
+            "title": "Active export handlers",
+            "series": 1
+          },
+          {
+            "title": "Firing alerts",
+            "series": 1
+          },
+          {
+            "title": "Request rate by route",
+            "series": 8
+          },
+          {
+            "title": "HTTP p95 by route",
+            "series": 8
+          },
+          {
+            "title": "Dependency health",
+            "series": 5
+          },
+          {
+            "title": "Probe freshness (seconds)",
+            "series": 3
+          },
+          {
+            "title": "DB operation p95 (includes client queue wait)",
+            "series": 10
+          },
+          {
+            "title": "DB operations in flight",
+            "series": 1
+          },
+          {
+            "title": "Response cache outcomes",
+            "series": 0
+          },
+          {
+            "title": "Exports by state (unexpired; max across replicas)",
+            "series": 4
+          },
+          {
+            "title": "Oldest pending age",
+            "series": 0
+          },
+          {
+            "title": "Expired or missing leases",
+            "series": 1
+          },
+          {
+            "title": "Dispatcher tick age",
+            "series": 1
+          },
+          {
+            "title": "Worker outcomes",
+            "series": 6
+          },
+          {
+            "title": "Worker delivery p95",
+            "series": 1
+          },
+          {
+            "title": "Broker ready / unacknowledged messages",
+            "series": 2
+          },
+          {
+            "title": "Broker consumers",
+            "series": 1
+          },
+          {
+            "title": "Vault available space",
+            "series": 1
+          },
+          {
+            "title": "Process resident memory",
+            "series": 1
+          },
+          {
+            "title": "Process CPU seconds / second",
+            "series": 1
+          },
+          {
+            "title": "Event loop lag p99",
+            "series": 1
+          },
+          {
+            "title": "Notification failures",
+            "series": 18
+          },
+          {
+            "title": "Journal retained firing / resolved notifications",
+            "series": 2
+          },
+          {
+            "title": "Draining instances",
+            "series": 1
+          }
+        ],
+        "datasourceHealthy": true
+      }
+    }
+  ],
+  "faults": [
+    {
+      "service": "redis",
+      "action": "stop",
+      "containerId": "48e2499f5fdc13528447c7efcb83bb35d753a81ec37fe49a4b6cb097e7aa5225",
+      "at": "2026-10-15T12:55:07.066Z"
+    },
+    {
+      "service": "rabbitmq",
+      "action": "stop",
+      "containerId": "5e5726cc63586beb7ddce28f1abb7634a60c884e6dd09cfc9ae81d901bd6de62",
+      "at": "2026-10-15T12:56:36.319Z"
+    },
+    {
+      "service": "postgres",
+      "action": "pause",
+      "containerId": "477248b37bf419fb3f455f111b196e7a35a3710904ac513cd41f94296023d6c3",
+      "at": "2026-10-15T12:58:04.620Z"
+    },
+    {
+      "service": "api",
+      "action": "fill-bounded-tmpfs",
+      "at": "2026-10-15T12:59:36.013Z",
+      "filledMiB": 64
+    },
+    {
+      "service": "api",
+      "action": "SIGKILL",
+      "containerId": "e57c844c0921063e2f0092cf40cd987ba3e339fe0d001581849aaf657cc6b1b3",
+      "at": "2026-10-15T13:01:07.118Z"
+    }
+  ],
+  "status": "passed",
+  "context": "desktop-linux",
+  "containersBefore": [
+    {
+      "id": "dd2428c6cfade596527c578f33330ab805289dbab1b096be29e7eefa2937580c",
+      "name": "atlas-phase4a-730ac3d36d-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "aca418264d9de7017edf44ba726caec1594852dc44ffe4616efa416cd68a00e7",
+      "name": "atlas-phase4a-730ac3d36d-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "be33c152a0339831a7c04fb6eb30f2c6e9a99ea787d7702ec21c06b00c202425",
+      "name": "atlas-phase4a-730ac3d36d-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "9968cc5eb147996354caf8f4c661ccf26d5be543e838ef0ca850e5f8bd35af7e",
+      "name": "atlas-phase4a-730ac3d36d-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "50a2600a5b68895d5ccd42ad052339f6e8b0ecbe1262869e9c94f1e1fc1742dd",
+      "name": "atlas-phase4a-730ac3d36d-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "ef65765673cdd2728b0e306664a54658ed1d35c62c7340ce28976cbca9ed2b53",
+      "name": "atlas-phase4a-730ac3d36d-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "bee01d19007d9e25da1e6da3222c0b55b97fba0210acd75b9fe6cca7844d8f33",
+      "name": "atlas-phase4a-730ac3d36d-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "3cd69e6f995f1b7ca5fb7b043d169efda13fb4a9cdc6bdb103a462edf91f7273",
+      "name": "atlas-phase4a-730ac3d36d-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "04ef0c201f3fc858179d632270c8f71e140ca5ea17cf46eb922a8fa9c33cf89e",
+      "name": "atlas-phase4a-730ac3d36d-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "339eda1787c432ff5660f52c01d2421a0b763af96c1824ab136d96bf41c1444d",
+      "name": "atlas-phase4a-portprobe-1792068644043",
+      "image": "atlas-api:phase4a",
+      "state": "exited"
+    },
+    {
+      "id": "a73e993c544bed0d0441a71c8cd88550230c7a659c5fc641f2a8ff1c78129bd8",
+      "name": "atlas-phase4a-912568b143-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "18ca2877bb2bb2c91c5f8f82398852f5b16ff9df763e4995ebdd7ab02a0698b2",
+      "name": "atlas-phase4a-912568b143-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "154409500c35fcc09d908822c1da66c02cfbcb448a203c69b1ecc4f4bb4e3f08",
+      "name": "atlas-phase4a-912568b143-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "e2085290e90981614f79e55d7794f415d073bd3beeba12ef209166cedee10a88",
+      "name": "atlas-phase4a-912568b143-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "5e2f955ee96b12332a0bce644c307d5a29d27b37a58129271bffb4f3efcb9f3d",
+      "name": "atlas-phase4a-912568b143-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "6b33db5f56ca18893e74e5c07f6d922c2e3f9c75472291b11c70ad2c0ba6cd6a",
+      "name": "atlas-phase4a-912568b143-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "89875a12209a458175e7d79f5126fa06576ff987d180cff4f9afa6c1d7577da7",
+      "name": "atlas-phase4a-912568b143-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "153acad67f61e5500906f9648088d98018a693328ca89bc610a9429032159d1c",
+      "name": "atlas-phase4a-912568b143-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "51f26d4644e9e75c9bb16fa888adcd0f514268f26c57262ce7cf3667f5603d4c",
+      "name": "atlas-phase4a-912568b143-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "777df4385434c3b27b3e0780f36f97f51662ada68adddb28a5e47f5313baa601",
+      "name": "atlas-phase4a-a12776b993-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "c81bfdbb7f846a4c09f82f59c9931202f592dda947459fa4d1dbde1004484ca1",
+      "name": "atlas-phase4a-a12776b993-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "834636ce1b11accb889ab0e16e262e5ea9661c5b4728db1cd75daab51d0a0041",
+      "name": "atlas-phase4a-a12776b993-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "75e1613f541e036504da000463652fa28f3f144e7b2a7e681d44e9b025d23f12",
+      "name": "atlas-phase4a-a12776b993-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "5dcb010e23fd80fde5628e19494d8c7650952dab44d5218d74e8f8343c1f8560",
+      "name": "atlas-phase4a-a12776b993-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "b0ec5441f2d4519a4efabdbf0dc8d7e5a310d0d5aeec0d194ba897a5b5b202bf",
+      "name": "atlas-phase4a-a12776b993-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "68092995c065aa75a005639a3f1f1a5f11712b5a97f523dac69761b64ffa08c7",
+      "name": "atlas-phase4a-a12776b993-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "083a7053fa78e83ee2079d4f60464f2dea77a6f787f2ab960eed7c00ae0afbbd",
+      "name": "atlas-phase4a-a12776b993-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "4496498a20d418c037e0d7a02a450f1879ce48a920a283fe77211107d57b6ccd",
+      "name": "atlas-phase4a-a12776b993-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "11c1eda01cf2f9a2104f405b74ec6f51835b365c0e3b1bd6003407633753bfe5",
+      "name": "atlas-phase4a-amcfg-1792067978165",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "5d96808c2f0b324a9911f372bda905fda39dcd7e71418d37cd448701cb093d14",
+      "name": "atlas-phase4a-promcfg-1792067977454",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "11d190f76a1c2cae5d46bc5d2aad2d1e27be7c412f455251a7f208c05479924a",
+      "name": "atlas-phase4a-rules-1792067975530",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "a4f8ba8617e93cb62c64b598436fa1483ae9e8d12ac314c5edb4926eb319141a",
+      "name": "atlas-phase3e-restore-16df673b6b-nginx-1",
+      "image": "nginx:alpine",
+      "state": "exited"
+    },
+    {
+      "id": "8c648e44794f7fd4ff0bae4eb014d1b30833f007c34bb3a4df6d9ac1bf4bb37f",
+      "name": "atlas-phase3e-restore-16df673b6b-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "state": "exited"
+    },
+    {
+      "id": "75d53fd0225970ae3c5b35cdea9e33bf0d31530ee583db955f857f340f27cae6",
+      "name": "atlas-phase3e-restore-16df673b6b-vault",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "c352c03fefa76b2486a6d52a94e840c17bd3cc5ab418b00107245540b158fd34",
+      "name": "atlas-phase3e-restore-16df673b6b-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "state": "exited"
+    },
+    {
+      "id": "3259985b65e9d9b74178a401313498307ddf9a63826c989f90e91956ad7d9f4d",
+      "name": "atlas-phase3e-restore-16df673b6b-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "cb0a667c1e58e0bab0af983553f7f48a8c6d0be82e80892ccdfe84eb24da0a38",
+      "name": "atlas-phase3e-restore-16df673b6b-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "c2d434fba6bacfb904b67167a1138e27363a25d9725d4d7eb8bef5ec97c8bc0d",
+      "name": "atlas-phase3e-restore-16df673b6b-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "1a6eb580f4c5d2f04dce490c8886251e3c2cca32cd1119e1cfd51ee7a9c32277",
+      "name": "atlas-phase3e-source-4293c787fa-backup",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "436bb68596c610120b06e7f8131b73043951f70ae07c8bb1c2f948bbdb8e3ded",
+      "name": "atlas-phase3e-source-4293c787fa-nginx-1",
+      "image": "nginx:alpine",
+      "state": "exited"
+    },
+    {
+      "id": "0e670f69b6e4f5eea9bac6ce3e6795a416e171f7e9c8c1b91044e44a6ad6aaaf",
+      "name": "atlas-phase3e-source-4293c787fa-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "state": "exited"
+    },
+    {
+      "id": "41ff94d600e6f9723c3132f9c2e93e51874d4ee43d2b7b5806168f0286ca470f",
+      "name": "atlas-phase3e-source-4293c787fa-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "state": "exited"
+    },
+    {
+      "id": "bed2e245adbda663835d8a91315b139e29c8dbfeb1c9857b89ee44cf4c026f76",
+      "name": "atlas-phase3e-source-4293c787fa-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "5b6fe8ae5303a6e3692c397afb9b4d84da2d6301d55b08d4ba355ecdd70dfad7",
+      "name": "atlas-phase3e-source-4293c787fa-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "35a8e8bee94f742a529596f72decf6d969e5706871b658cd8a084ad2dd0aa43f",
+      "name": "atlas-phase3e-source-4293c787fa-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "19c7c475dcf82b10bbd2c5972cfbb817223d53a61765bf3b57952ae7f757aa86",
+      "name": "atlas_postgres",
+      "image": "postgres:15-alpine",
+      "state": "running"
+    },
+    {
+      "id": "2057b6d16f611f7cd9163a24bb91940db1e81239a71cf60b266301c58a081593",
+      "name": "atlas_rabbitmq",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "running"
+    },
+    {
+      "id": "58f6c076a4448d4e112587d92f3e036e2452fcca0a0e0c9e9af1466b54da8a49",
+      "name": "atlas_redis",
+      "image": "redis:7-alpine",
+      "state": "running"
+    }
+  ],
+  "apiImage": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+  "journalImage": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+  "containersAfter": [
+    {
+      "id": "dd6248bd153cd9016fcbfc975f74662be492d972827867a11d40924229f045f1",
+      "name": "atlas-phase4a-765b8399c3-grafana-1",
+      "image": "grafana/grafana:13.2.4",
+      "state": "exited"
+    },
+    {
+      "id": "175b7dc21b1b74045a430349807a5cabb40a1929b7d4c0372d7f9de42a919093",
+      "name": "atlas-phase4a-regression-b74da46e-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "6acab92d5e11e4a1d325f76ed4efda9a7ec20c6b485a7557edebefc4f26f3dc6",
+      "name": "atlas-phase4a-regression-b74da46e-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "28023190d646d9bc6c7fee3ff43ecc12beb96d843ecb158ec5c25d3887579e8f",
+      "name": "atlas-phase4a-regression-b74da46e-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "e8eb6361e2cb7f800b38206c6d73a62d49d3a9bbb56bacd07b7eac52aab6e3f4",
+      "name": "atlas-phase4a-amcfg-1792068904470",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "f0a237bdf214a210b27e90fd93f87e43d7250b87efc6c1d85b5bb4719330bfe3",
+      "name": "atlas-phase4a-promcfg-1792068903938",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "9ea30fde3d033a4055d52fd74458daddc099514d47cc6d8123478ce432520370",
+      "name": "atlas-phase4a-rules-1792068902721",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "e57c844c0921063e2f0092cf40cd987ba3e339fe0d001581849aaf657cc6b1b3",
+      "name": "atlas-phase4a-765b8399c3-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "feafa271fd974b3010defc804d67d3f2675b44831faf2087ab551b0f93130e81",
+      "name": "atlas-phase4a-765b8399c3-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "ade3b0723350850d7f818429d7e3dbe01ea50ceda62c7d2bae7073662a633f84",
+      "name": "atlas-phase4a-765b8399c3-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "b41fc4ebecc82c3bedff7c5f4588e81ca507399cd479db3967b6d0b3e032bd39",
+      "name": "atlas-phase4a-765b8399c3-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "48e2499f5fdc13528447c7efcb83bb35d753a81ec37fe49a4b6cb097e7aa5225",
+      "name": "atlas-phase4a-765b8399c3-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "5e5726cc63586beb7ddce28f1abb7634a60c884e6dd09cfc9ae81d901bd6de62",
+      "name": "atlas-phase4a-765b8399c3-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "477248b37bf419fb3f455f111b196e7a35a3710904ac513cd41f94296023d6c3",
+      "name": "atlas-phase4a-765b8399c3-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "d7cd34cdda424672a141b49cc227fcde54191190d205ed630f577063577a8566",
+      "name": "atlas-phase4a-765b8399c3-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "64c37b7a9cff8434ba1d976496fe4725f1dbe0433a0702e194d98edfb873db14",
+      "name": "atlas-phase4a-765b8399c3-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "dd2428c6cfade596527c578f33330ab805289dbab1b096be29e7eefa2937580c",
+      "name": "atlas-phase4a-730ac3d36d-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "aca418264d9de7017edf44ba726caec1594852dc44ffe4616efa416cd68a00e7",
+      "name": "atlas-phase4a-730ac3d36d-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "be33c152a0339831a7c04fb6eb30f2c6e9a99ea787d7702ec21c06b00c202425",
+      "name": "atlas-phase4a-730ac3d36d-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "9968cc5eb147996354caf8f4c661ccf26d5be543e838ef0ca850e5f8bd35af7e",
+      "name": "atlas-phase4a-730ac3d36d-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "50a2600a5b68895d5ccd42ad052339f6e8b0ecbe1262869e9c94f1e1fc1742dd",
+      "name": "atlas-phase4a-730ac3d36d-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "ef65765673cdd2728b0e306664a54658ed1d35c62c7340ce28976cbca9ed2b53",
+      "name": "atlas-phase4a-730ac3d36d-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "bee01d19007d9e25da1e6da3222c0b55b97fba0210acd75b9fe6cca7844d8f33",
+      "name": "atlas-phase4a-730ac3d36d-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "3cd69e6f995f1b7ca5fb7b043d169efda13fb4a9cdc6bdb103a462edf91f7273",
+      "name": "atlas-phase4a-730ac3d36d-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "04ef0c201f3fc858179d632270c8f71e140ca5ea17cf46eb922a8fa9c33cf89e",
+      "name": "atlas-phase4a-730ac3d36d-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "339eda1787c432ff5660f52c01d2421a0b763af96c1824ab136d96bf41c1444d",
+      "name": "atlas-phase4a-portprobe-1792068644043",
+      "image": "atlas-api:phase4a",
+      "state": "exited"
+    },
+    {
+      "id": "a73e993c544bed0d0441a71c8cd88550230c7a659c5fc641f2a8ff1c78129bd8",
+      "name": "atlas-phase4a-912568b143-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "18ca2877bb2bb2c91c5f8f82398852f5b16ff9df763e4995ebdd7ab02a0698b2",
+      "name": "atlas-phase4a-912568b143-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "154409500c35fcc09d908822c1da66c02cfbcb448a203c69b1ecc4f4bb4e3f08",
+      "name": "atlas-phase4a-912568b143-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "e2085290e90981614f79e55d7794f415d073bd3beeba12ef209166cedee10a88",
+      "name": "atlas-phase4a-912568b143-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "5e2f955ee96b12332a0bce644c307d5a29d27b37a58129271bffb4f3efcb9f3d",
+      "name": "atlas-phase4a-912568b143-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "6b33db5f56ca18893e74e5c07f6d922c2e3f9c75472291b11c70ad2c0ba6cd6a",
+      "name": "atlas-phase4a-912568b143-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "89875a12209a458175e7d79f5126fa06576ff987d180cff4f9afa6c1d7577da7",
+      "name": "atlas-phase4a-912568b143-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "153acad67f61e5500906f9648088d98018a693328ca89bc610a9429032159d1c",
+      "name": "atlas-phase4a-912568b143-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "51f26d4644e9e75c9bb16fa888adcd0f514268f26c57262ce7cf3667f5603d4c",
+      "name": "atlas-phase4a-912568b143-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "777df4385434c3b27b3e0780f36f97f51662ada68adddb28a5e47f5313baa601",
+      "name": "atlas-phase4a-a12776b993-api-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "c81bfdbb7f846a4c09f82f59c9931202f592dda947459fa4d1dbde1004484ca1",
+      "name": "atlas-phase4a-a12776b993-migrate",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "834636ce1b11accb889ab0e16e262e5ea9661c5b4728db1cd75daab51d0a0041",
+      "name": "atlas-phase4a-a12776b993-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "75e1613f541e036504da000463652fa28f3f144e7b2a7e681d44e9b025d23f12",
+      "name": "atlas-phase4a-a12776b993-prometheus-1",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "5dcb010e23fd80fde5628e19494d8c7650952dab44d5218d74e8f8343c1f8560",
+      "name": "atlas-phase4a-a12776b993-alert-journal-1",
+      "image": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
+      "state": "exited"
+    },
+    {
+      "id": "b0ec5441f2d4519a4efabdbf0dc8d7e5a310d0d5aeec0d194ba897a5b5b202bf",
+      "name": "atlas-phase4a-a12776b993-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "68092995c065aa75a005639a3f1f1a5f11712b5a97f523dac69761b64ffa08c7",
+      "name": "atlas-phase4a-a12776b993-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "083a7053fa78e83ee2079d4f60464f2dea77a6f787f2ab960eed7c00ae0afbbd",
+      "name": "atlas-phase4a-a12776b993-alertmanager-1",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "4496498a20d418c037e0d7a02a450f1879ce48a920a283fe77211107d57b6ccd",
+      "name": "atlas-phase4a-a12776b993-vault-keeper-1",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+      "state": "exited"
+    },
+    {
+      "id": "11c1eda01cf2f9a2104f405b74ec6f51835b365c0e3b1bd6003407633753bfe5",
+      "name": "atlas-phase4a-amcfg-1792067978165",
+      "image": "prom/alertmanager:v0.34.1",
+      "state": "exited"
+    },
+    {
+      "id": "5d96808c2f0b324a9911f372bda905fda39dcd7e71418d37cd448701cb093d14",
+      "name": "atlas-phase4a-promcfg-1792067977454",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "11d190f76a1c2cae5d46bc5d2aad2d1e27be7c412f455251a7f208c05479924a",
+      "name": "atlas-phase4a-rules-1792067975530",
+      "image": "prom/prometheus:v3.15.0",
+      "state": "exited"
+    },
+    {
+      "id": "a4f8ba8617e93cb62c64b598436fa1483ae9e8d12ac314c5edb4926eb319141a",
+      "name": "atlas-phase3e-restore-16df673b6b-nginx-1",
+      "image": "nginx:alpine",
+      "state": "exited"
+    },
+    {
+      "id": "8c648e44794f7fd4ff0bae4eb014d1b30833f007c34bb3a4df6d9ac1bf4bb37f",
+      "name": "atlas-phase3e-restore-16df673b6b-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "state": "exited"
+    },
+    {
+      "id": "75d53fd0225970ae3c5b35cdea9e33bf0d31530ee583db955f857f340f27cae6",
+      "name": "atlas-phase3e-restore-16df673b6b-vault",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "c352c03fefa76b2486a6d52a94e840c17bd3cc5ab418b00107245540b158fd34",
+      "name": "atlas-phase3e-restore-16df673b6b-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "state": "exited"
+    },
+    {
+      "id": "3259985b65e9d9b74178a401313498307ddf9a63826c989f90e91956ad7d9f4d",
+      "name": "atlas-phase3e-restore-16df673b6b-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "cb0a667c1e58e0bab0af983553f7f48a8c6d0be82e80892ccdfe84eb24da0a38",
+      "name": "atlas-phase3e-restore-16df673b6b-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "c2d434fba6bacfb904b67167a1138e27363a25d9725d4d7eb8bef5ec97c8bc0d",
+      "name": "atlas-phase3e-restore-16df673b6b-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "1a6eb580f4c5d2f04dce490c8886251e3c2cca32cd1119e1cfd51ee7a9c32277",
+      "name": "atlas-phase3e-source-4293c787fa-backup",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "436bb68596c610120b06e7f8131b73043951f70ae07c8bb1c2f948bbdb8e3ded",
+      "name": "atlas-phase3e-source-4293c787fa-nginx-1",
+      "image": "nginx:alpine",
+      "state": "exited"
+    },
+    {
+      "id": "0e670f69b6e4f5eea9bac6ce3e6795a416e171f7e9c8c1b91044e44a6ad6aaaf",
+      "name": "atlas-phase3e-source-4293c787fa-web-1",
+      "image": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1",
+      "state": "exited"
+    },
+    {
+      "id": "41ff94d600e6f9723c3132f9c2e93e51874d4ee43d2b7b5806168f0286ca470f",
+      "name": "atlas-phase3e-source-4293c787fa-api-1",
+      "image": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+      "state": "exited"
+    },
+    {
+      "id": "bed2e245adbda663835d8a91315b139e29c8dbfeb1c9857b89ee44cf4c026f76",
+      "name": "atlas-phase3e-source-4293c787fa-postgres-1",
+      "image": "postgres:15-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "5b6fe8ae5303a6e3692c397afb9b4d84da2d6301d55b08d4ba355ecdd70dfad7",
+      "name": "atlas-phase3e-source-4293c787fa-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "35a8e8bee94f742a529596f72decf6d969e5706871b658cd8a084ad2dd0aa43f",
+      "name": "atlas-phase3e-source-4293c787fa-redis-1",
+      "image": "redis:7-alpine",
+      "state": "exited"
+    },
+    {
+      "id": "19c7c475dcf82b10bbd2c5972cfbb817223d53a61765bf3b57952ae7f757aa86",
+      "name": "atlas_postgres",
+      "image": "postgres:15-alpine",
+      "state": "running"
+    },
+    {
+      "id": "2057b6d16f611f7cd9163a24bb91940db1e81239a71cf60b266301c58a081593",
+      "name": "atlas_rabbitmq",
+      "image": "rabbitmq:3-management-alpine",
+      "state": "running"
+    },
+    {
+      "id": "58f6c076a4448d4e112587d92f3e036e2452fcca0a0e0c9e9af1466b54da8a49",
+      "name": "atlas_redis",
+      "image": "redis:7-alpine",
+      "state": "running"
+    }
+  ],
+  "existingContainersChanged": [],
+  "volumesRetained": true,
+  "finishedAt": "2026-10-15T13:04:13.871Z"
+}

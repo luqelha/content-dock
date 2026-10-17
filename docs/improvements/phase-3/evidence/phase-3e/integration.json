@@ -1,0 +1,14 @@
+{
+  "name": "integration",
+  "command": [
+    "node",
+    "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "test:int",
+    "--workspace=@atlas/api"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 22157,
+  "finishedAt": "2026-10-14T03:53:07.924Z"
+}

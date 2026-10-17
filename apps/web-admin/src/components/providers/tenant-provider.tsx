@@ -1,6 +1,7 @@
 "use client";
-
-import React, { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { selectWorkspace } from "@/actions/workspace";
 
 export type Tenant = {
   id: string;
@@ -8,7 +9,6 @@ export type Tenant = {
   domain: string | null;
   role: string;
 };
-
 export type User = {
   id?: string;
   userId?: string;
@@ -18,25 +18,23 @@ export type User = {
   bio?: string | null;
   avatarUrl?: string | null;
 };
-
 type TenantContextType = {
   user: User | null;
   setUser: (user: User | null) => void;
   tenants: Tenant[];
   activeTenant: Tenant | null;
   setActiveTenant: (tenant: Tenant) => void;
+  switching: boolean;
 };
-
 const TenantContext = createContext<TenantContextType>({
   user: null,
   setUser: () => {},
   tenants: [],
   activeTenant: null,
   setActiveTenant: () => {},
+  switching: false,
 });
-
 export const useTenant = () => useContext(TenantContext);
-
 export function TenantProvider({
   children,
   initialUser,
@@ -48,45 +46,45 @@ export function TenantProvider({
   initialTenants: Tenant[];
   initialActiveTenantId?: string;
 }) {
-  const [user, setUser] = useState<User | null>(initialUser);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setUser(initialUser);
-  }, [initialUser]);
-
-  const [activeTenant, setActiveTenant] = useState<Tenant | null>(() => {
-    if (initialTenants.length === 0) return null;
-
-    if (initialActiveTenantId) {
-      const found = initialTenants.find((t) => t.id === initialActiveTenantId);
-      if (found) return found;
-    }
-
-    return initialTenants[0];
-  });
-
-  const handleSetActiveTenant = (tenant: Tenant) => {
-    setActiveTenant(tenant);
-    document.cookie = `atlas_active_tenant_id=${tenant.id}; path=/; max-age=31536000`; // 1 year expiry
+  const router = useRouter();
+  const [override, setUser] = useState<User | null>(null);
+  const [switching, startTransition] = useTransition();
+  const [error, setError] = useState("");
+  const activeTenant =
+    initialTenants.find((t) => t.id === initialActiveTenantId) ||
+    initialTenants[0] ||
+    null;
+  const setActiveTenant = (tenant: Tenant) => {
+    if (tenant.id === activeTenant?.id) return;
+    setError("");
+    startTransition(async () => {
+      const result = await selectWorkspace(tenant.id);
+      if (result.error) setError(result.error);
+      else {
+        router.push("/dashboard");
+        router.refresh();
+      }
+    });
   };
-
-  useEffect(() => {
-    if (activeTenant && !initialActiveTenantId) {
-      document.cookie = `atlas_active_tenant_id=${activeTenant.id}; path=/; max-age=31536000`;
-    }
-  }, [activeTenant, initialActiveTenantId]);
-
   return (
     <TenantContext.Provider
       value={{
-        user,
+        user: override || initialUser,
         setUser,
         tenants: initialTenants,
         activeTenant,
-        setActiveTenant: handleSetActiveTenant,
+        setActiveTenant,
+        switching,
       }}
     >
+      {error && (
+        <div
+          role="alert"
+          className="fixed bottom-4 right-4 z-50 rounded-md border bg-background p-4 text-sm text-destructive"
+        >
+          {error}
+        </div>
+      )}
       {children}
     </TenantContext.Provider>
   );

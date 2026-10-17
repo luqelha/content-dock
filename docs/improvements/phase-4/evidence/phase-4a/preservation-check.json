@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-15T13:13:19.234Z",
+  "baselineFiles": 559,
+  "unchanged": 542,
+  "modified": [
+    ".env.production.example",
+    ".github/workflows/ci.yml",
+    "README.md",
+    "apps/api/.env.example",
+    "apps/api/package.json",
+    "apps/api/src/app.module.ts",
+    "apps/api/src/common/interceptors/cache.interceptor.ts",
+    "apps/api/src/config/env.validation.ts",
+    "apps/api/src/database/prisma.service.ts",
+    "apps/api/src/main.ts",
+    "apps/api/src/modules/export/export.service.ts",
+    "apps/api/src/modules/export/worker.controller.ts",
+    "apps/api/src/modules/redis/redis.service.ts",
+    "apps/api/src/modules/storage/storage-retention.service.ts",
+    "docker-compose.prod.yml",
+    "package-lock.json",
+    "package.json"
+  ],
+  "missing": [],
+  "unexpectedModified": [],
+  "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "branch": "main",
+  "indexMatchesPhase3FBaseline": true
+}

@@ -1,0 +1,16 @@
+{
+  "operation": "build",
+  "startedAt": "2026-10-15T13:06:13.860Z",
+  "finishedAt": "2026-10-15T13:06:34.581Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd run build --workspace=@atlas/api"
+  ],
+  "exitCode": 0,
+  "log": "check-build-1792069594579.log",
+  "logSha256": "7165e8cdd3095606c450ecbecb1537491eca0f9169ede92dcd1ac004043d6e20",
+  "scope": "Working tree validation, not staging or production"
+}

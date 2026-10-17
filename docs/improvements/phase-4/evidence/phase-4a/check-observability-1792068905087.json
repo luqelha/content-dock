@@ -1,0 +1,16 @@
+{
+  "operation": "observability",
+  "startedAt": "2026-10-15T12:55:01.900Z",
+  "finishedAt": "2026-10-15T12:55:05.090Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd run test:observability"
+  ],
+  "exitCode": 0,
+  "log": "check-observability-1792068905087.log",
+  "logSha256": "08d6693cfeddf8ad74c7f6341d353f859b411f9a40b6692d425f46158dd76050",
+  "scope": "Working tree validation, not staging or production"
+}

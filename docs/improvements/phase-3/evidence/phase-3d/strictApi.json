@@ -1,0 +1,270 @@
+{
+  "name": "strictApi",
+  "command": [
+    "npm",
+    "exec",
+    "--workspace=@atlas/api",
+    "--",
+    "tsc",
+    "--noEmit",
+    "--incremental",
+    "false",
+    "--pretty",
+    "false",
+    "--strictNullChecks",
+    "--noImplicitAny"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 2,
+  "durationMs": 49000,
+  "finishedAt": "2026-10-14T03:33:54.571Z",
+  "diagnostics": [
+    {
+      "file": "src/common/interceptors/activity-tracking.interceptor.ts",
+      "line": 29,
+      "column": 22,
+      "code": "TS7053",
+      "message": "Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ POST: string; PATCH: string; PUT: string; DELETE: string; }'."
+    },
+    {
+      "file": "src/database/prisma.service.ts",
+      "line": 52,
+      "column": 17,
+      "code": "TS2349",
+      "message": "This expression is not callable."
+    },
+    {
+      "file": "src/database/prisma.service.ts",
+      "line": 60,
+      "column": 78,
+      "code": "TS2349",
+      "message": "This expression is not callable."
+    },
+    {
+      "file": "src/modules/auth/controllers/auth.controller.ts",
+      "line": 52,
+      "column": 20,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/auth/controllers/auth.controller.ts",
+      "line": 65,
+      "column": 16,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/auth/controllers/auth.controller.ts",
+      "line": 76,
+      "column": 17,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/auth/strategies/jwt-refresh.strategy.ts",
+      "line": 10,
+      "column": 11,
+      "code": "TS2345",
+      "message": "Argument of type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; issuer: string; audience: string; algorithms: \"HS256\"[]; secretOrKey: string | undefined; passReqToCallback: true; }]' is not assignable to parameter of type '[opt: StrategyOptionsWithRequest] | [opt: StrategyOptionsWithoutRequest]'."
+    },
+    {
+      "file": "src/modules/auth/strategies/jwt.strategy.ts",
+      "line": 9,
+      "column": 11,
+      "code": "TS2345",
+      "message": "Argument of type '[{ jwtFromRequest: JwtFromRequestFunction<any>; ignoreExpiration: false; issuer: string; audience: string; algorithms: \"HS256\"[]; secretOrKey: string | undefined; }]' is not assignable to parameter of type '[opt: StrategyOptionsWithRequest] | [opt: StrategyOptionsWithoutRequest]'."
+    },
+    {
+      "file": "src/modules/cms/services/category.service.ts",
+      "line": 48,
+      "column": 9,
+      "code": "TS2322",
+      "message": "Type 'string | null' is not assignable to type 'string'."
+    },
+    {
+      "file": "src/modules/cms/services/category.service.ts",
+      "line": 127,
+      "column": 15,
+      "code": "TS7022",
+      "message": "'parent' implicitly has type 'any' because it does not have a type annotation and is referenced directly or indirectly in its own initializer."
+    },
+    {
+      "file": "src/modules/export/compression.service.ts",
+      "line": 95,
+      "column": 20,
+      "code": "TS2454",
+      "message": "Variable 'timer' is used before being assigned."
+    },
+    {
+      "file": "src/modules/export/export.controller.ts",
+      "line": 60,
+      "column": 49,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/export/export.controller.ts",
+      "line": 81,
+      "column": 65,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/export/export.controller.ts",
+      "line": 94,
+      "column": 5,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/media/media.service.ts",
+      "line": 25,
+      "column": 23,
+      "code": "TS7053",
+      "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ 'image/jpeg': string; 'image/png': string; 'image/gif': string; 'image/webp': string; 'application/pdf': string; }'."
+    },
+    {
+      "file": "src/modules/storage/files.controller.ts",
+      "line": 18,
+      "column": 51,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/storage/storage-retention.service.ts",
+      "line": 61,
+      "column": 60,
+      "code": "TS2532",
+      "message": "Object is possibly 'undefined'."
+    },
+    {
+      "file": "src/modules/storage/validate-upload.ts",
+      "line": 27,
+      "column": 18,
+      "code": "TS7053",
+      "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ 'image/gif'?: string | undefined; 'image/jpeg': string; 'image/png': string; 'image/webp': string; }'."
+    },
+    {
+      "file": "src/modules/tenant/membership.controller.ts",
+      "line": 30,
+      "column": 10,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/tenant/membership.controller.ts",
+      "line": 43,
+      "column": 47,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/tenant/membership.controller.ts",
+      "line": 53,
+      "column": 5,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/tenant/membership.controller.ts",
+      "line": 62,
+      "column": 80,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/user/user.controller.ts",
+      "line": 106,
+      "column": 22,
+      "code": "TS7006",
+      "message": "Parameter 'req' implicitly has an 'any' type."
+    },
+    {
+      "file": "src/modules/user/user.service.ts",
+      "line": 70,
+      "column": 63,
+      "code": "TS18047",
+      "message": "'current' is possibly 'null'."
+    },
+    {
+      "file": "test/e2e/security.e2e-spec.ts",
+      "line": 164,
+      "column": 27,
+      "code": "TS18047",
+      "message": "'log' is possibly 'null'."
+    },
+    {
+      "file": "test/integration/durability.int-spec.ts",
+      "line": 191,
+      "column": 34,
+      "code": "TS2454",
+      "message": "Variable 'finish' is used before being assigned."
+    },
+    {
+      "file": "test/integration/durability.int-spec.ts",
+      "line": 192,
+      "column": 12,
+      "code": "TS2454",
+      "message": "Variable 'fail' is used before being assigned."
+    },
+    {
+      "file": "test/unit/modules/auth/services/auth.service.spec.ts",
+      "line": 40,
+      "column": 43,
+      "code": "TS7006",
+      "message": "Parameter 'work' implicitly has an 'any' type."
+    },
+    {
+      "file": "test/unit/modules/user/user.controller.spec.ts",
+      "line": 34,
+      "column": 43,
+      "code": "TS7006",
+      "message": "Parameter 'work' implicitly has an 'any' type."
+    },
+    {
+      "file": "test/unit/security/export-recovery.spec.ts",
+      "line": 62,
+      "column": 79,
+      "code": "TS7031",
+      "message": "Binding element 'query' implicitly has an 'any' type."
+    },
+    {
+      "file": "test/unit/security/export-recovery.spec.ts",
+      "line": 82,
+      "column": 76,
+      "code": "TS7031",
+      "message": "Binding element 'query' implicitly has an 'any' type."
+    },
+    {
+      "file": "test/unit/security/export-recovery.spec.ts",
+      "line": 151,
+      "column": 5,
+      "code": "TS2454",
+      "message": "Variable 'release' is used before being assigned."
+    },
+    {
+      "file": "test/unit/security/runtime-dependencies.spec.ts",
+      "line": 61,
+      "column": 13,
+      "code": "TS2454",
+      "message": "Variable 'responseClosed' is used before being assigned."
+    },
+    {
+      "file": "test/unit/security/runtime-dependencies.spec.ts",
+      "line": 83,
+      "column": 23,
+      "code": "TS7006",
+      "message": "Parameter 'context' implicitly has an 'any' type."
+    },
+    {
+      "file": "test/unit/security/storage-retention.spec.ts",
+      "line": 116,
+      "column": 5,
+      "code": "TS2454",
+      "message": "Variable 'release' is used before being assigned."
+    }
+  ],
+  "diagnosticCount": 35,
+  "fileCount": 22
+}

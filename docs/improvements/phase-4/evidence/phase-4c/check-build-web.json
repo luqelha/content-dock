@@ -1,0 +1,10 @@
+{
+  "name": "build-web",
+  "startedAt": "2026-10-15T22:16:12.565Z",
+  "finishedAt": "2026-10-15T22:17:06.124Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\next\\dist\\bin\\next build",
+  "cwd": "apps\\web-admin",
+  "log": "check-build-web.log",
+  "logSha256": "c518df745c325a0ee5eeae3e822ab9df9c5008709d8507b5f34dfa6db1badf49"
+}

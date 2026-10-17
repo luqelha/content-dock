@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-14T03:37:40.131Z",
+  "dockerExitCode": 0,
+  "containers": [
+    "atlas_postgres|Up 19 minutes|127.0.0.1:5432->5432/tcp",
+    "atlas_rabbitmq|Up 19 minutes|127.0.0.1:5672->5672/tcp, 127.0.0.1:15672->15672/tcp",
+    "atlas_redis|Up 19 minutes|127.0.0.1:6379->6379/tcp",
+    "atlas-platform-api-1|Up 19 minutes (unhealthy)|3000/tcp",
+    "atlas-platform-api-2|Up 19 minutes (unhealthy)|3000/tcp",
+    "atlas_nginx|Restarting (1) 19 seconds ago|"
+  ],
+  "target": "http://127.0.0.1:4400/api/health",
+  "health": {
+    "reachable": false,
+    "error": "fetch failed",
+    "code": "ECONNREFUSED"
+  },
+  "httpBenchmarkExecuted": false
+}

@@ -27,6 +27,8 @@ export class ContentEntity {
   @ApiProperty({
     example: '2023-01-01T00:00:00.000Z',
     description: 'The publication timestamp',
+    type: String,
+    format: 'date-time',
     nullable: true,
   })
   publishedAt: Date | null;
@@ -37,12 +39,12 @@ export class ContentEntity {
   @ApiProperty({ example: 'tenant-123', description: 'The tenant ID' })
   tenantId: string;
 
-  @ApiProperty({ example: 'cat-123', description: 'The category ID', nullable: true })
+  @ApiProperty({ example: 'cat-123', description: 'The category ID', type: String, nullable: true })
   categoryId: string | null;
 
-  @ApiProperty({ example: '2023-01-01T00:00:00.000Z' })
+  @ApiProperty({ type: String, format: 'date-time', example: '2023-01-01T00:00:00.000Z' })
   createdAt: Date;
 
-  @ApiProperty({ example: '2023-01-01T00:00:00.000Z' })
+  @ApiProperty({ type: String, format: 'date-time', example: '2023-01-01T00:00:00.000Z' })
   updatedAt: Date;
 }

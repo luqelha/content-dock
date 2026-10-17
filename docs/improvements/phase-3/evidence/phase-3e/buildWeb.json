@@ -1,0 +1,14 @@
+{
+  "name": "buildWeb",
+  "command": [
+    "node",
+    "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+    "run",
+    "build",
+    "--workspace=@atlas/web-admin"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 18231,
+  "finishedAt": "2026-10-14T03:52:46.529Z"
+}

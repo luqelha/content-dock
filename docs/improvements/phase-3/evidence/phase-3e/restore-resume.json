@@ -1,0 +1,11 @@
+{
+  "name": "restore",
+  "command": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
+    "--approved-isolated-local"
+  ],
+  "exitCode": 0,
+  "durationMs": 112897,
+  "finishedAt": "2026-10-15T10:18:10.276Z"
+}

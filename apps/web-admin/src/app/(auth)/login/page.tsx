@@ -1,45 +1,40 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { Suspense, useActionState } from "react";
+import { useSearchParams } from "next/navigation";
 import { login } from "@/actions/auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
-import { AnimatedNetworkIcon } from "@/components/landing/animated-network-icon";
+import { PasswordInput } from "@/components/ui/password-input";
+import { AuthFeedback, AuthFieldError } from "@/components/auth-feedback";
+
+function RegistrationNotice() {
+  const params = useSearchParams();
+  if (params.get("registered") !== "true") return null;
+  return (
+    <p
+      role="status"
+      className="mb-5 rounded-md border border-emerald-200 bg-emerald-50 px-3 py-2 text-sm text-emerald-800 dark:border-emerald-900 dark:bg-emerald-950/50 dark:text-emerald-300"
+    >
+      Registration request received. Try signing in with your credentials. If
+      you already have an account, use your existing password.
+    </p>
+  );
+}
 
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(login, null);
-  const [hiddenErrorTimestamp, setHiddenErrorTimestamp] = useState<
-    number | null
-  >(null);
-
-  useEffect(() => {
-    if (state?.error && state.timestamp) {
-      const timer = setTimeout(() => {
-        setHiddenErrorTimestamp(state.timestamp!);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [state?.error, state?.timestamp]);
-
-  const errorMsg =
-    state?.error && state.timestamp !== hiddenErrorTimestamp
-      ? state.error
-      : null;
 
   return (
     <div className="flex flex-col w-full">
       <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-sm aspect-square flex flex-col justify-center w-full">
         <div className="flex flex-col items-center text-center mb-8">
           <Link href="/" className="flex items-center gap-2 z-10 mb-6 group">
-            <div className="flex items-center justify-center group-hover:scale-105 transition-transform">
-              <AnimatedNetworkIcon />
-            </div>
             <span className="font-semibold text-xl tracking-tight text-zinc-950 dark:text-white">
-              Atlas
+              ContentDock
             </span>
           </Link>
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white">
@@ -49,7 +44,14 @@ export default function LoginPage() {
             Log in to your account to continue
           </p>
         </div>
-        <form action={formAction} className="flex flex-col gap-5">
+        <Suspense fallback={null}>
+          <RegistrationNotice />
+        </Suspense>
+        <form
+          action={formAction}
+          aria-busy={isPending}
+          className="flex flex-col gap-5"
+        >
           <div className="flex flex-col gap-2.5 ">
             <Label
               htmlFor="email"
@@ -65,8 +67,20 @@ export default function LoginPage() {
               placeholder="name@mail.com"
               required
               autoComplete="email"
-              defaultValue={state?.email as string | undefined}
+              maxLength={254}
+              autoCapitalize="none"
+              spellCheck={false}
+              readOnly={isPending}
+              aria-invalid={!!state?.fieldErrors.email}
+              aria-describedby={
+                state?.fieldErrors.email ? "email-error" : undefined
+              }
+              defaultValue={state?.email}
               className="border border-zinc-200 dark:border-zinc-800"
+            />
+            <AuthFieldError
+              id="email-error"
+              message={state?.fieldErrors.email}
             />
           </div>
 
@@ -80,36 +94,32 @@ export default function LoginPage() {
               </Label>
               <Link
                 href="/forgot-password"
-                className="text-xs text-zinc-500 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                className="text-xs text-zinc-500 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white transition-colors"
               >
                 Forgot password?
               </Link>
             </div>
-            <Input
+            <PasswordInput
+              key={state?.timestamp || "password-input"}
               id="password"
               name="password"
-              type="password"
               required
               autoComplete="current-password"
+              maxLength={1024}
+              readOnly={isPending}
+              aria-invalid={!!state?.fieldErrors.password}
+              aria-describedby={
+                state?.fieldErrors.password ? "password-error" : undefined
+              }
               className="border border-zinc-200 dark:border-zinc-800"
+            />
+            <AuthFieldError
+              id="password-error"
+              message={state?.fieldErrors.password}
             />
           </div>
 
-          <AnimatePresence>
-            {errorMsg && (
-              <motion.div
-                initial={{ opacity: 0, height: 0, marginBottom: -20 }}
-                animate={{ opacity: 1, height: "auto", marginBottom: 0 }}
-                exit={{ opacity: 0, height: 0, marginBottom: -20 }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <p className="text-[13px] text-red-600 dark:text-red-400 font-medium bg-red-50 dark:bg-red-950/50 px-3 py-2 rounded-md border border-red-200 dark:border-red-900">
-                  {errorMsg}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <AuthFeedback state={state} />
 
           <Button type="submit" disabled={isPending} className="mt-2 w-full">
             {isPending ? (

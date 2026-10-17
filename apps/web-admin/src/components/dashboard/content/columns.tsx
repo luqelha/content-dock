@@ -1,5 +1,6 @@
 "use client";
 
+import type { ContentSummary, ContentStatus } from "@/lib/contracts";
 import { ColumnDef } from "@tanstack/react-table";
 import {
   MoreHorizontal,
@@ -29,17 +30,10 @@ export type CategoryItemRef = {
   description?: string | null;
 };
 
-export type Content = {
-  id: string;
-  title: string;
-  slug: string;
-  status: "DRAFT" | "PUBLISHED" | "ARCHIVED";
-  author: {
-    name: string;
-  };
-  category?: CategoryItemRef | null;
-  createdAt: string;
-};
+export type Content = Pick<
+  ContentSummary,
+  "id" | "title" | "slug" | "status" | "author" | "category" | "createdAt"
+>;
 
 export const getColumns = (
   onEdit: (content: Content) => void,
@@ -77,7 +71,7 @@ export const getColumns = (
           </Badge>
           {(onEditCategory || onDeleteCategory) && (
             <DropdownMenu>
-              <DropdownMenuTrigger className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded hover:bg-accent text-muted-foreground hover:text-foreground">
+              <DropdownMenuTrigger className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity p-0.5 rounded hover:bg-accent text-muted-foreground hover:text-foreground">
                 <ChevronDown className="h-3 w-3" />
                 <span className="sr-only">Category options</span>
               </DropdownMenuTrigger>
@@ -114,29 +108,23 @@ export const getColumns = (
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => {
-      const status = row.getValue("status") as
-        "DRAFT" | "PUBLISHED" | "ARCHIVED";
+      const status = row.getValue("status") as ContentStatus;
       if (status === "PUBLISHED") {
         return <Badge variant="default">Published</Badge>;
       }
-      if (status === "ARCHIVED") {
-        return (
-          <Badge
-            variant="outline"
-            className="text-muted-foreground border-dashed"
-          >
-            Archived
-          </Badge>
-        );
-      }
+
       return <Badge variant="secondary">Draft</Badge>;
     },
   },
   {
-    accessorKey: "author.name",
+    accessorKey: "author.email",
     header: "Author",
     cell: ({ row }) => {
-      return row.original.author?.name || "Unknown";
+      const author = row.original.author;
+      return (
+        [author.firstName, author.lastName].filter(Boolean).join(" ") ||
+        author.email
+      );
     },
   },
   {

@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-15T11:40:50.316Z",
+  "candidateCommit": "ab2c6e00d50e28684058b08cd5fedf9947d586f2",
+  "note": "Verbatim summary lines from the current remote job log. Security subsets overlap unit tests; do not sum as unique test counts.",
+  "testSummaries": [
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9819145Z ℹ tests 3"
+    },
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9820268Z ℹ pass 3"
+    },
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9820743Z ℹ fail 0"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:21.5876624Z Test Suites: 13 passed, 13 total"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:21.5878588Z Tests:       119 passed, 119 total"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6268709Z ℹ tests 32"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6273028Z ℹ pass 32"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6273456Z ℹ fail 0"
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0006711Z All files                           |   51.21 |    46.47 |   42.74 |   51.89 |                          "
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0924765Z Test Suites: 24 passed, 24 total"
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0925420Z Tests:       180 passed, 180 total"
+    },
+    {
+      "command": "npm run test:int --workspace=@atlas/api",
+      "line": "2026-10-15T11:31:50.7077151Z Test Suites: 3 passed, 3 total"
+    },
+    {
+      "command": "npm run test:int --workspace=@atlas/api",
+      "line": "2026-10-15T11:31:50.7077456Z Tests:       26 passed, 26 total"
+    },
+    {
+      "command": "npm run test:e2e --workspace=@atlas/api",
+      "line": "2026-10-15T11:32:04.4893784Z Test Suites: 3 passed, 3 total"
+    },
+    {
+      "command": "npm run test:e2e --workspace=@atlas/api",
+      "line": "2026-10-15T11:32:04.4894665Z Tests:       19 passed, 19 total"
+    },
+    {
+      "command": "npm run test:browser",
+      "line": "2026-10-15T11:33:49.0022244Z   9 passed (37.3s)"
+    }
+  ],
+  "containerBuildLogLines": [
+    {
+      "command": "docker build -f apps/api/Dockerfile -t atlas-api:ci .",
+      "line": "2026-10-15T11:35:35.9764261Z #24 writing image sha256:d7bb9ba58681940983af83db4d1fa00ed4bb182c3592b04163d38318fe0b7a62 done"
+    },
+    {
+      "command": "docker build -f apps/api/Dockerfile -t atlas-api:ci .",
+      "line": "2026-10-15T11:35:35.9771040Z #24 naming to docker.io/library/atlas-api:ci done"
+    },
+    {
+      "command": "docker build -f apps/web-admin/Dockerfile -t atlas-web:ci .",
+      "line": "2026-10-15T11:37:40.5407797Z #18 writing image sha256:68a1d0d4716dea6b75a0ee2352c0bf91c158cce728d5ba0ca33241b05889a202 done"
+    },
+    {
+      "command": "docker build -f apps/web-admin/Dockerfile -t atlas-web:ci .",
+      "line": "2026-10-15T11:37:40.5415311Z #18 naming to docker.io/library/atlas-web:ci done"
+    }
+  ]
+}

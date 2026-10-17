@@ -27,6 +27,7 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
 
   const { activeTenant } = useTenant();
   const isAdmin = activeTenant?.role === "ADMIN";
+  const canEdit = isAdmin || activeTenant?.role === "EDITOR";
 
   const handleEdit = (category: Category) => {
     setSelectedCategory(category);
@@ -71,13 +72,15 @@ export function CategoriesClient({ data }: CategoriesClientProps) {
             Manage categories for your content.
           </p>
         </div>
-        <Button onClick={handleCreate}>
-          <Plus className="mr-2 h-4 w-4" /> Add Category
-        </Button>
+        {canEdit && (
+          <Button onClick={handleCreate}>
+            <Plus className="mr-2 h-4 w-4" /> Add Category
+          </Button>
+        )}
       </div>
 
       <DataTable
-        columns={getColumns(handleEdit, handleDelete, isAdmin)}
+        columns={getColumns(handleEdit, handleDelete, isAdmin, canEdit)}
         data={data}
       />
 

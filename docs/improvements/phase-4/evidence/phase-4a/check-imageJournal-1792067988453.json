@@ -1,0 +1,18 @@
+{
+  "operation": "imageJournal",
+  "startedAt": "2026-10-15T12:39:43.035Z",
+  "finishedAt": "2026-10-15T12:39:48.455Z",
+  "command": [
+    "docker",
+    "build",
+    "-f",
+    "ops/observability/alert-journal.Dockerfile",
+    "-t",
+    "atlas-alert-journal:phase4a",
+    "."
+  ],
+  "exitCode": 0,
+  "log": "check-imageJournal-1792067988453.log",
+  "logSha256": "c73699177934ed46706be96a8764c77d602e668fef23dc06e56c90842162cab8",
+  "scope": "Working tree validation, not staging or production"
+}

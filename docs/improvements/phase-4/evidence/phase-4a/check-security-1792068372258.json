@@ -1,0 +1,16 @@
+{
+  "operation": "security",
+  "startedAt": "2026-10-15T12:45:14.514Z",
+  "finishedAt": "2026-10-15T12:46:12.260Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd run test:security"
+  ],
+  "exitCode": 0,
+  "log": "check-security-1792068372258.log",
+  "logSha256": "a549f9018222b8f8ab354a328b081e1cd9fc139148b1dfb6b9621577b682f07d",
+  "scope": "Working tree validation, not staging or production"
+}

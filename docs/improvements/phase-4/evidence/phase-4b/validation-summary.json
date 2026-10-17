@@ -1,0 +1,126 @@
+{
+  "recordedAt": "2026-10-15T22:00:53.285Z",
+  "phase": "4B",
+  "status": "local-performance-and-regression-verified",
+  "checks": {
+    "apiLocalBuild": {
+      "exitCode": 0,
+      "compiledFilesMatchedToMeasuredImage": 105
+    },
+    "apiTypecheck": {
+      "exitCode": 0
+    },
+    "apiLint": {
+      "exitCode": 0
+    },
+    "prismaValidate": {
+      "exitCode": 0
+    },
+    "unitCoverage": {
+      "exitCode": 0,
+      "suites": 25,
+      "tests": 193,
+      "existingThresholdsPassed": true,
+      "summary": [
+        "Test Suites: 25 passed, 25 total",
+        "Tests:       193 passed, 193 total",
+        "Time:        12.748 s, estimated 104 s"
+      ]
+    },
+    "databaseRegression": {
+      "report": "database-regression-1792101217706.json",
+      "status": "passed",
+      "integrationPassed": 26,
+      "e2ePassed": 19,
+      "allExitCodes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "freshMigrationsAndCorrectness": {
+      "measuredAt": "2026-10-15T21:52:47.973Z",
+      "results": [
+        {
+          "tenantId": "4ab24d3b-f679-4855-86ca-e695989c0548",
+          "countsAndRecentOrderMatchDatabase": true,
+          "publishedFilterAndSummaryValid": true
+        },
+        {
+          "tenantId": "c1acfd78-ce89-441c-af46-c2a9ef24701d",
+          "countsAndRecentOrderMatchDatabase": true,
+          "publishedFilterAndSummaryValid": true
+        },
+        {
+          "tenantId": "e53dee42-eca3-49eb-ae2e-d2cf087270b9",
+          "countsAndRecentOrderMatchDatabase": true,
+          "publishedFilterAndSummaryValid": true
+        },
+        {
+          "tenantId": "a596fae2-eb41-4c92-a55c-b481db32b386",
+          "countsAndRecentOrderMatchDatabase": true,
+          "publishedFilterAndSummaryValid": true
+        }
+      ],
+      "crossTenantContentDenied": true,
+      "crossTenantMediaDenied": true,
+      "freshDatabaseMigrationsPassed": true,
+      "freshDatabase": "atlas_phase4b_test_2eb6875e73_fresh_test",
+      "repeatedDeployPassed": true,
+      "validIndexes": 2
+    },
+    "measuredRequests": 29600,
+    "measuredFailures": 0,
+    "exports": {
+      "jobs": 6,
+      "rowsPerJob": 25000,
+      "allArchivesDecodedAndAllIdsUnique": true
+    },
+    "containerPreservation": {
+      "fixtureStopped": true,
+      "existingIdentityAndStatePreserved": true
+    },
+    "scriptSyntaxChecks": {
+      "exitCode": 0
+    }
+  },
+  "cleanDockerImageBuild": {
+    "status": "not-verified",
+    "baselineAttempt": "ECONNRESET from npm registry",
+    "finalAttempt": "cancelled after more than five minutes with no npm ci progress; no final image verified",
+    "measuredImage": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+    "measuredImageMatchesCurrentEmittedJs": true
+  },
+  "productionDeployment": false,
+  "remoteCiForThisSource": false,
+  "logs": {
+    "unit-coverage.log": {
+      "sha256": "a200fc5a080db7da4d1fc3ae056e0aaaee87bc1355734e3c5d196e08d111f7fd",
+      "bytes": 37738
+    },
+    "typecheck.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "lint.log": {
+      "sha256": "faf68f484d15f6cb08fd688b4168f3b00f956b16694eaa2eaaad632b6f7d0165",
+      "bytes": 142
+    },
+    "image-build.log": {
+      "sha256": "37b497651810180a96123ad09a8b54fc5b4e280dd76b34769b3d502ff795bce4",
+      "bytes": 3134
+    },
+    "database-regression-1792101217706-migrate.log": {
+      "sha256": "70bac1e46dba2e4c7445267af9afaed9a04044a219b99e0fcd250ce377276c36",
+      "bytes": 1051
+    },
+    "database-regression-1792101217706-integration.log": {
+      "sha256": "44bbbc60e678828cb81cc22b64017b933b5c66fe7dc911110b0573949ec3c74c",
+      "bytes": 705
+    },
+    "database-regression-1792101217706-e2e.log": {
+      "sha256": "1675907d6c2cfd9e8bfd8fef2574fa3fe29150f683749e6787efa57976222c62",
+      "bytes": 456
+    }
+  }
+}

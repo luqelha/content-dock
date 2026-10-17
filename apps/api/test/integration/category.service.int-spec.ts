@@ -90,6 +90,42 @@ describe('CategoryService (Integration)', () => {
   });
 
   describe('update', () => {
+    it('rejects descendant cycles and leaves the original hierarchy unchanged', async () => {
+      const parent = await categoryService.create(tenantId, { name: 'Parent', slug: 'parent' });
+      const child = await categoryService.create(tenantId, {
+        name: 'Child',
+        slug: 'child',
+        parentId: parent.id,
+      });
+      await expect(
+        categoryService.update(parent.id, tenantId, { parentId: child.id }),
+      ).rejects.toThrow(ConflictException);
+      expect((await categoryService.findOne(parent.id, tenantId)).parentId).toBeNull();
+    });
+
+    it('serializes concurrent parent changes so at most one direction is accepted', async () => {
+      const a = await categoryService.create(tenantId, { name: 'A', slug: 'a' });
+      const b = await categoryService.create(tenantId, { name: 'B', slug: 'b' });
+      const results = await Promise.allSettled([
+        categoryService.update(a.id, tenantId, { parentId: b.id }),
+        categoryService.update(b.id, tenantId, { parentId: a.id }),
+      ]);
+      expect(results.filter((result) => result.status === 'fulfilled')).toHaveLength(1);
+      expect(results.filter((result) => result.status === 'rejected')).toHaveLength(1);
+    });
+
+    it('rolls back business and audit writes together on a late failure', async () => {
+      const category = await categoryService.create(tenantId, { name: 'Before', slug: 'before' });
+      await expect(
+        prisma.inTransaction(async () => {
+          await categoryService.update(category.id, tenantId, { name: 'After' });
+          await prisma.client.auditLog.create({ data: { tenantId, action: 'ROLLBACK_TEST' } });
+          throw new Error('late failure');
+        }),
+      ).rejects.toThrow('late failure');
+      expect((await categoryService.findOne(category.id, tenantId)).name).toBe('Before');
+      expect(await prisma.auditLog.count({ where: { tenantId, action: 'ROLLBACK_TEST' } })).toBe(0);
+    });
     it('should update a category', async () => {
       const created = await categoryService.create(tenantId, { name: 'Old', slug: 'old' });
       const updated = await categoryService.update(created.id, tenantId, { name: 'New' });
@@ -99,6 +135,22 @@ describe('CategoryService (Integration)', () => {
   });
 
   describe('remove', () => {
+    it('rolls back unlinking and deletion if the enclosing transaction fails', async () => {
+      const parent = await categoryService.create(tenantId, { name: 'Parent', slug: 'parent' });
+      const child = await categoryService.create(tenantId, {
+        name: 'Child',
+        slug: 'child',
+        parentId: parent.id,
+      });
+      await expect(
+        prisma.inTransaction(async () => {
+          await categoryService.remove(parent.id, tenantId);
+          throw new Error('audit failed');
+        }),
+      ).rejects.toThrow('audit failed');
+      expect((await categoryService.findOne(child.id, tenantId)).parentId).toBe(parent.id);
+      expect(await categoryService.findOne(parent.id, tenantId)).toBeDefined();
+    });
     it('should remove a category', async () => {
       const created = await categoryService.create(tenantId, {
         name: 'To Delete',

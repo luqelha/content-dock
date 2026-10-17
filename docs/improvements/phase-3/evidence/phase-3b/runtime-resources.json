@@ -1,0 +1,948 @@
+{
+  "checkedAt": "2026-10-13T11:08:19.455Z",
+  "finalReport": "drill-1791871073983.json",
+  "originalContainerCount": 30,
+  "missingOrRecreatedOriginalContainers": [],
+  "allDrillContainersStopped": true,
+  "containers": [
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-nginx-1",
+      "id": "044ec58a1edf4b6c66d253483ee868d9c9c4b904be0a4a9aa2cd048fd5b9c5f6",
+      "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/etc/nginx/nginx.conf",
+          "readWrite": false
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-web-1",
+      "id": "78708257a4be77a9aeebceea086f65e15cde7bbe5beaeab8f1a6ad1ba4dfd220",
+      "image": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "status": "exited",
+      "exitCode": 143,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-vault",
+      "id": "d920291ace18cae722d27eb1450754cd6fd8430a9af3154a83dc5f52be4a55b0",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": null,
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "none"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/backup",
+          "readWrite": false
+        },
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-3af2f55ac3_api_storage",
+          "destination": "/storage",
+          "readWrite": true
+        },
+        {
+          "type": "volume",
+          "name": "1f4942c3347307d2a3196f74e2fec97dca0696f864aadcecb31f59781916ba1d",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-api-1",
+      "id": "96b1d41c040162f387c9301e49f241238965c565029e854b501943e9056c13c3",
+      "image": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-3af2f55ac3_api_storage",
+          "destination": "/app/apps/api/storage",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-postgres-1",
+      "id": "899182b6edbecb467ff8160ba88544bbcf27b03f086a818ca0b05ca93fce8eee",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-3af2f55ac3_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-rabbitmq-1",
+      "id": "d81c6413dbecab536aaba200aea86a647de5a43906e297036d494f9f15ccdc46",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-3af2f55ac3_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3-redis-1",
+      "id": "53fb5997424d7e5e3164381196747e4d9ba5a960ea10e91773e9f2d396732c34",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-3af2f55ac3",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-3af2f55ac3_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-3af2f55ac3_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-backup",
+      "id": "16ffa566e7f7ecb796507dbca2e5d396643262c852eb9ba13a194f0599f2cb7b",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": null,
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "none"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/backup",
+          "readWrite": true
+        },
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e634c942d6_api_storage",
+          "destination": "/storage",
+          "readWrite": false
+        },
+        {
+          "type": "volume",
+          "name": "7bc839b82c59bc8becf7c77db946ddd8419004caa0d61618fcf9def101c8f28d",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-web-1",
+      "id": "08f8d3af448458f1dade8063a72f9dea1fae9b025fd7d25d567d6482c27e6ffb",
+      "image": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "status": "exited",
+      "exitCode": 143,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-api-1",
+      "id": "d3a45b906869aa1b45815d156181b462e04832d9999a278e78ec75c864273bbd",
+      "image": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e634c942d6_api_storage",
+          "destination": "/app/apps/api/storage",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-nginx-1",
+      "id": "f6fe1c406100b09b8bf12a24e14c1f7947613dc3b49cf5aefb84321e87ef3e3d",
+      "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/etc/nginx/nginx.conf",
+          "readWrite": false
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-postgres-1",
+      "id": "a965e98f64b7f6043d35dc90ce744950eb4c28917434553264ea06fb6f4efa20",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e634c942d6_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-rabbitmq-1",
+      "id": "9061dbe21cf842c3b93e90b817ef159b09e33079a26d8bd1ddc47694a5d277b1",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e634c942d6_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e634c942d6-redis-1",
+      "id": "827d662d63e0038186ff06cd547e1f3fcbca998b652aceb4147add61319d5fe1",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e634c942d6",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e634c942d6_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e634c942d6_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-nginx-1",
+      "id": "be84f07150426ff7b8f7177fad07898e26c6da3aa03699c103e7ed878a0b71fb",
+      "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/etc/nginx/nginx.conf",
+          "readWrite": false
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-web-1",
+      "id": "d7b66016c8265f27c35b661820f9f6150c9235b4d1ca5520e99f45cfe3791e82",
+      "image": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "status": "exited",
+      "exitCode": 143,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-vault",
+      "id": "73583956a513c5af309682add1f1bb57ec601469ce70a0682329cbedbb765846",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": null,
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "none"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/backup",
+          "readWrite": false
+        },
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-f0074729ea_api_storage",
+          "destination": "/storage",
+          "readWrite": true
+        },
+        {
+          "type": "volume",
+          "name": "d48733a07e1a2c37b15782036ac9fdc674f6e74f041a4c163199379ce03d19a6",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-api-1",
+      "id": "793a423dc791539477bd31c14bf7bcd8e4ea903a96c3002751e7b40ce376dd67",
+      "image": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-f0074729ea_api_storage",
+          "destination": "/app/apps/api/storage",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-rabbitmq-1",
+      "id": "a44db6cba079206bdac79798bd7c7a8de8dd5a800689214e6bdf4e8fb075192c",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-f0074729ea_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-postgres-1",
+      "id": "0592945b62d84a0c5231d8e2a83b633d2fdd794244deadece67fcdcd476d9381",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-f0074729ea_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-f0074729ea-redis-1",
+      "id": "09a54f55edc73b8eddfa761446cb57f2c913abb33274b0f163d354823df3b777",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-f0074729ea",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-f0074729ea_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-f0074729ea_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-backup",
+      "id": "7fd945902a9c188eba7874e9344565c5071333cde9ac205dc08992b77171e4ef",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": null,
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "none"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/backup",
+          "readWrite": true
+        },
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-d0d4214e1d_api_storage",
+          "destination": "/storage",
+          "readWrite": false
+        },
+        {
+          "type": "volume",
+          "name": "426a3fb252328da52ab3cfbcceb47729299fe6a04f33ffdd7683ceb6cf383700",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-web-1",
+      "id": "ed736fef2968c751c20a9c8d1886dc2672d28ab65194006e6dbee3604f0b321d",
+      "image": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "status": "exited",
+      "exitCode": 143,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-api-1",
+      "id": "3819598b65de4ac3c906457c15f3cf6b98eb102d57ab0de339e89d8b2b362095",
+      "image": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-d0d4214e1d_api_storage",
+          "destination": "/app/apps/api/storage",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-nginx-1",
+      "id": "82e3e68b859f95324d59ef58527b90f30f7f6734446253b422d3a99c5cdd1a14",
+      "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/etc/nginx/nginx.conf",
+          "readWrite": false
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-rabbitmq-1",
+      "id": "28bcb1760f0d0f8d21b4d47471264fcd80356a865525218748614f588e7a91e4",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-d0d4214e1d_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-postgres-1",
+      "id": "fb3128ee7acfab3428d44c3565c5a6a83a4840197888cf08a3c4585635165ca5",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-d0d4214e1d_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-d0d4214e1d-redis-1",
+      "id": "188833b09837e576536f648117abdd42db19261b988baf4c2450919ce258d689",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-d0d4214e1d",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-d0d4214e1d_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-d0d4214e1d_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-095f73d819-postgres-1",
+      "id": "b62bc1def188921e50a840f16dc4ec6ff048ea20a84bf70e6dfd9daaf84b7e83",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-095f73d819",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-095f73d819_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-095f73d819_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-095f73d819-rabbitmq-1",
+      "id": "7a282de9235ec6a2779748a65eb7c1fea9a64b8859ef777907f6719d596ff7eb",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-095f73d819",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-095f73d819_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-095f73d819_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-restore-095f73d819-redis-1",
+      "id": "3f2a1d3d89ed729408fb666798204f5be35292e113ad0ffbc808caa59308cd97",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-restore-095f73d819",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-restore-095f73d819_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-restore-095f73d819_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-backup",
+      "id": "67e79a03fbdc56fcf840da2a508862ffbbca784eb23d4ae6c6a64ab055cfa135",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": null,
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "none"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/backup",
+          "readWrite": true
+        },
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e224cd2d8f_api_storage",
+          "destination": "/storage",
+          "readWrite": false
+        },
+        {
+          "type": "volume",
+          "name": "d3789dc3e315e45feceb0e5e3fe8d53e75f266ac28fa7cfa71cb30bd26ecffe0",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-web-1",
+      "id": "7df39c20a51eb59a8c1abe18d8e16e0082aa3c436f9ace2415c3c3ad19b3021d",
+      "image": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "status": "exited",
+      "exitCode": 143,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": []
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-api-1",
+      "id": "f6e87a0d22428fdd48e863cfec6ead147ceac552b0166fa4970ddb9aedfcba14",
+      "image": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "node",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e224cd2d8f_api_storage",
+          "destination": "/app/apps/api/storage",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-nginx-1",
+      "id": "89da18d0bd2e5b2e0e61584c95411b4afa21a13ea3b4d99439fdd3dd3703ca4f",
+      "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": [
+        {
+          "type": "bind",
+          "name": null,
+          "destination": "/etc/nginx/nginx.conf",
+          "readWrite": false
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-rabbitmq-1",
+      "id": "68ceb5f87fb13a4db80571998523989246bf664cb03f253e9131af5267e0ed71",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e224cd2d8f_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-postgres-1",
+      "id": "af5725699197776e320b34ba3a81c7f22c4598a4bfdedb18db0d35151799b158",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e224cd2d8f_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-e224cd2d8f-redis-1",
+      "id": "e424e6806c889a705733871adf33dddb79c58d2c89225ee588cbaf8050f4014b",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-e224cd2d8f",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-e224cd2d8f_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-e224cd2d8f_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-4404328cb1-rabbitmq-1",
+      "id": "671af2e721c413fb9711a141d7207f46c5d398db4bf3fc990ebf7ceeec9ddf83",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-4404328cb1",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-4404328cb1_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-4404328cb1_rabbitmq_data_prod",
+          "destination": "/var/lib/rabbitmq",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-4404328cb1-postgres-1",
+      "id": "8d7ddbaca3c9c757bb21b1cbe886a2b7c26ec94595e808426a1fc1273c563c0a",
+      "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-4404328cb1",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-4404328cb1_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-4404328cb1_postgres_data_prod",
+          "destination": "/var/lib/postgresql/data",
+          "readWrite": true
+        }
+      ]
+    },
+    {
+      "name": "atlas-phase3b-source-4404328cb1-redis-1",
+      "id": "a918fb3d633d9a70fb5727e54f9d3b7999ab06b172400139b529c7dbe1daba82",
+      "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+      "status": "exited",
+      "exitCode": 0,
+      "running": false,
+      "project": "atlas-phase3b-source-4404328cb1",
+      "user": "",
+      "portBindings": {},
+      "networks": [
+        "atlas-phase3b-source-4404328cb1_default"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "atlas-phase3b-source-4404328cb1_redis_data_prod",
+          "destination": "/data",
+          "readWrite": true
+        }
+      ]
+    }
+  ],
+  "networks": [
+    {
+      "name": "atlas-phase3b-source-e634c942d6_default",
+      "internal": true,
+      "project": "atlas-phase3b-source-e634c942d6"
+    },
+    {
+      "name": "atlas-phase3b-restore-3af2f55ac3_default",
+      "internal": true,
+      "project": "atlas-phase3b-restore-3af2f55ac3"
+    }
+  ]
+}

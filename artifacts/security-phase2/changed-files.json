@@ -1,0 +1,1746 @@
+[
+  {
+    "file": ".env.production.example",
+    "change": "modified",
+    "lines": [
+      10,
+      19
+    ],
+    "sha256": "b19608a1163cef4e23a15cb033dd615bd8894d13e8dc8d1f56c87bd45abaab84"
+  },
+  {
+    "file": "Caddyfile",
+    "change": "modified",
+    "lines": [
+      5
+    ],
+    "sha256": "aa2844fd90ad0db69d4f6ada44469f5e0e7c24a47345aa24b87c4466ca5e004d"
+  },
+  {
+    "file": "apps/api/docs/PERFORMANCE_REPORT.md",
+    "change": "modified",
+    "lines": [
+      3,
+      8,
+      10,
+      18,
+      28
+    ],
+    "sha256": "ca96f560da43e0de2593f1c074d98efe11a8b09056278dd8e65263edc6a600df"
+  },
+  {
+    "file": "apps/api/docs/RELEASE_NOTES.md",
+    "change": "modified",
+    "lines": [
+      25
+    ],
+    "sha256": "55103cc78fbdaaee06fa5d1076167f0559fd415ea0a688ed537cac59fb83c517"
+  },
+  {
+    "file": "apps/api/prisma/migrations/20261011000100_durable_export_tasks/migration.sql",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "7847a659ec8690d29f81048f0619a735c3cbafed543048d6509b07130d28bcd2"
+  },
+  {
+    "file": "apps/api/src/common/dto/list-page.dto.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "61b262dd2f775a79050cd50db1974e2ccd9b4cf7d783b9d01dd5cbe6db7e9870"
+  },
+  {
+    "file": "apps/api/src/common/guards/auth-client-identity.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "2840f9c1521286b6535a9095cc63fad6ecf939afe5ca169ec2890ba151d0ef6e"
+  },
+  {
+    "file": "apps/api/src/common/guards/rate-limit.guard.ts",
+    "change": "modified",
+    "lines": [
+      6,
+      18,
+      29
+    ],
+    "sha256": "e3f161d6d826d3328a4ad53f059f764635fb554e74c1e3e2f5090e01ee9ee16a"
+  },
+  {
+    "file": "apps/api/src/modules/storage/storage-retention.service.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "de5b11233f95d6d5da4e408db1335499f0d69e162920afa388cdb13c40f0fa6b"
+  },
+  {
+    "file": "apps/api/src/modules/storage/storage.module.ts",
+    "change": "modified",
+    "lines": [
+      4,
+      7
+    ],
+    "sha256": "c9ccc795dd74691a12c3b9c6a2900c883d9f945ae4a751e655ceb783cc1ccbd9"
+  },
+  {
+    "file": "apps/api/src/modules/storage/validate-upload.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "215643515228390e46e5fe9a29052de6c79ef8911a660e5e482d864afbcb869e"
+  },
+  {
+    "file": "apps/api/src/modules/tenant/membership.controller.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      36
+    ],
+    "sha256": "8d2c6e84dfe3827425cea060dcee8bbea6aa9a74c55911bd7760d24214683693"
+  },
+  {
+    "file": "apps/api/src/modules/tenant/membership.service.ts",
+    "change": "modified",
+    "lines": [
+      13,
+      21,
+      25,
+      36,
+      40,
+      53,
+      56,
+      61,
+      66,
+      72
+    ],
+    "sha256": "f75f604a8222f76e840046acc78f68c32f0aeab035ba7dbfbd80f5616ea5aa7b"
+  },
+  {
+    "file": "apps/api/test/e2e/security.e2e-spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "dccfd4840bb920133a4701a04f544660d0a2557b541ec22eba13d21fd1e2fbce"
+  },
+  {
+    "file": "apps/api/test/integration/durability.int-spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "4c33c2f4f0156b39a128ce63927e92db090def2ad3f4e28365140ec51f955e45"
+  },
+  {
+    "file": "apps/api/test/unit/security/audit-attribution.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "5a1a0424c25555e767f3ac52c9eef1d3845e3ecab0359535b0a933e8eca508eb"
+  },
+  {
+    "file": "apps/api/test/unit/security/auth-client-identity.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "d5378a81ae4cd577701fd0faefdfa89dc78c3e70fa1705fac42408aae4dc9200"
+  },
+  {
+    "file": "apps/api/test/unit/security/config-and-errors.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "b04d868d81133efa82752fcaf104093d113c37447ee713e591a830241f6d01ea"
+  },
+  {
+    "file": "apps/api/test/unit/security/storage-retention.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "5175a75349bfb5a8c5396574ace3349576261356fd7e43556cc75c727c536c36"
+  },
+  {
+    "file": "apps/api/test/unit/security/upload-content.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "eac3a7a97ace76904dc8ba3904007543d7d789eb70878ebbe8169105868d94dd"
+  },
+  {
+    "file": "apps/web-admin/src/actions/category-options.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "2da50af18b4b2f8687613f3bd337b3d6e17f8424fe1f11428163e7df0b36a117"
+  },
+  {
+    "file": "apps/web-admin/src/actions/workspace.ts",
+    "change": "modified",
+    "lines": [
+      128
+    ],
+    "sha256": "ca08e2acbb331c75f0dccb01874183cf4c22a08b3a51821095482aa46e7dadc8"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/exports/page.tsx",
+    "change": "modified",
+    "lines": [
+      4,
+      18
+    ],
+    "sha256": "5854dfa72409b7762db0d532725d6d7b4d419c3042392d1c7491fdcf092b582f"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/users/page.tsx",
+    "change": "modified",
+    "lines": [
+      1,
+      11,
+      25
+    ],
+    "sha256": "6c06cf0052c7d79aba1a7102edd97917549e63739bc11bd18b9ac7e702928556"
+  },
+  {
+    "file": "apps/web-admin/src/app/error.tsx",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "0bd762ada1423cdd675d758f05fada18cdd31b553a51a10f42d8c5382d2c80bd"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/exports-client.tsx",
+    "change": "modified",
+    "lines": [
+      16,
+      36,
+      69,
+      80
+    ],
+    "sha256": "e3dd41352d22294b88f1d2328b1385ce4941c28d426d9d75be6f466fc1cde2a8"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/list-pagination.tsx",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "45d6e8db0e1e7e0de1898b27d8cbe05c5e51fac24ab04728e5694f58f7eb60a2"
+  },
+  {
+    "file": "apps/web-admin/src/components/ui/accessible-dialog.tsx",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "f614e65b3023fa3219b7f514cf05eec2ff0bb76ebdf985eb27d26687c2d1798f"
+  },
+  {
+    "file": "apps/web-admin/src/lib/auth-client-headers.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "6e1231ff233fc2259f87b5107ebac876d08b0ad70f46901f0e434a977b54760a"
+  },
+  {
+    "file": "apps/web-admin/src/lib/workspace-api.ts",
+    "change": "modified",
+    "lines": [
+      3,
+      18
+    ],
+    "sha256": "85fb15a25a3d96de67dab5486096f3171f39f1ee5cbc4b7cbadbdca0fa24024a"
+  },
+  {
+    "file": "apps/web-admin/src/proxy.ts",
+    "change": "modified",
+    "lines": [
+      65
+    ],
+    "sha256": "542f699714eeba4cc96996102cee56809948308bcb5cb0d73a5cb9b23e820df9"
+  },
+  {
+    "file": "playwright.config.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "153729db9d5bba62333d5325cd2d3ebf1cd8ec1650c528dd84bfff8b5cb72962"
+  },
+  {
+    "file": "scripts/benchmark-safety.mjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "86d69f2d3c9f6c25e6ce868c933736372b0b68af3c516a5ae568dd9cc97ebc16"
+  },
+  {
+    "file": "scripts/benchmark.mjs",
+    "change": "modified",
+    "lines": [
+      3,
+      14,
+      43,
+      55,
+      73
+    ],
+    "sha256": "69f12250b44aafeb7907246924e28ea9704d6a22a350c0c18ad76a9ae2ea0f1c"
+  },
+  {
+    "file": "scripts/database/README.md",
+    "change": "modified",
+    "lines": [
+      59
+    ],
+    "sha256": "e062b0d9975e5ade46bc5b45516840c0795a4b2b8276063741717bd6e96090dd"
+  },
+  {
+    "file": "scripts/database/create-runtime-role.sql",
+    "change": "modified",
+    "lines": [
+      31
+    ],
+    "sha256": "a2d76c93907999d665384ea6d1608dc72e63b282d673eb31b530982a113c0738"
+  },
+  {
+    "file": "scripts/database/grant-export-task.sql",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "32abadac066287ecf1176bf3786d9ce95645e263ed19db5b3c1292e2cb833f3e"
+  },
+  {
+    "file": "scripts/database/verify-runtime-role.sql",
+    "change": "modified",
+    "lines": [
+      27,
+      34,
+      40
+    ],
+    "sha256": "bcd21059453c522811c5330aaf0ee2073b4b591ceba35357622ee99a0c51b641"
+  },
+  {
+    "file": "scripts/security/benchmark-safety.test.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "7b3a4a959eb4d80d06cc8cf9eee7c24c0dbf8947ff9b665dc49c121b9ca98032"
+  },
+  {
+    "file": "scripts/security/database-regression.cjs",
+    "change": "modified",
+    "lines": [
+      75,
+      111
+    ],
+    "sha256": "fd7dc278e9878e6a51b0b61e076f637e458ab260b3f98a82c5e29334f92a9fd3"
+  },
+  {
+    "file": "scripts/security/deployment.test.cjs",
+    "change": "modified",
+    "lines": [
+      38,
+      112,
+      168
+    ],
+    "sha256": "0308db49f2a8ccfff1a4eb026d142c108c4214a029a36f71c4a0606eaf0a0996"
+  },
+  {
+    "file": "scripts/security/export-archive.test.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "c5e380316de6e664e8aca9b8e8c0f3f424d38acaf5b4ee113eb3ff96425b2ad6"
+  },
+  {
+    "file": "scripts/security/proxy-smoke.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "221bf8516dc6e72824cee914c20aadace4bc6fd0003f8586535eb944b0756cff"
+  },
+  {
+    "file": "scripts/security/runtime-smoke.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "0e5d35d4d744c28da63b271d8f61fc1d0da37c9c8d865049be03f2597a0285e8"
+  },
+  {
+    "file": "scripts/security/web-auth.test.cjs",
+    "change": "modified",
+    "lines": [
+      15,
+      97
+    ],
+    "sha256": "cefb2f4e320554cd5413a2ad1d534597c0694dab213f09ce20b8414975161916"
+  },
+  {
+    "file": "scripts/security/web-data.test.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "524c68a728750c7cbc9d540a51749baac63bdf32384f49bca3e57f729adce536"
+  },
+  {
+    "file": "scripts/storage-retention.cjs",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "88e52436be82ccab43c90edfc4b0fcaba8bf008be5bb3f7be61898638bf98166"
+  },
+  {
+    "file": "tests/browser/fixtures/upload.png",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "3f406c213cd0324ea0a45314b167026a3a55390d3b781902903564696d3768d8"
+  },
+  {
+    "file": "tests/browser/security-flows.spec.ts",
+    "change": "not in snapshot",
+    "lines": [
+      1
+    ],
+    "sha256": "239f9c3edcce27776c3a4731d83fe522bb23171c73bda08f273b95f36b508869"
+  },
+  {
+    "file": ".github/workflows/ci.yml",
+    "change": "modified",
+    "lines": [
+      51,
+      61,
+      71
+    ],
+    "sha256": "7246c81f1b1e351b64fa9cfc3bbbdb0d31cfa779345385d021a53c40b85f9612"
+  },
+  {
+    "file": ".gitignore",
+    "change": "modified",
+    "lines": [
+      158
+    ],
+    "sha256": "32ee406f1d343a6e56bad133d38a89ac8d606f3b801466f48df5a780b5978f5f"
+  },
+  {
+    "file": "README.md",
+    "change": "modified",
+    "lines": [
+      68,
+      71
+    ],
+    "sha256": "dbfbf10e4dd05b0b8e12c204817917594bac6c1d5c6c977bc2f574aa72168757"
+  },
+  {
+    "file": "apps/api/.env.example",
+    "change": "modified",
+    "lines": [
+      12,
+      14,
+      21
+    ],
+    "sha256": "d541c58c58709c03aba41b5615c1e7c4eaaf4bcbf848235d9332a05316b774e3"
+  },
+  {
+    "file": "apps/api/Dockerfile",
+    "change": "modified",
+    "lines": [
+      7,
+      10
+    ],
+    "sha256": "f18ae35e3fa4f83377222b81ebaf36d8a4d3f00cb3fa8c92d7cba62ca9cfcfda"
+  },
+  {
+    "file": "apps/api/docs/SECURITY.md",
+    "change": "modified",
+    "lines": [
+      21
+    ],
+    "sha256": "103908fe9dd6ac7bb0f71b9737ec02f358976364d08a711c903a6cc0f6589236"
+  },
+  {
+    "file": "apps/api/docs/TEST_STRATEGY.md",
+    "change": "modified",
+    "lines": [
+      29,
+      46
+    ],
+    "sha256": "dbce73adaabebb000fc1efe3e2e23c3445585db18cf8bf4bcc1d563379cf4759"
+  },
+  {
+    "file": "apps/api/nginx/nginx.conf",
+    "change": "modified",
+    "lines": [
+      1,
+      9,
+      20
+    ],
+    "sha256": "c42aa51859370b5369c58fe4a25a56c05482c83984a5d50bf71e08d6d5cf6516"
+  },
+  {
+    "file": "apps/api/package.json",
+    "change": "modified",
+    "lines": [
+      32,
+      45,
+      56,
+      62,
+      104
+    ],
+    "sha256": "6a508029dcbdbe3ffd0d43304936b4ec3c8f713fac7c0066b8b802af51720de4"
+  },
+  {
+    "file": "apps/api/prisma/schema.prisma",
+    "change": "modified",
+    "lines": [
+      113
+    ],
+    "sha256": "f0ea37b6f7ccf2466a8a537d964dc006880928fbbf670206dcb4ef45dcfc7a88"
+  },
+  {
+    "file": "apps/api/src/app.controller.ts",
+    "change": "modified",
+    "lines": [
+      17
+    ],
+    "sha256": "85d6da61efb9d910728737a1d89cf8d06364658f90ce330e6c7aca574db5dc43"
+  },
+  {
+    "file": "apps/api/src/common/filters/http-exception.filter.ts",
+    "change": "modified",
+    "lines": [
+      26,
+      28,
+      40
+    ],
+    "sha256": "5d56bc13d6ef8017bb61dc700b17ef3cc1281a819fc326d2bafb6ddc822695e6"
+  },
+  {
+    "file": "apps/api/src/common/filters/prisma-client-exception.filter.ts",
+    "change": "modified",
+    "lines": [
+      15,
+      20,
+      28,
+      35,
+      45
+    ],
+    "sha256": "e6c60b2bed7fb39ac390cdd2f55daadfc68ef11662df064f9047dee7d8dbc4d0"
+  },
+  {
+    "file": "apps/api/src/common/guards/rbac.guard.ts",
+    "change": "modified",
+    "lines": [
+      87
+    ],
+    "sha256": "9c1f982cd0390ea43a62b1391c709a34ccdcd8be8e971b09d0a23bedce217f19"
+  },
+  {
+    "file": "apps/api/src/common/interceptors/activity-tracking.interceptor.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      5,
+      11,
+      15,
+      22,
+      26,
+      32,
+      37,
+      78,
+      81
+    ],
+    "sha256": "e1bc666e6928ee56424b8bd3882a99d387b273d6d626a88db8bc63f868c8b774"
+  },
+  {
+    "file": "apps/api/src/common/interceptors/cache.interceptor.ts",
+    "change": "modified",
+    "lines": [
+      14
+    ],
+    "sha256": "7ccdfea1a8d29416e670a5d63341fd7bd281853a7000cad5012bf03b12f74f06"
+  },
+  {
+    "file": "apps/api/src/config/env.validation.ts",
+    "change": "modified",
+    "lines": [
+      8,
+      13,
+      15,
+      17
+    ],
+    "sha256": "37fb9808ec34321dd7851c8dca66c55d83d4db4f058c5157d623f208e1625dfd"
+  },
+  {
+    "file": "apps/api/src/database/prisma.service.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      7
+    ],
+    "sha256": "6e17ea03534969380c9cd99991f9af2d02d001105a3d0ca26d0ba078daee20d7"
+  },
+  {
+    "file": "apps/api/src/modules/audit/audit.service.ts",
+    "change": "modified",
+    "lines": [
+      14,
+      27,
+      51,
+      59
+    ],
+    "sha256": "81ff6cf7155687ed68ed6f0027378d9530928d588fc975fd81e58608fcf2d038"
+  },
+  {
+    "file": "apps/api/src/modules/auth/auth.module.ts",
+    "change": "modified",
+    "lines": [
+      23
+    ],
+    "sha256": "99b66d3dc0f25315c3af13bee304e088d989040977e73c17c4f32e7841ac55bd"
+  },
+  {
+    "file": "apps/api/src/modules/auth/dto/register.dto.ts",
+    "change": "modified",
+    "lines": [
+      10,
+      13
+    ],
+    "sha256": "6fbc2abdca8d5a5bce5000132da9d047ecbe724a1b0568f5165cc1c2977deab2"
+  },
+  {
+    "file": "apps/api/src/modules/auth/services/auth.service.ts",
+    "change": "modified",
+    "lines": [
+      15,
+      24,
+      63,
+      122,
+      126,
+      143,
+      146,
+      170,
+      178
+    ],
+    "sha256": "0a5038f7951797a5826c6fb6cbb333520b930ef827547c733a5f504799178664"
+  },
+  {
+    "file": "apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts",
+    "change": "modified",
+    "lines": [
+      13,
+      22
+    ],
+    "sha256": "0ac90537b53e463034a04ea40d0f54650e88e574353f816eb93267ad1bd58c5e"
+  },
+  {
+    "file": "apps/api/src/modules/auth/strategies/jwt.strategy.ts",
+    "change": "modified",
+    "lines": [
+      3,
+      12,
+      20
+    ],
+    "sha256": "3a7d593e1014f1e2e1ca6bfe47b0e5a473f37493ab404b5ccb68147e73e40bda"
+  },
+  {
+    "file": "apps/api/src/modules/cms/controllers/category.controller.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      43
+    ],
+    "sha256": "4d9bb8e31ac68cc508c203332f9037c86c6f5f6b2c0c4010270501371df34fca"
+  },
+  {
+    "file": "apps/api/src/modules/cms/dto/query-content.dto.ts",
+    "change": "modified",
+    "lines": [
+      2,
+      7,
+      13
+    ],
+    "sha256": "69f90a8b169fe65286ac6cb5dccfaa981fe7b96003f6cd513d2283dd600c02b6"
+  },
+  {
+    "file": "apps/api/src/modules/cms/services/category.service.ts",
+    "change": "modified",
+    "lines": [
+      6,
+      13,
+      39,
+      52,
+      60,
+      73,
+      88,
+      103,
+      120,
+      135,
+      142,
+      152,
+      158,
+      163
+    ],
+    "sha256": "e156a58d2984b85a98b6b73e7bbf76e6b040c7b7d9c03fdfe593ab1e32494cad"
+  },
+  {
+    "file": "apps/api/src/modules/cms/services/content.service.ts",
+    "change": "modified",
+    "lines": [
+      28,
+      42,
+      52,
+      79,
+      81,
+      86,
+      109,
+      129,
+      146,
+      166,
+      179
+    ],
+    "sha256": "66a37cbb934a49d4abe5cfeddd01e767ce80b3e5fb39b33f8d285d9d93f3a0b5"
+  },
+  {
+    "file": "apps/api/src/modules/export/compression.service.ts",
+    "change": "modified",
+    "lines": [
+      2,
+      8,
+      13,
+      17,
+      20,
+      45,
+      48,
+      50,
+      52,
+      55,
+      59,
+      68,
+      78,
+      83,
+      85
+    ],
+    "sha256": "bd45456b897c051b47ba06bd913dc02cee6fbf3279fe4d5b991590606d754c16"
+  },
+  {
+    "file": "apps/api/src/modules/export/export.controller.ts",
+    "change": "modified",
+    "lines": [
+      14,
+      58,
+      72,
+      74,
+      76
+    ],
+    "sha256": "2822b8accc8189846275bd0ff5e58f550414b3309588eb2d4a23e233796ae0c4"
+  },
+  {
+    "file": "apps/api/src/modules/export/export.service.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      11,
+      14,
+      25,
+      31,
+      34,
+      42,
+      54,
+      74,
+      78,
+      106,
+      110
+    ],
+    "sha256": "cb33861a83ab58830f8e4e26fa9420f0b1ad2bf4250358d14f0f56fe5cda7470"
+  },
+  {
+    "file": "apps/api/src/modules/export/worker.controller.ts",
+    "change": "modified",
+    "lines": [
+      3,
+      6,
+      14,
+      19,
+      22,
+      26,
+      81
+    ],
+    "sha256": "a95fb24f3c0175ac51940f79ce363faac0b6fd9c2ed82436d044c9d779cab957"
+  },
+  {
+    "file": "apps/api/src/modules/media/media.controller.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      76
+    ],
+    "sha256": "3d25f9936fe5fbe3b857f27968ac404c75751c66967853d0ec6d7279fe2dbebd"
+  },
+  {
+    "file": "apps/api/src/modules/media/media.service.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      5,
+      10,
+      29,
+      32,
+      45,
+      48,
+      55,
+      63,
+      68,
+      72
+    ],
+    "sha256": "39f2295a635c1d1e58f22aac54e2b7adfba368965032565d985c4bd479ffe734"
+  },
+  {
+    "file": "apps/api/src/modules/tenant/tenant.service.ts",
+    "change": "modified",
+    "lines": [
+      12,
+      20,
+      37,
+      61,
+      76,
+      84,
+      93
+    ],
+    "sha256": "785445c0fa7692390050ef1c9245a741ad316ddd5721205fa543482d30b6d573"
+  },
+  {
+    "file": "apps/api/src/modules/user/dto/update-user.dto.ts",
+    "change": "modified",
+    "lines": [
+      6
+    ],
+    "sha256": "34df8c72356e8fbcdb8782090fe48a904bd2da28c16e4abf476afc397bd21f17"
+  },
+  {
+    "file": "apps/api/src/modules/user/user.controller.ts",
+    "change": "modified",
+    "lines": [
+      14,
+      27,
+      35,
+      42,
+      46,
+      115,
+      125,
+      132
+    ],
+    "sha256": "909cd48121e27ae3d63cc7e848b9e59d5a34ca20da2890c2d7619f11697235c1"
+  },
+  {
+    "file": "apps/api/src/modules/user/user.service.ts",
+    "change": "modified",
+    "lines": [
+      18,
+      29,
+      41,
+      49,
+      80,
+      88,
+      100,
+      111,
+      119,
+      125,
+      139,
+      147
+    ],
+    "sha256": "6fd39220c924b829f07e45295ea84b33db618adb2b5eb47dc2ee0a2b4c106fcd"
+  },
+  {
+    "file": "apps/api/test/e2e/media.e2e-spec.ts",
+    "change": "modified",
+    "lines": [
+      7,
+      21,
+      23
+    ],
+    "sha256": "3fb1f5b6e26278ec4df1854f623372aa13c1efc2f2cea5ebfe3193dcb7139d73"
+  },
+  {
+    "file": "apps/api/test/e2e/test-utils.ts",
+    "change": "modified",
+    "lines": [
+      9,
+      20,
+      42,
+      74
+    ],
+    "sha256": "09012dea5221e6ef00926f996ee36a4409c60fa98f419ad0b111c2105075de36"
+  },
+  {
+    "file": "apps/api/test/integration/category.service.int-spec.ts",
+    "change": "modified",
+    "lines": [
+      93,
+      138
+    ],
+    "sha256": "e3ac89bd508171a424ee57111114778149b6e52930d2d626c41eb06f8d49be07"
+  },
+  {
+    "file": "apps/api/test/integration/int-test-utils.ts",
+    "change": "modified",
+    "lines": [
+      34
+    ],
+    "sha256": "a6ed7131a9e0b51d6354bf4735530d524a835d77f1e3a3286616dfe151139b9e"
+  },
+  {
+    "file": "apps/api/test/unit/modules/audit/audit.service.spec.ts",
+    "change": "modified",
+    "lines": [
+      23,
+      64,
+      67
+    ],
+    "sha256": "9099fe7ab1e88475f1d9000e404beb5e5d039162dcaa8630950cf433619c5d87"
+  },
+  {
+    "file": "apps/api/test/unit/modules/auth/services/auth.service.spec.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      38
+    ],
+    "sha256": "b2745c2a2a5753ca086ec6ee261ac56a2ceee6a0ab56364c04f0acc8a8629e0a"
+  },
+  {
+    "file": "apps/api/test/unit/modules/media/media.service.spec.ts",
+    "change": "modified",
+    "lines": [
+      18
+    ],
+    "sha256": "c1fe220c28e865af53e455ce9da92455c07107acf286923ebddd3adbc6077009"
+  },
+  {
+    "file": "apps/api/test/unit/modules/tenant/tenant.service.spec.ts",
+    "change": "modified",
+    "lines": [
+      25
+    ],
+    "sha256": "5e0bb1250f73fba1aa7f6417b533e935816fed1608779452d5613d6cd0b3a801"
+  },
+  {
+    "file": "apps/api/test/unit/modules/user/user.controller.spec.ts",
+    "change": "modified",
+    "lines": [
+      1,
+      3,
+      32,
+      98,
+      103,
+      107,
+      109
+    ],
+    "sha256": "e8cdf53c8bb9a669a6d49861d5f296b2ed7c35ae52a7ee74fc998cdddd96ea75"
+  },
+  {
+    "file": "apps/api/test/unit/modules/user/user.service.spec.ts",
+    "change": "modified",
+    "lines": [
+      28
+    ],
+    "sha256": "3c2291af1a12ee37ced27b2766118f96fda2a5e697c4e2ab45ebf8f7016e7e24"
+  },
+  {
+    "file": "apps/api/tsconfig.json",
+    "change": "modified",
+    "lines": [
+      17
+    ],
+    "sha256": "952b64afc667cc8405380dcf404c44b544276d5adcf5e605441ae40f8c1c2be5"
+  },
+  {
+    "file": "apps/web-admin/package.json",
+    "change": "modified",
+    "lines": [
+      18,
+      29,
+      44
+    ],
+    "sha256": "2e60da4ba41e6f4dbeb4571afff033431053371df435cdd9e2e877a818efb508"
+  },
+  {
+    "file": "apps/web-admin/src/actions/auth.ts",
+    "change": "modified",
+    "lines": [
+      5,
+      29,
+      46,
+      111
+    ],
+    "sha256": "f23bbf0be3610ecaa875b97d35a401c48a1a8a019ba8ab4e6196697fff0aaf5d"
+  },
+  {
+    "file": "apps/web-admin/src/actions/contents.ts",
+    "change": "modified",
+    "lines": [
+      5,
+      12,
+      46
+    ],
+    "sha256": "9d015b4a1ca041ebbf82bca36f952e4c53bbf1db696bcab67fb4b4b306e49360"
+  },
+  {
+    "file": "apps/web-admin/src/actions/media.ts",
+    "change": "modified",
+    "lines": [
+      70,
+      83,
+      92,
+      151,
+      160,
+      169,
+      172,
+      183,
+      185,
+      188,
+      195
+    ],
+    "sha256": "96a76addcc71ec2e1c7bf4f929e7badd2f08621a2cfdba2473cafb6f7d033983"
+  },
+  {
+    "file": "apps/web-admin/src/app/(auth)/login/page.tsx",
+    "change": "modified",
+    "lines": [
+      4,
+      15,
+      85
+    ],
+    "sha256": "a86ba686f731fd4e4e55c96364b9642137356d363616cb2772854f13eb90863d"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/categories/page.tsx",
+    "change": "modified",
+    "lines": [
+      1,
+      9,
+      22,
+      27
+    ],
+    "sha256": "09202e24c6a93276ef81c27e56c980fcbdedc90265828cf580983a40c171c46f"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/content/[id]/page.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      22,
+      25,
+      52
+    ],
+    "sha256": "b9c941ada09455bf80f274ee0208e46c6accd9cf1c5b9f6942b8d6f56b4baa87"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/content/create/page.tsx",
+    "change": "modified",
+    "lines": [
+      13,
+      18
+    ],
+    "sha256": "0b4a7480fe1c2ffbb5f8b0d37903647840b487c63590d771f327277e8aa12556"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/content/page.tsx",
+    "change": "modified",
+    "lines": [
+      19
+    ],
+    "sha256": "fae9a6d3676be028e90e064dd4ec9989b04003c557da3bc7a2437e394d0009ee"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/layout.tsx",
+    "change": "modified",
+    "lines": [
+      22
+    ],
+    "sha256": "e4341ff740c2aeb45ac1337415754a2789deb33b58123ff82b0228a5ea6c4710"
+  },
+  {
+    "file": "apps/web-admin/src/app/dashboard/media/page.tsx",
+    "change": "modified",
+    "lines": [
+      1,
+      15,
+      28,
+      33
+    ],
+    "sha256": "ec2641d4a2b776c9993f0c1abb23ab4b7afc25628391627cc1bf7c40198dd2eb"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/categories/category-modal.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      115,
+      121,
+      149,
+      177
+    ],
+    "sha256": "b330dc4e55ab9108bbbca960b8bbe635744afd90295a7ec4df09c62cedd5470b"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/categories/delete-modal.tsx",
+    "change": "modified",
+    "lines": [
+      6,
+      35,
+      49,
+      51,
+      71
+    ],
+    "sha256": "5267b5e173effefcd3ef3f79cb149375613ab14d6668dbaaebe8ab9f3d4385b8"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/content/columns.tsx",
+    "change": "modified",
+    "lines": [
+      3,
+      37,
+      84,
+      121,
+      125
+    ],
+    "sha256": "40cdfe474e182f4af73ec236593053a2b1ad593fb39317d4b9bf1ee3f3c93aed"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/content/content-form.tsx",
+    "change": "modified",
+    "lines": [
+      3,
+      9,
+      52,
+      114,
+      141,
+      152,
+      452,
+      482
+    ],
+    "sha256": "d33ec3c49922a636dff49e1e578f2190acef03ec96c1485227d67cc25a5448da"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-card.tsx",
+    "change": "modified",
+    "lines": [
+      20,
+      107,
+      122,
+      155,
+      162,
+      189,
+      196,
+      215,
+      238,
+      263
+    ],
+    "sha256": "f139fdb7b3d6bf732c761b53d40e33934a82068cdf4b1b8ed50bb3835499d085"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-client.tsx",
+    "change": "modified",
+    "lines": [
+      29,
+      32,
+      51,
+      56,
+      59,
+      165,
+      172
+    ],
+    "sha256": "ce2b3bda3d70dccab3904ad8b9bd7cd55ffd09c5024f684fb3634e8228b2143f"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      43,
+      57,
+      79,
+      81,
+      100,
+      102
+    ],
+    "sha256": "0895e5f3482e0129769a70e1f43f201b27f57098b37dc5aae9a433edbc57c510"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-dropzone.tsx",
+    "change": "modified",
+    "lines": [
+      17,
+      69,
+      74,
+      78,
+      88,
+      125,
+      130
+    ],
+    "sha256": "f9d5cbcef993ae3dfdd3c90e2397acded8d4022020a9c2fe359afff9b3b89610"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      88,
+      99,
+      110,
+      121,
+      132,
+      153,
+      170,
+      192,
+      201,
+      204,
+      225,
+      227,
+      229,
+      240,
+      248,
+      275,
+      277,
+      280,
+      284,
+      297,
+      320
+    ],
+    "sha256": "c4da5f9dd99661d90d4dc684b787679a86631646e9150f64176a453ac094ea9c"
+  },
+  {
+    "file": "apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      96,
+      108,
+      122,
+      129,
+      134,
+      143,
+      159,
+      163,
+      200,
+      213,
+      222,
+      282,
+      289,
+      292,
+      299,
+      306,
+      318,
+      321,
+      324,
+      336,
+      342,
+      344,
+      367
+    ],
+    "sha256": "fc942ffd4b4ea5812a82380f2ea124b793f52795c45800de6e860a78eace62d6"
+  },
+  {
+    "file": "apps/web-admin/src/components/ui/image-picker-modal.tsx",
+    "change": "modified",
+    "lines": [
+      2,
+      50,
+      52,
+      56,
+      60,
+      65,
+      101,
+      167,
+      204,
+      214,
+      292,
+      327,
+      340,
+      359,
+      361,
+      363,
+      366,
+      404,
+      416,
+      418,
+      456,
+      467,
+      469,
+      483,
+      485,
+      488,
+      492,
+      497,
+      498,
+      500
+    ],
+    "sha256": "ed689deffc1a3efdc8748ff41f448c831ae891db17e28b0a019744b89c277bf7"
+  },
+  {
+    "file": "apps/web-admin/src/components/ui/wysiwyg-editor.tsx",
+    "change": "modified",
+    "lines": [
+      3,
+      29,
+      80,
+      92,
+      103,
+      113,
+      123,
+      133,
+      147,
+      157,
+      167,
+      196,
+      220,
+      232
+    ],
+    "sha256": "afe0dfe62a24adb98fccf0e14dd7f053b228abadf1d2f2449aa30867a309bb34"
+  },
+  {
+    "file": "apps/web-admin/src/lib/api.ts",
+    "change": "modified",
+    "lines": [
+      2,
+      42,
+      100,
+      107,
+      109,
+      119,
+      123,
+      138,
+      151,
+      156,
+      180,
+      182,
+      189,
+      201,
+      209,
+      225
+    ],
+    "sha256": "7dd8caaebf9273539d4f29705ef854ba3fd779f056911a224b8e8190d0d26915"
+  },
+  {
+    "file": "docker-compose.prod.yml",
+    "change": "modified",
+    "lines": [
+      26,
+      28,
+      60
+    ],
+    "sha256": "8be09e5cfd870b5696b8d33f782cd874b635765e999f75a38f64d87e938e86d7"
+  },
+  {
+    "file": "nginx/nginx.conf",
+    "change": "modified",
+    "lines": [
+      3,
+      17,
+      22
+    ],
+    "sha256": "aa09df4650fa5cc783dd72d03fb74f5afdaf98430735a05967e275faa8f39138"
+  },
+  {
+    "file": "package-lock.json",
+    "change": "modified",
+    "lines": [
+      12,
+      30,
+      43,
+      54,
+      60,
+      461,
+      494,
+      509,
+      889,
+      1126,
+      1267,
+      1499,
+      1518,
+      1718,
+      1725,
+      1728,
+      1751,
+      1773,
+      1946,
+      1967,
+      2491,
+      3197,
+      3932,
+      4043,
+      4112,
+      4243,
+      4560,
+      4882,
+      5051,
+      5163,
+      5421,
+      5998,
+      6276,
+      6456,
+      6707,
+      6886,
+      7018,
+      7029,
+      7043,
+      7191,
+      7340,
+      7355,
+      7365,
+      7396,
+      7413,
+      7426,
+      7443,
+      7465,
+      7475,
+      7489,
+      7503,
+      7521,
+      7534,
+      7544,
+      7562,
+      7576,
+      7586,
+      7596,
+      7606,
+      7620,
+      7636,
+      7652,
+      7668,
+      7685,
+      7705,
+      7734,
+      7749,
+      7768,
+      7852,
+      7883,
+      7893,
+      7903,
+      7927,
+      7945,
+      7958,
+      7968,
+      7984,
+      7997,
+      8010,
+      8020,
+      8033,
+      8051,
+      8064,
+      8071,
+      8081,
+      8097,
+      8324,
+      8332,
+      8446,
+      8994,
+      9005,
+      9016,
+      9026,
+      9033,
+      9049,
+      9056,
+      9100,
+      9117,
+      9335,
+      9349,
+      9359,
+      9379,
+      9435,
+      9446,
+      9453,
+      9462,
+      9781,
+      9811,
+      9814,
+      9817,
+      9821,
+      9827,
+      9830,
+      9840,
+      9844,
+      9854,
+      9857,
+      9867,
+      9870,
+      9880,
+      9883,
+      9893,
+      9897,
+      9901,
+      9907,
+      9910,
+      9920,
+      9923,
+      9933,
+      9936,
+      9946,
+      9949,
+      9959,
+      9962,
+      9972,
+      9976,
+      9986,
+      9989,
+      10002,
+      10006,
+      10016,
+      10020,
+      10030,
+      10033,
+      10043,
+      10046,
+      10056,
+      10059,
+      10069,
+      10072,
+      10082,
+      10085,
+      10095,
+      10098,
+      10108,
+      10111,
+      10121,
+      10125,
+      10143,
+      10177,
+      10189,
+      10196,
+      10212,
+      10229,
+      10242,
+      10417,
+      10619,
+      11096,
+      11114,
+      11131,
+      11138,
+      11148,
+      11366,
+      11396,
+      11495,
+      11509,
+      11522,
+      11556,
+      11640,
+      11699,
+      11715,
+      11787,
+      11814,
+      11887,
+      11895,
+      11941,
+      11966,
+      11983,
+      12001,
+      12008,
+      12015,
+      12050,
+      12092,
+      12119,
+      12134,
+      12214,
+      12247,
+      12269,
+      12279,
+      12296,
+      12327,
+      12376,
+      12386,
+      12422,
+      12438,
+      12471,
+      12508,
+      12522,
+      12532,
+      12738,
+      13127,
+      13196,
+      13209,
+      13219,
+      13289,
+      13305,
+      13315,
+      13378,
+      13398,
+      13408,
+      13455,
+      13584,
+      13642,
+      13659,
+      13678,
+      13715,
+      13741,
+      13865,
+      13868,
+      14000,
+      14033,
+      14079,
+      14089,
+      14134,
+      14174,
+      14321,
+      14353,
+      14399,
+      14412,
+      14425,
+      14444,
+      14483,
+      14510,
+      14520,
+      14558,
+      14600,
+      14664,
+      14723,
+      14746,
+      14786,
+      14823,
+      14833,
+      14837,
+      14863,
+      14883,
+      14897,
+      14911,
+      14924,
+      14963,
+      15268,
+      15312,
+      15329,
+      15346,
+      15359,
+      15385,
+      15448,
+      15455,
+      15465,
+      15504,
+      15514,
+      15628,
+      15677,
+      15798,
+      15808,
+      15825,
+      15869,
+      15999,
+      16015,
+      16025,
+      16064,
+      16088,
+      16101,
+      16114,
+      16187,
+      16197,
+      16210,
+      16229,
+      16251,
+      16268,
+      16311,
+      16324,
+      16334,
+      16347,
+      16360,
+      16374,
+      16390,
+      16403,
+      16409,
+      16452,
+      16481,
+      16495,
+      16534,
+      16550,
+      16564,
+      16658,
+      16711,
+      16716,
+      16722,
+      16732,
+      16749,
+      16768,
+      16861,
+      16928,
+      16968,
+      16988,
+      17005,
+      17021,
+      17054,
+      17067,
+      17187,
+      17297,
+      17344,
+      17361,
+      17374,
+      17389,
+      17399,
+      17448,
+      17460,
+      17473,
+      17480,
+      17568,
+      17581,
+      17598,
+      17605,
+      17633,
+      17668,
+      17686,
+      17699,
+      17706,
+      17836,
+      17854,
+      17867,
+      17880,
+      17890,
+      17977,
+      17990,
+      18048,
+      18103,
+      18166,
+      18358,
+      18392,
+      18450,
+      18469,
+      18482,
+      18539,
+      18595,
+      18620,
+      18731,
+      18808,
+      18835,
+      18883,
+      18899,
+      18921
+    ],
+    "sha256": "48512135091df182440f5db90151c893cf4be7ff5fcd067f182e350b083d15a0"
+  },
+  {
+    "file": "package.json",
+    "change": "modified",
+    "lines": [
+      16,
+      24
+    ],
+    "sha256": "0b245048b2e4b7ec67cd4ea8cd1e5a7a22c6f1816346ad932814b385064aeb6c"
+  }
+]

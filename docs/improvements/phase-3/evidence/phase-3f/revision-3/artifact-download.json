@@ -1,0 +1,12 @@
+{
+  "startedAt": "2026-10-15T11:21:18.525Z",
+  "runId": 38725529650,
+  "artifactId": 11968077548,
+  "expectedSha256": "b18c9d20a22ced358cc50b95baf2344f81d1bedbeba61e2b84b446e4afd93427",
+  "status": "unavailable",
+  "error": {
+    "name": "TimeoutError",
+    "message": "The operation was aborted due to timeout"
+  },
+  "finishedAt": "2026-10-15T11:22:50.684Z"
+}

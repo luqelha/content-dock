@@ -1,0 +1,210 @@
+{
+  "at": "2026-10-14T03:44:23.848Z",
+  "note": "Manifest excludes its own hash. Application/config/dependency/migration changes: none.",
+  "files": [
+    {
+      "file": "docs/improvements/phase-3/PHASE-3D-VERIFICATION.md",
+      "change": "added by Phase 3D verification",
+      "sha256": "3173bc98fe8a8fa04774e52405ba0af6aabbf428bcf5b65f8341df5575fbf286",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/PERFORMANCE-REPORT.md",
+      "change": "added by Phase 3D verification",
+      "sha256": "34a631c0b658cc2ff55e6c92dcc9984d95e99a9be6ee3281fa9ebf4c2817d2a9",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/buildApi.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "59c5de9cca6cef752d0cf94e69e7f4d67a0d70a20fc1a5cbe3e9d30bf588692c",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/buildApi.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "104c3c3e2b5d3d2a341c706a309972308d1bd7268b61aec5c9d5759a0f745b32",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/buildWeb.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "0f9396dc9d96f963b23b715e19da25e6337a70e33acefb22db18431a69e7ac15",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/buildWeb.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "88716120e885dff5e6047bac01f15f9a001901ddd19b8e79a6eee37ef9285467",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/contract-probe.cjs",
+      "change": "added by Phase 3D verification",
+      "sha256": "07c1c12596d2b219f61e72cd204fa85790bba540b7425d4202d3646f6a7989bd",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/contract-probe.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "8fb499b022cdfa1123f59f75ebb839d913f52017bda58691c0f5cee59557afaf",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/environment.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "8f6f94552acbc64363256fa815d0944c4c37c2d9bfaf11aae22b84a6026dea34",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/git-status-before.txt",
+      "change": "added by Phase 3D verification",
+      "sha256": "70750455b19ce1dc2754f0ddafdcc4ac5387f4bbcdae630498a1a915de957119",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/initial-file-hashes.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "280c5018e87cd91fa76cebb37d4bf03ed36115658f7e08f51cb67a0390ad65ea",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/lintApi.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "fcf19e7c7bf785908945b1d81515401bdba699eebc383b70095262ae1f3e00e4",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/lintApi.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "e3322aa70a1682931caf18d56e3448c25a4562ea33bbd0c6179244044bd3b970",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/lintWeb.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "1b48976159d7cbc916a7371801a6c1b549ecbab404113e252e19989123422247",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/lintWeb.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "8bae235c3e7d6d95ee8f44181748ca79630d5b863f6d54c96eeb730bf8272ffb",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/media-benchmark.cjs",
+      "change": "added by Phase 3D verification",
+      "sha256": "0705c4c1abd272afe3b5aa141299ae5993d595a7feeac19630ab1ed2b761ec0b",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/media-benchmark.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "93e20f3eb02f21f04dc84bdb5a6ee97b7970bad359495274f2a949539d55310c",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/preservation-check.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "7ded65148508d15e66697a3e0a2c069eb9cf108142b7588a54c936f12d59509e",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/probe-target.cjs",
+      "change": "added by Phase 3D verification",
+      "sha256": "297876b8a1fbc4f0582675e7aba3e858350542629fc08801f72ecb530b929cff",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/README.md",
+      "change": "added by Phase 3D verification",
+      "sha256": "c1eeb13279542543469769c4a3b4e44ff050db6a51744df8fd3033a4d73e6cf7",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/run-check.cjs",
+      "change": "added by Phase 3D verification",
+      "sha256": "98f9615acfb2629c518f45ee3ae80a2d19c93ada9544b4d913db14a8e20971cf",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/runtime-target.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "276588d9fbae4b818980cf412e914fec198af437d1a7b713d86ec4cefa853b65",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/security.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "158bf53a89fb13113a82039bc680f8694dd9fc3409e4f414f3c3f6971d480548",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/security.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "0414ecbe2eed6c997b3b8cbae2d6841a0fa302c7f1a286096b2ee14a9689fd3e",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/strictApi.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "a4997a4f817b4731ee1e8f67f85562141b33d031a9603f28984fe43e5ca8415e",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/strictApi.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "09ea1b597fd1dbb73b96b9338cf541236fc87ae1e2bd5f1e994f7336b93cd373",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/summarize.cjs",
+      "change": "added by Phase 3D verification",
+      "sha256": "c3b4392266cf5646b84d9c1b834843f227f0f26d3fa4bf9d78ba6feca438c377",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/typesApi.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "24ed060ab100ece59b09b0ce4915bdb9ef9ec9757495af4a21860e3072b525e4",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/typesApi.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/typesWeb.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "7c7db44635a14117ef91dc4d3b0665cef0fdd03f146b352063845076ceab75a1",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/typesWeb.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/unit.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "ed57ca2ed5ea266015f87a4d54492c2f756c29153986a4df37765f3c5eef0c4c",
+      "localIgnoredLog": false
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/unit.log",
+      "change": "added by Phase 3D verification",
+      "sha256": "21cd2781251b3d8b5c412da794251c90b531df06ec2c5299abd13246c9e3644a",
+      "localIgnoredLog": true
+    },
+    {
+      "file": "docs/improvements/phase-3/evidence/phase-3d/validation-summary.json",
+      "change": "added by Phase 3D verification",
+      "sha256": "c9cde8fc378c40510f39247419e80abb4f00db629685dfa3df99b1b103589c00",
+      "localIgnoredLog": false
+    }
+  ]
+}

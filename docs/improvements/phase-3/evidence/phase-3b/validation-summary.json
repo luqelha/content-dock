@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Jakarta",
+  "apiBuild": {
+    "firstAttempt": "failed: npm ECONNRESET",
+    "retryExitCode": 0
+  },
+  "webBuild": {
+    "verifiedExitCode": 0,
+    "cached": true
+  },
+  "securityApi": {
+    "suites": 8,
+    "passed": 57,
+    "exitCode": 0
+  },
+  "securityNode": {
+    "passed": 22,
+    "exitCode": 0
+  },
+  "results": [
+    {
+      "check": "syntax",
+      "file": "scripts/security/phase3b-drill.cjs",
+      "exitCode": 0
+    },
+    {
+      "check": "syntax",
+      "file": "scripts/security/phase3b-smoke.cjs",
+      "exitCode": 0
+    },
+    {
+      "check": "final-preflight",
+      "exitCode": 0
+    },
+    {
+      "check": "container-inventory-unchanged-by-preflight",
+      "passed": true
+    },
+    {
+      "check": "runtime-script-syntax",
+      "exitCode": 0
+    },
+    {
+      "check": "smoke-script-syntax",
+      "exitCode": 0
+    }
+  ],
+  "images": {
+    "atlas-api:phase3b-candidate": {
+      "id": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
+      "created": "2026-10-13T05:39:24.464757761Z",
+      "platform": "linux/amd64"
+    },
+    "atlas-web:phase3b-candidate": {
+      "id": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
+      "created": "2026-10-12T22:46:25.897528373Z",
+      "platform": "linux/amd64"
+    },
+    "atlas-api:security-phase2": {
+      "id": "sha256:e3508017701c11ab1feac562435988bb314820e4abf684e77b0315fd571bb9ce",
+      "created": "2026-10-12T03:59:06.101819944Z",
+      "platform": "linux/amd64"
+    },
+    "atlas-web:security-phase2": {
+      "id": "sha256:fcc261a20be480d96ad552b60c885f2ad5526bbdd8ebeacf953fcbe6d86d7579",
+      "created": "2026-10-12T22:46:25.897528373Z",
+      "platform": "linux/amd64"
+    }
+  },
+  "runtimeDrill": {
+    "status": "passed",
+    "report": "drill-1791871073983.json",
+    "approvedEnvironment": "new isolated local Docker stack; synthetic data; explicit user approval",
+    "projects": [
+      "atlas-phase3b-source-e634c942d6",
+      "atlas-phase3b-restore-3af2f55ac3"
+    ],
+    "rollbackSeconds": 20.074,
+    "restoreSeconds": 34.726,
+    "tableCounts": {
+      "Tenant": 2,
+      "User": 2,
+      "TenantUser": 2,
+      "Category": 1,
+      "Content": 1,
+      "Media": 1,
+      "AuditLog": 12,
+      "ExportTask": 3,
+      "_prisma_migrations": 3
+    },
+    "encryptedFiles": 4,
+    "snapshotRowsLost": 0,
+    "freshWorkerExportAfterRollbackAndRestore": true,
+    "allDrillContainersStopped": true,
+    "failedAttemptsRetained": [
+      {
+        "report": "drill-1791870678772.json",
+        "error": "docker compose failed (3): ERROR:  \"pg_toast_16385\" is not a sequence\n"
+      },
+      {
+        "report": "drill-1791870788181.json",
+        "error": "docker compose failed (1): unknown flag: --no-deps\n"
+      }
+    ]
+  },
+  "productionReady": false
+}

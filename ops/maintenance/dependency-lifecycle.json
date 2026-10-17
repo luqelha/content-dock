@@ -1,0 +1,41 @@
+{
+  "reviewBy": "2026-11-13",
+  "owner": "Platform maintainer (repository maintainers)",
+  "preferredNodeMajor": 24,
+  "nodeSupport": {
+    "22": { "end": "2027-04-30", "migrateBy": "2027-01-31" },
+    "24": { "end": "2028-04-30", "migrateBy": "2028-01-31" }
+  },
+  "source": "https://github.com/nodejs/Release/blob/main/schedule.json",
+  "upgradeTracks": [
+    {
+      "packages": ["prisma", "@prisma/client"],
+      "priority": "P1",
+      "nextAction": "Plan staged major migration from 5.x; verify Node support, generated client, migrations, runtime grants and restore before changing major."
+    },
+    {
+      "packages": [
+        "eslint",
+        "@typescript-eslint/parser",
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "priority": "P1",
+      "nextAction": "Migrate API ESLint 8/parser 7 to maintained compatible versions and flat config in a dedicated change; preserve rule coverage."
+    },
+    {
+      "packages": ["next", "eslint-config-next", "react", "react-dom"],
+      "priority": "P1",
+      "nextAction": "Review security patches weekly; upgrade framework and lint configuration together, React and React DOM together; run production build and full browser matrix."
+    },
+    {
+      "packages": ["@nestjs/*", "@tiptap/*"],
+      "priority": "P2",
+      "nextAction": "Keep family versions aligned; validate contracts, worker fencing, editor and media flows."
+    },
+    {
+      "packages": ["@types/node"],
+      "priority": "P2",
+      "nextAction": "Align types with Node 24 deployment during tooling migration; current root 26 and workspace 20 types are a known mismatch, not runtime support evidence."
+    }
+  ]
+}

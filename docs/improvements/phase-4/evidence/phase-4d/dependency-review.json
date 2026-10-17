@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-10-17T02:23:55.828Z",
+  "lockSha256": "444121c5e811851daeeefd23f7d7dfd93fbe57dba0a39f0e55fa97207fde3c45",
+  "status": "accepted-with-time-limited-exceptions",
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 41,
+    "critical": 0,
+    "total": 48
+  },
+  "failures": [],
+  "advisories": [
+    {
+      "name": "braces",
+      "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+      "severity": "high",
+      "range": "<=3.0.3",
+      "nodes": [
+        "node_modules/braces"
+      ]
+    },
+    {
+      "name": "postcss-selector-parser",
+      "url": "https://github.com/advisories/GHSA-rj75-hqrm-r3gf",
+      "severity": "moderate",
+      "range": "<7.1.6",
+      "nodes": [
+        "node_modules/@tailwindcss/typography/node_modules/postcss-selector-parser"
+      ]
+    },
+    {
+      "name": "sprintf-js",
+      "url": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+      "severity": "moderate",
+      "range": "<=1.1.3",
+      "nodes": [
+        "apps/api/node_modules/sprintf-js"
+      ]
+    }
+  ]
+}

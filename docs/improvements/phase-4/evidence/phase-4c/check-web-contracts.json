@@ -1,0 +1,10 @@
+{
+  "name": "web-contracts",
+  "startedAt": "2026-10-16T02:50:39.626Z",
+  "finishedAt": "2026-10-16T02:50:40.647Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/contracts/*.test.cjs",
+  "cwd": ".",
+  "log": "check-web-contracts.log",
+  "logSha256": "11b6d988f559a3f86e9fa09630a02393ebd0ac4d8fb89a6d1056306e9af13558"
+}

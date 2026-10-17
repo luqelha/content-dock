@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-10-15T21:59:15.886Z",
+  "dateLocal": "2026-10-16 Asia/Jakarta",
+  "failedSetupContainers": [
+    {
+      "name": "atlas-phase4b-dfadae5b05-postgres-1",
+      "state": "exited"
+    },
+    {
+      "name": "atlas-phase4b-dfadae5b05-rabbitmq-1",
+      "state": "exited"
+    },
+    {
+      "name": "atlas-phase4b-dfadae5b05-redis-1",
+      "state": "exited"
+    },
+    {
+      "name": "atlas-phase4b-b647e70fd1-rabbitmq-1",
+      "state": "exited"
+    },
+    {
+      "name": "atlas-phase4b-b647e70fd1-redis-1",
+      "state": "exited"
+    },
+    {
+      "name": "atlas-phase4b-b647e70fd1-postgres-1",
+      "state": "exited"
+    }
+  ],
+  "setupNotes": [
+    "Two rejected preflight attempts were stopped before the measured fixture. Empty tmpfs option values require property existence checks. Docker image anonymous data volumes were replaced by project-named volumes.",
+    "The measured fixture setup runner PID 10292 was stopped while awaiting readiness without a per-fetch deadline. The same owned fixture was resumed with a bounded fetch, and all 105 compiled JS files matched the current local build.",
+    "Initial media upload after synchronous seed returned fetch failed; the fixture-only stage succeeded on retry before any benchmark. Event-loop yielding now lets stale socket-close events process after synchronous Docker calls."
+  ],
+  "baselineImageBuild": {
+    "attempt": "docker build -t atlas-api:phase4b-baseline -f apps/api/Dockerfile .",
+    "exitCode": 1,
+    "reason": "npm ci ECONNRESET fetching @prisma/engines-version",
+    "fallback": "Existing image 43d8ad230b4f verified against 116 initial source/config hashes and 105 current emitted JS files."
+  },
+  "migrationFailure": {
+    "code": "P3018 / PostgreSQL 25001",
+    "reason": "Two CREATE INDEX CONCURRENTLY statements in one migration file",
+    "recovery": "Fixture-only prisma migrate resolve --rolled-back; split into one concurrent statement per migration. Both seeded and empty-database deploys then passed."
+  },
+  "finalImageBuild": {
+    "command": "docker build -t atlas-api:phase4b -f apps/api/Dockerfile .",
+    "status": "cancelled-after-no-progress",
+    "buildLogFirstWrittenUtc": "2026-10-15T21:55:59.681Z",
+    "cancelRecordedAt": "2026-10-15T22:00:53.285Z",
+    "lastBuildStep": "npm ci --workspace=@atlas/api --include-workspace-root=false",
+    "clientProcessIds": [
+      15392,
+      23496
+    ],
+    "freshImageVerified": false
+  }
+}

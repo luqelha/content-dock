@@ -2,16 +2,14 @@
 
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
+import type { CreateContentInput, UpdateContentInput } from "@/lib/api";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+const API_URL =
+  process.env.API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:4000/api";
 
-export async function createContent(data: {
-  title: string;
-  slug?: string;
-  body: string;
-  status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
-  categoryId?: string;
-}) {
+export async function createContent(data: CreateContentInput) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
   const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
@@ -45,16 +43,7 @@ export async function createContent(data: {
   }
 }
 
-export async function updateContent(
-  id: string,
-  data: {
-    title?: string;
-    slug?: string;
-    body?: string;
-    status?: "DRAFT" | "PUBLISHED" | "ARCHIVED";
-    categoryId?: string;
-  },
-) {
+export async function updateContent(id: string, data: UpdateContentInput) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
   const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;

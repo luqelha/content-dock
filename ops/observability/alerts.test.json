@@ -1,0 +1,627 @@
+{
+  "rule_files": ["alerts.yml"],
+  "evaluation_interval": "15s",
+  "tests": [
+    {
+      "name": "dependency hold duration and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_dependency_up{job=\"atlas-api\",instance=\"api:9091\",dependency=\"redis\"}",
+          "values": "1 0 0 0 1+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "AtlasDependencyUnavailable",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "45s",
+          "alertname": "AtlasDependencyUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "dependency": "redis",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Atlas dependency is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#dependency-outage"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasDependencyUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "empty backlog does not alert",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_export_oldest_pending_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "0+0x40"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "5m",
+          "alertname": "AtlasExportBacklog",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "old pending backlog and expired leases",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_export_oldest_pending_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "1+0x40"
+        },
+        {
+          "series": "atlas_export_expired_leases{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "1+0x4 0+0x35"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "4m",
+          "alertname": "AtlasExportBacklog",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Export jobs are not progressing",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasExpiredLease",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Export lease recovery is overdue",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasExpiredLease",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "stale probe cannot remain healthy silently",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_dependency_last_check_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\",dependency=\"database\"}",
+          "values": "0+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasProbeStale",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasProbeStale",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "dependency": "database",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Dependency telemetry is stale",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#stale-telemetry"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "full vault warning and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_vault_available_bytes{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "5+0x3 50+0x20"
+        },
+        {
+          "series": "atlas_vault_size_bytes{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "100+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "AtlasVaultSpaceLow",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Vault filesystem has less than ten percent available",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#vault-space"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasVaultSpaceLow",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "scrape unavailable and restored",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "up{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "0+0x4 1+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "45s",
+          "alertname": "AtlasApiUnavailable",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasApiUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Atlas metrics/liveness target is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#api-unavailable"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasApiUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "missing API scrape target",
+      "interval": "15s",
+      "input_series": [],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasApiUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Atlas metrics/liveness target is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#api-unavailable"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "failure counter fires then resolves after window",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_export_worker_total{job=\"atlas-api\",instance=\"api:9091\",outcome=\"failed\"}",
+          "values": "0 1+0x40"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "30s",
+          "alertname": "AtlasExportFailures",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Export deliveries have failed or require recovery",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "6m",
+          "alertname": "AtlasExportFailures",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "HTTP errors require sustained traffic",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
+          "values": "0+5x40"
+        },
+        {
+          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"2xx\"}",
+          "values": "0+45x40"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasHttpErrors",
+          "exp_alerts": []
+        },
+        {
+          "eval_time": "4m",
+          "alertname": "AtlasHttpErrors",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "HTTP server errors exceed five percent",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#http-errors-or-latency"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "low traffic errors do not page",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
+          "values": "0 1+0x40"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "4m",
+          "alertname": "AtlasHttpErrors",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "dispatcher heartbeat stalls and recovers",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_export_dispatch_last_tick_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "0+0x12 180+15x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "2m30s",
+          "alertname": "AtlasDispatcherStalled",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Export dispatcher has stopped polling",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "4m",
+          "alertname": "AtlasDispatcherStalled",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "latency histogram fires and recovers",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"1\"}",
+          "values": "0+1x28 28+100x40"
+        },
+        {
+          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"5\"}",
+          "values": "0+100x69"
+        },
+        {
+          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"+Inf\"}",
+          "values": "0+100x69"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "6m",
+          "alertname": "AtlasHttpLatency",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "HTTP p95 exceeds two seconds",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#http-errors-or-latency"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "14m",
+          "alertname": "AtlasHttpLatency",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "retention failure window resolves",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "atlas_retention_errors_total{job=\"atlas-api\",instance=\"api:9091\"}",
+          "values": "0 1+0x85"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasRetentionErrors",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "atlas-api",
+                "instance": "api:9091",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "Vault retention inventory or cleanup failed",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#vault-space"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "20m",
+          "alertname": "AtlasRetentionErrors",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "AtlasBrokerExporterUnavailable hold and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "up{job=\"rabbitmq\",instance=\"rabbitmq:15692\"}",
+          "values": "0+0x4 1+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasBrokerExporterUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "rabbitmq",
+                "instance": "rabbitmq:15692",
+                "severity": "warning"
+              },
+              "exp_annotations": {
+                "summary": "RabbitMQ exporter is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#dependency-outage"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasBrokerExporterUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "AtlasAlertmanagerUnavailable hold and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "up{job=\"alertmanager\",instance=\"alertmanager:9093\"}",
+          "values": "0+0x4 1+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasAlertmanagerUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "alertmanager",
+                "instance": "alertmanager:9093",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Alertmanager is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasAlertmanagerUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "AtlasAlertJournalUnavailable hold and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "up{job=\"alert-journal\",instance=\"alert-journal:9099\"}",
+          "values": "0+0x4 1+0x20"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasAlertJournalUnavailable",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "alert-journal",
+                "instance": "alert-journal:9099",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Durable local alert receiver is unavailable",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasAlertJournalUnavailable",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "ready messages without consumers and recovery",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "rabbitmq_queue_consumers{job=\"rabbitmq\",instance=\"rabbitmq:15692\"}",
+          "values": "0+0x4 1+0x20"
+        },
+        {
+          "series": "rabbitmq_queue_messages_ready{job=\"rabbitmq\",instance=\"rabbitmq:15692\"}",
+          "values": "1+0x30"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "1m",
+          "alertname": "AtlasBrokerNoConsumers",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "rabbitmq",
+                "instance": "rabbitmq:15692",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Broker has queued messages without consumers",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasBrokerNoConsumers",
+          "exp_alerts": []
+        }
+      ]
+    },
+    {
+      "name": "notification failure and recovered delivery window",
+      "interval": "15s",
+      "input_series": [
+        {
+          "series": "alertmanager_notifications_failed_total{job=\"alertmanager\",instance=\"alertmanager:9093\",integration=\"webhook\"}",
+          "values": "0+1x4 4+0x40"
+        }
+      ],
+      "alert_rule_test": [
+        {
+          "eval_time": "2m",
+          "alertname": "AtlasAlertDeliveryFailed",
+          "exp_alerts": [
+            {
+              "exp_labels": {
+                "job": "alertmanager",
+                "instance": "alertmanager:9093",
+                "integration": "webhook",
+                "severity": "critical"
+              },
+              "exp_annotations": {
+                "summary": "Alertmanager cannot deliver notifications",
+                "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery"
+              }
+            }
+          ]
+        },
+        {
+          "eval_time": "9m",
+          "alertname": "AtlasAlertDeliveryFailed",
+          "exp_alerts": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-15T10:19:55.810Z",
+  "node": "v22.18.0",
+  "syntax": [
+    {
+      "file": "isolate-vault.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "recovery.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "restore.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "run-check.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "run-operation.cjs",
+      "exitCode": 0
+    },
+    {
+      "file": "summarize.cjs",
+      "exitCode": 0
+    }
+  ],
+  "links": {
+    "checked": 28,
+    "missing": []
+  },
+  "formatExitCode": 0
+}

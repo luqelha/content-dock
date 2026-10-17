@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "scope": "Isolated fixture database only; no production data, files, secrets or grants restored",
+  "tables": [
+    {
+      "table": "Tenant",
+      "source": 3,
+      "restored": 3,
+      "contentHash": "18862de0cefd7965d2a0718a3f3edb43",
+      "contentMatched": true
+    },
+    {
+      "table": "User",
+      "source": 2,
+      "restored": 2,
+      "contentHash": "075378558fd7b9fbdf3eea9bb1c80894",
+      "contentMatched": true
+    },
+    {
+      "table": "TenantUser",
+      "source": 3,
+      "restored": 3,
+      "contentHash": "d571b73e39a9c4bf53af6f2691554a06",
+      "contentMatched": true
+    },
+    {
+      "table": "Category",
+      "source": 0,
+      "restored": 0,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "contentMatched": true
+    },
+    {
+      "table": "Content",
+      "source": 25,
+      "restored": 25,
+      "contentHash": "233b56c12f48e4e48df69ce367905283",
+      "contentMatched": true
+    },
+    {
+      "table": "Media",
+      "source": 0,
+      "restored": 0,
+      "contentHash": "d41d8cd98f00b204e9800998ecf8427e",
+      "contentMatched": true
+    },
+    {
+      "table": "AuditLog",
+      "source": 33,
+      "restored": 33,
+      "contentHash": "816682514c67360d6e2abf90711ca17e",
+      "contentMatched": true
+    },
+    {
+      "table": "ExportTask",
+      "source": 1,
+      "restored": 1,
+      "contentHash": "bb014e4509ad7fdae9f6c7be762964bb",
+      "contentMatched": true
+    },
+    {
+      "table": "_prisma_migrations",
+      "source": 3,
+      "restored": 3,
+      "contentHash": "8e59b575329d4efcd612acc2339f512a",
+      "contentMatched": true
+    }
+  ]
+}

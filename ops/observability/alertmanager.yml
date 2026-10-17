@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 1m
+route:
+  receiver: local-journal
+  group_by: [alertname, instance, dependency]
+  group_wait: 10s
+  group_interval: 15s
+  repeat_interval: 4h
+receivers:
+  - name: local-journal
+    webhook_configs:
+      - url: http://alert-journal:9099/alerts
+        send_resolved: true
+inhibit_rules:
+  - source_matchers: [alertname="AtlasApiUnavailable"]
+    target_matchers: [alertname=~"AtlasProbeStale|AtlasDispatcherStalled"]
+    equal: [instance]

@@ -1,0 +1,27 @@
+{
+  "operation": "rules",
+  "startedAt": "2026-10-15T12:39:35.530Z",
+  "finishedAt": "2026-10-15T12:39:37.395Z",
+  "command": [
+    "docker",
+    "run",
+    "--name",
+    "atlas-phase4a-rules-1792067975530",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/bin/promtool",
+    "-v",
+    "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+    "-w",
+    "/etc/atlas",
+    "prom/prometheus:v3.15.0",
+    "test",
+    "rules",
+    "alerts.test.json"
+  ],
+  "exitCode": 0,
+  "log": "check-rules-1792067977395.log",
+  "logSha256": "cf7206e9b1afba9ea8fb1144cda6abe346fa1230554c514ae6c8b8f79762e029",
+  "scope": "Working tree validation, not staging or production"
+}

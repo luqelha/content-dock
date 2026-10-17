@@ -1,0 +1,10 @@
+{
+  "name": "types-web",
+  "startedAt": "2026-10-15T22:16:43.345Z",
+  "finishedAt": "2026-10-15T22:17:09.776Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\typescript\\bin\\tsc --noEmit --incremental false",
+  "cwd": "apps\\web-admin",
+  "log": "check-types-web.log",
+  "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+}

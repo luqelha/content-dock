@@ -1,0 +1,15 @@
+{
+  "name": "auditRuntime",
+  "command": [
+    "node",
+    "npm-cli.js",
+    "audit",
+    "--omit=dev",
+    "--audit-level=moderate",
+    "--json"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 3517,
+  "finishedAt": "2026-10-14T03:50:14.833Z"
+}

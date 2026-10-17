@@ -3,8 +3,10 @@ import { PrismaService } from '../../src/database/prisma.service';
 import { CmsModule } from '../../src/modules/cms/cms.module';
 import { DatabaseModule } from '../../src/database/database.module';
 import { RedisModule } from '../../src/modules/redis/redis.module';
+import { assertTestDatabase } from '../database-safety';
 
 export async function createIntegrationTestModule(): Promise<TestingModule> {
+  assertTestDatabase();
   const moduleFixture: TestingModule = await Test.createTestingModule({
     imports: [DatabaseModule, RedisModule, CmsModule],
   }).compile();
@@ -13,6 +15,7 @@ export async function createIntegrationTestModule(): Promise<TestingModule> {
 }
 
 export async function clearDatabase(prisma: PrismaService) {
+  assertTestDatabase();
   const tableNames = await prisma.$queryRaw<
     Array<{ tablename: string }>
   >`SELECT tablename FROM pg_tables WHERE schemaname='public'`;
@@ -28,7 +31,7 @@ export async function clearDatabase(prisma: PrismaService) {
       await prisma.$executeRawUnsafe(`TRUNCATE TABLE ${tables} CASCADE;`);
     }
   } catch (error) {
-    console.log({ error });
+    throw error;
   }
 }
 

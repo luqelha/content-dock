@@ -1,16 +1,13 @@
 import { Injectable, NestMiddleware, NotFoundException } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import type { ApplicationRequest } from '../types/http-request';
+import { Response, NextFunction } from 'express';
 import { PrismaService } from '../../database/prisma.service';
-
-export interface TenantRequest extends Request {
-  tenant?: any;
-}
 
 @Injectable()
 export class TenantMiddleware implements NestMiddleware {
   constructor(private readonly prisma: PrismaService) {}
 
-  async use(req: TenantRequest, res: Response, next: NextFunction) {
+  async use(req: ApplicationRequest, res: Response, next: NextFunction) {
     const tenantId = req.headers['x-tenant-id'] as string;
 
     if (!tenantId) {

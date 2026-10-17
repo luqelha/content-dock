@@ -1,0 +1,19 @@
+{
+  "scope": "fresh local synthetic stack only",
+  "steps": [
+    {
+      "name": "Broker outage retains committed Pending export",
+      "status": "passed"
+    },
+    {
+      "name": "Broker reconnect and outbox deliver the pending export",
+      "status": "passed"
+    },
+    {
+      "name": "Fresh worker reclaims expired Processing lease and serves a decryptable ZIP",
+      "status": "passed"
+    }
+  ],
+  "node": "v22.18.0",
+  "finishedAt": "2026-10-14T03:58:06.295Z"
+}

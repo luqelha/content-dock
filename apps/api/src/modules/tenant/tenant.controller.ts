@@ -1,3 +1,4 @@
+import type { AuthenticatedRequest } from '../../common/types/http-request';
 import {
   Controller,
   Get,
@@ -28,41 +29,42 @@ export class TenantController {
   @Post()
   @ApiOperation({ summary: 'Create a new tenant' })
   @ApiResponse({ status: 201, description: 'The tenant has been successfully created.' })
-  create(@Body() createTenantDto: CreateTenantDto, @Request() req: any) {
-    const userId = req.user?.sub || req.user?.userId;
+  create(@Body() createTenantDto: CreateTenantDto, @Request() req: AuthenticatedRequest) {
+    const userId = req.user.userId;
     return this.tenantService.create(createTenantDto, userId);
   }
 
   @Get()
   @ApiOperation({ summary: 'Get all tenants for current user' })
   @ApiResponse({ status: 200, description: 'Return all tenants for the current user.' })
-  findAll(@Request() req: any) {
-    const userId = req.user?.sub || req.user?.userId;
+  findAll(@Request() req: AuthenticatedRequest) {
+    const userId = req.user.userId;
     return this.tenantService.findAllForUser(userId);
   }
 
-  @Get(':id')
+  @Get(':tenantId')
+  @UseGuards(RbacGuard)
   @ApiOperation({ summary: 'Get a tenant by ID' })
   @ApiResponse({ status: 200, description: 'Return a tenant.' })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('tenantId') id: string) {
     return this.tenantService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch(':tenantId')
   @UseGuards(RbacGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Update a tenant' })
   @ApiResponse({ status: 200, description: 'The tenant has been successfully updated.' })
-  update(@Param('id') id: string, @Body() updateTenantDto: UpdateTenantDto) {
+  update(@Param('tenantId') id: string, @Body() updateTenantDto: UpdateTenantDto) {
     return this.tenantService.update(id, updateTenantDto);
   }
 
-  @Delete(':id')
+  @Delete(':tenantId')
   @UseGuards(RbacGuard)
   @Roles(Role.ADMIN)
   @ApiOperation({ summary: 'Delete a tenant' })
   @ApiResponse({ status: 200, description: 'The tenant has been successfully deleted.' })
-  remove(@Param('id') id: string) {
+  remove(@Param('tenantId') id: string) {
     return this.tenantService.remove(id);
   }
 }

@@ -1,0 +1,22 @@
+{
+  "inventoryAt": "2026-10-16T03:28:15.817769+00:00",
+  "readOnly": "on",
+  "exportMetadata": {
+    "total": 6,
+    "expired": 5,
+    "activeLease": 1,
+    "terminalExpiredOver30Days": 2,
+    "nonterminalExpiredOver30Days": 1,
+    "oldestCreatedAt": "2026-09-06T03:28:15.568"
+  },
+  "audit": {
+    "total": 0,
+    "oldestCreatedAt": null
+  },
+  "media": {
+    "referencedRows": 0
+  },
+  "avatar": {
+    "referencedUsers": 0
+  }
+}

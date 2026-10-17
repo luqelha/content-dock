@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-10-15T22:01:33.314Z",
+  "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "workingTreeAlreadyDirtyAtStart": true,
+  "scope": "Final source hashes, not a claim that every historical harness revision had identical bytes. Core workloads held constant; per-operation mixed diagnostics were added before B2/A2, then CLI guards, evidence paths and formatting were finalized after measurements.",
+  "sources": {
+    "README.md": "8906a3eb689fe8420fe557d01808ff2479acd82cd2fbf794d84f68820d6336fe",
+    "package.json": "c378b827c7f70fcf75090a827f7c546d027e0c973b41e4df1e6935567a027689",
+    "package-lock.json": "b9089730de03817a8eb1fe4bffb24696cd0e127524287b2c4d6da0eda5f2a58a",
+    "apps/api/package.json": "597c96a399c22af93183275560dd3004f4a2750105fd7f6407690002612c534a",
+    "apps/api/Dockerfile": "f18ae35e3fa4f83377222b81ebaf36d8a4d3f00cb3fa8c92d7cba62ca9cfcfda",
+    "apps/api/prisma/schema.prisma": "cc7351ef929b78f9ea24c1066c43a927dc46178a590d553edcab3e66c7bec8b7",
+    "apps/api/prisma/migrations/20261016000000_dashboard_query_indexes/migration.sql": "59c62f7b29a552049f416b79562853535f0a173b617d0bc48d32651511120e1e",
+    "apps/api/prisma/migrations/20261016000100_published_count_index/migration.sql": "57d914e0dd1bad1c0a65930afc4c24af24dce248a76ea0b778801c72be41f677",
+    "apps/api/docs/PERFORMANCE_REPORT.md": "909e59a728ccfaa98c19dbaea5491e4dc7dbf8b937d9725aeaa69d26da0d5272",
+    "scripts/performance/phase4b.cjs": "8bba5d37454280283b057c2ccdbff2fe1334a70b0b155791fa152c11237aacc2",
+    "scripts/performance/compare-phase4b.cjs": "90091c80e59b884a009cc7f7f627bed138dcabf34555668f9149085dcba19f40",
+    "docs/improvements/phase-4/PHASE-4B-REPORT.md": "b32193e3240042df25b9307d8e6b6ef6f4cd57e76425f93d3239e7411e917ca6",
+    "docs/improvements/phase-4/evidence/phase-4b/README.md": "2f24e1bcf0ae3f0d0016cfb8d77b447d522a7d1d99a145198c9a4b5612d800a2"
+  },
+  "evidence": {
+    "comparison.json": "67fa6225301ab2a74e4e8452373704c45776ba4d75e7a96268613ae2b103fb99",
+    "correctness.json": "d1da8b22ed6fb382eab58c39091235dfb028118b31e6df75ef455ce93fbf3446",
+    "database-regression-1792101217706.json": "0989f335c65fcad848bbf39bdef9f3e672abf4635dd5952e42ca3f5f33b13398",
+    "execution-notes.json": "59dc0c2c483dd398fe67081347bd195ea782deef7da396f9692a8e5b5759eb2f",
+    "export-baseline.json": "e03b46140854f1cc2ce67c6322e0483e651f5c0f4ebcbd6fc8f4d7e15caae022",
+    "export-optimized.json": "c859b9a9d0921e96b629cc11f4240b180d86036dfbe215248faa12c623c5cfae",
+    "failure-1792100803403.json": "5acdc8478f1df9e91df1c7afacb8b58f046b0ecee4b0f70963132d403118029f",
+    "failure-1792100818980.json": "f97edc361ccdcb94466a75e38b771ccbce082373dc9ff6bfbab25aacfe2e4a53",
+    "failure-1792100966303.json": "7c9092e5e3af1a57aeed35301766eefeaaed0064e78633dc2726420d0df76492",
+    "fixture.json": "ed3a60c0d71b65590b87349bf8cb422622c3150a0767082e3e6ce03d23c14887",
+    "indexes-migrate-1792101000174.json": "d77ebfe49c990c70bdf5b060c218d7141f0c803eb64d1d389f8f03cf762e33e6",
+    "indexes-off-1792101079541.json": "03bb650919c6b2d0c5ebdba01b9c883a884f961c38f22c0e3ba8ac03f3e2f2bd",
+    "indexes-on-1792101144871.json": "32ba8540e672df8481ba4747c923c1b9148cd384cd2fc0f4ec74eba2dbe79aec",
+    "measure-baseline-a.json": "bff6f96c385042c1cf3fd533dba51a4debaadbc699a52309496cd352aac5e9f4",
+    "measure-baseline-b.json": "9c778ef437726ddf7fc9687254398fa6c2a24ca97270e7520151a650d78e060e",
+    "measure-optimized-a.json": "6aeb32f45fb748ae6f8ce0b443083ba2da82e756841ad6e1dc0e3d6e7accdeb3",
+    "measure-optimized-b.json": "b40961ccd36bb2731dd1e4aca535e5f1aa8cc6b556b2e392185f0e1b830a07d9",
+    "preservation-2eb6875e73.json": "995ef48b02e11e26d1e10238bcff406d88bc3d51d00c957dcf30385ef2e4a76f",
+    "profile-baseline-warm.json": "ce531e297dff91d68d51b173ef014b4c80a5cddda08c68bbcad1769d21e81c32",
+    "profile-baseline.json": "d39021e4bdc14ecec3fa7d7fc7cb6db6f368f1d4b015da5997a6dbca4798fa94",
+    "profile-optimized.json": "64f66f00f19c3ff4840479984e9b5028c44b333b75a41375fe0cabdaae2fd404",
+    "validation-summary.json": "9ff57fdae88f94403f3f2f053a6f059635ee35c93600c804bbf19e9777bac771"
+  },
+  "existingSourcePreservation": {
+    "reference": "docs/improvements/phase-4/evidence/phase-4a/source-file-hashes.json",
+    "filesCompared": 298,
+    "existingFilesChanged": [
+      "README.md",
+      "apps/api/docs/PERFORMANCE_REPORT.md",
+      "apps/api/prisma/schema.prisma",
+      "package.json"
+    ],
+    "onlyExpectedChanges": true
+  }
+}

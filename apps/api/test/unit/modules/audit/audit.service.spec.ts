@@ -20,7 +20,7 @@ describe('AuditService', () => {
         AuditService,
         {
           provide: PrismaService,
-          useValue: mockPrismaService,
+          useValue: { client: mockPrismaService },
         },
       ],
     }).compile();
@@ -61,10 +61,10 @@ describe('AuditService', () => {
       });
     });
 
-    it('should handle errors gracefully without throwing', async () => {
+    it('propagates audit write failure so the business transaction cannot commit', async () => {
       mockPrismaService.auditLog.create.mockRejectedValueOnce(new Error('DB Error'));
 
-      await expect(service.logActivity({ action: 'TEST' } as any)).resolves.not.toThrow();
+      await expect(service.logActivity({ action: 'TEST' } as any)).rejects.toThrow('DB Error');
     });
   });
 

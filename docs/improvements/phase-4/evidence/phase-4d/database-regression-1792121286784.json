@@ -1,0 +1,45 @@
+{
+  "startedAt": "2026-10-16T03:28:06.784Z",
+  "project": "atlas-phase4d-regression-2771d5f5",
+  "scope": "New local tmpfs database and isolated E2E vaults only",
+  "checks": [
+    {
+      "name": "migrate",
+      "startedAt": "2026-10-16T03:28:13.957Z",
+      "finishedAt": "2026-10-16T03:28:15.312Z",
+      "exitCode": 0,
+      "log": "database-regression-1792121286784-migrate.log",
+      "logSha256": "70bac1e46dba2e4c7445267af9afaed9a04044a219b99e0fcd250ce377276c36"
+    },
+    {
+      "name": "browser",
+      "startedAt": "2026-10-16T03:28:16.960Z",
+      "finishedAt": "2026-10-16T03:34:45.146Z",
+      "exitCode": 1,
+      "log": "database-regression-1792121286784-browser.log",
+      "logSha256": "5b8db30b27ad848ce3d11a7c6f2087ce3e512809cc024d6265df6de41a16a612"
+    }
+  ],
+  "status": "failed",
+  "containers": [
+    {
+      "service": "postgres",
+      "id": "6f873c708403c144512b717cbec21b35c0d50dd3cfcef213c0e17225bd321cff",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81"
+    },
+    {
+      "service": "redis",
+      "id": "637cbded7c04cf54510e5a01015e9b902d319924a93096617f0c9a495d67ea3c",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+    },
+    {
+      "service": "rabbitmq",
+      "id": "1bdefd08a4b8044b5942e040d668d560089c0ef600b291ead4bd7107c85d5a4d",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281"
+    }
+  ],
+  "retentionInventory": "database-regression-1792121286784-retention.json",
+  "error": "Regression browser failed; see private log",
+  "finishedAt": "2026-10-16T03:34:47.065Z",
+  "volumesRetained": true
+}

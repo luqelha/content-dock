@@ -1,3 +1,4 @@
+import type { Tenant } from '@prisma/client';
 import { Controller, Get, Query, UseGuards } from '@nestjs/common';
 import { AuditService } from './audit.service';
 import { GetAuditLogsDto } from './dto/get-audit-logs.dto';
@@ -24,7 +25,7 @@ export class AuditController {
   @Permissions(Permission.READ_AUDIT_LOGS)
   @ApiOperation({ summary: 'Get audit logs for the current tenant' })
   @ApiResponse({ status: 200, description: 'List of audit logs.' })
-  async getAuditLogs(@CurrentTenant() tenant: any, @Query() query: GetAuditLogsDto) {
+  async getAuditLogs(@CurrentTenant() tenant: Pick<Tenant, 'id'>, @Query() query: GetAuditLogsDto) {
     // If tenant context exists, filter by it. If this is a global action, handle appropriately.
     // For this boilerplate, we assume tenant-based filtering if tenant exists.
     const tenantId = tenant?.id;

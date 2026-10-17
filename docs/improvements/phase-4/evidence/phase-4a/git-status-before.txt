@@ -1,0 +1,458 @@
+ M .github/workflows/ci.yml
+ M .gitignore
+ M README.md
+ M apps/api/.env.example
+ M apps/api/Dockerfile
+ M apps/api/docs/API_SPECIFICATION.md
+ M apps/api/docs/README.md
+ M apps/api/docs/SECURITY.md
+ M apps/api/docs/TEST_STRATEGY.md
+ M apps/api/nginx/nginx.conf
+ M apps/api/package.json
+ M apps/api/prisma/schema.prisma
+ M apps/api/src/app.controller.ts
+ M apps/api/src/app.module.ts
+ M apps/api/src/common/filters/http-exception.filter.ts
+ M apps/api/src/common/filters/prisma-client-exception.filter.ts
+ M apps/api/src/common/guards/rbac.guard.ts
+ M apps/api/src/common/interceptors/activity-tracking.interceptor.ts
+ M apps/api/src/common/interceptors/cache.interceptor.ts
+ M apps/api/src/config/env.validation.ts
+ M apps/api/src/database/prisma.service.ts
+ M apps/api/src/main.ts
+ M apps/api/src/modules/analytics/analytics.service.ts
+ M apps/api/src/modules/audit/audit.service.ts
+ M apps/api/src/modules/audit/dto/get-audit-logs.dto.ts
+ M apps/api/src/modules/auth/auth.module.ts
+ M apps/api/src/modules/auth/controllers/auth.controller.ts
+ M apps/api/src/modules/auth/dto/login.dto.ts
+ M apps/api/src/modules/auth/dto/register.dto.ts
+ M apps/api/src/modules/auth/services/auth.service.ts
+ M apps/api/src/modules/auth/strategies/jwt-refresh.strategy.ts
+ M apps/api/src/modules/auth/strategies/jwt.strategy.ts
+ M apps/api/src/modules/cms/controllers/category.controller.ts
+ M apps/api/src/modules/cms/dto/query-content.dto.ts
+ M apps/api/src/modules/cms/services/category.service.ts
+ M apps/api/src/modules/cms/services/content.service.ts
+ M apps/api/src/modules/export/compression.service.ts
+ M apps/api/src/modules/export/export.controller.ts
+ M apps/api/src/modules/export/export.module.ts
+ M apps/api/src/modules/export/export.service.ts
+ M apps/api/src/modules/export/worker.controller.ts
+ M apps/api/src/modules/media/media.controller.ts
+ M apps/api/src/modules/media/media.module.ts
+ M apps/api/src/modules/media/media.service.ts
+ M apps/api/src/modules/tenant/dto/create-tenant.dto.ts
+ M apps/api/src/modules/tenant/tenant.controller.ts
+ M apps/api/src/modules/tenant/tenant.module.ts
+ M apps/api/src/modules/tenant/tenant.service.ts
+ M apps/api/src/modules/user/dto/create-user.dto.ts
+ M apps/api/src/modules/user/dto/update-user.dto.ts
+ M apps/api/src/modules/user/user.controller.ts
+ M apps/api/src/modules/user/user.service.ts
+ M apps/api/test/e2e/media.e2e-spec.ts
+ M apps/api/test/e2e/test-utils.ts
+ M apps/api/test/integration/category.service.int-spec.ts
+ M apps/api/test/integration/int-test-utils.ts
+ M apps/api/test/unit/modules/audit/audit.service.spec.ts
+ M apps/api/test/unit/modules/auth/controllers/auth.controller.spec.ts
+ M apps/api/test/unit/modules/auth/services/auth.service.spec.ts
+ M apps/api/test/unit/modules/media/media.service.spec.ts
+ M apps/api/test/unit/modules/tenant/tenant.service.spec.ts
+ M apps/api/test/unit/modules/user/user.controller.spec.ts
+ M apps/api/test/unit/modules/user/user.service.spec.ts
+ M apps/api/tsconfig.json
+ M apps/web-admin/next.config.ts
+ M apps/web-admin/package.json
+ M apps/web-admin/src/actions/auth.ts
+ M apps/web-admin/src/actions/categories.ts
+ M apps/web-admin/src/actions/contents.ts
+ M apps/web-admin/src/actions/media.ts
+ M apps/web-admin/src/actions/profile.ts
+ M apps/web-admin/src/app/(auth)/forgot-password/page.tsx
+ M apps/web-admin/src/app/(auth)/layout.tsx
+ M apps/web-admin/src/app/(auth)/login/page.tsx
+ M apps/web-admin/src/app/(auth)/register/page.tsx
+ M apps/web-admin/src/app/dashboard/categories/page.tsx
+ M apps/web-admin/src/app/dashboard/content/[id]/page.tsx
+ M apps/web-admin/src/app/dashboard/content/create/page.tsx
+ M apps/web-admin/src/app/dashboard/content/page.tsx
+ M apps/web-admin/src/app/dashboard/layout.tsx
+ M apps/web-admin/src/app/dashboard/media/page.tsx
+ M apps/web-admin/src/app/dashboard/page.tsx
+ M apps/web-admin/src/app/dashboard/profile/page.tsx
+ M apps/web-admin/src/app/dashboard/settings/page.tsx
+ M apps/web-admin/src/app/globals.css
+ M apps/web-admin/src/app/layout.tsx
+ M apps/web-admin/src/app/page.tsx
+ M apps/web-admin/src/components/app-sidebar.tsx
+ D apps/web-admin/src/components/dashboard/activity-chart.tsx
+ M apps/web-admin/src/components/dashboard/categories/categories-client.tsx
+ M apps/web-admin/src/components/dashboard/categories/category-modal.tsx
+ M apps/web-admin/src/components/dashboard/categories/columns.tsx
+ M apps/web-admin/src/components/dashboard/categories/delete-modal.tsx
+ D apps/web-admin/src/components/dashboard/content-status.tsx
+ M apps/web-admin/src/components/dashboard/content/columns.tsx
+ M apps/web-admin/src/components/dashboard/content/content-form.tsx
+ M apps/web-admin/src/components/dashboard/content/data-table.tsx
+ M apps/web-admin/src/components/dashboard/dashboard-client.tsx
+ M apps/web-admin/src/components/dashboard/dashboard-header.tsx
+ M apps/web-admin/src/components/dashboard/media/media-card.tsx
+ M apps/web-admin/src/components/dashboard/media/media-client.tsx
+ M apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx
+ M apps/web-admin/src/components/dashboard/media/media-dropzone.tsx
+ M apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx
+ M apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx
+ D apps/web-admin/src/components/dashboard/metric-card.tsx
+ D apps/web-admin/src/components/dashboard/quick-actions.tsx
+ D apps/web-admin/src/components/dashboard/recent-activity.tsx
+ D apps/web-admin/src/components/dashboard/team-overview.tsx
+ D apps/web-admin/src/components/dashboard/top-content.tsx
+ D apps/web-admin/src/components/landing/animated-network-icon.tsx
+ D apps/web-admin/src/components/landing/animations.ts
+ D apps/web-admin/src/components/landing/bento-card.tsx
+ D apps/web-admin/src/components/landing/cta-section.tsx
+ D apps/web-admin/src/components/landing/developer-experience.tsx
+ D apps/web-admin/src/components/landing/features.tsx
+ D apps/web-admin/src/components/landing/footer.tsx
+ D apps/web-admin/src/components/landing/hero.tsx
+ D apps/web-admin/src/components/landing/marquee.tsx
+ D apps/web-admin/src/components/landing/navbar.tsx
+ M apps/web-admin/src/components/providers/tenant-provider.tsx
+ M apps/web-admin/src/components/ui/button.tsx
+ M apps/web-admin/src/components/ui/image-picker-modal.tsx
+ M apps/web-admin/src/components/ui/wysiwyg-editor.tsx
+ M apps/web-admin/src/lib/api.ts
+ D apps/web-admin/src/middleware.ts
+ M docker-compose.prod.yml
+ M docker-compose.yml
+ M nginx/nginx.conf
+ M package-lock.json
+ M package.json
+?? .audit-artifacts/dependency-map.json
+?? .audit-artifacts/file-inventory.txt
+?? .audit-artifacts/npm-audit-production.json
+?? .audit-artifacts/npm-audit.json
+?? .audit-artifacts/source-import-map.json
+?? .dockerignore
+?? .env.production.example
+?? Caddyfile
+?? DEVELOPMENT.md
+?? SECURITY-REMEDIATION-PHASE-1.md
+?? SECURITY-REMEDIATION-PHASE-2.md
+?? apps/api/docs/ARCHITECTURE.md
+?? apps/api/docs/DECISION_LOG.md
+?? apps/api/docs/IMPLEMENTATION_AUDIT.md
+?? apps/api/docs/PERFORMANCE_REPORT.md
+?? apps/api/docs/RELEASE_NOTES.md
+?? apps/api/prisma/migrations/20261005000000_profile_and_query_indexes/migration.sql
+?? apps/api/prisma/migrations/20261011000100_durable_export_tasks/migration.sql
+?? apps/api/prisma/migrations/20261013000000_export_lease_token/migration.sql
+?? apps/api/src/common/decorators/auth-rate-limit.decorator.ts
+?? apps/api/src/common/dto/list-page.dto.ts
+?? apps/api/src/common/guards/auth-client-identity.ts
+?? apps/api/src/common/guards/rate-limit.guard.ts
+?? apps/api/src/common/guards/self.guard.ts
+?? apps/api/src/common/pipes/application-validation.pipe.ts
+?? apps/api/src/common/validators/password-policy.ts
+?? apps/api/src/modules/export/export-filename.ts
+?? apps/api/src/modules/export/export-job.ts
+?? apps/api/src/modules/storage/file-vault.service.ts
+?? apps/api/src/modules/storage/files.controller.ts
+?? apps/api/src/modules/storage/storage-retention.service.ts
+?? apps/api/src/modules/storage/storage.module.ts
+?? apps/api/src/modules/storage/validate-upload.ts
+?? apps/api/src/modules/tenant/dto/member.dto.ts
+?? apps/api/src/modules/tenant/membership.controller.ts
+?? apps/api/src/modules/tenant/membership.service.ts
+?? apps/api/test/database-safety.ts
+?? apps/api/test/e2e/security.e2e-spec.ts
+?? apps/api/test/integration/durability.int-spec.ts
+?? apps/api/test/unit/file-vault.spec.ts
+?? apps/api/test/unit/security/application-validation.spec.ts
+?? apps/api/test/unit/security/audit-attribution.spec.ts
+?? apps/api/test/unit/security/auth-client-identity.spec.ts
+?? apps/api/test/unit/security/auth-rate-limit.spec.ts
+?? apps/api/test/unit/security/auth-validation.spec.ts
+?? apps/api/test/unit/security/config-and-errors.spec.ts
+?? apps/api/test/unit/security/export-download.spec.ts
+?? apps/api/test/unit/security/export-recovery.spec.ts
+?? apps/api/test/unit/security/rbac-boundaries.spec.ts
+?? apps/api/test/unit/security/refresh-recovery.spec.ts
+?? apps/api/test/unit/security/runtime-dependencies.spec.ts
+?? apps/api/test/unit/security/storage-retention.spec.ts
+?? apps/api/test/unit/security/upload-content.spec.ts
+?? apps/web-admin/AGENTS.md
+?? apps/web-admin/CLAUDE.md
+?? apps/web-admin/Dockerfile
+?? apps/web-admin/src/actions/category-options.ts
+?? apps/web-admin/src/actions/workspace.ts
+?? apps/web-admin/src/app/api/exports/[id]/route.ts
+?? apps/web-admin/src/app/api/files/[filename]/route.ts
+?? apps/web-admin/src/app/dashboard/audit/page.tsx
+?? apps/web-admin/src/app/dashboard/error.tsx
+?? apps/web-admin/src/app/dashboard/exports/page.tsx
+?? apps/web-admin/src/app/dashboard/invitations/page.tsx
+?? apps/web-admin/src/app/dashboard/loading.tsx
+?? apps/web-admin/src/app/dashboard/users/page.tsx
+?? apps/web-admin/src/app/dashboard/workspaces/new/page.tsx
+?? apps/web-admin/src/app/error.tsx
+?? apps/web-admin/src/components/atlas-mark.tsx
+?? apps/web-admin/src/components/auth-feedback.tsx
+?? apps/web-admin/src/components/dashboard/exports-client.tsx
+?? apps/web-admin/src/components/dashboard/list-pagination.tsx
+?? apps/web-admin/src/components/dashboard/members-client.tsx
+?? apps/web-admin/src/components/dashboard/workspace-settings.tsx
+?? apps/web-admin/src/components/ui/accessible-dialog.tsx
+?? apps/web-admin/src/components/ui/password-input.tsx
+?? apps/web-admin/src/lib/auth-client-headers.ts
+?? apps/web-admin/src/lib/auth-validation.ts
+?? apps/web-admin/src/lib/files.ts
+?? apps/web-admin/src/lib/workspace-api.ts
+?? apps/web-admin/src/proxy.ts
+?? artifacts/auth-review/playwright.config.ts
+?? artifacts/auth-review/results/.last-run.json
+?? artifacts/auth-review/results/auth-forms-auth-forms-fit-a-narrow-viewport/register-mobile.png
+?? artifacts/dependency-audit/audit.json
+?? artifacts/security-phase2/CHANGED-FILES.md
+?? artifacts/security-phase2/backup-restore-test.json
+?? artifacts/security-phase2/browser-dialog-desktop.png
+?? artifacts/security-phase2/browser-export-mobile.png
+?? artifacts/security-phase2/browser-fix-checks.json
+?? artifacts/security-phase2/browser-fix-web-checks.json
+?? artifacts/security-phase2/browser-verification.json
+?? artifacts/security-phase2/changed-files.json
+?? artifacts/security-phase2/dev-bindings-verified.json
+?? artifacts/security-phase2/validation-summary.json
+?? docker-compose.test.yml
+?? docs/improvements/phase-3/BASELINE-ASSESSMENT.md
+?? docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md
+?? docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md
+?? docs/improvements/phase-3/IMPROVEMENT-PLAN.md
+?? docs/improvements/phase-3/PERFORMANCE-REPORT.md
+?? docs/improvements/phase-3/PHASE-3C-REPORT.md
+?? docs/improvements/phase-3/PHASE-3D-VERIFICATION.md
+?? docs/improvements/phase-3/PHASE-3F-RELEASE-EVIDENCE.md
+?? docs/improvements/phase-3/PRODUCTION-READINESS.md
+?? docs/improvements/phase-3/RELIABILITY-REVIEW.md
+?? docs/improvements/phase-3/SECURITY-DEPENDENCY-REVIEW.md
+?? docs/improvements/phase-3/TEST-COVERAGE-REPORT.md
+?? docs/improvements/phase-3/evidence/README.md
+?? docs/improvements/phase-3/evidence/audit-all.json
+?? docs/improvements/phase-3/evidence/audit-runtime.json
+?? docs/improvements/phase-3/evidence/coverage-summary.json
+?? docs/improvements/phase-3/evidence/dependency-paths.json
+?? docs/improvements/phase-3/evidence/docker-state.json
+?? docs/improvements/phase-3/evidence/git-status-before.txt
+?? docs/improvements/phase-3/evidence/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3b/README.md
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791869887081.json
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791870180158.json
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791870678772.json
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791870788181.json
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791870928785.json
+?? docs/improvements/phase-3/evidence/phase-3b/drill-1791871073983.json
+?? docs/improvements/phase-3/evidence/phase-3b/final-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3b/git-status-after.txt
+?? docs/improvements/phase-3/evidence/phase-3b/git-status-before.txt
+?? docs/improvements/phase-3/evidence/phase-3b/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3b/preservation-check.json
+?? docs/improvements/phase-3/evidence/phase-3b/runtime-resources.json
+?? docs/improvements/phase-3/evidence/phase-3b/validation-summary.json
+?? docs/improvements/phase-3/evidence/phase-3c/README.md
+?? docs/improvements/phase-3/evidence/phase-3c/audit-after.json
+?? docs/improvements/phase-3/evidence/phase-3c/audit-before.json
+?? docs/improvements/phase-3/evidence/phase-3c/audit-network-timeout.json
+?? docs/improvements/phase-3/evidence/phase-3c/audit.json
+?? docs/improvements/phase-3/evidence/phase-3c/auditRuntime.json
+?? docs/improvements/phase-3/evidence/phase-3c/browser-first-attempt.json
+?? docs/improvements/phase-3/evidence/phase-3c/browser-fourth-attempt.json
+?? docs/improvements/phase-3/evidence/phase-3c/browser-second-attempt.json
+?? docs/improvements/phase-3/evidence/phase-3c/browser-third-attempt.json
+?? docs/improvements/phase-3/evidence/phase-3c/browser.json
+?? docs/improvements/phase-3/evidence/phase-3c/build.json
+?? docs/improvements/phase-3/evidence/phase-3c/changed-files.json
+?? docs/improvements/phase-3/evidence/phase-3c/coverage-after.json
+?? docs/improvements/phase-3/evidence/phase-3c/coverage-before.json
+?? docs/improvements/phase-3/evidence/phase-3c/dependency-paths.json
+?? docs/improvements/phase-3/evidence/phase-3c/e2e.json
+?? docs/improvements/phase-3/evidence/phase-3c/first-pass/e2e.json
+?? docs/improvements/phase-3/evidence/phase-3c/first-pass/integration.json
+?? docs/improvements/phase-3/evidence/phase-3c/first-pass/unit.json
+?? docs/improvements/phase-3/evidence/phase-3c/format.json
+?? docs/improvements/phase-3/evidence/phase-3c/git-status-after.txt
+?? docs/improvements/phase-3/evidence/phase-3c/git-status-before.txt
+?? docs/improvements/phase-3/evidence/phase-3c/grants.json
+?? docs/improvements/phase-3/evidence/phase-3c/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3c/integration.json
+?? docs/improvements/phase-3/evidence/phase-3c/lint.json
+?? docs/improvements/phase-3/evidence/phase-3c/preservation-check.json
+?? docs/improvements/phase-3/evidence/phase-3c/recovery-drill.json
+?? docs/improvements/phase-3/evidence/phase-3c/run-check.cjs
+?? docs/improvements/phase-3/evidence/phase-3c/security.json
+?? docs/improvements/phase-3/evidence/phase-3c/typesApi.json
+?? docs/improvements/phase-3/evidence/phase-3c/typesWeb.json
+?? docs/improvements/phase-3/evidence/phase-3c/unit.json
+?? docs/improvements/phase-3/evidence/phase-3c/validation-summary.json
+?? docs/improvements/phase-3/evidence/phase-3d/README.md
+?? docs/improvements/phase-3/evidence/phase-3d/buildApi.json
+?? docs/improvements/phase-3/evidence/phase-3d/buildWeb.json
+?? docs/improvements/phase-3/evidence/phase-3d/changed-files.json
+?? docs/improvements/phase-3/evidence/phase-3d/contract-probe.cjs
+?? docs/improvements/phase-3/evidence/phase-3d/contract-probe.json
+?? docs/improvements/phase-3/evidence/phase-3d/environment.json
+?? docs/improvements/phase-3/evidence/phase-3d/git-status-before.txt
+?? docs/improvements/phase-3/evidence/phase-3d/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3d/lintApi.json
+?? docs/improvements/phase-3/evidence/phase-3d/lintWeb.json
+?? docs/improvements/phase-3/evidence/phase-3d/media-benchmark.cjs
+?? docs/improvements/phase-3/evidence/phase-3d/media-benchmark.json
+?? docs/improvements/phase-3/evidence/phase-3d/preservation-check.json
+?? docs/improvements/phase-3/evidence/phase-3d/probe-target.cjs
+?? docs/improvements/phase-3/evidence/phase-3d/run-check.cjs
+?? docs/improvements/phase-3/evidence/phase-3d/runtime-target.json
+?? docs/improvements/phase-3/evidence/phase-3d/security.json
+?? docs/improvements/phase-3/evidence/phase-3d/strictApi.json
+?? docs/improvements/phase-3/evidence/phase-3d/summarize.cjs
+?? docs/improvements/phase-3/evidence/phase-3d/typesApi.json
+?? docs/improvements/phase-3/evidence/phase-3d/typesWeb.json
+?? docs/improvements/phase-3/evidence/phase-3d/unit.json
+?? docs/improvements/phase-3/evidence/phase-3d/validation-summary.json
+?? docs/improvements/phase-3/evidence/phase-3e/README.md
+?? docs/improvements/phase-3/evidence/phase-3e/artifact-qa.json
+?? docs/improvements/phase-3/evidence/phase-3e/audit-policy.json
+?? docs/improvements/phase-3/evidence/phase-3e/auditAll.json
+?? docs/improvements/phase-3/evidence/phase-3e/auditRuntime.json
+?? docs/improvements/phase-3/evidence/phase-3e/browser.json
+?? docs/improvements/phase-3/evidence/phase-3e/buildApi.json
+?? docs/improvements/phase-3/evidence/phase-3e/buildWeb.json
+?? docs/improvements/phase-3/evidence/phase-3e/changed-files.json
+?? docs/improvements/phase-3/evidence/phase-3e/containers-after.json
+?? docs/improvements/phase-3/evidence/phase-3e/containers-before.json
+?? docs/improvements/phase-3/evidence/phase-3e/containers-resume-before.json
+?? docs/improvements/phase-3/evidence/phase-3e/coverage.json
+?? docs/improvements/phase-3/evidence/phase-3e/diagnostic-volume-review.json
+?? docs/improvements/phase-3/evidence/phase-3e/drill-1792059490242.json
+?? docs/improvements/phase-3/evidence/phase-3e/e2e.json
+?? docs/improvements/phase-3/evidence/phase-3e/fixture.json
+?? docs/improvements/phase-3/evidence/phase-3e/format.json
+?? docs/improvements/phase-3/evidence/phase-3e/generate.json
+?? docs/improvements/phase-3/evidence/phase-3e/git-status-before.txt
+?? docs/improvements/phase-3/evidence/phase-3e/grants.json
+?? docs/improvements/phase-3/evidence/phase-3e/harness-attempts.json
+?? docs/improvements/phase-3/evidence/phase-3e/imageApi-resume.json
+?? docs/improvements/phase-3/evidence/phase-3e/imageApi.json
+?? docs/improvements/phase-3/evidence/phase-3e/imageWeb-resume.json
+?? docs/improvements/phase-3/evidence/phase-3e/imageWeb.json
+?? docs/improvements/phase-3/evidence/phase-3e/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3e/integration.json
+?? docs/improvements/phase-3/evidence/phase-3e/interruption.json
+?? docs/improvements/phase-3/evidence/phase-3e/isolate-vault.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/lintApi.json
+?? docs/improvements/phase-3/evidence/phase-3e/lintWeb.json
+?? docs/improvements/phase-3/evidence/phase-3e/migrate.json
+?? docs/improvements/phase-3/evidence/phase-3e/migrationStatus.json
+?? docs/improvements/phase-3/evidence/phase-3e/preservation-check.json
+?? docs/improvements/phase-3/evidence/phase-3e/provision.json
+?? docs/improvements/phase-3/evidence/phase-3e/proxy.json
+?? docs/improvements/phase-3/evidence/phase-3e/recovery-drill.json
+?? docs/improvements/phase-3/evidence/phase-3e/recovery.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/recovery.json
+?? docs/improvements/phase-3/evidence/phase-3e/registry-probe.json
+?? docs/improvements/phase-3/evidence/phase-3e/restore-resume.json
+?? docs/improvements/phase-3/evidence/phase-3e/restore.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/run-check.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/run-operation.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/security.json
+?? docs/improvements/phase-3/evidence/phase-3e/summarize.cjs
+?? docs/improvements/phase-3/evidence/phase-3e/typesApi.json
+?? docs/improvements/phase-3/evidence/phase-3e/typesWeb.json
+?? docs/improvements/phase-3/evidence/phase-3e/unit.json
+?? docs/improvements/phase-3/evidence/phase-3e/validation-summary.json
+?? docs/improvements/phase-3/evidence/phase-3f/README.md
+?? docs/improvements/phase-3/evidence/phase-3f/artifact-qa.json
+?? docs/improvements/phase-3/evidence/phase-3f/candidate.json
+?? docs/improvements/phase-3/evidence/phase-3f/collector-incidents.json
+?? docs/improvements/phase-3/evidence/phase-3f/containers-after.json
+?? docs/improvements/phase-3/evidence/phase-3f/discovery-1792061733010.json
+?? docs/improvements/phase-3/evidence/phase-3f/download-browser-artifact.cjs
+?? docs/improvements/phase-3/evidence/phase-3f/finalize.cjs
+?? docs/improvements/phase-3/evidence/phase-3f/formatting-verification-attempt-1.json
+?? docs/improvements/phase-3/evidence/phase-3f/formatting-verification.json
+?? docs/improvements/phase-3/evidence/phase-3f/git-status-before.txt
+?? docs/improvements/phase-3/evidence/phase-3f/initial-file-hashes.json
+?? docs/improvements/phase-3/evidence/phase-3f/local-unit.json
+?? docs/improvements/phase-3/evidence/phase-3f/operator-discovery.json
+?? docs/improvements/phase-3/evidence/phase-3f/preservation-check.json
+?? docs/improvements/phase-3/evidence/phase-3f/push.json
+?? docs/improvements/phase-3/evidence/phase-3f/release-evidence.json
+?? docs/improvements/phase-3/evidence/phase-3f/remote-ci-1792061936849.json
+?? docs/improvements/phase-3/evidence/phase-3f/remote-ci-1792062021440.json
+?? docs/improvements/phase-3/evidence/phase-3f/remote-ci-1792062125341.json
+?? docs/improvements/phase-3/evidence/phase-3f/remote-ci.cjs
+?? docs/improvements/phase-3/evidence/phase-3f/revision-2/candidate.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-2/push.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-2/remote-ci-1792062309492.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-2/remote-ci-1792062484630.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/artifact-download.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/candidate.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/collector-error-1792062650709.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/push.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792062736904.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792062806634.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792062876174.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792062928930.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792063018189.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-3/remote-ci-1792063104854.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/browser-failure-analysis.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/candidate.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/push.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/remote-ci-1792063365241.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/remote-ci-1792063437305.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/remote-ci-1792063528549.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-4/remote-ci-1792063622394.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/candidate.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/push.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792063750766.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792063839228.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792063887594.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792063940020.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792063990070.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064045196.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064093821.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064129119.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064176026.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064228009.json
+?? docs/improvements/phase-3/evidence/phase-3f/revision-5/remote-ci-1792064302458.json
+?? docs/improvements/phase-3/evidence/phase-3f/test-summary.json
+?? docs/improvements/phase-3/evidence/phase2-integrity.json
+?? docs/improvements/phase-3/evidence/preservation-check.json
+?? docs/improvements/phase-3/evidence/validation-summary.json
+?? docs/improvements/phase-3/evidence/worker-lease-probe.cjs
+?? docs/improvements/phase-4/evidence/phase-4a/initial-file-hashes.json
+?? playwright.config.ts
+?? scripts/benchmark-safety.mjs
+?? scripts/benchmark.mjs
+?? scripts/database/README.md
+?? scripts/database/create-runtime-role.sql
+?? scripts/database/grant-export-task.sql
+?? scripts/database/verify-runtime-role.sql
+?? scripts/security/benchmark-safety.test.cjs
+?? scripts/security/database-regression.cjs
+?? scripts/security/dependency-audit.cjs
+?? scripts/security/dependency-policy.cjs
+?? scripts/security/dependency-policy.test.cjs
+?? scripts/security/deployment.test.cjs
+?? scripts/security/export-archive.test.cjs
+?? scripts/security/phase3b-drill.cjs
+?? scripts/security/phase3b-smoke.cjs
+?? scripts/security/phase3c-recovery.cjs
+?? scripts/security/phase3f-release-audit.cjs
+?? scripts/security/proxy-smoke.cjs
+?? scripts/security/runtime-smoke.cjs
+?? scripts/security/web-auth.test.cjs
+?? scripts/security/web-data.test.cjs
+?? scripts/storage-retention.cjs
+?? tests/browser/auth-forms.spec.ts
+?? tests/browser/fixtures/upload.png
+?? tests/browser/security-flows.spec.ts

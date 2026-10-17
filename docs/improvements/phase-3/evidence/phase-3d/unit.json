@@ -1,0 +1,15 @@
+{
+  "name": "unit",
+  "command": [
+    "npm",
+    "run",
+    "test",
+    "--workspace=@atlas/api",
+    "--",
+    "--runInBand"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 138665,
+  "finishedAt": "2026-10-14T03:35:24.266Z"
+}

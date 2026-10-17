@@ -1,0 +1,11 @@
+{
+  "counts": {
+    "info": 0,
+    "low": 0,
+    "moderate": 7,
+    "high": 41,
+    "critical": 0,
+    "total": 48
+  },
+  "failures": []
+}

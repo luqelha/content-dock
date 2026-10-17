@@ -7,19 +7,15 @@ export default async function CreateContentPage() {
   const token = cookieStore.get("access_token")?.value || "";
   const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value || "";
 
-  let categories = [];
+  let categories: Awaited<ReturnType<typeof fetchCategories>> = [];
 
   if (token && activeTenantId) {
-    try {
-      categories = await fetchCategories(token, activeTenantId);
-    } catch (error) {
-      console.error("Failed to fetch categories:", error);
-    }
+    categories = await fetchCategories(token, activeTenantId);
   }
 
   return (
     <div className="p-4 sm:p-6 md:p-8 lg:p-10">
-      <ContentForm categories={categories} />
+      <ContentForm key={activeTenantId} categories={categories} />
     </div>
   );
 }

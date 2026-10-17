@@ -1,0 +1,275 @@
+{
+  "observedAt": "2026-10-15T11:02:05.340Z",
+  "candidateCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+  "totalCount": 1,
+  "status": "completed",
+  "runs": [
+    {
+      "id": 38724067559,
+      "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559",
+      "workflowId": 328491478,
+      "headSha": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+      "branch": "release/phase-3f-20261015105810",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "runAttempt": 1,
+      "createdAt": "2026-10-15T10:58:50Z",
+      "updatedAt": "2026-10-15T11:01:12Z",
+      "logEvidence": [
+        {
+          "jobId": 116385476672,
+          "file": "remote-ci-38724067559-job-116385476672.log",
+          "sha256": "9d92d3e5fdb76cb75ed2cb81d73ba515f615be0fcf1b6f8572e763c0652fec0d",
+          "bytes": 84628
+        }
+      ],
+      "jobs": [
+        {
+          "id": 116385476672,
+          "name": "validate",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559/job/116385476672",
+          "startedAt": "2026-10-15T10:58:54Z",
+          "completedAt": "2026-10-15T11:01:12Z",
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:58:54Z",
+              "completedAt": "2026-10-15T10:58:55Z"
+            },
+            {
+              "name": "Initialize containers",
+              "number": 2,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:58:55Z",
+              "completedAt": "2026-10-15T10:59:32Z"
+            },
+            {
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 3,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:59:32Z",
+              "completedAt": "2026-10-15T10:59:33Z"
+            },
+            {
+              "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+              "number": 4,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:59:33Z",
+              "completedAt": "2026-10-15T10:59:34Z"
+            },
+            {
+              "name": "Run npm ci",
+              "number": 5,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:59:34Z",
+              "completedAt": "2026-10-15T11:01:01Z"
+            },
+            {
+              "name": "Run npm run prisma:generate --workspace=@atlas/api",
+              "number": 6,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:01Z",
+              "completedAt": "2026-10-15T11:01:02Z"
+            },
+            {
+              "name": "Run npx prisma migrate deploy",
+              "number": 7,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:02Z",
+              "completedAt": "2026-10-15T11:01:03Z"
+            },
+            {
+              "name": "Provision isolated runtime role",
+              "number": 8,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:03Z",
+              "completedAt": "2026-10-15T11:01:03Z"
+            },
+            {
+              "name": "Run npm run test:security:db",
+              "number": 9,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:03Z",
+              "completedAt": "2026-10-15T11:01:04Z"
+            },
+            {
+              "name": "Run npm run format:check:reliability",
+              "number": 10,
+              "status": "completed",
+              "conclusion": "failure",
+              "startedAt": "2026-10-15T11:01:04Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run lint",
+              "number": 11,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+              "number": 12,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+              "number": 13,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run test:security",
+              "number": 14,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm audit --omit=dev --audit-level=moderate",
+              "number": 15,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run audit:dependencies",
+              "number": 16,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+              "number": 17,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run test:int --workspace=@atlas/api",
+              "number": 18,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run test:e2e --workspace=@atlas/api",
+              "number": 19,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run build",
+              "number": 20,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 21,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run npm run test:browser",
+              "number": 22,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+              "number": 23,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Build API container",
+              "number": 24,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Build web container",
+              "number": 25,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+              "number": 48,
+              "status": "completed",
+              "conclusion": "skipped",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 49,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:05Z"
+            },
+            {
+              "name": "Stop containers",
+              "number": 50,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:05Z",
+              "completedAt": "2026-10-15T11:01:10Z"
+            },
+            {
+              "name": "Complete job",
+              "number": 51,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T11:01:10Z",
+              "completedAt": "2026-10-15T11:01:10Z"
+            }
+          ]
+        }
+      ],
+      "artifacts": []
+    }
+  ]
+}

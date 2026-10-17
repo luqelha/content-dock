@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-15T10:04:19.735Z",
+  "containers": [
+    {
+      "id": "19c7c475dcf82b10bbd2c5972cfbb817223d53a61765bf3b57952ae7f757aa86",
+      "name": "/atlas_postgres",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81",
+      "status": "running"
+    },
+    {
+      "id": "2057b6d16f611f7cd9163a24bb91940db1e81239a71cf60b266301c58a081593",
+      "name": "/atlas_rabbitmq",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+      "status": "running"
+    },
+    {
+      "id": "58f6c076a4448d4e112587d92f3e036e2452fcca0a0e0c9e9af1466b54da8a49",
+      "name": "/atlas_redis",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499",
+      "status": "running"
+    }
+  ]
+}

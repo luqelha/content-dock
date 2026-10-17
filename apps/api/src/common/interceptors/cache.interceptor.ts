@@ -1,60 +1,52 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Logger } from '@nestjs/common';
+import type { ApplicationRequest } from '../types/http-request';
+import {
+  Injectable,
+  NestInterceptor,
+  ExecutionContext,
+  CallHandler,
+  Logger,
+  Optional,
+} from '@nestjs/common';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 import { RedisService } from '../../modules/redis/redis.service';
-
+import { TelemetryService } from '../../modules/observability/telemetry.service';
 @Injectable()
 export class CacheInterceptor implements NestInterceptor {
   private readonly logger = new Logger(CacheInterceptor.name);
-
-  constructor(private readonly redisService: RedisService) {}
-
-  async intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<any>> {
-    const request = context.switchToHttp().getRequest();
-    const tenantId = request.headers['x-tenant-id'];
-
-    // Invalidate cache on mutations
-    if (request.method !== 'GET') {
-      return next.handle().pipe(
-        tap(async () => {
-          try {
-            // Extract base resource path, e.g., /api/contents/123 -> /api/contents
-            const resourcePath = request.originalUrl.split('/').slice(0, 3).join('/');
-            const pattern = `cache:${tenantId || 'global'}:${resourcePath}*`;
-            const keys = await this.redisService.getClient().keys(pattern);
-            if (keys.length > 0) {
-              await this.redisService.getClient().del(keys);
-              this.logger.debug(`Invalidated ${keys.length} cache keys for pattern ${pattern}`);
-            }
-          } catch (error) {
-            this.logger.warn(`Redis invalidation error: ${error.message}`);
-          }
-        }),
-      );
-    }
-
-    // Construct cache key with tenant isolation
-    const cacheKey = `cache:${tenantId || 'global'}:${request.originalUrl}`;
-
+  constructor(
+    private readonly redisService: RedisService,
+    @Optional() private readonly telemetry?: TelemetryService,
+  ) {}
+  async intercept(context: ExecutionContext, next: CallHandler): Promise<Observable<unknown>> {
+    const request = context.switchToHttp().getRequest<ApplicationRequest>();
+    const tenantId = request.tenant?.id;
+    if (!tenantId) return next.handle();
+    const revisionKey = `cache-revision:${tenantId}`;
+    if (request.method !== 'GET') return next.handle();
+    let key: string;
     try {
-      const cachedResponse = await this.redisService.get(cacheKey);
-      if (cachedResponse) {
-        this.logger.debug(`Cache hit: ${cacheKey}`);
-        return of(JSON.parse(cachedResponse));
+      const revision = (await this.redisService.get(revisionKey)) || '0';
+      key = `cache:v2:${tenantId}:${revision}:${request.originalUrl}`;
+      const cached = await this.redisService.get(key);
+      if (cached) {
+        this.telemetry?.cacheAccess.inc({ outcome: 'hit' });
+        return of(JSON.parse(cached));
       }
-    } catch (error) {
-      this.logger.warn(`Redis get error: ${error.message}`);
+      this.telemetry?.cacheAccess.inc({ outcome: 'miss' });
+    } catch {
+      this.telemetry?.cacheAccess.inc({ outcome: 'read_error' });
+      return next.handle();
     }
-
-    this.logger.debug(`Cache miss: ${cacheKey}`);
     return next.handle().pipe(
-      tap(async (response) => {
+      mergeMap(async (response) => {
         try {
-          // Cache for 60 seconds
-          await this.redisService.set(cacheKey, JSON.stringify(response), { EX: 60 });
-        } catch (error) {
-          this.logger.warn(`Redis set error: ${error.message}`);
+          await this.redisService.set(key, JSON.stringify(response), { EX: 60 });
+        } catch {
+          this.telemetry?.cacheAccess.inc({ outcome: 'write_error' });
+          this.logger.warn({ event: 'CACHE_WRITE_FAILED' });
         }
+        return response;
       }),
     );
   }

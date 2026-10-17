@@ -1,3 +1,6 @@
+import type { Tenant } from '@prisma/client';
+import { Query } from '@nestjs/common';
+import { ListPageDto } from '../../common/dto/list-page.dto';
 import {
   Controller,
   Post,
@@ -59,7 +62,10 @@ export class MediaController {
     type: MediaResponseDto,
   })
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@CurrentTenant() tenant: any, @UploadedFile() file: Express.Multer.File) {
+  uploadFile(
+    @CurrentTenant() tenant: Pick<Tenant, 'id'>,
+    @UploadedFile() file: Express.Multer.File,
+  ) {
     return this.mediaService.createMedia(tenant.id, file);
   }
 
@@ -71,15 +77,18 @@ export class MediaController {
     description: 'List of media files',
     type: [MediaResponseDto],
   })
-  findAll(@CurrentTenant() tenant: any) {
-    return this.mediaService.listMedia(tenant.id);
+  findAll(
+    @CurrentTenant() tenant: Pick<Tenant, 'id'>,
+    @Query() query: ListPageDto = new ListPageDto(),
+  ) {
+    return this.mediaService.listMedia(tenant.id, query);
   }
 
   @Delete(':id')
   @Permissions(Permission.MANAGE_MEDIA)
   @ApiOperation({ summary: 'Delete a media file' })
   @ApiResponse({ status: 200, description: 'Media deleted successfully' })
-  remove(@CurrentTenant() tenant: any, @Param('id') id: string) {
+  remove(@CurrentTenant() tenant: Pick<Tenant, 'id'>, @Param('id') id: string) {
     return this.mediaService.deleteMedia(tenant.id, id);
   }
 }

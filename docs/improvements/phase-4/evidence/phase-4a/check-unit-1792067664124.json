@@ -1,0 +1,16 @@
+{
+  "operation": "unit",
+  "startedAt": "2026-10-15T12:32:43.912Z",
+  "finishedAt": "2026-10-15T12:34:24.127Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd run test:cov --workspace=@atlas/api -- --runInBand"
+  ],
+  "exitCode": 0,
+  "log": "check-unit-1792067664124.log",
+  "logSha256": "e19d3a8121ae07e0044dc72dd2ec20c3ab9b98bf80a8aa89756c0167a75b5d93",
+  "scope": "Working tree validation, not staging or production"
+}

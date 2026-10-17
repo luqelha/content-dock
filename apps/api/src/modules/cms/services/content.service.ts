@@ -1,3 +1,8 @@
+import {
+  contentSummarySelect,
+  ContentSummary,
+  ContentFull,
+} from '../entities/content-list.contract';
 import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { PrismaService } from '../../../database/prisma.service';
 import { CreateContentDto } from '../dto/create-content.dto';
@@ -25,7 +30,7 @@ export class ContentService {
   ): Promise<Content> {
     const slug = createContentDto.slug || this.generateSlug(createContentDto.title);
 
-    const existing = await this.prisma.content.findUnique({
+    const existing = await this.prisma.client.content.findUnique({
       where: {
         tenantId_slug: {
           tenantId,
@@ -39,7 +44,7 @@ export class ContentService {
     }
 
     if (createContentDto.categoryId) {
-      const category = await this.prisma.category.findUnique({
+      const category = await this.prisma.client.category.findUnique({
         where: { id: createContentDto.categoryId },
       });
       if (!category || category.tenantId !== tenantId) {
@@ -49,7 +54,7 @@ export class ContentService {
 
     const isPublished = createContentDto.status === ContentStatus.PUBLISHED;
 
-    return this.prisma.content.create({
+    return this.prisma.client.content.create({
       data: {
         ...createContentDto,
         slug,
@@ -60,7 +65,19 @@ export class ContentService {
     });
   }
 
-  async findAll(tenantId: string, queryContentDto: QueryContentDto): Promise<PageDto<Content>> {
+  findAll(
+    tenantId: string,
+    query: QueryContentDto & { summary: 'true' },
+  ): Promise<PageDto<ContentSummary>>;
+  findAll(
+    tenantId: string,
+    query: QueryContentDto & { summary?: 'false' },
+  ): Promise<PageDto<ContentFull>>;
+  findAll(tenantId: string, query: QueryContentDto): Promise<PageDto<ContentSummary | ContentFull>>;
+  async findAll(
+    tenantId: string,
+    queryContentDto: QueryContentDto,
+  ): Promise<PageDto<ContentSummary | ContentFull>> {
     const { search, status, categoryId, authorId, take, order, skip } = queryContentDto;
 
     const where: Prisma.ContentWhereInput = {
@@ -76,18 +93,22 @@ export class ContentService {
       }),
     };
 
-    const itemCount = await this.prisma.content.count({ where });
+    const itemCount = await this.prisma.client.content.count({ where });
 
-    const data = await this.prisma.content.findMany({
+    const args = {
       where,
       orderBy: { createdAt: order ? (order.toLowerCase() as Prisma.SortOrder) : 'desc' },
       skip,
       take,
-      include: {
-        category: true,
-        author: true,
-      },
-    });
+    };
+    // Separate projections keep the inferred Prisma result honest: summaries have no body.
+    const data =
+      queryContentDto.summary === 'true'
+        ? await this.prisma.client.content.findMany({ ...args, select: contentSummarySelect })
+        : await this.prisma.client.content.findMany({
+            ...args,
+            select: { ...contentSummarySelect, body: true },
+          });
 
     const pageMetaDto = new PageMetaDto({ itemCount, pageOptionsDto: queryContentDto });
 
@@ -95,7 +116,7 @@ export class ContentService {
   }
 
   async findOne(id: string, tenantId: string): Promise<Content> {
-    const content = await this.prisma.content.findUnique({
+    const content = await this.prisma.client.content.findUnique({
       where: { id },
     });
 
@@ -115,7 +136,7 @@ export class ContentService {
     }
 
     if (newSlug) {
-      const existing = await this.prisma.content.findUnique({
+      const existing = await this.prisma.client.content.findUnique({
         where: {
           tenantId_slug: {
             tenantId,
@@ -132,7 +153,7 @@ export class ContentService {
     }
 
     if (updateContentDto.categoryId) {
-      const category = await this.prisma.category.findUnique({
+      const category = await this.prisma.client.category.findUnique({
         where: { id: updateContentDto.categoryId },
       });
       if (!category || category.tenantId !== tenantId) {
@@ -152,7 +173,7 @@ export class ContentService {
       }
     }
 
-    return this.prisma.content.update({
+    return this.prisma.client.content.update({
       where: { id },
       data: {
         ...updateContentDto,
@@ -165,7 +186,7 @@ export class ContentService {
   async remove(id: string, tenantId: string): Promise<Content> {
     await this.findOne(id, tenantId); // ensure it exists and belongs to tenant
 
-    return this.prisma.content.delete({
+    return this.prisma.client.content.delete({
       where: { id },
     });
   }

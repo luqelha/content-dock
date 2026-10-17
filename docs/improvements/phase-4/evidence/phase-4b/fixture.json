@@ -1,0 +1,611 @@
+{
+  "measuredAt": "2026-10-15T21:47:34.730Z",
+  "project": "atlas-phase4b-2eb6875e73",
+  "database": "atlas_phase4b_test_2eb6875e73",
+  "apiImage": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+  "compiledFiles": {
+    "dist/app.controller.js": "3a435e44a4ccbe99578edba1649d550c6da2361ed545111b9f3ecda391b1c2b8",
+    "dist/app.module.js": "fa9ab18436de5e9e1efb6acf0d295a9abeb6dd910d05c716a7a315568209a7ec",
+    "dist/app.service.js": "81f82005baf0321d3aa3dd2360141d19295f113c77c0df8eb5dbb72ad7009d17",
+    "dist/common/constants/role-permissions.constant.js": "cbacb7f8f18dfcf37b041fc27abaeac22f62e33727f1c6f111986a385ea9be1e",
+    "dist/common/decorators/auth-rate-limit.decorator.js": "8854cd17f19cb992ce2f073c8d869a128b9e87be733142e91c79ee144ed4ffcf",
+    "dist/common/decorators/current-tenant.decorator.js": "702a1a566a64eb22ff431fb3d0b56a017cc412e67cd280db45226c79937993e0",
+    "dist/common/decorators/permissions.decorator.js": "8c5a8ddc6809a2ccd8ba9b868eb230d3f3d5b3953ef4dcaf57b64e8a8efa61bc",
+    "dist/common/decorators/roles.decorator.js": "d8503ce3836af9319e473bb98cbdfe3920cf9b5146a7ed61815c131aee54e8ed",
+    "dist/common/decorators/track-activity.decorator.js": "afb385f640280713f943abfb6aa08873921c4de0d62f773114aece83fd78fccf",
+    "dist/common/dto/list-page.dto.js": "20b38647c98de74345d5f5e0aa6579872219194a9cd0da574706c5fe9ae70002",
+    "dist/common/dto/page-meta-dto-parameters.interface.js": "d205f9e8d0f3734e12323daae17b9e832cebd82c7cc7c0b03b591a0dba1dd839",
+    "dist/common/dto/page-meta.dto.js": "a09141dbb319b0db8668447bb61beb6730686429ccc6f291266eb1cdd32724a2",
+    "dist/common/dto/page-options.dto.js": "79123c208d49946d34213e55d631b75bab41ec917165542b632399a600aeaac7",
+    "dist/common/dto/page.dto.js": "aabd943a64358dc0078a34540cb2fe0ba7c09dafc24f9cb7597a9def48c6fbf7",
+    "dist/common/enums/permission.enum.js": "d09bfb884662878f38ebf91977fc09551ae564369a7c80710806637c4052f74c",
+    "dist/common/enums/role.enum.js": "b1d4dedbfabcff323f7ee0cbe7ed7f735def0f1df3e86e07f1a7fa5a72ac6f5c",
+    "dist/common/filters/http-exception.filter.js": "a8a6107abc47afd89cc3167307a134e917ec70826ed709c5ceed564a536ac696",
+    "dist/common/filters/prisma-client-exception.filter.js": "b114645161e44fcbe34d88b0a8e215bc7b0ac4de2b30e82d0bf52edc0d398fb4",
+    "dist/common/guards/auth-client-identity.js": "b8126b4ec3fd16942a2692c65faddb211bc55b7e65baa7b7e34b6954eae980e8",
+    "dist/common/guards/rate-limit.guard.js": "d74c9489788fc575bb12465c9c6cec5aa173283dcdf26c6c3403e66914afa41a",
+    "dist/common/guards/rbac.guard.js": "c2bdf16b8dd147cb61a81c85431dbb9c2b26b2e6a422bb98d1a7758fc4d995dc",
+    "dist/common/guards/self.guard.js": "6a1ab8dc80f54c92f7153b4a9c2a11c312eb2dec6a581117e0d683ecdde04833",
+    "dist/common/interceptors/activity-tracking.interceptor.js": "bcd7b7c144d31dcb43adb65941af5b13002e4f363b35738f68b988cd8cdec423",
+    "dist/common/interceptors/cache.interceptor.js": "e1f4b7c5a7945162ca392d96273480d5eddfa63083bb86696256c03d672340c8",
+    "dist/common/middleware/tenant.middleware.js": "5f43e2b712388e82aa35378338b0e7c423192fc4c42685774bb3637d9c8f79e1",
+    "dist/common/pipes/application-validation.pipe.js": "1fcc7b89260856d01bb8bea427046f3d827e9c99305743a958335bf8d468cdf9",
+    "dist/common/validators/password-policy.js": "534d20044878ba0f2c6a72108be22429764ab9530f2b67da84f51c0657e48e82",
+    "dist/config/app.config.js": "f69739e79a87f671f367e346ddd5ad7e52745961894ef8312ef4d7903e3739be",
+    "dist/config/database.config.js": "db612d22584e59e48983dba945ca91144e72b25854e2d6ad2e9487825cf100d5",
+    "dist/config/env.validation.js": "e02b61f3df7bee871dda8bb521830dbbe71070bbcb73f04dc9c9c729cca04ca0",
+    "dist/config/jwt.config.js": "8bbe38f1db48d09b843e85b8aeaa78e531487169b5d10631ce03db6b13e6ca31",
+    "dist/config/rabbitmq.config.js": "5b17ba70ab4caeeef419792990696f1062f2d56155dbafb19059d2d1bcf8cf24",
+    "dist/config/redis.config.js": "b2e586c822f3b6cfae9a71691b3a9261f6ad0074b96f2cfc4fdaf4b826f7cdeb",
+    "dist/database/database.module.js": "c3ae32ed9b97d08b74a63f83f6b24c0f9a1e9d165a5e111ea4f2534021a8ebc9",
+    "dist/database/migration.js": "26902f27cff90e445d0d9f4a57475a2c8620f050ed4de03a18fd297e9a6cb6f1",
+    "dist/database/prisma.service.js": "3a7f71095626493bfc9fb5f35147c51624eb7a9fd5a2ac6e18e24affa6eab3b0",
+    "dist/database/seed.js": "5a711d43a91992199e10026ecc4fe2c8fb629feff836bf1b4a6b2e8d5bc35652",
+    "dist/main.js": "10dd18c556785dd291864e0e950747d5f33f83bde919e6f9f6d0099921e038a6",
+    "dist/modules/analytics/analytics.controller.js": "88c0f0ae71550f00cd9f1aff2d0f3f67d5ae96d6ec15aff47ff910763baee88b",
+    "dist/modules/analytics/analytics.module.js": "73861f75b1599c96ee7a166b6cf8ac24c82b42bec1ef280e47d90745e4890beb",
+    "dist/modules/analytics/analytics.service.js": "28cbf8a0c5a063904dde3a7a48edd87b15944b31deeb77045bde9a7ccbb329c3",
+    "dist/modules/audit/audit.controller.js": "38b1a99786a1888c4fb87550c9c5e6f16d11e863d9dab8c9757b1a2b1466cbc2",
+    "dist/modules/audit/audit.module.js": "f9bdc9d693fbd1066f726ad21d12b86f6046ad77ed73e83761e6bc1a68f694ad",
+    "dist/modules/audit/audit.service.js": "2355dc61c91be9d60e207d16d59748c17b5277bb901ba559802e0af457a7bb69",
+    "dist/modules/audit/dto/create-audit-log.dto.js": "9a966abd567a2bd10149a9735ddb1b37a7dbd6fbe9b1549fe794443639ce072a",
+    "dist/modules/audit/dto/get-audit-logs.dto.js": "e9b9e60266946a5d416d6319ea9ad60536cdcc4acd6b0219de5f7bd3b98cb865",
+    "dist/modules/auth/auth.module.js": "683983550cd0c1718d7a593c620007c31beeb0745a9dc2170ef28ec10ea0eec2",
+    "dist/modules/auth/controllers/auth.controller.js": "7ebcd9c89ca747f05f4c44f2a08e5e9a5824c79ec943ab1abc989dd8a5db9a94",
+    "dist/modules/auth/dto/login.dto.js": "8e462338d2d68097a00535ad7b909205303610b10156864c9c664535002ce01f",
+    "dist/modules/auth/dto/register.dto.js": "17b3a308a3a7d64b5ad85259cd460629e876bc34589ba3772fdf03a4ad1e6aff",
+    "dist/modules/auth/guards/jwt-auth.guard.js": "2999374cbeb9074417bef9adf113a6deaff7a8cc18f88c1d5cac3f7dee432262",
+    "dist/modules/auth/guards/jwt-refresh.guard.js": "87f97c3521d81a40d5a17b1bbf4aa9224c0245ab82bf4a89472cfaf5e4af0645",
+    "dist/modules/auth/services/auth.service.js": "26403209cdfb0afcb66f3d1db3cd7d4feea5fd85e1984a197a6b4c2a4d45d17d",
+    "dist/modules/auth/strategies/jwt-refresh.strategy.js": "1e518cc2b035aaf92e27cec6be69604042dd219d57f0bb8ba4a042fadedd4066",
+    "dist/modules/auth/strategies/jwt.strategy.js": "bf90a0d8c9639688c9d50a555d545372a7d86996beecec5b0694530759fcbd1c",
+    "dist/modules/cms/cms.module.js": "a46e885d8a97b3c54099484ac9ede9322a8f57feca5daa6f3992c3f2282c98ae",
+    "dist/modules/cms/controllers/category.controller.js": "9d2688cd0c0cb975f6288ef00f15413823492aef98aad3d1b05ee0085dacff79",
+    "dist/modules/cms/controllers/content.controller.js": "0e9dbf7dead2cec6e1b168f8b2386c1afa09d6f7583e6df95ecbf964c521b007",
+    "dist/modules/cms/dto/create-category.dto.js": "c44ce4593507c385fad28db0fc4eedbd47495a601912832c6bc0442e373f8783",
+    "dist/modules/cms/dto/create-content.dto.js": "270bc3a493d0d11881ad12278e2e6b8746e7f1a4e6abc8029888fcb2ac1badb6",
+    "dist/modules/cms/dto/query-content.dto.js": "657b8b07035c4cdc67c8de2f98b1a3bcfb24bf5de8550747ddd95605e325eba1",
+    "dist/modules/cms/dto/update-category.dto.js": "c25ec1bc4bfe8480cb0488a80bb744982c2ff317be1f128bbc7eec7e21a02c98",
+    "dist/modules/cms/dto/update-content.dto.js": "af92c44353129abdcfd8e8cc54a1975e4a16808855a41cca0ccedffba577b9d1",
+    "dist/modules/cms/entities/category.entity.js": "63128abda118d4f5c8837bcb9b222e059ff6b0a0e4067a61228ca3df25479eec",
+    "dist/modules/cms/entities/content.entity.js": "ab9d9bca5c356c5312bd17f7564beb5a32c6f276298a5f15f710581c643413e4",
+    "dist/modules/cms/services/category.service.js": "ff2d240334e8823c4b144c33e047a44d3d39301b56deb720118a613a6cea33e9",
+    "dist/modules/cms/services/content.service.js": "b226eaf6f24e22be33e87ec4586c414cb9d7a52420a592ba5c789835b23cfddf",
+    "dist/modules/export/compression.service.js": "6b0ab9266b3f990dbe9bbf9ca2a6ea937611438482c89c70a0179c11360605ef",
+    "dist/modules/export/export-filename.js": "e2d555835678823ce05b784c6a08a3d52b91d58be0a51fc332047cee735fd497",
+    "dist/modules/export/export-job.js": "10b0ca58206e1b6b91ae2fffc2f73151affae2a64da62896fcf73bfd42f2d27a",
+    "dist/modules/export/export.controller.js": "532c9966e1bdbeeca0092dc9fd87c456eb880341155d01f0fefe1b2800aaa8e5",
+    "dist/modules/export/export.module.js": "33b761ab714d673ae7d6f14a1ad438a925c25667feb7e59e78e128d6a80d6fde",
+    "dist/modules/export/export.service.js": "f544d706d2155f18d195340ffaccd9ea3f8cbdbe46bff065caf6b74bc2ca57cf",
+    "dist/modules/export/worker.controller.js": "7b557d75d96a8ea6f95dfa6e3bddc431cb2fcfff3fac701f0d149447c905ed9b",
+    "dist/modules/media/dto/media.dto.js": "2b3c210c331cdfa0d7e6ca52248d6d49657e088e1f6a25954aa025ec5008046e",
+    "dist/modules/media/media.controller.js": "6985d800b5cd5710aa280ad0813595a9e1ab98b3ab2b91aafce9a9aa86a4c7e8",
+    "dist/modules/media/media.module.js": "e1dcc7a11160b57c0ebd5c0a21cd870e125545b880cca8dfae6dd5622422943b",
+    "dist/modules/media/media.service.js": "34c0ef8037e529d99f95455908971b062ed842e807a30f506240348718ed7d52",
+    "dist/modules/observability/graceful-shutdown.js": "9bd026cad4c23abb16ee12df1807521a386432a1099093e911cecb9459298c8a",
+    "dist/modules/observability/observability.module.js": "2e39b7cf44d126cd70574086d59759cf2886f616a72f355f66c2df4f44037ab6",
+    "dist/modules/observability/observed-rmq.server.js": "892489871c7ab1789599a333fb32edc3e89f1f42b19b974670d28ed763662764",
+    "dist/modules/observability/operational-health.service.js": "06d3514d35ddcd233dbc02993c297f7af60bf25f2887489076af4e0ea9773b77",
+    "dist/modules/observability/telemetry.module.js": "c46ca2c05f2e2e150a80c193f6d7a515340dd8d404d7d34c04d816a5d75469fb",
+    "dist/modules/observability/telemetry.service.js": "3c8062bf2e153d42ca9904240a52b62849cc028ca04cd88056e688f48ba762bd",
+    "dist/modules/redis/redis.module.js": "49fc154414a18f600e06f2e45cadc63cc5246bd08074d2aa75a91108f4bb779a",
+    "dist/modules/redis/redis.service.js": "d40f58bc7b901cc3c8f2f16163f4875e9bfc713bc6f24cbab2ea61983a890135",
+    "dist/modules/storage/file-vault.service.js": "bcf9e51ff7593e4e8f390b266310daf970e71f8da86b27d23580dcef5a8fbb3e",
+    "dist/modules/storage/files.controller.js": "f309ed5c7cef9d52db44b0a56f44a52fb8e8429697e1263cccc8c6558c5dc00d",
+    "dist/modules/storage/storage-retention.service.js": "35cbb1ac1670dcb35c5f839e537ae92a0a660a8cbec17ac4cafe7f1d83eac6f5",
+    "dist/modules/storage/storage.module.js": "76261ff548a8b6302b1ba4a03a6bf2b97ce9c5209c332b798df40a5d476cf34d",
+    "dist/modules/storage/validate-upload.js": "dc767f60534297f87e8a13a5f47da7cbf4d06e82866734b9c2b36911f5f50e98",
+    "dist/modules/tenant/dto/create-tenant.dto.js": "e249731010b632a3297c864741eabce433ea50fd4e47a357d8f926ec427d999c",
+    "dist/modules/tenant/dto/member.dto.js": "de91bc1e37870e3e8d5e90f70f4f2635449f29a59ecdbff32d042b12b3528014",
+    "dist/modules/tenant/dto/update-tenant.dto.js": "67d613d0826ba8217fa4e11ab525fb05c8e87c113b6f05d07471f69cf6d06001",
+    "dist/modules/tenant/membership.controller.js": "0b9aa812bab040bd08718faf8b69f5aae727bab82a75c45c79f1ec99a5e4fd70",
+    "dist/modules/tenant/membership.service.js": "c783b10740b3b9de50a37398d9b86f40babe4be32896a7580977895374621d42",
+    "dist/modules/tenant/tenant.controller.js": "d13f450f0e6a73184c32164b058cd7eacd5d3dbf62b4fb8a1751479e7f02c2e9",
+    "dist/modules/tenant/tenant.module.js": "b7aa8c8f6bcb3c27e9f8020c91a7425aecbc822a6ea7ffc0c10a41f035b6d197",
+    "dist/modules/tenant/tenant.service.js": "2ab5d7f931796d97cc071c92e7934c1a946ccf0607efb067f89024f7a48dda96",
+    "dist/modules/user/dto/create-user.dto.js": "986a5e142e4a9b4e8a7129e8af45fa8231bb2d54b1a51474988811ec9555406b",
+    "dist/modules/user/dto/update-user.dto.js": "560e7d65e075cb31d02d2beb5abc4db0d5cc0097849c1462fd751fe07c4e937c",
+    "dist/modules/user/entities/user.entity.js": "47f39ff99b757abeae03ec4fd08f9fe6b70363c8bfd7972c0794ff2cc7596ae8",
+    "dist/modules/user/user.controller.js": "2e83a9ed0ca4b2d95a5da86c587e59d0b37d034b2b375eff624969477cbfc3b8",
+    "dist/modules/user/user.module.js": "abb00f4e5c29d9aa7df461c0fa020ce7a4ead2148a03277929064ba6d22d4dcc",
+    "dist/modules/user/user.service.js": "3859dc3c36e172d3ac7b4993416876369f5d5043f6712baca83eb3c456e0adbd"
+  },
+  "currentLocalBuildMatchesImage": true,
+  "containersBefore": [
+    {
+      "id": "8a827952d5b3",
+      "name": "atlas-phase4b-dfadae5b05-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "0116003a157b",
+      "name": "atlas-phase4b-dfadae5b05-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "9a51b5c03294",
+      "name": "atlas-phase4b-dfadae5b05-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "feee9211a0ee",
+      "name": "atlas-phase4b-b647e70fd1-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "8640bcb80f34",
+      "name": "atlas-phase4b-b647e70fd1-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "c5addc388f47",
+      "name": "atlas-phase4b-b647e70fd1-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "7420968c6b81",
+      "name": "atlas-phase4a-amcfg-1792069763909",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "b823419f30bb",
+      "name": "atlas-phase4a-promcfg-1792069763231",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "c1b3f5c593be",
+      "name": "atlas-phase4a-rules-1792069762019",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "b58032449e1e",
+      "name": "atlas-phase4a-codeverify-1792069622968",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "dd6248bd153c",
+      "name": "atlas-phase4a-765b8399c3-grafana-1",
+      "state": "exited",
+      "image": "grafana/grafana:13.2.4"
+    },
+    {
+      "id": "175b7dc21b1b",
+      "name": "atlas-phase4a-regression-b74da46e-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "6acab92d5e11",
+      "name": "atlas-phase4a-regression-b74da46e-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "28023190d646",
+      "name": "atlas-phase4a-regression-b74da46e-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "e8eb6361e2cb",
+      "name": "atlas-phase4a-amcfg-1792068904470",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "f0a237bdf214",
+      "name": "atlas-phase4a-promcfg-1792068903938",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "9ea30fde3d03",
+      "name": "atlas-phase4a-rules-1792068902721",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "e57c844c0921",
+      "name": "atlas-phase4a-765b8399c3-api-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "feafa271fd97",
+      "name": "atlas-phase4a-765b8399c3-migrate",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "ade3b0723350",
+      "name": "atlas-phase4a-765b8399c3-vault-keeper-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "b41fc4ebecc8",
+      "name": "atlas-phase4a-765b8399c3-alert-journal-1",
+      "state": "exited",
+      "image": "e96daa729325"
+    },
+    {
+      "id": "48e2499f5fdc",
+      "name": "atlas-phase4a-765b8399c3-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "5e5726cc6358",
+      "name": "atlas-phase4a-765b8399c3-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "477248b37bf4",
+      "name": "atlas-phase4a-765b8399c3-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "d7cd34cdda42",
+      "name": "atlas-phase4a-765b8399c3-alertmanager-1",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "64c37b7a9cff",
+      "name": "atlas-phase4a-765b8399c3-prometheus-1",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "dd2428c6cfad",
+      "name": "atlas-phase4a-730ac3d36d-api-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "aca418264d9d",
+      "name": "atlas-phase4a-730ac3d36d-migrate",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "be33c152a033",
+      "name": "atlas-phase4a-730ac3d36d-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "9968cc5eb147",
+      "name": "atlas-phase4a-730ac3d36d-prometheus-1",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "50a2600a5b68",
+      "name": "atlas-phase4a-730ac3d36d-alert-journal-1",
+      "state": "exited",
+      "image": "e96daa729325"
+    },
+    {
+      "id": "ef65765673cd",
+      "name": "atlas-phase4a-730ac3d36d-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "bee01d19007d",
+      "name": "atlas-phase4a-730ac3d36d-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "3cd69e6f995f",
+      "name": "atlas-phase4a-730ac3d36d-alertmanager-1",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "04ef0c201f3f",
+      "name": "atlas-phase4a-730ac3d36d-vault-keeper-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "339eda1787c4",
+      "name": "atlas-phase4a-portprobe-1792068644043",
+      "state": "exited",
+      "image": "atlas-api:phase4a"
+    },
+    {
+      "id": "a73e993c544b",
+      "name": "atlas-phase4a-912568b143-api-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "18ca2877bb2b",
+      "name": "atlas-phase4a-912568b143-migrate",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "154409500c35",
+      "name": "atlas-phase4a-912568b143-vault-keeper-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "e2085290e909",
+      "name": "atlas-phase4a-912568b143-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "5e2f955ee96b",
+      "name": "atlas-phase4a-912568b143-prometheus-1",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "6b33db5f56ca",
+      "name": "atlas-phase4a-912568b143-alertmanager-1",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "89875a12209a",
+      "name": "atlas-phase4a-912568b143-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "153acad67f61",
+      "name": "atlas-phase4a-912568b143-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "51f26d4644e9",
+      "name": "atlas-phase4a-912568b143-alert-journal-1",
+      "state": "exited",
+      "image": "e96daa729325"
+    },
+    {
+      "id": "777df4385434",
+      "name": "atlas-phase4a-a12776b993-api-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "c81bfdbb7f84",
+      "name": "atlas-phase4a-a12776b993-migrate",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "834636ce1b11",
+      "name": "atlas-phase4a-a12776b993-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "75e1613f541e",
+      "name": "atlas-phase4a-a12776b993-prometheus-1",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "5dcb010e23fd",
+      "name": "atlas-phase4a-a12776b993-alert-journal-1",
+      "state": "exited",
+      "image": "e96daa729325"
+    },
+    {
+      "id": "b0ec5441f2d4",
+      "name": "atlas-phase4a-a12776b993-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "68092995c065",
+      "name": "atlas-phase4a-a12776b993-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "083a7053fa78",
+      "name": "atlas-phase4a-a12776b993-alertmanager-1",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "4496498a20d4",
+      "name": "atlas-phase4a-a12776b993-vault-keeper-1",
+      "state": "exited",
+      "image": "43d8ad230b4f"
+    },
+    {
+      "id": "11c1eda01cf2",
+      "name": "atlas-phase4a-amcfg-1792067978165",
+      "state": "exited",
+      "image": "prom/alertmanager:v0.34.1"
+    },
+    {
+      "id": "5d96808c2f0b",
+      "name": "atlas-phase4a-promcfg-1792067977454",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "11d190f76a1c",
+      "name": "atlas-phase4a-rules-1792067975530",
+      "state": "exited",
+      "image": "prom/prometheus:v3.15.0"
+    },
+    {
+      "id": "a4f8ba8617e9",
+      "name": "atlas-phase3e-restore-16df673b6b-nginx-1",
+      "state": "exited",
+      "image": "nginx:alpine"
+    },
+    {
+      "id": "8c648e44794f",
+      "name": "atlas-phase3e-restore-16df673b6b-web-1",
+      "state": "exited",
+      "image": "2d42bc9a27fb"
+    },
+    {
+      "id": "75d53fd02259",
+      "name": "atlas-phase3e-restore-16df673b6b-vault",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "c352c03fefa7",
+      "name": "atlas-phase3e-restore-16df673b6b-api-1",
+      "state": "exited",
+      "image": "44b58d1088b9"
+    },
+    {
+      "id": "3259985b65e9",
+      "name": "atlas-phase3e-restore-16df673b6b-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "cb0a667c1e58",
+      "name": "atlas-phase3e-restore-16df673b6b-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "c2d434fba6ba",
+      "name": "atlas-phase3e-restore-16df673b6b-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "1a6eb580f4c5",
+      "name": "atlas-phase3e-source-4293c787fa-backup",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "436bb68596c6",
+      "name": "atlas-phase3e-source-4293c787fa-nginx-1",
+      "state": "exited",
+      "image": "nginx:alpine"
+    },
+    {
+      "id": "0e670f69b6e4",
+      "name": "atlas-phase3e-source-4293c787fa-web-1",
+      "state": "exited",
+      "image": "2d42bc9a27fb"
+    },
+    {
+      "id": "41ff94d600e6",
+      "name": "atlas-phase3e-source-4293c787fa-api-1",
+      "state": "exited",
+      "image": "44b58d1088b9"
+    },
+    {
+      "id": "bed2e245adbd",
+      "name": "atlas-phase3e-source-4293c787fa-postgres-1",
+      "state": "exited",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "5b6fe8ae5303",
+      "name": "atlas-phase3e-source-4293c787fa-rabbitmq-1",
+      "state": "exited",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "35a8e8bee94f",
+      "name": "atlas-phase3e-source-4293c787fa-redis-1",
+      "state": "exited",
+      "image": "redis:7-alpine"
+    },
+    {
+      "id": "19c7c475dcf8",
+      "name": "atlas_postgres",
+      "state": "running",
+      "image": "postgres:15-alpine"
+    },
+    {
+      "id": "2057b6d16f61",
+      "name": "atlas_rabbitmq",
+      "state": "running",
+      "image": "rabbitmq:3-management-alpine"
+    },
+    {
+      "id": "58f6c076a444",
+      "name": "atlas_redis",
+      "state": "running",
+      "image": "redis:7-alpine"
+    }
+  ],
+  "containers": [
+    {
+      "service": "postgres",
+      "id": "bf2211cd3905cda5e5973bb661666247419f6a2de4f164ec043f2b48f2c0cf15",
+      "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81"
+    },
+    {
+      "service": "redis",
+      "id": "465a9545936eac53346c242fc815dc0b6601b44292393b2cb90019104d060061",
+      "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+    },
+    {
+      "service": "rabbitmq",
+      "id": "afa1e00216b6e66063b2b1a9946ee634e4425bebd679ee72f1b101826ab152b4",
+      "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281"
+    },
+    {
+      "service": "api",
+      "id": "d59aeef40c1fe38102e8805feb4f38b3b71b05252458f97c100bacc1760b1804",
+      "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5"
+    }
+  ],
+  "host": {
+    "node": "v22.18.0",
+    "platform": "win32",
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13450HX",
+    "logicalCpus": 16,
+    "memoryBytes": 12578578432
+  },
+  "server": {
+    "node": "v24.22.0",
+    "cpu": 16
+  },
+  "dataset": {
+    "tenants": 5,
+    "largeTenants": 4,
+    "contentPerLargeTenant": 20000,
+    "contentBodyBytes": 2055,
+    "auditRowsPerLargeTenant": 25000,
+    "mediaMetadataPerLargeTenant": 2000,
+    "smallTenantContents": 25
+  },
+  "runtimeRoleVerified": true,
+  "poolConnectionLimit": 10,
+  "retentionEnabled": false,
+  "databaseVersion": "PostgreSQL 15.19 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit",
+  "databaseSettings": {
+    "shared_buffers": "128MB",
+    "work_mem": "4MB",
+    "max_connections": "100"
+  }
+}

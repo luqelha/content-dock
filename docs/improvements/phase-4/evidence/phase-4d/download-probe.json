@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-10-16T03:51:18.526Z",
+  "platform": "win32",
+  "observations": [
+    {
+      "variant": "native",
+      "status": "download",
+      "failure": null
+    },
+    {
+      "variant": "attribute",
+      "status": "no-download-event"
+    }
+  ],
+  "browserVersion": "27.2"
+}

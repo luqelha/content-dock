@@ -1,0 +1,828 @@
+{
+  "generatedAt": "2026-10-16T03:54:18.584Z",
+  "reportSha256": "f495c98bb1292f7d9d8138ceb828fac2039914f4bc164d5a4915cc22d140357a",
+  "stats": {
+    "startTime": "2026-10-16T03:50:18.817Z",
+    "duration": 193214.008,
+    "expected": 30,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  },
+  "errors": [],
+  "tests": [
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (light)",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-light-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-light-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "public pages and validation feedback meet automated WCAG checks (dark)",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-dark-home",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-login",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-register",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-forgot-password",
+          "violations": [],
+          "incomplete": []
+        },
+        {
+          "state": "axe-dark-registration-error",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login password visibility supports mouse and keyboard without submitting",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "register visibility toggles work independently on both password fields",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "password mismatch remains visible, focuses feedback, and preserves only email",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "registration rejects Unicode passwords above bcrypt's byte limit",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login shows a neutral registration notice",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "auth forms fit a narrow viewport",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "chromium",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 9
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "firefox",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "firefox",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in upload-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 176\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#050505\",\n+               \"contrastRatio\": 3.24,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#606060\",\n+               \"fontSize\": \"10.5pt (14px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 3.24 (foreground color: #606060, background color: #0505",
+        "Error: Accessibility violations in preview-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 198\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#090909\",\n+               \"contrastRatio\": 3.73,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#6b6b6b\",\n+               \"fontSize\": \"9.0pt (12px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 3.73 (foreground color: #6b6b6b, background color: #0909"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-2"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #606060, background color: #050505, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".gap-2\\.5.flex.items-center > div:nth-child(2) > p"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.81 (foreground color: #585858, background color: #080808, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".border-t > .text-xs.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.83 (foreground color: #585858, background color: #070707, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 10
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".font-mono.text-xs.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.73 (foreground color: #6b6b6b, background color: #090909, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".justify-between.flex:nth-child(1) > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.75 (foreground color: #6b6b6b, background color: #080808, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".justify-between.flex:nth-child(2) > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.75 (foreground color: #6b6b6b, background color: #080808, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".pt-1 > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.72 (foreground color: #6a6a6a, background color: #070707, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".text-destructive"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.68 (foreground color: #b14649, background color: #070707, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    },
+    {
+      "title": "workspace switching isolates CMS and downloads, export errors can be retried, and logout protects routes",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"Lax\"\nReceived: \"None\"\n\n  49 |       expect(cookie?.secure).toBe(true);\n  50 |       expect(cookie?.httpOnly).toBe(true);\n> 51 |       expect(cookie?.sameSite).toBe(\"Lax\");\n     |                                ^\n  52 |     }\n  53 |   }\n  54 |   const switchTo = async (name: string) => {\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:51:32"
+      ],
+      "scans": []
+    },
+    {
+      "title": "login errors stay announced and protected pages require authentication",
+      "project": "webkit",
+      "status": "expected",
+      "attempts": 1,
+      "errors": [],
+      "scans": []
+    },
+    {
+      "title": "workspace dialogs support keyboard focus and export links survive refresh",
+      "project": "webkit",
+      "status": "unexpected",
+      "attempts": 1,
+      "errors": [
+        "Error: Accessibility violations in upload-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 117\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#050505\",\n+               \"contrastRatio\": 3.54,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#666666\",\n+               \"fontSize\": \"10.5pt (14px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 3.54 (foreground color: #666666, background color: #0505",
+        "Error: Accessibility violations in preview-dialog-mobile-dark\n\nexpect(received).toEqual(expected) // deep equality\n\n- Expected  -   1\n+ Received  + 233\n\n- Array []\n+ Array [\n+   Object {\n+     \"description\": \"Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds\",\n+     \"help\": \"Elements must meet minimum color contrast ratio thresholds\",\n+     \"helpUrl\": \"https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=playwright\",\n+     \"id\": \"color-contrast\",\n+     \"impact\": \"serious\",\n+     \"nodes\": Array [\n+       Object {\n+         \"all\": Array [],\n+         \"any\": Array [\n+           Object {\n+             \"data\": Object {\n+               \"bgColor\": \"#090909\",\n+               \"contrastRatio\": 3.07,\n+               \"expectedContrastRatio\": \"4.5:1\",\n+               \"fgColor\": \"#5e5e5e\",\n+               \"fontSize\": \"9.0pt (12px)\",\n+               \"fontWeight\": \"normal\",\n+               \"messageKey\": null,\n+             },\n+             \"id\": \"color-contrast\",\n+             \"impact\": \"serious\",\n+             \"message\": \"Element has insufficient color contrast of 3.07 (foreground color: #5e5e5e, background color: #0909"
+      ],
+      "scans": [
+        {
+          "state": "axe-categories-light",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-categories-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "target-size",
+              "impact": "serious",
+              "nodes": 1
+            }
+          ]
+        },
+        {
+          "state": "axe-category-dialog-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-content-editor-mobile-dark",
+          "violations": [],
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "impact": "critical",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-upload-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".mt-2"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.54 (foreground color: #666666, background color: #050505, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".border-t > .text-xs.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.78 (foreground color: #575757, background color: #070707, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 10
+            }
+          ]
+        },
+        {
+          "state": "axe-preview-dialog-mobile-dark",
+          "violations": [
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": [
+                {
+                  "target": [
+                    ".font-mono.text-xs.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.07 (foreground color: #5e5e5e, background color: #090909, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".justify-between.flex:nth-child(1) > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.04 (foreground color: #5d5d5d, background color: #080808, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".justify-between.flex:nth-child(2) > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.04 (foreground color: #5d5d5d, background color: #080808, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".pt-1 > .gap-1\\.5.text-muted-foreground"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.07 (foreground color: #5d5d5d, background color: #060606, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".space-y-2 > .bg-primary.text-primary-foreground.hover\\:bg-primary\\/80"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.75 (foreground color: #343434, background color: #8d8d8d, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+                },
+                {
+                  "target": [
+                    ".text-destructive"
+                  ],
+                  "summary": "Fix any of the following:\n  Element has insufficient color contrast of 3.02 (foreground color: #9a3e3f, background color: #060606, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ]
+            }
+          ],
+          "incomplete": [
+            {
+              "id": "aria-hidden-focus",
+              "impact": "serious",
+              "nodes": 3
+            },
+            {
+              "id": "color-contrast",
+              "impact": "serious",
+              "nodes": 3
+            }
+          ]
+        },
+        {
+          "state": "axe-export-complete-mobile-dark",
+          "violations": [],
+          "incomplete": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "startedAt": "2026-10-15T11:12:46.935Z",
+  "finishedAt": "2026-10-15T11:13:00.518Z",
+  "command": "npm.cmd run test --workspace=@atlas/api -- --runInBand",
+  "exitCode": 0,
+  "scope": "Local unit regression; does not replace remote CI"
+}

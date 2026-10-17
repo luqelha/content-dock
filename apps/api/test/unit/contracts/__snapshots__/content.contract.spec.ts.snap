@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Content producer/consumer contract publishes the paginated full/summary schema including nullable relations and dates 1`] = `
+{
+  "response": {
+    "content": {
+      "application/json": {
+        "schema": {
+          "properties": {
+            "data": {
+              "items": {
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ContentFullEntity",
+                  },
+                  {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/ContentSummaryEntity",
+                      },
+                      {
+                        "not": {
+                          "required": [
+                            "body",
+                          ],
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+              "type": "array",
+            },
+            "meta": {
+              "$ref": "#/components/schemas/PageMetaDto",
+            },
+          },
+          "required": [
+            "data",
+            "meta",
+          ],
+          "type": "object",
+        },
+      },
+    },
+    "description": "Paginated contents. summary=true omits body; default/false includes body.",
+  },
+  "schemas": {
+    "CategoryEntity": {
+      "properties": {
+        "createdAt": {
+          "format": "date-time",
+          "type": "string",
+        },
+        "description": {
+          "nullable": true,
+          "type": "string",
+        },
+        "id": {
+          "type": "string",
+        },
+        "name": {
+          "type": "string",
+        },
+        "parentId": {
+          "nullable": true,
+          "type": "string",
+        },
+        "slug": {
+          "type": "string",
+        },
+        "tenantId": {
+          "type": "string",
+        },
+        "updatedAt": {
+          "format": "date-time",
+          "type": "string",
+        },
+      },
+      "required": [
+        "id",
+        "name",
+        "slug",
+        "description",
+        "parentId",
+        "tenantId",
+        "createdAt",
+        "updatedAt",
+      ],
+      "type": "object",
+    },
+    "ContentAuthorEntity": {
+      "properties": {
+        "email": {
+          "type": "string",
+        },
+        "firstName": {
+          "nullable": true,
+          "type": "string",
+        },
+        "id": {
+          "type": "string",
+        },
+        "lastName": {
+          "nullable": true,
+          "type": "string",
+        },
+      },
+      "required": [
+        "id",
+        "email",
+        "firstName",
+        "lastName",
+      ],
+      "type": "object",
+    },
+    "ContentFullEntity": {
+      "properties": {
+        "author": {
+          "$ref": "#/components/schemas/ContentAuthorEntity",
+        },
+        "authorId": {
+          "description": "The author ID",
+          "example": "123e4567-e89b-12d3-a456-426614174000",
+          "type": "string",
+        },
+        "body": {
+          "type": "string",
+        },
+        "category": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/CategoryEntity",
+            },
+          ],
+          "nullable": true,
+          "type": "object",
+        },
+        "categoryId": {
+          "description": "The category ID",
+          "example": "cat-123",
+          "nullable": true,
+          "type": "string",
+        },
+        "createdAt": {
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "type": "string",
+        },
+        "id": {
+          "description": "The unique identifier",
+          "example": "123e4567-e89b-12d3-a456-426614174000",
+          "type": "string",
+        },
+        "publishedAt": {
+          "description": "The publication timestamp",
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "nullable": true,
+          "type": "string",
+        },
+        "slug": {
+          "description": "The unique slug",
+          "example": "my-first-post",
+          "type": "string",
+        },
+        "status": {
+          "description": "The current status of the content",
+          "enum": [
+            "DRAFT",
+            "PUBLISHED",
+          ],
+          "example": "DRAFT",
+          "type": "string",
+        },
+        "tenantId": {
+          "description": "The tenant ID",
+          "example": "tenant-123",
+          "type": "string",
+        },
+        "title": {
+          "description": "The title of the content",
+          "example": "My First Post",
+          "type": "string",
+        },
+        "updatedAt": {
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "type": "string",
+        },
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "status",
+        "publishedAt",
+        "authorId",
+        "tenantId",
+        "categoryId",
+        "createdAt",
+        "updatedAt",
+        "category",
+        "author",
+        "body",
+      ],
+      "type": "object",
+    },
+    "ContentSummaryEntity": {
+      "properties": {
+        "author": {
+          "$ref": "#/components/schemas/ContentAuthorEntity",
+        },
+        "authorId": {
+          "description": "The author ID",
+          "example": "123e4567-e89b-12d3-a456-426614174000",
+          "type": "string",
+        },
+        "category": {
+          "allOf": [
+            {
+              "$ref": "#/components/schemas/CategoryEntity",
+            },
+          ],
+          "nullable": true,
+          "type": "object",
+        },
+        "categoryId": {
+          "description": "The category ID",
+          "example": "cat-123",
+          "nullable": true,
+          "type": "string",
+        },
+        "createdAt": {
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "type": "string",
+        },
+        "id": {
+          "description": "The unique identifier",
+          "example": "123e4567-e89b-12d3-a456-426614174000",
+          "type": "string",
+        },
+        "publishedAt": {
+          "description": "The publication timestamp",
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "nullable": true,
+          "type": "string",
+        },
+        "slug": {
+          "description": "The unique slug",
+          "example": "my-first-post",
+          "type": "string",
+        },
+        "status": {
+          "description": "The current status of the content",
+          "enum": [
+            "DRAFT",
+            "PUBLISHED",
+          ],
+          "example": "DRAFT",
+          "type": "string",
+        },
+        "tenantId": {
+          "description": "The tenant ID",
+          "example": "tenant-123",
+          "type": "string",
+        },
+        "title": {
+          "description": "The title of the content",
+          "example": "My First Post",
+          "type": "string",
+        },
+        "updatedAt": {
+          "example": "2023-01-01T00:00:00.000Z",
+          "format": "date-time",
+          "type": "string",
+        },
+      },
+      "required": [
+        "id",
+        "title",
+        "slug",
+        "status",
+        "publishedAt",
+        "authorId",
+        "tenantId",
+        "categoryId",
+        "createdAt",
+        "updatedAt",
+        "category",
+        "author",
+      ],
+      "type": "object",
+    },
+    "PageMetaDto": {
+      "properties": {
+        "hasNextPage": {
+          "type": "boolean",
+        },
+        "hasPreviousPage": {
+          "type": "boolean",
+        },
+        "itemCount": {
+          "type": "number",
+        },
+        "page": {
+          "type": "number",
+        },
+        "pageCount": {
+          "type": "number",
+        },
+        "take": {
+          "type": "number",
+        },
+      },
+      "required": [
+        "page",
+        "take",
+        "itemCount",
+        "pageCount",
+        "hasPreviousPage",
+        "hasNextPage",
+      ],
+      "type": "object",
+    },
+  },
+}
+`;

@@ -1,0 +1,114 @@
+groups:
+  - name: atlas-operational
+    interval: 15s
+    rules:
+      - alert: AtlasApiUnavailable
+        expr: up{job="atlas-api"} == 0 or absent(up{job="atlas-api"})
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: Atlas metrics/liveness target is unavailable
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#api-unavailable
+      - alert: AtlasDependencyUnavailable
+        expr: atlas_dependency_up{dependency=~"database|redis|broker|consumer|storage"} == 0
+        for: 30s
+        labels: { severity: critical }
+        annotations:
+          summary: Atlas dependency is unavailable
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#dependency-outage
+      - alert: AtlasProbeStale
+        expr: time() - atlas_dependency_last_check_timestamp_seconds{dependency=~"database|redis|storage"} > 45
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: Dependency telemetry is stale
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#stale-telemetry
+      - alert: AtlasExportBacklog
+        expr: (time() - atlas_export_oldest_pending_timestamp_seconds > 120) and (atlas_export_oldest_pending_timestamp_seconds > 0)
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: Export jobs are not progressing
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog
+      - alert: AtlasExpiredLease
+        expr: atlas_export_expired_leases > 0
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: Export lease recovery is overdue
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog
+      - alert: AtlasDispatcherStalled
+        expr: time() - atlas_export_dispatch_last_tick_timestamp_seconds > 90
+        for: 30s
+        labels: { severity: critical }
+        annotations:
+          summary: Export dispatcher has stopped polling
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog
+      - alert: AtlasExportFailures
+        expr: sum by (job, instance) (increase(atlas_export_worker_total{outcome=~"failed|retry"}[5m])) > 0
+        labels: { severity: warning }
+        annotations:
+          summary: Export deliveries have failed or require recovery
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog
+      - alert: AtlasVaultSpaceLow
+        expr: atlas_vault_available_bytes / atlas_vault_size_bytes < 0.1
+        for: 30s
+        labels: { severity: critical }
+        annotations:
+          summary: Vault filesystem has less than ten percent available
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#vault-space
+      - alert: AtlasHttpErrors
+        expr: (sum by (job, instance) (rate(atlas_http_requests_total{status_class="5xx"}[5m])) / sum by (job, instance) (rate(atlas_http_requests_total[5m])) > 0.05) and (sum by (job, instance) (increase(atlas_http_requests_total[5m])) > 20)
+        for: 2m
+        labels: { severity: warning }
+        annotations:
+          summary: HTTP server errors exceed five percent
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#http-errors-or-latency
+      - alert: AtlasHttpLatency
+        expr: histogram_quantile(0.95, sum by (job, instance, le) (rate(atlas_http_request_duration_seconds_bucket[5m]))) > 2
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: HTTP p95 exceeds two seconds
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#http-errors-or-latency
+      - alert: AtlasRetentionErrors
+        expr: increase(atlas_retention_errors_total[15m]) > 0
+        labels: { severity: warning }
+        annotations:
+          summary: Vault retention inventory or cleanup failed
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#vault-space
+      - alert: AtlasBrokerExporterUnavailable
+        expr: up{job="rabbitmq"} == 0 or absent(up{job="rabbitmq"})
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: RabbitMQ exporter is unavailable
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#dependency-outage
+      - alert: AtlasBrokerNoConsumers
+        expr: rabbitmq_queue_consumers == 0 and rabbitmq_queue_messages_ready > 0
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: Broker has queued messages without consumers
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#export-backlog
+      - alert: AtlasAlertDeliveryFailed
+        expr: rate(alertmanager_notifications_failed_total[5m]) > 0
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: Alertmanager cannot deliver notifications
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery
+      - alert: AtlasAlertmanagerUnavailable
+        expr: up{job="alertmanager"} == 0 or absent(up{job="alertmanager"})
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: Alertmanager is unavailable
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery
+      - alert: AtlasAlertJournalUnavailable
+        expr: up{job="alert-journal"} == 0 or absent(up{job="alert-journal"})
+        for: 1m
+        labels: { severity: critical }
+        annotations:
+          summary: Durable local alert receiver is unavailable
+          runbook: docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#alert-delivery

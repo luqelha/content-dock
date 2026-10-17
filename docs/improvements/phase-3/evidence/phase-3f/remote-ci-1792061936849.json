@@ -1,0 +1,243 @@
+{
+  "observedAt": "2026-10-15T10:58:56.849Z",
+  "candidateCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+  "totalCount": 1,
+  "status": "pending",
+  "runs": [
+    {
+      "id": 38724067559,
+      "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559",
+      "workflowId": 328491478,
+      "headSha": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+      "branch": "release/phase-3f-20261015105810",
+      "event": "push",
+      "status": "in_progress",
+      "conclusion": null,
+      "runAttempt": 1,
+      "createdAt": "2026-10-15T10:58:50Z",
+      "updatedAt": "2026-10-15T10:58:54Z",
+      "jobs": [
+        {
+          "id": 116385476672,
+          "name": "validate",
+          "status": "in_progress",
+          "conclusion": null,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559/job/116385476672",
+          "startedAt": "2026-10-15T10:58:54Z",
+          "completedAt": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "number": 1,
+              "status": "completed",
+              "conclusion": "success",
+              "startedAt": "2026-10-15T10:58:54Z",
+              "completedAt": "2026-10-15T10:58:55Z"
+            },
+            {
+              "name": "Initialize containers",
+              "number": 2,
+              "status": "in_progress",
+              "conclusion": null,
+              "startedAt": "2026-10-15T10:58:55Z",
+              "completedAt": null
+            },
+            {
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 3,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+              "number": 4,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm ci",
+              "number": 5,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run prisma:generate --workspace=@atlas/api",
+              "number": 6,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npx prisma migrate deploy",
+              "number": 7,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Provision isolated runtime role",
+              "number": 8,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:security:db",
+              "number": 9,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run format:check:reliability",
+              "number": 10,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run lint",
+              "number": 11,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+              "number": 12,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+              "number": 13,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:security",
+              "number": 14,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm audit --omit=dev --audit-level=moderate",
+              "number": 15,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run audit:dependencies",
+              "number": 16,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+              "number": 17,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:int --workspace=@atlas/api",
+              "number": 18,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:e2e --workspace=@atlas/api",
+              "number": 19,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run build",
+              "number": 20,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npx playwright install --with-deps chromium",
+              "number": 21,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run npm run test:browser",
+              "number": 22,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+              "number": 23,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Build API container",
+              "number": 24,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Build web container",
+              "number": 25,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            },
+            {
+              "name": "Stop containers",
+              "number": 50,
+              "status": "pending",
+              "conclusion": null,
+              "startedAt": null,
+              "completedAt": null
+            }
+          ]
+        }
+      ],
+      "artifacts": []
+    }
+  ]
+}

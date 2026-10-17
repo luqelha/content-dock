@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-13",
+  "build": {
+    "api": "passed",
+    "web": "passed",
+    "apiImage": "passed",
+    "webImage": "passed"
+  },
+  "typecheck": {
+    "api": "passed",
+    "web": "passed"
+  },
+  "lint": "passed",
+  "apiUnit": {
+    "passed": 109,
+    "suites": 19,
+    "verified": "2026-10-12"
+  },
+  "integration": {
+    "passed": 23,
+    "suites": 3,
+    "verified": "2026-10-12"
+  },
+  "apiE2E": {
+    "passed": 19,
+    "suites": 3,
+    "verified": "2026-10-12"
+  },
+  "security": {
+    "apiPassed": 57,
+    "apiIsUnitSubset": true,
+    "nodePassed": 22,
+    "verified": "2026-10-13"
+  },
+  "databaseRole": {
+    "passed": 3
+  },
+  "coverage": {
+    "lines": 42.09,
+    "branches": 35.32,
+    "statements": 41.78,
+    "functions": 34.93
+  },
+  "dependencyAudit": {
+    "runtime": 0,
+    "all": {
+      "high": 41,
+      "moderate": 7,
+      "total": 48
+    }
+  },
+  "browserMcp": "core flows passed; see browser-verification.json",
+  "browserRunner": "2 tests discovered; remote CI not executed",
+  "productionReady": false,
+  "productionModeSmoke": "Additional local production-mode startup/health retry rejected by automatic approval review: blocked by policy; not bypassed"
+}

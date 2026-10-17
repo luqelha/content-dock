@@ -16,35 +16,38 @@ export default async function DashboardLayout({
   const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value;
 
   let initialUser = null;
-  let initialTenants = [];
+  let initialTenants: Awaited<ReturnType<typeof fetchTenants>> = [];
 
   if (token) {
-    try {
-      const [user, tenants] = await Promise.all([
-        fetchProfile(token),
-        fetchTenants(token),
-      ]);
-      initialUser = user;
-      initialTenants = tenants || [];
-    } catch (error) {
-      console.error("Failed to fetch user or tenants data:", error);
-    }
+    const [user, tenants] = await Promise.all([
+      fetchProfile(token),
+      fetchTenants(token),
+    ]);
+    initialUser = user;
+    initialTenants = tenants || [];
   }
 
   return (
-    <TenantProvider 
-      initialUser={initialUser} 
+    <TenantProvider
+      initialUser={initialUser}
       initialTenants={initialTenants}
       initialActiveTenantId={activeTenantId}
     >
       <TooltipProvider>
         <SidebarProvider>
+          <a href="#dashboard-content" className="skip-link">
+            Skip to content
+          </a>
           <AppSidebar />
           <SidebarInset className="flex flex-1 flex-col overflow-hidden">
             <DashboardHeader />
-            <main className="flex-1 overflow-y-auto overflow-x-hidden">
+            <div
+              id="dashboard-content"
+              tabIndex={-1}
+              className="flex-1 overflow-y-auto overflow-x-hidden outline-none"
+            >
               {children}
-            </main>
+            </div>
           </SidebarInset>
         </SidebarProvider>
       </TooltipProvider>

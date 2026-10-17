@@ -1,0 +1,26 @@
+{
+  "operation": "prometheus",
+  "startedAt": "2026-10-15T12:39:37.454Z",
+  "finishedAt": "2026-10-15T12:39:38.098Z",
+  "command": [
+    "docker",
+    "run",
+    "--name",
+    "atlas-phase4a-promcfg-1792067977454",
+    "--network",
+    "none",
+    "--entrypoint",
+    "/bin/promtool",
+    "-v",
+    "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+    "prom/prometheus:v3.15.0",
+    "check",
+    "config",
+    "--syntax-only",
+    "/etc/atlas/prometheus.yml"
+  ],
+  "exitCode": 0,
+  "log": "check-prometheus-1792067978097.log",
+  "logSha256": "d28a6db99f02d9c8dff1f2b8a0377561ffe3d6b5fc85dc6eae5e3f5add6eb24f",
+  "scope": "Working tree validation, not staging or production"
+}

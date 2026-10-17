@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-15T10:58:31.770Z",
+  "mode": "read-only",
+  "localFiles": [
+    {
+      "path": ".env.production",
+      "present": false
+    },
+    {
+      "path": "C:\\Users\\LENOVO\\.ssh\\config",
+      "present": true,
+      "hostAliases": [
+        "192.168.56.10"
+      ]
+    },
+    {
+      "path": "C:\\Users\\LENOVO\\.aws\\config",
+      "present": false
+    },
+    {
+      "path": "C:\\Users\\LENOVO\\.aws\\credentials",
+      "present": false
+    },
+    {
+      "path": "apps/api/.env",
+      "present": true,
+      "connections": [
+        {
+          "name": "DATABASE_URL",
+          "host": "localhost",
+          "local": true
+        },
+        {
+          "name": "REDIS_URL",
+          "host": "localhost",
+          "local": true
+        },
+        {
+          "name": "RABBITMQ_URL",
+          "host": "localhost",
+          "local": true
+        }
+      ]
+    },
+    {
+      "path": "apps/web-admin/.env",
+      "present": true,
+      "connections": [
+        {
+          "name": "NEXT_PUBLIC_API_URL",
+          "host": "127.0.0.1",
+          "local": true
+        }
+      ]
+    },
+    {
+      "path": "apps/web-admin/.env.local",
+      "present": true,
+      "connections": [
+        {
+          "name": "NEXT_PUBLIC_API_URL",
+          "host": "localhost",
+          "local": true
+        }
+      ]
+    }
+  ],
+  "remoteMetadata": [
+    {
+      "endpoint": "/actions/secrets?per_page=100",
+      "httpStatus": 200,
+      "totalCount": 0,
+      "names": []
+    },
+    {
+      "endpoint": "/actions/variables?per_page=100",
+      "httpStatus": 200,
+      "totalCount": 0,
+      "names": []
+    }
+  ]
+}

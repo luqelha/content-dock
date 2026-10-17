@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-15T10:13:31.649Z",
+  "imageVolumes": [
+    "/var/lib/rabbitmq"
+  ],
+  "volumeEvents": [
+    {
+      "action": "create",
+      "id": "a0d10dbf211d2ff970f42db94d56de1c7eb15e0289952c1160c61bbfe96142a0",
+      "time": 1792059165
+    },
+    {
+      "action": "mount",
+      "id": "a0d10dbf211d2ff970f42db94d56de1c7eb15e0289952c1160c61bbfe96142a0",
+      "time": 1792059165
+    },
+    {
+      "action": "unmount",
+      "id": "a0d10dbf211d2ff970f42db94d56de1c7eb15e0289952c1160c61bbfe96142a0",
+      "time": 1792059167
+    },
+    {
+      "action": "destroy",
+      "id": "a0d10dbf211d2ff970f42db94d56de1c7eb15e0289952c1160c61bbfe96142a0",
+      "time": 1792059167
+    }
+  ]
+}

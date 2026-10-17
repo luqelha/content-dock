@@ -1,20 +1,28 @@
 "use server";
 
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { authClientHeaders } from "@/lib/auth-client-headers";
+import {
+  authFailure,
+  authResponseError,
+  dashboardDestination,
+  validateAuthForm,
+  type AuthState,
+} from "@/lib/auth-validation";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api";
+const API_URL =
+  process.env.API_URL ||
+  process.env.NEXT_PUBLIC_API_URL ||
+  "http://localhost:4000/api";
 
-export async function login(prevState: unknown, formData: FormData) {
-  const email = formData.get("email");
-  const password = formData.get("password");
-
-  if (!email || !password) {
-    return {
-      error: "Email and password are required",
-      email: email?.toString(),
-      timestamp: Date.now(),
-    };
+export async function login(
+  prevState: unknown,
+  formData: FormData,
+): Promise<AuthState> {
+  const { email, password, fieldErrors } = validateAuthForm(formData);
+  if (Object.keys(fieldErrors).length) {
+    return authFailure(email, "Check the highlighted fields.", fieldErrors);
   }
 
   try {
@@ -22,21 +30,34 @@ export async function login(prevState: unknown, formData: FormData) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...authClientHeaders(await headers(), String(email)),
       },
       body: JSON.stringify({ email, password }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(10000),
     });
-
-    const data = await res.json();
-
     if (!res.ok) {
-      return {
-        error: data.message || "Invalid credentials",
-        email: email?.toString(),
-        timestamp: Date.now(),
-      };
+      return authFailure(email, authResponseError(res.status));
+    }
+
+    const data: unknown = await res.json();
+    if (
+      !data ||
+      typeof data !== "object" ||
+      !("access_token" in data) ||
+      typeof data.access_token !== "string" ||
+      !data.access_token ||
+      !("refresh_token" in data) ||
+      typeof data.refresh_token !== "string" ||
+      !data.refresh_token
+    ) {
+      return authFailure(email, authResponseError(502));
     }
 
     const cookieStore = await cookies();
+
+    // Workspace selection belongs to the previous session, not the new login.
+    cookieStore.delete("atlas_active_tenant_id");
 
     // Store tokens in HTTP-only cookies
     cookieStore.set("access_token", data.access_token, {
@@ -54,38 +75,23 @@ export async function login(prevState: unknown, formData: FormData) {
       path: "/",
       maxAge: 60 * 60 * 24 * 7, // 7 days
     });
-  } catch (error) {
-    console.error("Login error:", error);
-    return {
-      error: "An unexpected error occurred. Please try again.",
-      email: email?.toString(),
-      timestamp: Date.now(),
-    };
+  } catch {
+    // Do not log network exceptions that may contain credentials or tokens.
+    console.error("Authentication request failed", { operation: "login" });
+    return authFailure(email, authResponseError(503));
   }
 
   // Redirect after successfully setting cookies (must be outside try/catch)
-  redirect("/dashboard");
+  redirect(dashboardDestination((await headers()).get("referer")));
 }
 
-export async function register(prevState: unknown, formData: FormData) {
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const confirmPassword = formData.get("confirmPassword");
-
-  if (!email || !password || !confirmPassword) {
-    return {
-      error: "All fields are required",
-      email: email?.toString(),
-      timestamp: Date.now(),
-    };
-  }
-
-  if (password !== confirmPassword) {
-    return {
-      error: "Passwords do not match",
-      email: email?.toString(),
-      timestamp: Date.now(),
-    };
+export async function register(
+  prevState: unknown,
+  formData: FormData,
+): Promise<AuthState> {
+  const { email, password, fieldErrors } = validateAuthForm(formData, true);
+  if (Object.keys(fieldErrors).length) {
+    return authFailure(email, "Check the highlighted fields.", fieldErrors);
   }
 
   try {
@@ -93,26 +99,18 @@ export async function register(prevState: unknown, formData: FormData) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...authClientHeaders(await headers(), String(email)),
       },
       body: JSON.stringify({ email, password }),
+      cache: "no-store",
+      signal: AbortSignal.timeout(10000),
     });
-
-    const data = await res.json();
-
     if (!res.ok) {
-      return {
-        error: data.message || "Registration failed",
-        email: email?.toString(),
-        timestamp: Date.now(),
-      };
+      return authFailure(email, authResponseError(res.status, true));
     }
-  } catch (error) {
-    console.error("Register error:", error);
-    return {
-      error: "An unexpected error occurred. Please try again.",
-      email: email?.toString(),
-      timestamp: Date.now(),
-    };
+  } catch {
+    console.error("Authentication request failed", { operation: "register" });
+    return authFailure(email, authResponseError(503, true));
   }
 
   // Auto-login or redirect to login
@@ -130,14 +128,17 @@ export async function logout() {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000),
       });
-    } catch (error) {
-      console.error("Logout error on backend:", error);
+    } catch {
+      console.error("Authentication request failed", { operation: "logout" });
     }
   }
 
   cookieStore.delete("access_token");
   cookieStore.delete("refresh_token");
+  cookieStore.delete("atlas_active_tenant_id");
 
   redirect("/login");
 }

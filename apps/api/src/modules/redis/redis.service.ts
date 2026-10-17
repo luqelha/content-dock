@@ -9,9 +9,14 @@ export class RedisService implements OnModuleInit, OnModuleDestroy {
   constructor() {
     this.client = createClient({
       url: process.env.REDIS_URL || 'redis://localhost:6379',
+      disableOfflineQueue: true,
+      socket: {
+        connectTimeout: 2500,
+        reconnectStrategy: (retries) => Math.min(100 * 2 ** Math.min(retries, 5), 3000),
+      },
     });
 
-    this.client.on('error', (err) => this.logger.error('Redis Client Error', err));
+    this.client.on('error', () => this.logger.error({ event: 'REDIS_CONNECTION_ERROR' }));
     this.client.on('connect', () => this.logger.log('Connected to Redis'));
   }
 

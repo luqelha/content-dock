@@ -1,0 +1,279 @@
+{
+  "relativeTo": "Phase 3E initial-file-hashes.json, not Git HEAD",
+  "excluded": [
+    "changed-files.json self hash",
+    "ignored logs and generated outputs"
+  ],
+  "files": [
+    {
+      "path": "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md",
+      "status": "modified",
+      "sha256": "fd29314811daf9d4e8ac3a929d52efb81eb1524ba9569471ca61777ecbdf6f43"
+    },
+    {
+      "path": "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+      "status": "added",
+      "sha256": "760d943500592342ab1d3871445a6c279358e9090df6ae1469fa78f134a4e125"
+    },
+    {
+      "path": "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+      "status": "modified",
+      "sha256": "6b937b49c9a989df0a70b78acd0251b9a8fe59ca0a4032f44b6aeec9f8e3f98c"
+    },
+    {
+      "path": "docs/improvements/phase-3/TEST-COVERAGE-REPORT.md",
+      "status": "modified",
+      "sha256": "63ef57ee1711abe52cf8daf4918f4e0f2316fa88e92e800b3b27822e002e2a8b"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/README.md",
+      "status": "added",
+      "sha256": "095eacd4f0cdbf325a2ca3fb932b0b439d7ce3250b1911402d4968820e1e75d8"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/artifact-qa.json",
+      "status": "added",
+      "sha256": "f87d7ddc84e0760a5857e8ec5fe50d238699ec002cc70ce3a88aadb5c96708a1"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/audit-policy.json",
+      "status": "added",
+      "sha256": "a470a30c60c4b5aad18d642798aa1d8ebabb7ac137dd86ee668af77cdb534b24"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/auditAll.json",
+      "status": "added",
+      "sha256": "17785915e470d0aca92ceb876cae22e721ae4133dcb46f4d57f0070236ceeae6"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/auditRuntime.json",
+      "status": "added",
+      "sha256": "8794e4e068e8b1374880ef4cfd9b8c26d02100a4fff8795066674005a80d6375"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/browser.json",
+      "status": "added",
+      "sha256": "1bf0830d7e991afc5a50ba3be0a21217d475eeac897825fb3eb0feaf4daa17e7"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/buildApi.json",
+      "status": "added",
+      "sha256": "f916fabf49a40d3bad261c9e86927e8b69191f7c61484869d429ac404c8579f5"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/buildWeb.json",
+      "status": "added",
+      "sha256": "f4bb26f5498e4c84e03111245f0f04ee57b8c0f02724ebb1fd8efa83ed6e91fe"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/containers-after.json",
+      "status": "added",
+      "sha256": "4adba7001846672e813617b1d3af87185e300afc110af14749f8d94cadfdda58"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/containers-before.json",
+      "status": "added",
+      "sha256": "425f15142c21e1fe604d65578a53bd36b286f32402927ceda42114f1e43136d8"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/containers-resume-before.json",
+      "status": "added",
+      "sha256": "e04cc3bca6008b01f4a9f99c2412ce6c253cb9b3c078d9872ce5f6a60f5873c7"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/coverage.json",
+      "status": "added",
+      "sha256": "d78cf32e05fd3b2271d8ed2b88248f7015991370de4dbea918b401234cccc0aa"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/diagnostic-volume-review.json",
+      "status": "added",
+      "sha256": "441c11a22418ca1832b7358995b8004a942bfa58fae27dae7a4f89a71df5af56"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/drill-1792059490242.json",
+      "status": "added",
+      "sha256": "e41662565a029fa6947dbf45bcd7b470b99628043962d3caed2003cab665d1b8"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/e2e.json",
+      "status": "added",
+      "sha256": "3e8e6337beeecb4a30d9bdc779cb80a1dff1788c6c1eb4e4541a10f0d7f6d3e7"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/fixture.json",
+      "status": "added",
+      "sha256": "7e022e825ebaeeb621dc31315d1d63f994a672c2906edd37b7906ba7cc3ae848"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/format.json",
+      "status": "added",
+      "sha256": "48107ed462a08aa19b949550d54570d9b88610ff6bc9340c032a84fb61c047b4"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/generate.json",
+      "status": "added",
+      "sha256": "18f8d9f297b36e2ec6df691dd5ee6946af609c47afab595d42204d9a13e28f2e"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/git-status-before.txt",
+      "status": "added",
+      "sha256": "cc5888f987371d09563ebe357def0b24b264d46ef8b1182d1c32d6ab6231f30b"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/grants.json",
+      "status": "added",
+      "sha256": "d1262b370ad1d51bd1b244b54c1badfa3ac764baea74a4c71258218b144eae7f"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/harness-attempts.json",
+      "status": "added",
+      "sha256": "1f33b9c9721e67842cc9a9421109869478c5d047ee6eda4fd2ada645a9344fbb"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/imageApi-resume.json",
+      "status": "added",
+      "sha256": "a3d5974663d3f1dbe2096c44f9627821e6e7abea5c84902157c7ac989dcb9c0d"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/imageApi.json",
+      "status": "added",
+      "sha256": "38b678e927cc0daa46f8b17067fa14befb42a9f0fc4bcbc64bd6106a1c275294"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/imageWeb-resume.json",
+      "status": "added",
+      "sha256": "2886ee10663c17b6617628a4fd9c215c0987855147033bff4cedc9263373203b"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/imageWeb.json",
+      "status": "added",
+      "sha256": "1d432023a8ac110da469c5c07dc66084c045a486a34c587b254d0c8fd739080a"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/initial-file-hashes.json",
+      "status": "added",
+      "sha256": "31bcfa4b69b57e11142270636486bfbc3077ea130765e718d89e9a0068356a16"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/integration.json",
+      "status": "added",
+      "sha256": "73bf1cf23e92ad6ddf4ea588e40d483018a1ea75d73dfc14336ec818a5186498"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/interruption.json",
+      "status": "added",
+      "sha256": "335d70ede3c0c8d614d87ff585beed2e60439ce214052b70e2b45f0338806b6e"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/isolate-vault.cjs",
+      "status": "added",
+      "sha256": "0b12ff524844985e8097c813c3664330bbf41a45ed1746703e84bd1fbed758ae"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/lintApi.json",
+      "status": "added",
+      "sha256": "4c37a2206df659514fc3d3bc5a03323e4a5e9fd1436826b674a629f61a2ea221"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/lintWeb.json",
+      "status": "added",
+      "sha256": "c8a70a09622cd328853eef83650ee485a8eb6b08a3e13d5a1eb9c52567bfae6e"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/migrate.json",
+      "status": "added",
+      "sha256": "c403f157ad1636cc88040dfddc3ff9261885abea1fa7e9cbb5272c2568e4f0d7"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/migrationStatus.json",
+      "status": "added",
+      "sha256": "f08aab72c4ef3b2cb006b41b7715302cbb08ff73f2e9ab67dd4b9857cdea9a01"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/preservation-check.json",
+      "status": "added",
+      "sha256": "d8752a3a5cbfd23d1e9d2a9b5deecac60a636305648177200e9bbaaadcaea4c7"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/provision.json",
+      "status": "added",
+      "sha256": "e51bbf13951d3d119b02321b0834506b38ef057682afda528f0c45359c17ceab"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/proxy.json",
+      "status": "added",
+      "sha256": "e95ffec8caaee802b6262bf2fc5f8eac7a3e03071dfe4a8dedbde1b541881a16"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/recovery-drill.json",
+      "status": "added",
+      "sha256": "587079a133884b13bf1b1948c1c4e9180a3d9fa83457e957b450f8274cabc888"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/recovery.cjs",
+      "status": "added",
+      "sha256": "ba0a917db62a450116f141fd758d409930d6f1787674b34faf1a883665660840"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/recovery.json",
+      "status": "added",
+      "sha256": "cb82695207c54f7de614b896c468397162b6865460ca443921a73e19f18d9e69"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/registry-probe.json",
+      "status": "added",
+      "sha256": "9dc0ffee5b179ca24c8a6cdf3b8d8f91cc1fcba91b20aaa0f869854f5fc5f26d"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/restore-resume.json",
+      "status": "added",
+      "sha256": "ac55aef86279377def54dfc1e2dbbcffea0c3560e3ee023eebbcd39b8048083c"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/restore.cjs",
+      "status": "added",
+      "sha256": "2be706015e85643edc535b497d6193034de8eb824cbc77cf20a46c9919f15254"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/run-check.cjs",
+      "status": "added",
+      "sha256": "5bd03aa44c041dc8442d93fef975131102410452b86a72cf1be43c9f9b581c40"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/run-operation.cjs",
+      "status": "added",
+      "sha256": "c8c11dd67a1742add70741be9f19cb0c72460a10a0e7cd69b51965c81b104386"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/security.json",
+      "status": "added",
+      "sha256": "dd83cab8bede635e38075ef0122cff61908ea5ccecc873d9ab7167cef2ac6930"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/summarize.cjs",
+      "status": "added",
+      "sha256": "881bcaecd4148ab17267aecd040b4ef7dbbb4eae56ba262f9f74df2043cbfdea"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/typesApi.json",
+      "status": "added",
+      "sha256": "a179ce6f74c72b31b67bb21fd9ca1d17fc29485aee4e1e15743386eb927fc649"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/typesWeb.json",
+      "status": "added",
+      "sha256": "649f76b1e7d27a3a617043a68067b0a9a5cf4875fa4112143f6ee73b46447e0d"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/unit.json",
+      "status": "added",
+      "sha256": "59a80690d413dca32ea3932d1bef403e8e30acc52dde3b56b89e6b9b6bc443a5"
+    },
+    {
+      "path": "docs/improvements/phase-3/evidence/phase-3e/validation-summary.json",
+      "status": "added",
+      "sha256": "4a4d1fb8637287d7c42848e59b7f41d4f5bd687c47f8afcd265352507e7992c3"
+    }
+  ]
+}

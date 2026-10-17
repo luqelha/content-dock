@@ -1,0 +1,14 @@
+{
+  "name": "lintWeb",
+  "command": [
+    "node",
+    "npm-cli.js",
+    "run",
+    "lint",
+    "--workspace=@atlas/web-admin"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 77598,
+  "finishedAt": "2026-10-14T03:51:28.976Z"
+}

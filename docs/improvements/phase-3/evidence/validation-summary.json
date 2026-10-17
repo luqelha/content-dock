@@ -1,0 +1,134 @@
+{
+  "date": "2026-10-13",
+  "scope": "Phase 3A assessment only",
+  "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "environment": {
+    "node": "v22.18.0",
+    "npm": "11.18.0",
+    "os": "win32"
+  },
+  "phase2Files": {
+    "total": 126,
+    "matched": 126
+  },
+  "checks": {
+    "unit": {
+      "exitCode": 0,
+      "suites": 19,
+      "passed": 109
+    },
+    "securityApi": {
+      "exitCode": 0,
+      "suites": 8,
+      "passed": 57,
+      "subsetOfUnit": true
+    },
+    "securityNode": {
+      "exitCode": 0,
+      "passed": 22
+    },
+    "lintApi": {
+      "exitCode": 0
+    },
+    "lintWeb": {
+      "exitCode": 0
+    },
+    "typecheckApi": {
+      "exitCode": 0
+    },
+    "typecheckWeb": {
+      "exitCode": 0
+    },
+    "buildApi": {
+      "exitCode": 0
+    },
+    "buildWeb": {
+      "exitCode": 0
+    },
+    "lockfileDryRun": {
+      "exitCode": 0,
+      "cleanInstall": false
+    },
+    "runtimeAudit": {
+      "exitCode": 0,
+      "vulnerabilities": 0
+    },
+    "allAudit": {
+      "exitCode": 1,
+      "vulnerabilities": {
+        "info": 0,
+        "low": 0,
+        "moderate": 7,
+        "high": 41,
+        "critical": 0,
+        "total": 48
+      },
+      "underlyingAdvisories": 3
+    },
+    "browserDiscovery": {
+      "exitCode": 0,
+      "discovered": 2,
+      "browserExecuted": false
+    },
+    "strictnessImpact": {
+      "exitCode": 2,
+      "diagnostics": 29,
+      "files": 19,
+      "sourceDiagnostics": 24,
+      "testDiagnostics": 5,
+      "configurationChanged": false
+    },
+    "workerLeaseProbe": {
+      "scope": "Source executed with mock DB/compression/clock",
+      "findingReproduced": true,
+      "beforeStaleAttempt": "Completed",
+      "afterStaleAttempt": "Failed"
+    }
+  },
+  "coverage": {
+    "lines": {
+      "total": 1564,
+      "covered": 658,
+      "skipped": 0,
+      "pct": 42.07
+    },
+    "statements": {
+      "total": 1752,
+      "covered": 732,
+      "skipped": 0,
+      "pct": 41.78
+    },
+    "functions": {
+      "total": 249,
+      "covered": 87,
+      "skipped": 0,
+      "pct": 34.93
+    },
+    "branches": {
+      "total": 402,
+      "covered": 142,
+      "skipped": 0,
+      "pct": 35.32
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "notRerun": [
+    "DB integration",
+    "API E2E",
+    "DB role regression",
+    "browser execution",
+    "remote CI",
+    "Docker image build",
+    "runtime and proxy smoke",
+    "production mode smoke",
+    "backup restore",
+    "benchmark"
+  ],
+  "applicationChanges": [],
+  "productionReady": false
+}

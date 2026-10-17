@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-15T11:10:38.316Z",
+  "method": "Canonicalize source and emitted JavaScript using the same formatter options before/after. Raw emitter output can retain layout differences. This is separate from regression tests.",
+  "checks": [
+    {
+      "file": "tests/browser/auth-forms.spec.ts",
+      "referenceCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+      "canonicalSourceIdentical": true,
+      "formattedEmittedJavaScriptIdentical": true,
+      "canonicalSourceSha256": "655f4b7f81406ea8d12ca200bb53761068adad7dd18ab28700ebd21411ff13f3",
+      "formattedEmittedJavaScriptSha256": "562204a4afa41e380c49a1ed576697fb698348955041638ebf21d774b7117811"
+    },
+    {
+      "file": "apps/api/src/modules/auth/services/auth.service.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "canonicalSourceIdentical": true,
+      "formattedEmittedJavaScriptIdentical": true,
+      "canonicalSourceSha256": "7088013827600eb60ec67733bf1651fd9319c3b890d914c13e0f19fec7696359",
+      "formattedEmittedJavaScriptSha256": "1579cebf838965bcaf1c6fabed9b9c8ec4a9e2073befab577e5f8d299de096f8"
+    },
+    {
+      "file": "apps/api/test/unit/modules/user/user.service.spec.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "canonicalSourceIdentical": true,
+      "formattedEmittedJavaScriptIdentical": true,
+      "canonicalSourceSha256": "15a72310c7882614def0a14427306298a1c48cf4693f5bb4c4d5097b259680b2",
+      "formattedEmittedJavaScriptSha256": "bd81e699e81f7398586252c292bf9fee30b4365d419fc19c1ef626a8c8a29d06"
+    },
+    {
+      "file": "apps/api/test/unit/security/audit-attribution.spec.ts",
+      "referenceCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "canonicalSourceIdentical": true,
+      "formattedEmittedJavaScriptIdentical": true,
+      "canonicalSourceSha256": "cc663f762406dbcdac6cf290a3c81333df943454276230447e7272f76c7d1447",
+      "formattedEmittedJavaScriptSha256": "fda7a223e28b5de4a8d5cdfada535c77976f6888d8d4344e27ecf37d13572993"
+    }
+  ]
+}

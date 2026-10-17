@@ -1,6 +1,9 @@
 import { cookies } from "next/headers";
-import { fetchCategories, getContent } from "@/lib/api";
-import { ContentForm } from "@/components/dashboard/content/content-form";
+import { fetchCategories, getContent, getCategory } from "@/lib/api";
+import {
+  ContentForm,
+  type ContentInitialData,
+} from "@/components/dashboard/content/content-form";
 import { notFound } from "next/navigation";
 
 interface EditContentPageProps {
@@ -15,19 +18,27 @@ export default async function EditContentPage({
   const token = cookieStore.get("access_token")?.value || "";
   const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value || "";
 
-  let categories = [];
-  let initialData = null;
+  let categories: Awaited<ReturnType<typeof fetchCategories>> = [];
+  let initialData: ContentInitialData | null = null;
 
   if (token && activeTenantId) {
-    try {
-      const [fetchedCategories, fetchedContent] = await Promise.all([
-        fetchCategories(token, activeTenantId),
-        getContent(token, activeTenantId, id),
-      ]);
-      categories = fetchedCategories;
-      initialData = fetchedContent;
-    } catch (error) {
-      console.error("Failed to fetch data for edit page:", error);
+    const [fetchedCategories, fetchedContent] = await Promise.all([
+      fetchCategories(token, activeTenantId),
+      getContent(token, activeTenantId, id),
+    ]);
+    categories = fetchedCategories;
+    initialData = fetchedContent;
+    const selectedCategoryId = initialData?.categoryId;
+    if (
+      selectedCategoryId &&
+      !categories.some((item: { id: string }) => item.id === selectedCategoryId)
+    ) {
+      const selected = await getCategory(
+        token,
+        activeTenantId,
+        selectedCategoryId,
+      );
+      if (selected) categories = [selected, ...categories];
     }
   }
 
@@ -38,6 +49,7 @@ export default async function EditContentPage({
   return (
     <div className="p-4 sm:p-6 md:p-8 lg:p-10">
       <ContentForm
+        key={`${activeTenantId}:${id}`}
         isEdit
         initialData={initialData}
         categories={categories}

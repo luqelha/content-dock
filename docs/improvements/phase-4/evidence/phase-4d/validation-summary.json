@@ -1,0 +1,195 @@
+{
+  "generatedAt": "2026-10-17T02:28:48.012Z",
+  "status": "local-engineering-checks-passed-external-gates-open",
+  "environment": {
+    "platform": "win32",
+    "node": "22.18.0",
+    "playwright": "1.64.0",
+    "axePlaywright": "4.14.0",
+    "configuredNpm": "npm@10.9.9"
+  },
+  "checks": [
+    {
+      "name": "build-web",
+      "startedAt": "2026-10-17T02:19:50.974Z",
+      "finishedAt": "2026-10-17T02:20:09.698Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\next\\dist\\bin\\next build",
+      "cwd": "apps\\web-admin",
+      "log": "check-build-web.log",
+      "logSha256": "95045489b09b635c02a2daba7a79ce1ef69004ef73d5e584c686bef3f4a1f405"
+    },
+    {
+      "name": "lint-web",
+      "startedAt": "2026-10-17T02:20:09.793Z",
+      "finishedAt": "2026-10-17T02:21:01.101Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\eslint\\bin\\eslint.js .",
+      "cwd": "apps\\web-admin",
+      "log": "check-lint-web.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "name": "maintenance",
+      "startedAt": "2026-10-16T03:58:13.370Z",
+      "finishedAt": "2026-10-16T03:58:13.522Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/maintenance/*.test.cjs scripts/security/dependency-policy.test.cjs",
+      "cwd": ".",
+      "log": "check-maintenance.log",
+      "logSha256": "885769134201e77d16ed2c305f64a135bc01de6f56d443b7cedd125e7b9cfd2c"
+    },
+    {
+      "name": "security-node",
+      "startedAt": "2026-10-17T02:21:05.030Z",
+      "finishedAt": "2026-10-17T02:21:08.289Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/security/*.test.cjs",
+      "cwd": ".",
+      "log": "check-security-node.log",
+      "logSha256": "bb5fed1c85553d2b773d91420565cbfdc434517edcb58427351ce32899453a0e"
+    },
+    {
+      "name": "types-api",
+      "startedAt": "2026-10-16T03:33:48.680Z",
+      "finishedAt": "2026-10-16T03:33:59.175Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\typescript\\bin\\tsc --noEmit --incremental false",
+      "cwd": "apps\\api",
+      "log": "check-types-api.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "name": "types-web",
+      "startedAt": "2026-10-17T02:21:01.304Z",
+      "finishedAt": "2026-10-17T02:21:16.685Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\typescript\\bin\\tsc --noEmit --incremental false",
+      "cwd": "apps\\web-admin",
+      "log": "check-types-web.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "name": "unit",
+      "startedAt": "2026-10-16T03:34:00.875Z",
+      "finishedAt": "2026-10-16T03:35:49.135Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\jest\\bin\\jest.js --runInBand --coverage --json --outputFile=<repo>\\docs\\improvements\\phase-4\\evidence\\phase-4d\\unit-results.json",
+      "cwd": "apps\\api",
+      "log": "check-unit.log",
+      "logSha256": "ba17b066b12d483edc02844b1c39321e2610d51653968bb4be9badc3876bbccc"
+    },
+    {
+      "name": "web-contracts",
+      "startedAt": "2026-10-16T03:54:10.541Z",
+      "finishedAt": "2026-10-16T03:54:11.165Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/contracts/*.test.cjs",
+      "cwd": ".",
+      "log": "check-web-contracts.log",
+      "logSha256": "260a9ffe5fa33a51c4dc37325ec6a017a37d33f10da026e5c60fca5b83cdc7dc"
+    }
+  ],
+  "unit": {
+    "passed": 220,
+    "total": 220,
+    "suites": 27,
+    "success": true
+  },
+  "browser": {
+    "startTime": "2026-10-17T02:21:04.542Z",
+    "duration": 389437.097,
+    "expected": 33,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "projects": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "scans": 51,
+    "violationRules": 0,
+    "incompleteRuleOccurrences": 15,
+    "fixture": "database-regression-1792203648650.json",
+    "retention": "database-regression-1792203648650-retention.json"
+  },
+  "dependencies": {
+    "full": {
+      "info": 0,
+      "low": 0,
+      "moderate": 7,
+      "high": 41,
+      "critical": 0,
+      "total": 48
+    },
+    "runtime": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "policyFailures": [],
+    "lifecycleFailures": [],
+    "nextReviewBy": "2026-11-13",
+    "lockSha256": "444121c5e811851daeeefd23f7d7dfd93fbe57dba0a39f0e55fa97207fde3c45"
+  },
+  "externalGates": [
+    "Remote GitHub CI/scheduled workflow/Dependabot execution",
+    "NVDA/VoiceOver and physical mobile/Safari verification",
+    "Data-owner retention approval, legal holds and off-host restore proof before destructive activation",
+    "Upstream advisory remediation and staged dependency major migrations"
+  ],
+  "sourceHashes": {
+    "README.md": "c7998cee67b1c39ebcefec9ea49074e55df54c8413b29f77ce5d4bda1fc2f4fe",
+    "docs/improvements/phase-4/PHASE-4D-REPORT.md": "ad6f81b0478edc9088fea68473f4352d87bd3467f65a842308cd37d743a03d78",
+    "docs/improvements/phase-4/LONG-TERM-MAINTENANCE.md": "821ba3b779c3a2f19e861ce6a76231456fc9aab628973f967544137823bb44ff",
+    "docs/improvements/phase-4/RETENTION-POLICY.md": "cdb11af76c189d4f7e01414790e4c59a60bc4ef9ebc47328e286c55290c414fc",
+    "docs/improvements/phase-4/BROWSER-ACCESSIBILITY.md": "f5cbd4106d8ec58afab3b162c5d77af426fe23d7d85f3a9d7e418818b8376cc5",
+    "docs/improvements/phase-4/ACCESSIBILITY-REVIEW.md": "4ffc374b4fc5faa732c3c1771019da2187e592705192a439d277c26f7c9e3906",
+    "docs/improvements/phase-4/evidence/phase-4d/README.md": "9f5ee926d53831499882d6e4c33e38500792fc90ae530b96956f153b8b852774",
+    "apps/web-admin/src/components/ui/form.tsx": "3ae8a5530b5bfbf5af036b53a99707bc91bdf876fadc42d052d4a137ccd8aafb",
+    "apps/web-admin/src/components/ui/sidebar.tsx": "488dbba2db59cf3b47f240330eecdb01c714c4e194f637aba6b627af0b0b8379",
+    "apps/web-admin/src/components/theme-provider.tsx": "378f32c43a29afca01cd08cf6dd958c9c7fe44e17a7999a87ba2cf500de7e6d6",
+    "scripts/security/dependency-policy.cjs": "88de6cf1b661b638bbd560831b87aeec6799e69452a42e5d4ead9ba4662ad335",
+    "package.json": "2ffb58f7ae011e5478de2498012f62f873604947a6b22fefb40d00e5146081f8",
+    "package-lock.json": "444121c5e811851daeeefd23f7d7dfd93fbe57dba0a39f0e55fa97207fde3c45",
+    "playwright.config.ts": "edb5c5a62f4acffbaff502737d1971e786214356a263bc71a979ad17f10de845",
+    ".node-version": "68ca3fba3b7e864770cb61aeb306d4bd4354b68ab4dd38450860c5d823e42a53",
+    ".github/workflows/ci.yml": "093945d2c7bb55006df0ee9ae6576e34c13253194aade9bf392a7cd1331843e3",
+    ".github/workflows/maintenance.yml": "f1e48cad112e8fed070b79fa7303cb6167780e93e7fe45ee3feeb3cb12c52aa5",
+    ".github/dependabot.yml": "faed7d712306441c89d5f5c522a3be3a4ea4478661e92115f0fdfdf8e956d37e",
+    "ops/maintenance/dependency-lifecycle.json": "86be3e7393bd711bc7db20fde69c7a32870f40a607e3e1d97b4917f014509c2a",
+    "scripts/database/retention-inventory.sql": "ff39b4eb953368822cc797dafd54fa0b826bf7c9c71ae7f10b68216d890d90df",
+    "scripts/security/dependency-audit.cjs": "c24e9cf86e2c6cad02220564020d95dbc3b648591dc47c12bb57857c935e3d58",
+    "scripts/observability/database-regression.cjs": "424eb2f655faa25ab0fe064c1b8fd7ab2f7766e4edf27b5324a9eef349a0458f",
+    "scripts/quality/phase4c-check.cjs": "f1c94efd3fc78a2d8214b161de86ed26d2027dcddc942064f907bc4b91ef65ff",
+    "scripts/maintenance/browser-download-probe.cjs": "7531ce1132ac7d6fe24b84d582d6aa86d99a2cb41f1e5a1c62de5463c32d91df",
+    "scripts/maintenance/browser-summary.cjs": "bc0d225cfa5793599a39ad49d11f7ad56f7a7599d981340c4f759b21f6eddc5c",
+    "scripts/maintenance/browser-tls-proxy.cjs": "a26d5d66b0bfd40f4a0b3e4f57e43d03a7f7ed447669996058cb6af236e9e39e",
+    "scripts/maintenance/dependency-lifecycle.cjs": "ba56b3f9aca26c941979975aaa1a3966d29e6550512a7ff7226538570a9aa52f",
+    "scripts/maintenance/lifecycle-policy.cjs": "7004aed6ff0aa0274c4a28b0f6567cc20276afd315b5d793b3ce53990f5deb67",
+    "scripts/maintenance/lifecycle-policy.test.cjs": "c08062ecd3354a276766e33decfc613f804550811b8608f02a25da806ca7cd2d",
+    "scripts/maintenance/phase4d-browser.cjs": "32292349183d95086e00613baf92d97834be98bb888c58f6721a0f35c1b63309",
+    "scripts/maintenance/phase4d-check.cjs": "cfd52d9e78905d5d1ac8fcdc2e261e94e28ceea73c9bce4254a1f04f8b5983f6",
+    "scripts/maintenance/phase4d-summary.cjs": "0c6feb7578c1a9be3fb317cdcc91d4802d44cd4abe45000ef2eae4fccc255551",
+    "tests/browser/accessibility.ts": "5415c680638c8e88912380e4196034cc68226da405f8f64623dda5cd7776829e",
+    "tests/browser/accessibility.spec.ts": "f0f6004a8d0fd6317d700992041e5f51f52d4e0217c05543473450aa4e5bed9b",
+    "tests/browser/security-flows.spec.ts": "02a85b7043ed5c04790db3bb23b494f4d656f9fda9a860711b5d7445f93a1107",
+    "apps/web-admin/src/components/ui/password-input.tsx": "6de2a4f6b00d861f182e189a3f01d54543fd626185ac353b4153c34cf44df0fc",
+    "apps/web-admin/src/components/auth-feedback.tsx": "b6379817915f15e55e5ef6e61657e602d3cef7ed025351e167fe4ed234d7f1d4",
+    "apps/web-admin/src/app/globals.css": "95736dcbb5c6133b5f638b15c4619e5eb2739cd4f6129a9a948230ffb133d107",
+    "apps/web-admin/src/app/(auth)/login/page.tsx": "2583d5dc6c09afcbaf75123d83e025c846e5b7403c439701f8b3b9c6ae41915a",
+    "apps/web-admin/src/app/dashboard/layout.tsx": "291d6b9846997e9481fef009332961379c02fcc47d26104958b7d15d4c3a053f",
+    "apps/web-admin/src/components/dashboard/categories/category-modal.tsx": "294f7d0b6da645237a51f869169c1cbd5bc032f9227359e13d533513209a1d38",
+    "apps/web-admin/src/components/dashboard/media/media-dropzone.tsx": "ec47ef4c1bd1ce13a3cc0a8e3f7094df02c13dc4714062418043c30b67cd8cc4",
+    "apps/web-admin/src/components/dashboard/media/media-upload-modal.tsx": "a532c18f99f8b10b3ea00e0427a07777bf9500edf31bf7fc1adb26e887853be4",
+    "apps/web-admin/src/components/dashboard/media/media-preview-modal.tsx": "9b2695819b33dc93f912c139432a612bded7e7f0003698f549cff226802755b3",
+    "apps/web-admin/src/components/dashboard/media/media-delete-modal.tsx": "22cdad08e5dca9e31d710cb9a9581c8d67d324a6f4ec15fec7ac031f20ddc370",
+    "apps/web-admin/src/components/ui/image-picker-modal.tsx": "bcbd904ce6b9488611c144d290c03db3c7bf394f0ab7ef6922a664a6d1d61f08",
+    "apps/web-admin/src/components/dashboard/content/content-form.tsx": "e7f6675e0a7d8515b1a65473c64012e215c32018c9e89bc5d821d65eca7278e5",
+    "apps/web-admin/src/components/dashboard/exports-client.tsx": "6d8a4ced8dc5b2ed4b99cee9ed68ecd2b047e1d187ab74ef20167d8a5ff969a0"
+  }
+}

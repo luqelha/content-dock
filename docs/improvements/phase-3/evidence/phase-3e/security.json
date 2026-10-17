@@ -1,0 +1,13 @@
+{
+  "name": "security",
+  "command": [
+    "node",
+    "npm-cli.js",
+    "run",
+    "test:security"
+  ],
+  "node": "v22.18.0",
+  "exitCode": 0,
+  "durationMs": 91693,
+  "finishedAt": "2026-10-14T03:51:42.934Z"
+}

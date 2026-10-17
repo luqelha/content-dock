@@ -11,6 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { PasswordInput } from "@/components/ui/password-input";
+import { PASSWORD_HINT } from "@/lib/auth-validation";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -42,11 +44,18 @@ export default function UserProfilePage() {
     if (state?.success) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowSuccess(true);
+      setPreviewUrl(null);
       router.refresh();
       const timer = setTimeout(() => setShowSuccess(false), 3000);
       return () => clearTimeout(timer);
     }
   }, [state, router]);
+
+  useEffect(() => {
+    return () => {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+    };
+  }, [previewUrl]);
 
   useEffect(() => {
     if (passwordState?.success) {
@@ -111,10 +120,17 @@ export default function UserProfilePage() {
                           className="cursor-pointer flex flex-col items-center"
                         >
                           <Avatar className="avatar-container h-28 w-28 border-4 border-background shadow-sm transition-all duration-200 group-hover:shadow-md group-hover:border-primary/5">
-                            {(previewUrl || user.avatarUrl) && (
+                            {(previewUrl ||
+                              state?.avatarUrl ||
+                              user.avatarUrl) && (
                               <AvatarImage
                                 className="avatar-preview rounded-full"
-                                src={previewUrl || user.avatarUrl || undefined}
+                                src={
+                                  previewUrl ||
+                                  state?.avatarUrl ||
+                                  user.avatarUrl ||
+                                  undefined
+                                }
                                 alt="Profile Picture"
                               />
                             )}
@@ -149,7 +165,8 @@ export default function UserProfilePage() {
                           Profile Picture
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          JPG, PNG or WebP. Max 2MB.
+                          JPG, PNG or WebP. Max 2MB. Click Save Changes to
+                          upload.
                         </p>
                       </div>
                     </CardContent>
@@ -277,22 +294,29 @@ export default function UserProfilePage() {
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
                       <Label htmlFor="currentPassword">Current Password</Label>
-                      <Input
+                      <PasswordInput
                         id="currentPassword"
                         name="currentPassword"
-                        type="password"
+                        autoComplete="current-password"
+                        visibilityLabel="current password"
+                        readOnly={isPasswordPending}
                         required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="newPassword">New Password</Label>
-                      <Input
+                      <PasswordInput
                         id="newPassword"
                         name="newPassword"
-                        type="password"
+                        autoComplete="new-password"
+                        visibilityLabel="new password"
+                        readOnly={isPasswordPending}
+                        aria-describedby="new-password-hint"
                         required
-                        minLength={8}
+                        minLength={15}
+                        maxLength={72}
                       />
+                      <p id="new-password-hint" className="text-xs text-muted-foreground">{PASSWORD_HINT}</p>
                     </div>
                   </CardContent>
                   <CardFooter className="border-t px-6 py-4 bg-muted/20">

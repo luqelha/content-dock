@@ -1,0 +1,68 @@
+[
+  {
+    "id": "d0f2b1bdab255f32c3e673c9cbdcc126e12cdca5458433e927a57c70f31bab11",
+    "name": "/atlas_postgres",
+    "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+    "status": "running"
+  },
+  {
+    "id": "fd3d808f9fb4889ad3e0a34f483ff0a582e9e008f583ff7f29b76e2f020bab35",
+    "name": "/atlas_rabbitmq",
+    "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+    "status": "running"
+  },
+  {
+    "id": "278591c7bf0cb13fd9b34c6a26888417322ea1b64cce731031bf48002df58b51",
+    "name": "/atlas_redis",
+    "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+    "status": "running"
+  },
+  {
+    "id": "04a003f7ad92df07bd9a74b869b1d7c7e14972519dd74dcb7756e085445f20fc",
+    "name": "/pln-n8n",
+    "image": "sha256:14c4285bc3034dc5b51034aea393711d27053588e460722bce523453a626f23c",
+    "status": "exited"
+  },
+  {
+    "id": "e179d0aa565a56db89399cb22beed641aba054b4fc098719cc09cba9a9a2fc3e",
+    "name": "/pln-ollama-pull",
+    "image": "sha256:075246f72d4109385b4a01c3ac8e9cbd26a0bcb21cd7aa30edbccd24e1b3180c",
+    "status": "exited"
+  },
+  {
+    "id": "ac3d7d5f89bf19c608df24fe21814209a51e1a46255aec5dc3035118abb6b6c7",
+    "name": "/pln-postgres",
+    "image": "sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+    "status": "exited"
+  },
+  {
+    "id": "699834dc9d8c14067a984c7056d9003658be112d26d24e1127ab5a3619b7301d",
+    "name": "/pln-mailpit",
+    "image": "sha256:74d609a42ec279aa63c6b4622a6fa9b5408d1ad5b1d76a1c4be40a265ce0863d",
+    "status": "exited"
+  },
+  {
+    "id": "34caec472a556ef2663de3a86fe15c8ed8a5c306c8e0784f90f5f1a6ca8ef49b",
+    "name": "/pln-ollama",
+    "image": "sha256:075246f72d4109385b4a01c3ac8e9cbd26a0bcb21cd7aa30edbccd24e1b3180c",
+    "status": "exited"
+  },
+  {
+    "id": "8d3946bed999f0dc2e847aa9a0bbcc500a670dfffeebccf86daaa67f9f7727ca",
+    "name": "/atlas-platform-api-1",
+    "image": "sha256:c1bf136fb39666718b6b599bbd6237b0399437e2d4f9a179de29d34ae8ef435b",
+    "status": "running"
+  },
+  {
+    "id": "74a75827fd79f6cf534750314cdb4522e9c76243dd11be983a84e392d1720be4",
+    "name": "/atlas-platform-api-2",
+    "image": "sha256:c1bf136fb39666718b6b599bbd6237b0399437e2d4f9a179de29d34ae8ef435b",
+    "status": "running"
+  },
+  {
+    "id": "c6f7742ed06c43c7f926aebe46cac8ef4716485c94e9f008a6fb2e7a1f16c955",
+    "name": "/atlas_nginx",
+    "image": "sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752",
+    "status": "restarting"
+  }
+]

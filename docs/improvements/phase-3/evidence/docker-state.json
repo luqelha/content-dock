@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-13",
+  "scope": "Read-only local Docker inspection; no production inspection or mutation",
+  "containers": [
+    {
+      "name": "atlas-phase2-production-mode-review",
+      "image": "atlas-api:security-phase2",
+      "status": "Exited (0) 18 hours ago",
+      "ports": ""
+    },
+    {
+      "name": "atlas_postgres",
+      "image": "postgres:15-alpine",
+      "status": "Up 14 minutes",
+      "ports": "127.0.0.1:5432->5432/tcp"
+    },
+    {
+      "name": "atlas_rabbitmq",
+      "image": "rabbitmq:3-management-alpine",
+      "status": "Up 14 minutes",
+      "ports": "127.0.0.1:5672->5672/tcp, 127.0.0.1:15672->15672/tcp"
+    },
+    {
+      "name": "atlas_redis",
+      "image": "redis:7-alpine",
+      "status": "Up 14 minutes",
+      "ports": "127.0.0.1:6379->6379/tcp"
+    },
+    {
+      "name": "atlas-phase2-api-review",
+      "image": "atlas-api:security-phase2",
+      "status": "Exited (137) 6 hours ago",
+      "ports": ""
+    },
+    {
+      "name": "atlas-security-phase2-20261011-postgres-1",
+      "image": "postgres:15-alpine",
+      "status": "Exited (0) 6 hours ago",
+      "ports": ""
+    },
+    {
+      "name": "atlas-security-phase2-20261011-redis-1",
+      "image": "redis:7-alpine",
+      "status": "Exited (0) 6 hours ago",
+      "ports": ""
+    },
+    {
+      "name": "atlas-security-phase2-20261011-rabbitmq-1",
+      "image": "rabbitmq:3-management-alpine",
+      "status": "Exited (0) 6 hours ago",
+      "ports": ""
+    },
+    {
+      "name": "atlas-platform-api-1",
+      "image": "atlas-platform-api",
+      "status": "Up 14 minutes (unhealthy)",
+      "ports": "3000/tcp"
+    },
+    {
+      "name": "atlas-platform-api-2",
+      "image": "atlas-platform-api",
+      "status": "Up 14 minutes (unhealthy)",
+      "ports": "3000/tcp"
+    },
+    {
+      "name": "atlas_nginx",
+      "image": "nginx:alpine",
+      "status": "Restarting (1) 45 seconds ago",
+      "ports": ""
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+[
+  {
+    "path": ".env.production.example",
+    "status": "modified",
+    "before": "b19608a1163cef4e23a15cb033dd615bd8894d13e8dc8d1f56c87bd45abaab84",
+    "after": "8a2e48858e77682ff7da311fcb4326d4b593938389e82017e191c0d7f0c462c3"
+  },
+  {
+    "path": "apps/api/src/modules/storage/storage-retention.service.ts",
+    "status": "modified",
+    "before": "de5b11233f95d6d5da4e408db1335499f0d69e162920afa388cdb13c40f0fa6b",
+    "after": "3d46749c4c63668a0e74d8764fb434cd6a6aa805f19fdbbc35ad2aa6b6f817f6"
+  },
+  {
+    "path": "apps/api/test/integration/durability.int-spec.ts",
+    "status": "modified",
+    "before": "4c33c2f4f0156b39a128ce63927e92db090def2ad3f4e28365140ec51f955e45",
+    "after": "6fe7f31395bc442d0db89a9abe1506fb68b4c08d87dc933674df06708ac0071c"
+  },
+  {
+    "path": "apps/api/test/unit/security/storage-retention.spec.ts",
+    "status": "modified",
+    "before": "5175a75349bfb5a8c5396574ace3349576261356fd7e43556cc75c727c536c36",
+    "after": "5d940d2742e13a2b8733667474d50e5c68aa2ff2f0193e091cf2aae243b0e0e1"
+  },
+  {
+    "path": "docs/improvements/phase-3/DEPLOYMENT-RUNBOOK.md",
+    "status": "modified",
+    "before": "37df9ecbefbf9762a5ea5a713bf7868be5ad773a41b9994f95bcff89c3b759dd",
+    "after": "a7b6addbec567e52489f86427b510f40135a4675d1f7f37150babaf81c61a8fc"
+  },
+  {
+    "path": "playwright.config.ts",
+    "status": "modified",
+    "before": "153729db9d5bba62333d5325cd2d3ebf1cd8ec1650c528dd84bfff8b5cb72962",
+    "after": "9f0109d1f2fdc80480ad84c81ba591e7ee5857ca80aa70511a0f002bfaa9a5f9"
+  },
+  {
+    "path": "scripts/security/export-archive.test.cjs",
+    "status": "modified",
+    "before": "c5e380316de6e664e8aca9b8e8c0f3f424d38acaf5b4ee113eb3ff96425b2ad6",
+    "after": "7c47ca6271ec3a33f965bfc18ae8cc7bcf86534c62d0b2d091d1aac96995f0a4"
+  },
+  {
+    "path": "tests/browser/security-flows.spec.ts",
+    "status": "modified",
+    "before": "239f9c3edcce27776c3a4731d83fe522bb23171c73bda08f273b95f36b508869",
+    "after": "2e82e0530d4cc3e458ff2b925f1816e3f4a46167d4ff1212a29892518d45517d"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "status": "modified",
+    "before": "7246c81f1b1e351b64fa9cfc3bbbdb0d31cfa779345385d021a53c40b85f9612",
+    "after": "b25849ff1455c2b1805768a9e254a9d6846a46cecfa5367290db2d6bca155047"
+  },
+  {
+    "path": "apps/api/.env.example",
+    "status": "modified",
+    "before": "d541c58c58709c03aba41b5615c1e7c4eaaf4bcbf848235d9332a05316b774e3",
+    "after": "9a8414dffe006533c010768076d6c0c980ac0b4272e37d10b8b2cfdd37ad50bc"
+  },
+  {
+    "path": "apps/api/package.json",
+    "status": "modified",
+    "before": "6a508029dcbdbe3ffd0d43304936b4ec3c8f713fac7c0066b8b802af51720de4",
+    "after": "31da1ab1e17e86756debc31cc128429c423ef51abad778ebef637634fa24662a"
+  },
+  {
+    "path": "apps/api/prisma/schema.prisma",
+    "status": "modified",
+    "before": "f0ea37b6f7ccf2466a8a537d964dc006880928fbbf670206dcb4ef45dcfc7a88",
+    "after": "3c6c1974408262a1c65fae3ccc8c602c5dbf0c60c03a838187386abb12d646d9"
+  },
+  {
+    "path": "apps/api/src/config/env.validation.ts",
+    "status": "modified",
+    "before": "37fb9808ec34321dd7851c8dca66c55d83d4db4f058c5157d623f208e1625dfd",
+    "after": "ec67711210a1f1c46b86ae27ca104e83135dea00831a2b801ea8a1c29f04dafd"
+  },
+  {
+    "path": "apps/api/src/modules/export/compression.service.ts",
+    "status": "modified",
+    "before": "bd45456b897c051b47ba06bd913dc02cee6fbf3279fe4d5b991590606d754c16",
+    "after": "cd595c1cfe24cfee6b293551c529ff87b7b7acaaff4bc35e8f71a3f981fd9703"
+  },
+  {
+    "path": "apps/api/src/modules/export/export.controller.ts",
+    "status": "modified",
+    "before": "2822b8accc8189846275bd0ff5e58f550414b3309588eb2d4a23e233796ae0c4",
+    "after": "412b32d77c71c5fe5f239db7642c50985d2c029d659d354fb3bc550b96603462"
+  },
+  {
+    "path": "apps/api/src/modules/export/worker.controller.ts",
+    "status": "modified",
+    "before": "a95fb24f3c0175ac51940f79ce363faac0b6fd9c2ed82436d044c9d779cab957",
+    "after": "2774246d6715e447bbba0784958feda54f5ee4ac3b0c4f37aa5527f0ce509ed5"
+  },
+  {
+    "path": "docker-compose.prod.yml",
+    "status": "modified",
+    "before": "8be09e5cfd870b5696b8d33f782cd874b635765e999f75a38f64d87e938e86d7",
+    "after": "aa19b657ebb221c8e99f444c3fd866c773c64241dd11ffc389d52038e1f942da"
+  },
+  {
+    "path": "package-lock.json",
+    "status": "modified",
+    "before": "48512135091df182440f5db90151c893cf4be7ff5fcd067f182e350b083d15a0",
+    "after": "2353b314e4b37702640501913f227d9e235c6e9910b021e8cbe482eb6f479ba6"
+  },
+  {
+    "path": "package.json",
+    "status": "modified",
+    "before": "0b245048b2e4b7ec67cd4ea8cd1e5a7a22c6f1816346ad932814b385064aeb6c",
+    "after": "622c275135356baed68848cc6420f0ef3cdc79c52aa76aed1a89f7577deb06a5"
+  },
+  {
+    "path": "apps/api/prisma/migrations/20261013000000_export_lease_token/migration.sql",
+    "status": "added",
+    "before": null,
+    "after": "ce92571fd1c048002342902e902a1378ce189251f90d20b817e86513c332768d"
+  },
+  {
+    "path": "apps/api/src/modules/export/export-filename.ts",
+    "status": "added",
+    "before": null,
+    "after": "66a7b689da6dd6e0f646c7001f018fdefc4e1919d59c77e7a1e1953fac5386a7"
+  },
+  {
+    "path": "apps/api/test/unit/security/export-download.spec.ts",
+    "status": "added",
+    "before": null,
+    "after": "3c54c7c9133b1bc03ffe7179ecb65d6897fbca5b9d3e922a1d70e2f599bf4c74"
+  },
+  {
+    "path": "apps/api/test/unit/security/export-recovery.spec.ts",
+    "status": "added",
+    "before": null,
+    "after": "853682b67b72239e1367da03e8a11951db83e064fa25b5acf3820323288e6600"
+  },
+  {
+    "path": "apps/api/test/unit/security/rbac-boundaries.spec.ts",
+    "status": "added",
+    "before": null,
+    "after": "8b931b9c2cec36899540a6a07f2c921f5dfa5df715ff608bf55dd4b4f2524b8a"
+  },
+  {
+    "path": "apps/api/test/unit/security/refresh-recovery.spec.ts",
+    "status": "added",
+    "before": null,
+    "after": "9710f753964132bfbd2848b8fe04b28d66480acc950877def109ae01fbc12aae"
+  },
+  {
+    "path": "artifacts/dependency-audit/audit.json",
+    "status": "added",
+    "before": null,
+    "after": "76063754aba8bc7228f24b19c8a1216d8784d4b91dec2914dda64ecfaa88cac9"
+  },
+  {
+    "path": "docs/improvements/phase-3/PHASE-3C-REPORT.md",
+    "status": "added",
+    "before": null,
+    "after": "a81995144d97fc881c354c94af0c8d22b5ecfdaa6ead2f94dbff4b763227262c"
+  },
+  {
+    "path": "docs/improvements/phase-3/RELIABILITY-REVIEW.md",
+    "status": "added",
+    "before": null,
+    "after": "321043c424dc82b2edea8753fcbaf10d03ac8c3c3e820f7530263ec4d8302508"
+  },
+  {
+    "path": "docs/improvements/phase-3/SECURITY-DEPENDENCY-REVIEW.md",
+    "status": "added",
+    "before": null,
+    "after": "83ca4309e46e11f059af41b31ce96eb251d54b5eb9f92f9b4519f6db8fd3f2f4"
+  },
+  {
+    "path": "docs/improvements/phase-3/TEST-COVERAGE-REPORT.md",
+    "status": "added",
+    "before": null,
+    "after": "949b2ff1ff6fffab9cd99f2b3c7366bc648d94ee23e96b7a4f47dd1c696f5ceb"
+  },
+  {
+    "path": "scripts/security/dependency-audit.cjs",
+    "status": "added",
+    "before": null,
+    "after": "e68be349584c29017116d3e41209db8ad2bce6dce2d770cdd8e603800ac97034"
+  },
+  {
+    "path": "scripts/security/dependency-policy.cjs",
+    "status": "added",
+    "before": null,
+    "after": "88de6cf1b661b638bbd560831b87aeec6799e69452a42e5d4ead9ba4662ad335"
+  },
+  {
+    "path": "scripts/security/dependency-policy.test.cjs",
+    "status": "added",
+    "before": null,
+    "after": "802e9471c86cf20e9dc40bd63cbc588e9f53c54f85d9bb7ff8c907f921c5e623"
+  },
+  {
+    "path": "scripts/security/phase3c-recovery.cjs",
+    "status": "added",
+    "before": null,
+    "after": "122ed4e24fdf66136ddf7b2cbe7916ed556c91248ad3ef309f74a3a26683af71"
+  }
+]

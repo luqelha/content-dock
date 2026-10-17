@@ -1,0 +1,1962 @@
+{
+  "at": "2026-10-15T11:41:11.335Z",
+  "timezone": "Asia/Jakarta",
+  "phase": "3F",
+  "status": "release-held",
+  "releaseReady": false,
+  "candidate": {
+    "commit": "ab2c6e00d50e28684058b08cd5fedf9947d586f2",
+    "tree": "b7231cc0997f551f86d25883b286974b68980750",
+    "branch": "release/phase-3f-20261015112759",
+    "sourceFileCount": 348
+  },
+  "gates": [
+    {
+      "gate": "remote-ci",
+      "status": "passed",
+      "runs": [
+        {
+          "id": 38727582906,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38727582906",
+          "headSha": "ab2c6e00d50e28684058b08cd5fedf9947d586f2",
+          "conclusion": "success"
+        }
+      ],
+      "stepResults": [
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:security:db",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run format:check:reliability",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run lint",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:security",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm audit --omit=dev --audit-level=moderate",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run audit:dependencies",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:int --workspace=@atlas/api",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e --workspace=@atlas/api",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:browser",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build API container",
+          "conclusion": "success"
+        },
+        {
+          "name": "Build web container",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "gate": "staging-tls-secrets-grants",
+      "status": "blocked",
+      "execution": "not-executed",
+      "reason": "No identified staging endpoint or operator connection; metadata discovery is not runtime validation."
+    },
+    {
+      "gate": "off-host-restore",
+      "status": "blocked",
+      "execution": "not-executed",
+      "reason": "No identified separate recovery host, backup/key access, recovery owner or RTO/RPO."
+    },
+    {
+      "gate": "compatible-release-rollback",
+      "status": "blocked",
+      "execution": "not-executed",
+      "reason": "No reviewed previous API/web release digest pair carrying compatible archive reader and lease fencing."
+    }
+  ],
+  "runHistory": [
+    {
+      "candidateCommit": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+      "branch": "release/phase-3f-20261015105810",
+      "observationFile": "remote-ci-1792062125341.json",
+      "observedAt": "2026-10-15T11:02:05.340Z",
+      "totalCount": 1,
+      "status": "completed",
+      "runs": [
+        {
+          "id": 38724067559,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559",
+          "workflowId": 328491478,
+          "headSha": "16d13ae50c5f4df7912e5b6da751e74cff4a7698",
+          "branch": "release/phase-3f-20261015105810",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "runAttempt": 1,
+          "createdAt": "2026-10-15T10:58:50Z",
+          "updatedAt": "2026-10-15T11:01:12Z",
+          "logEvidence": [
+            {
+              "jobId": 116385476672,
+              "file": "remote-ci-38724067559-job-116385476672.log",
+              "sha256": "9d92d3e5fdb76cb75ed2cb81d73ba515f615be0fcf1b6f8572e763c0652fec0d",
+              "bytes": 84628
+            }
+          ],
+          "jobs": [
+            {
+              "id": 116385476672,
+              "name": "validate",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724067559/job/116385476672",
+              "startedAt": "2026-10-15T10:58:54Z",
+              "completedAt": "2026-10-15T11:01:12Z",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "number": 1,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T10:58:54Z",
+                  "completedAt": "2026-10-15T10:58:55Z"
+                },
+                {
+                  "name": "Initialize containers",
+                  "number": 2,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T10:58:55Z",
+                  "completedAt": "2026-10-15T10:59:32Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 3,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T10:59:32Z",
+                  "completedAt": "2026-10-15T10:59:33Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 4,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T10:59:33Z",
+                  "completedAt": "2026-10-15T10:59:34Z"
+                },
+                {
+                  "name": "Run npm ci",
+                  "number": 5,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T10:59:34Z",
+                  "completedAt": "2026-10-15T11:01:01Z"
+                },
+                {
+                  "name": "Run npm run prisma:generate --workspace=@atlas/api",
+                  "number": 6,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:01Z",
+                  "completedAt": "2026-10-15T11:01:02Z"
+                },
+                {
+                  "name": "Run npx prisma migrate deploy",
+                  "number": 7,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:02Z",
+                  "completedAt": "2026-10-15T11:01:03Z"
+                },
+                {
+                  "name": "Provision isolated runtime role",
+                  "number": 8,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:03Z",
+                  "completedAt": "2026-10-15T11:01:03Z"
+                },
+                {
+                  "name": "Run npm run test:security:db",
+                  "number": 9,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:03Z",
+                  "completedAt": "2026-10-15T11:01:04Z"
+                },
+                {
+                  "name": "Run npm run format:check:reliability",
+                  "number": 10,
+                  "status": "completed",
+                  "conclusion": "failure",
+                  "startedAt": "2026-10-15T11:01:04Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run lint",
+                  "number": 11,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+                  "number": 12,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+                  "number": 13,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run test:security",
+                  "number": 14,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm audit --omit=dev --audit-level=moderate",
+                  "number": 15,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run audit:dependencies",
+                  "number": 16,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+                  "number": 17,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run test:int --workspace=@atlas/api",
+                  "number": 18,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run test:e2e --workspace=@atlas/api",
+                  "number": 19,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "number": 20,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npx playwright install --with-deps chromium",
+                  "number": 21,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run npm run test:browser",
+                  "number": 22,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "number": 23,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Build API container",
+                  "number": 24,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Build web container",
+                  "number": 25,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 48,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 49,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:05Z"
+                },
+                {
+                  "name": "Stop containers",
+                  "number": 50,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:05Z",
+                  "completedAt": "2026-10-15T11:01:10Z"
+                },
+                {
+                  "name": "Complete job",
+                  "number": 51,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:01:10Z",
+                  "completedAt": "2026-10-15T11:01:10Z"
+                }
+              ]
+            }
+          ],
+          "artifacts": []
+        }
+      ]
+    },
+    {
+      "candidateCommit": "ef2e90b207e3bad000ddb669f483ea363702261d",
+      "branch": "release/phase-3f-20261015110330",
+      "observationFile": "revision-2/remote-ci-1792062484630.json",
+      "observedAt": "2026-10-15T11:08:04.629Z",
+      "totalCount": 1,
+      "status": "completed",
+      "runs": [
+        {
+          "id": 38724658176,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724658176",
+          "workflowId": 328491478,
+          "headSha": "ef2e90b207e3bad000ddb669f483ea363702261d",
+          "branch": "release/phase-3f-20261015110330",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "runAttempt": 1,
+          "createdAt": "2026-10-15T11:03:46Z",
+          "updatedAt": "2026-10-15T11:06:19Z",
+          "logEvidence": [
+            {
+              "jobId": 116387407265,
+              "file": "remote-ci-38724658176-job-116387407265.log",
+              "sha256": "dde313ebf7370efb7f33291da3db95ec1bd198206e57a84a467b7c863d44f414",
+              "bytes": 92299
+            }
+          ],
+          "jobs": [
+            {
+              "id": 116387407265,
+              "name": "validate",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/luqelha/atlas-platform/actions/runs/38724658176/job/116387407265",
+              "startedAt": "2026-10-15T11:03:50Z",
+              "completedAt": "2026-10-15T11:06:18Z",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "number": 1,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:03:51Z",
+                  "completedAt": "2026-10-15T11:03:52Z"
+                },
+                {
+                  "name": "Initialize containers",
+                  "number": 2,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:03:52Z",
+                  "completedAt": "2026-10-15T11:04:32Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 3,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:04:32Z",
+                  "completedAt": "2026-10-15T11:04:33Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 4,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:04:33Z",
+                  "completedAt": "2026-10-15T11:04:35Z"
+                },
+                {
+                  "name": "Run npm ci",
+                  "number": 5,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:04:35Z",
+                  "completedAt": "2026-10-15T11:05:57Z"
+                },
+                {
+                  "name": "Run npm run prisma:generate --workspace=@atlas/api",
+                  "number": 6,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:05:57Z",
+                  "completedAt": "2026-10-15T11:05:58Z"
+                },
+                {
+                  "name": "Run npx prisma migrate deploy",
+                  "number": 7,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:05:58Z",
+                  "completedAt": "2026-10-15T11:05:59Z"
+                },
+                {
+                  "name": "Provision isolated runtime role",
+                  "number": 8,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:05:59Z",
+                  "completedAt": "2026-10-15T11:05:59Z"
+                },
+                {
+                  "name": "Run npm run test:security:db",
+                  "number": 9,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:05:59Z",
+                  "completedAt": "2026-10-15T11:05:59Z"
+                },
+                {
+                  "name": "Run npm run format:check:reliability",
+                  "number": 10,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:05:59Z",
+                  "completedAt": "2026-10-15T11:06:00Z"
+                },
+                {
+                  "name": "Run npm run lint",
+                  "number": 11,
+                  "status": "completed",
+                  "conclusion": "failure",
+                  "startedAt": "2026-10-15T11:06:00Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+                  "number": 12,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+                  "number": 13,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run test:security",
+                  "number": 14,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm audit --omit=dev --audit-level=moderate",
+                  "number": 15,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run audit:dependencies",
+                  "number": 16,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+                  "number": 17,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run test:int --workspace=@atlas/api",
+                  "number": 18,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run test:e2e --workspace=@atlas/api",
+                  "number": 19,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "number": 20,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npx playwright install --with-deps chromium",
+                  "number": 21,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run npm run test:browser",
+                  "number": 22,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "number": 23,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Build API container",
+                  "number": 24,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Build web container",
+                  "number": 25,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 48,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:11Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 49,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:06:11Z",
+                  "completedAt": "2026-10-15T11:06:12Z"
+                },
+                {
+                  "name": "Stop containers",
+                  "number": 50,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:06:12Z",
+                  "completedAt": "2026-10-15T11:06:16Z"
+                },
+                {
+                  "name": "Complete job",
+                  "number": 51,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:06:16Z",
+                  "completedAt": "2026-10-15T11:06:16Z"
+                }
+              ]
+            }
+          ],
+          "artifacts": []
+        }
+      ]
+    },
+    {
+      "candidateCommit": "57bc8f46e5e9594a3d64f8ca6410339d6afe9837",
+      "branch": "release/phase-3f-20261015111027",
+      "observationFile": "revision-3/remote-ci-1792063104854.json",
+      "observedAt": "2026-10-15T11:18:24.852Z",
+      "totalCount": 1,
+      "status": "completed",
+      "runs": [
+        {
+          "id": 38725529650,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38725529650",
+          "workflowId": 328491478,
+          "headSha": "57bc8f46e5e9594a3d64f8ca6410339d6afe9837",
+          "branch": "release/phase-3f-20261015111027",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "runAttempt": 1,
+          "createdAt": "2026-10-15T11:11:08Z",
+          "updatedAt": "2026-10-15T11:17:15Z",
+          "logEvidence": [
+            {
+              "jobId": 116390297122,
+              "file": "remote-ci-38725529650-job-116390297122.log",
+              "sha256": "3dac5af49da81a3f3528bf1f8060130ae2140bfc673e3a2e159d52448fb4fda9",
+              "bytes": 182825
+            }
+          ],
+          "jobs": [
+            {
+              "id": 116390297122,
+              "name": "validate",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/luqelha/atlas-platform/actions/runs/38725529650/job/116390297122",
+              "startedAt": "2026-10-15T11:11:12Z",
+              "completedAt": "2026-10-15T11:17:14Z",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "number": 1,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:11:13Z",
+                  "completedAt": "2026-10-15T11:11:15Z"
+                },
+                {
+                  "name": "Initialize containers",
+                  "number": 2,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:11:15Z",
+                  "completedAt": "2026-10-15T11:11:45Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 3,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:11:45Z",
+                  "completedAt": "2026-10-15T11:11:46Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 4,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:11:46Z",
+                  "completedAt": "2026-10-15T11:11:47Z"
+                },
+                {
+                  "name": "Run npm ci",
+                  "number": 5,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:11:47Z",
+                  "completedAt": "2026-10-15T11:13:33Z"
+                },
+                {
+                  "name": "Run npm run prisma:generate --workspace=@atlas/api",
+                  "number": 6,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:33Z",
+                  "completedAt": "2026-10-15T11:13:34Z"
+                },
+                {
+                  "name": "Run npx prisma migrate deploy",
+                  "number": 7,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:34Z",
+                  "completedAt": "2026-10-15T11:13:36Z"
+                },
+                {
+                  "name": "Provision isolated runtime role",
+                  "number": 8,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:36Z",
+                  "completedAt": "2026-10-15T11:13:36Z"
+                },
+                {
+                  "name": "Run npm run test:security:db",
+                  "number": 9,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:36Z",
+                  "completedAt": "2026-10-15T11:13:36Z"
+                },
+                {
+                  "name": "Run npm run format:check:reliability",
+                  "number": 10,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:36Z",
+                  "completedAt": "2026-10-15T11:13:37Z"
+                },
+                {
+                  "name": "Run npm run lint",
+                  "number": 11,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:37Z",
+                  "completedAt": "2026-10-15T11:13:54Z"
+                },
+                {
+                  "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+                  "number": 12,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:13:54Z",
+                  "completedAt": "2026-10-15T11:14:01Z"
+                },
+                {
+                  "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+                  "number": 13,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:01Z",
+                  "completedAt": "2026-10-15T11:14:08Z"
+                },
+                {
+                  "name": "Run npm run test:security",
+                  "number": 14,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:08Z",
+                  "completedAt": "2026-10-15T11:14:23Z"
+                },
+                {
+                  "name": "Run npm audit --omit=dev --audit-level=moderate",
+                  "number": 15,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:23Z",
+                  "completedAt": "2026-10-15T11:14:24Z"
+                },
+                {
+                  "name": "Run npm run audit:dependencies",
+                  "number": 16,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:24Z",
+                  "completedAt": "2026-10-15T11:14:27Z"
+                },
+                {
+                  "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+                  "number": 17,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:27Z",
+                  "completedAt": "2026-10-15T11:14:43Z"
+                },
+                {
+                  "name": "Run npm run test:int --workspace=@atlas/api",
+                  "number": 18,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:43Z",
+                  "completedAt": "2026-10-15T11:14:54Z"
+                },
+                {
+                  "name": "Run npm run test:e2e --workspace=@atlas/api",
+                  "number": 19,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:14:54Z",
+                  "completedAt": "2026-10-15T11:15:07Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "number": 20,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:15:07Z",
+                  "completedAt": "2026-10-15T11:15:51Z"
+                },
+                {
+                  "name": "Run npx playwright install --with-deps chromium",
+                  "number": 21,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:15:51Z",
+                  "completedAt": "2026-10-15T11:16:19Z"
+                },
+                {
+                  "name": "Run npm run test:browser",
+                  "number": 22,
+                  "status": "completed",
+                  "conclusion": "failure",
+                  "startedAt": "2026-10-15T11:16:19Z",
+                  "completedAt": "2026-10-15T11:17:08Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "number": 23,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:17:08Z",
+                  "completedAt": "2026-10-15T11:17:11Z"
+                },
+                {
+                  "name": "Build API container",
+                  "number": 24,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:17:11Z",
+                  "completedAt": "2026-10-15T11:17:11Z"
+                },
+                {
+                  "name": "Build web container",
+                  "number": 25,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:17:11Z",
+                  "completedAt": "2026-10-15T11:17:11Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 48,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:17:11Z",
+                  "completedAt": "2026-10-15T11:17:11Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 49,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:17:11Z",
+                  "completedAt": "2026-10-15T11:17:11Z"
+                },
+                {
+                  "name": "Stop containers",
+                  "number": 50,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:17:11Z",
+                  "completedAt": "2026-10-15T11:17:12Z"
+                },
+                {
+                  "name": "Complete job",
+                  "number": 51,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:17:12Z",
+                  "completedAt": "2026-10-15T11:17:12Z"
+                }
+              ]
+            }
+          ],
+          "artifacts": [
+            {
+              "id": 11968077548,
+              "name": "validation-results",
+              "digest": "sha256:b18c9d20a22ced358cc50b95baf2344f81d1bedbeba61e2b84b446e4afd93427",
+              "size": 3382696,
+              "expired": false,
+              "expiresAt": "2026-10-22T11:17:09Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidateCommit": "a9183dfb8b8202b043cb555c97f7e7f6dd5d8356",
+      "branch": "release/phase-3f-20261015112037",
+      "observationFile": "revision-4/remote-ci-1792063622394.json",
+      "observedAt": "2026-10-15T11:27:02.389Z",
+      "totalCount": 1,
+      "status": "completed",
+      "runs": [
+        {
+          "id": 38726724972,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38726724972",
+          "workflowId": 328491478,
+          "headSha": "a9183dfb8b8202b043cb555c97f7e7f6dd5d8356",
+          "branch": "release/phase-3f-20261015112037",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "runAttempt": 1,
+          "createdAt": "2026-10-15T11:21:16Z",
+          "updatedAt": "2026-10-15T11:26:49Z",
+          "logEvidence": [
+            {
+              "jobId": 116394301998,
+              "file": "remote-ci-38726724972-job-116394301998.log",
+              "sha256": "25cfecdf126ef176dcd29361484d2a7910d4434bd4d08f5d74a989f491dd5798",
+              "bytes": 179936
+            }
+          ],
+          "jobs": [
+            {
+              "id": 116394301998,
+              "name": "validate",
+              "status": "completed",
+              "conclusion": "failure",
+              "url": "https://github.com/luqelha/atlas-platform/actions/runs/38726724972/job/116394301998",
+              "startedAt": "2026-10-15T11:21:19Z",
+              "completedAt": "2026-10-15T11:26:48Z",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "number": 1,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:21:20Z",
+                  "completedAt": "2026-10-15T11:21:24Z"
+                },
+                {
+                  "name": "Initialize containers",
+                  "number": 2,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:21:24Z",
+                  "completedAt": "2026-10-15T11:22:02Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 3,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:22:02Z",
+                  "completedAt": "2026-10-15T11:22:03Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 4,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:22:03Z",
+                  "completedAt": "2026-10-15T11:22:04Z"
+                },
+                {
+                  "name": "Run npm ci",
+                  "number": 5,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:22:04Z",
+                  "completedAt": "2026-10-15T11:23:38Z"
+                },
+                {
+                  "name": "Run npm run prisma:generate --workspace=@atlas/api",
+                  "number": 6,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:38Z",
+                  "completedAt": "2026-10-15T11:23:40Z"
+                },
+                {
+                  "name": "Run npx prisma migrate deploy",
+                  "number": 7,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:40Z",
+                  "completedAt": "2026-10-15T11:23:41Z"
+                },
+                {
+                  "name": "Provision isolated runtime role",
+                  "number": 8,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:41Z",
+                  "completedAt": "2026-10-15T11:23:41Z"
+                },
+                {
+                  "name": "Run npm run test:security:db",
+                  "number": 9,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:41Z",
+                  "completedAt": "2026-10-15T11:23:42Z"
+                },
+                {
+                  "name": "Run npm run format:check:reliability",
+                  "number": 10,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:42Z",
+                  "completedAt": "2026-10-15T11:23:42Z"
+                },
+                {
+                  "name": "Run npm run lint",
+                  "number": 11,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:42Z",
+                  "completedAt": "2026-10-15T11:23:57Z"
+                },
+                {
+                  "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+                  "number": 12,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:23:57Z",
+                  "completedAt": "2026-10-15T11:24:03Z"
+                },
+                {
+                  "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+                  "number": 13,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:03Z",
+                  "completedAt": "2026-10-15T11:24:10Z"
+                },
+                {
+                  "name": "Run npm run test:security",
+                  "number": 14,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:10Z",
+                  "completedAt": "2026-10-15T11:24:22Z"
+                },
+                {
+                  "name": "Run npm audit --omit=dev --audit-level=moderate",
+                  "number": 15,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:22Z",
+                  "completedAt": "2026-10-15T11:24:23Z"
+                },
+                {
+                  "name": "Run npm run audit:dependencies",
+                  "number": 16,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:23Z",
+                  "completedAt": "2026-10-15T11:24:26Z"
+                },
+                {
+                  "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+                  "number": 17,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:26Z",
+                  "completedAt": "2026-10-15T11:24:39Z"
+                },
+                {
+                  "name": "Run npm run test:int --workspace=@atlas/api",
+                  "number": 18,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:39Z",
+                  "completedAt": "2026-10-15T11:24:48Z"
+                },
+                {
+                  "name": "Run npm run test:e2e --workspace=@atlas/api",
+                  "number": 19,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:24:48Z",
+                  "completedAt": "2026-10-15T11:25:01Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "number": 20,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:25:01Z",
+                  "completedAt": "2026-10-15T11:25:38Z"
+                },
+                {
+                  "name": "Run npx playwright install --with-deps chromium",
+                  "number": 21,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:25:38Z",
+                  "completedAt": "2026-10-15T11:26:01Z"
+                },
+                {
+                  "name": "Run npm run test:browser",
+                  "number": 22,
+                  "status": "completed",
+                  "conclusion": "failure",
+                  "startedAt": "2026-10-15T11:26:01Z",
+                  "completedAt": "2026-10-15T11:26:40Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "number": 23,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:26:40Z",
+                  "completedAt": "2026-10-15T11:26:42Z"
+                },
+                {
+                  "name": "Build API container",
+                  "number": 24,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:26:42Z",
+                  "completedAt": "2026-10-15T11:26:42Z"
+                },
+                {
+                  "name": "Build web container",
+                  "number": 25,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:26:42Z",
+                  "completedAt": "2026-10-15T11:26:42Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 48,
+                  "status": "completed",
+                  "conclusion": "skipped",
+                  "startedAt": "2026-10-15T11:26:42Z",
+                  "completedAt": "2026-10-15T11:26:42Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 49,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:26:42Z",
+                  "completedAt": "2026-10-15T11:26:42Z"
+                },
+                {
+                  "name": "Stop containers",
+                  "number": 50,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:26:42Z",
+                  "completedAt": "2026-10-15T11:26:46Z"
+                },
+                {
+                  "name": "Complete job",
+                  "number": 51,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:26:46Z",
+                  "completedAt": "2026-10-15T11:26:46Z"
+                }
+              ]
+            }
+          ],
+          "artifacts": [
+            {
+              "id": 11967769618,
+              "name": "validation-results",
+              "digest": "sha256:92aa971e9cadf6925a3d5cb7c5c50181fccc9cdbf08e9375416c43338a22946a",
+              "size": 3436259,
+              "expired": false,
+              "expiresAt": "2026-10-22T11:26:41Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "candidateCommit": "ab2c6e00d50e28684058b08cd5fedf9947d586f2",
+      "branch": "release/phase-3f-20261015112759",
+      "observationFile": "revision-5/remote-ci-1792064302458.json",
+      "observedAt": "2026-10-15T11:38:22.453Z",
+      "totalCount": 1,
+      "status": "completed",
+      "runs": [
+        {
+          "id": 38727582906,
+          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38727582906",
+          "workflowId": 328491478,
+          "headSha": "ab2c6e00d50e28684058b08cd5fedf9947d586f2",
+          "branch": "release/phase-3f-20261015112759",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "runAttempt": 1,
+          "createdAt": "2026-10-15T11:28:29Z",
+          "updatedAt": "2026-10-15T11:37:58Z",
+          "logEvidence": [
+            {
+              "jobId": 116397151998,
+              "file": "remote-ci-38727582906-job-116397151998.log",
+              "sha256": "ade1081ed70d106c4c43ae9a986f3096b18a3c6bb90655ffee3d1c553d1dfe91",
+              "bytes": 205833
+            }
+          ],
+          "jobs": [
+            {
+              "id": 116397151998,
+              "name": "validate",
+              "status": "completed",
+              "conclusion": "success",
+              "url": "https://github.com/luqelha/atlas-platform/actions/runs/38727582906/job/116397151998",
+              "startedAt": "2026-10-15T11:28:33Z",
+              "completedAt": "2026-10-15T11:37:58Z",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "number": 1,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:28:34Z",
+                  "completedAt": "2026-10-15T11:28:35Z"
+                },
+                {
+                  "name": "Initialize containers",
+                  "number": 2,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:28:35Z",
+                  "completedAt": "2026-10-15T11:29:18Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 3,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:29:18Z",
+                  "completedAt": "2026-10-15T11:29:20Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 4,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:29:20Z",
+                  "completedAt": "2026-10-15T11:29:22Z"
+                },
+                {
+                  "name": "Run npm ci",
+                  "number": 5,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:29:22Z",
+                  "completedAt": "2026-10-15T11:30:45Z"
+                },
+                {
+                  "name": "Run npm run prisma:generate --workspace=@atlas/api",
+                  "number": 6,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:45Z",
+                  "completedAt": "2026-10-15T11:30:46Z"
+                },
+                {
+                  "name": "Run npx prisma migrate deploy",
+                  "number": 7,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:46Z",
+                  "completedAt": "2026-10-15T11:30:48Z"
+                },
+                {
+                  "name": "Provision isolated runtime role",
+                  "number": 8,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:48Z",
+                  "completedAt": "2026-10-15T11:30:48Z"
+                },
+                {
+                  "name": "Run npm run test:security:db",
+                  "number": 9,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:48Z",
+                  "completedAt": "2026-10-15T11:30:48Z"
+                },
+                {
+                  "name": "Run npm run format:check:reliability",
+                  "number": 10,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:48Z",
+                  "completedAt": "2026-10-15T11:30:49Z"
+                },
+                {
+                  "name": "Run npm run lint",
+                  "number": 11,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:30:49Z",
+                  "completedAt": "2026-10-15T11:31:02Z"
+                },
+                {
+                  "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+                  "number": 12,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:02Z",
+                  "completedAt": "2026-10-15T11:31:07Z"
+                },
+                {
+                  "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+                  "number": 13,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:07Z",
+                  "completedAt": "2026-10-15T11:31:13Z"
+                },
+                {
+                  "name": "Run npm run test:security",
+                  "number": 14,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:13Z",
+                  "completedAt": "2026-10-15T11:31:25Z"
+                },
+                {
+                  "name": "Run npm audit --omit=dev --audit-level=moderate",
+                  "number": 15,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:25Z",
+                  "completedAt": "2026-10-15T11:31:26Z"
+                },
+                {
+                  "name": "Run npm run audit:dependencies",
+                  "number": 16,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:26Z",
+                  "completedAt": "2026-10-15T11:31:28Z"
+                },
+                {
+                  "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+                  "number": 17,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:28Z",
+                  "completedAt": "2026-10-15T11:31:41Z"
+                },
+                {
+                  "name": "Run npm run test:int --workspace=@atlas/api",
+                  "number": 18,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:41Z",
+                  "completedAt": "2026-10-15T11:31:50Z"
+                },
+                {
+                  "name": "Run npm run test:e2e --workspace=@atlas/api",
+                  "number": 19,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:31:50Z",
+                  "completedAt": "2026-10-15T11:32:04Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "number": 20,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:32:04Z",
+                  "completedAt": "2026-10-15T11:32:39Z"
+                },
+                {
+                  "name": "Run npx playwright install --with-deps chromium",
+                  "number": 21,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:32:39Z",
+                  "completedAt": "2026-10-15T11:33:10Z"
+                },
+                {
+                  "name": "Run npm run test:browser",
+                  "number": 22,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:33:10Z",
+                  "completedAt": "2026-10-15T11:33:49Z"
+                },
+                {
+                  "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+                  "number": 23,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:33:49Z",
+                  "completedAt": "2026-10-15T11:33:50Z"
+                },
+                {
+                  "name": "Build API container",
+                  "number": 24,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:33:50Z",
+                  "completedAt": "2026-10-15T11:35:35Z"
+                },
+                {
+                  "name": "Build web container",
+                  "number": 25,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:35:35Z",
+                  "completedAt": "2026-10-15T11:37:40Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "number": 48,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:37:40Z",
+                  "completedAt": "2026-10-15T11:37:53Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "number": 49,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:37:53Z",
+                  "completedAt": "2026-10-15T11:37:53Z"
+                },
+                {
+                  "name": "Stop containers",
+                  "number": 50,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:37:53Z",
+                  "completedAt": "2026-10-15T11:37:55Z"
+                },
+                {
+                  "name": "Complete job",
+                  "number": 51,
+                  "status": "completed",
+                  "conclusion": "success",
+                  "startedAt": "2026-10-15T11:37:55Z",
+                  "completedAt": "2026-10-15T11:37:55Z"
+                }
+              ]
+            }
+          ],
+          "artifacts": [
+            {
+              "id": 11969295954,
+              "name": "validation-results",
+              "digest": "sha256:acb76cf8c6ae3342cdd6add59e8bb3d13c7c53cd4451f4cf4f29c7a01af1a5ce",
+              "size": 564011,
+              "expired": false,
+              "expiresAt": "2026-10-22T11:33:49Z"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "testSummaries": [
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9819145Z ℹ tests 3"
+    },
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9820268Z ℹ pass 3"
+    },
+    {
+      "command": "npm run test:security:db",
+      "line": "2026-10-15T11:30:48.9820743Z ℹ fail 0"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:21.5876624Z Test Suites: 13 passed, 13 total"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:21.5878588Z Tests:       119 passed, 119 total"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6268709Z ℹ tests 32"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6273028Z ℹ pass 32"
+    },
+    {
+      "command": "npm run test:security",
+      "line": "2026-10-15T11:31:25.6273456Z ℹ fail 0"
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0006711Z All files                           |   51.21 |    46.47 |   42.74 |   51.89 |                          "
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0924765Z Test Suites: 24 passed, 24 total"
+    },
+    {
+      "command": "npm run test:cov --workspace=@atlas/api -- --runInBand",
+      "line": "2026-10-15T11:31:41.0925420Z Tests:       180 passed, 180 total"
+    },
+    {
+      "command": "npm run test:int --workspace=@atlas/api",
+      "line": "2026-10-15T11:31:50.7077151Z Test Suites: 3 passed, 3 total"
+    },
+    {
+      "command": "npm run test:int --workspace=@atlas/api",
+      "line": "2026-10-15T11:31:50.7077456Z Tests:       26 passed, 26 total"
+    },
+    {
+      "command": "npm run test:e2e --workspace=@atlas/api",
+      "line": "2026-10-15T11:32:04.4893784Z Test Suites: 3 passed, 3 total"
+    },
+    {
+      "command": "npm run test:e2e --workspace=@atlas/api",
+      "line": "2026-10-15T11:32:04.4894665Z Tests:       19 passed, 19 total"
+    },
+    {
+      "command": "npm run test:browser",
+      "line": "2026-10-15T11:33:49.0022244Z   9 passed (37.3s)"
+    }
+  ],
+  "containerBuildLogLines": [
+    {
+      "command": "docker build -f apps/api/Dockerfile -t atlas-api:ci .",
+      "line": "2026-10-15T11:35:35.9764261Z #24 writing image sha256:d7bb9ba58681940983af83db4d1fa00ed4bb182c3592b04163d38318fe0b7a62 done"
+    },
+    {
+      "command": "docker build -f apps/api/Dockerfile -t atlas-api:ci .",
+      "line": "2026-10-15T11:35:35.9771040Z #24 naming to docker.io/library/atlas-api:ci done"
+    },
+    {
+      "command": "docker build -f apps/web-admin/Dockerfile -t atlas-web:ci .",
+      "line": "2026-10-15T11:37:40.5407797Z #18 writing image sha256:68a1d0d4716dea6b75a0ee2352c0bf91c158cce728d5ba0ca33241b05889a202 done"
+    },
+    {
+      "command": "docker build -f apps/web-admin/Dockerfile -t atlas-web:ci .",
+      "line": "2026-10-15T11:37:40.5415311Z #18 naming to docker.io/library/atlas-web:ci done"
+    }
+  ],
+  "integrityPassed": true,
+  "preservation": {
+    "at": "2026-10-15T11:41:10.285Z",
+    "baselineFiles": 501,
+    "unchanged": 493,
+    "modified": [
+      ".github/workflows/ci.yml",
+      "apps/api/src/modules/auth/services/auth.service.ts",
+      "apps/api/test/unit/modules/user/user.service.spec.ts",
+      "apps/api/test/unit/security/audit-attribution.spec.ts",
+      "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+      "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+      "tests/browser/auth-forms.spec.ts",
+      "tests/browser/security-flows.spec.ts"
+    ],
+    "missing": [],
+    "unexpectedModified": [],
+    "headUnchanged": true,
+    "branchUnchanged": true,
+    "indexUnchanged": true,
+    "runtimeAndDeploymentSourceMatchesCandidate": true,
+    "candidateDocumentationDrift": [
+      {
+        "path": "docs/improvements/phase-3/FINAL-IMPROVEMENT-REPORT.md",
+        "expected": "1c763f85b9586139fd1829e1223b69d78114e20c",
+        "actual": "c0e67fba25229505650d6591e36ac53831adddc8",
+        "documentationOnly": true
+      },
+      {
+        "path": "docs/improvements/phase-3/PHASE-3F-RELEASE-EVIDENCE.md",
+        "expected": "8d79329faf0f23ffdb8a0b95c2d980bee161fc55",
+        "actual": "5021f8fa0fd20484cd92fec1afebee074bb32f75",
+        "documentationOnly": true
+      },
+      {
+        "path": "docs/improvements/phase-3/PRODUCTION-READINESS.md",
+        "expected": "14896686b01c43d2a29a22991dfde0deff9caf93",
+        "actual": "5e01d396bab50fcb5840d76f722fdcb1f1c24371",
+        "documentationOnly": true
+      }
+    ],
+    "unexpectedSourceDrift": [],
+    "unrepresentedSource": []
+  },
+  "formattingOnly": true,
+  "scope": "Remote GitHub CI on synthetic disposable runner services; local read-only discovery. No staging/production deployment, off-host restore, or release rollback occurred.",
+  "evidenceDigests": [
+    {
+      "file": "artifact-qa.json",
+      "sha256": "dcce66ade4e54dfbeb3ae4a147e8b1b6a7a4d04360fce6e68eafadb11925e93b",
+      "bytes": 582
+    },
+    {
+      "file": "candidate.json",
+      "sha256": "f1725ef422419e8482661da534280011db46d0a9b5ba1b0dbcf30396a938a3b1",
+      "bytes": 74563
+    },
+    {
+      "file": "collector-incidents.json",
+      "sha256": "ea422ed0b8aa286c2d998aa2ec4936e6764f1308202b968e6ca50180bacf4db4",
+      "bytes": 1494
+    },
+    {
+      "file": "containers-after.json",
+      "sha256": "f9f116f73179736e5e497fd415db4cdea13b3cb926356d0a62b40c5ba05b5b67",
+      "bytes": 3851
+    },
+    {
+      "file": "discovery-1792061733010.json",
+      "sha256": "b5855f03476150169fa3da469de1c536ca8f0bdc385bee394ebfef0c3071c645",
+      "bytes": 12013
+    },
+    {
+      "file": "download-browser-artifact.cjs",
+      "sha256": "8561fbaadebca93eb80074aad0334aa8db684c214f672fbef4feeaf59a4732b1",
+      "bytes": 2542
+    },
+    {
+      "file": "finalize.cjs",
+      "sha256": "fb05fe49d768914ae16da0b17776d132a8d58919b141e65d121287cf8b881553",
+      "bytes": 13125
+    },
+    {
+      "file": "formatting-verification-attempt-1.json",
+      "sha256": "c195aa9f6b458cf868e102389ecc97495df2dfa80f72d7a0256e0141fe5c8fa7",
+      "bytes": 2237
+    },
+    {
+      "file": "formatting-verification.json",
+      "sha256": "2d8692c17018ef54b69ddfa68efb185c760f33787437b94ef3f8f5d0063b64c7",
+      "bytes": 2035
+    },
+    {
+      "file": "git-status-before.txt",
+      "sha256": "4cc905be8557918a2d9745be8449baef3aed78e87083c001d3b0de1fd45e5917",
+      "bytes": 21588
+    },
+    {
+      "file": "initial-file-hashes.json",
+      "sha256": "1e9f8455595d1a73b6810449453b6f4ec7c9d60dd7137f10e253fbe5ac33db7f",
+      "bytes": 60961
+    },
+    {
+      "file": "local-unit.json",
+      "sha256": "92929d3fcb7ea8d009eed13853a90b99b6df9627a98dc5f4265eec23d5b674ea",
+      "bytes": 242
+    },
+    {
+      "file": "local-unit.log",
+      "sha256": "446a29382fb99994b24b59ba1e2908765a47c2259c028188d3618f6ea38b4053",
+      "bytes": 3250
+    },
+    {
+      "file": "operator-discovery.json",
+      "sha256": "a0e0a91d1b1dddc394017ba60c176dd32773be7944665fec30dfb2f6d8aa2156",
+      "bytes": 1626
+    },
+    {
+      "file": "preservation-check.json",
+      "sha256": "2347cf6060de2670b05310011e1cd3f8fd379a4c7a1a19791e67e1430914301c",
+      "bytes": 1503
+    },
+    {
+      "file": "push.json",
+      "sha256": "02796e468ff58c61b2d3608f921755eadfe4ecc8ddea281023c22928e4a3e505",
+      "bytes": 267
+    },
+    {
+      "file": "README.md",
+      "sha256": "083eec7e4588f6394889c69ad6f9a24cca0704ef0a6d2c54820a3f5e0733fd67",
+      "bytes": 3243
+    },
+    {
+      "file": "remote-ci-1792061936849.json",
+      "sha256": "80b74b41e7f7335b80c6f786a33937471efff9f0e6df57b9e94b79da228b95ca",
+      "bytes": 7690
+    },
+    {
+      "file": "remote-ci-1792062021440.json",
+      "sha256": "307115437e5d8617ffc3fc5657363a6143b63753ed0d1d70f01666e1da4a1b68",
+      "bytes": 8416
+    },
+    {
+      "file": "remote-ci-1792062125341.json",
+      "sha256": "06565d2ffeae13c097f81d803f870df4d8c76d487006fd45833d0b9159fe37d9",
+      "bytes": 9963
+    },
+    {
+      "file": "remote-ci-38724067559-job-116385476672.log",
+      "sha256": "9d92d3e5fdb76cb75ed2cb81d73ba515f615be0fcf1b6f8572e763c0652fec0d",
+      "bytes": 84628
+    },
+    {
+      "file": "remote-ci.cjs",
+      "sha256": "8f1643de83231e62434d4138b13ced6afa48eb3fea7e96dab443ee50f4e97952",
+      "bytes": 10701
+    },
+    {
+      "file": "test-summary.json",
+      "sha256": "aad87601ba4d3179cce68b9d4c2eb252d3a5a9120330225ef418922c05bb1bce",
+      "bytes": 3370
+    },
+    {
+      "file": "revision-2/candidate.json",
+      "sha256": "23ab642b1172baa444e3cee044fe15ba2c868992e959054443faa0cb62870e90",
+      "bytes": 74874
+    },
+    {
+      "file": "revision-2/push.json",
+      "sha256": "f5c8723bc6e68926dbf300b4494ea19d891afb1a39a69085cec4a30d12af5a7a",
+      "bytes": 267
+    },
+    {
+      "file": "revision-2/remote-ci-1792062309492.json",
+      "sha256": "dfbafd65c1511eeba6db514a5837bc94cff99c53f0d5315c64965ed81eb42713",
+      "bytes": 8416
+    },
+    {
+      "file": "revision-2/remote-ci-1792062484630.json",
+      "sha256": "14855975d2750d79d1160d4ed66d53ab549943e3c9947b4507e61070d1820b2c",
+      "bytes": 9963
+    },
+    {
+      "file": "revision-2/remote-ci-38724658176-job-116387407265.log",
+      "sha256": "dde313ebf7370efb7f33291da3db95ec1bd198206e57a84a467b7c863d44f414",
+      "bytes": 92299
+    },
+    {
+      "file": "revision-3/artifact-download.json",
+      "sha256": "870e677ccbc7c136111c2fefe7a2dbfa9e2db5e2fdac21f7d3a45c88c9f7c05b",
+      "bytes": 362
+    },
+    {
+      "file": "revision-3/candidate.json",
+      "sha256": "dc640842b87661109393be14bad0a0a37705a700cd126f5ec487c1b99c9aaf15",
+      "bytes": 74874
+    },
+    {
+      "file": "revision-3/collector-error-1792062650709.json",
+      "sha256": "4d37ca2797b6c4bd8ee3dbfc1f45d9257ae127e1a1dbd995efe8430740eefc7b",
+      "bytes": 118
+    },
+    {
+      "file": "revision-3/push.json",
+      "sha256": "a83a880bb2b27cec612f09cad2bf2b9147758e578dcdc75de51e08d90ddd7076",
+      "bytes": 267
+    },
+    {
+      "file": "revision-3/remote-ci-1792062736904.json",
+      "sha256": "4a5c9faee9406f59586c41899fe41fb8507fb778459279769846b7c7382ec2ca",
+      "bytes": 8416
+    },
+    {
+      "file": "revision-3/remote-ci-1792062806634.json",
+      "sha256": "9b2eef83504d05847f500789b08c5b3d9097c0c7c48a87d98146a989fcce705b",
+      "bytes": 8416
+    },
+    {
+      "file": "revision-3/remote-ci-1792062876174.json",
+      "sha256": "1908f63be4603dde725f975fd0eef65083164cb310bb1aa0a72eb0e44c028b0f",
+      "bytes": 8932
+    },
+    {
+      "file": "revision-3/remote-ci-1792062928930.json",
+      "sha256": "8dcd1d760aad22add2d3bab26d5a40b057018e431116aa914dc1fd95a1bd886d",
+      "bytes": 9061
+    },
+    {
+      "file": "revision-3/remote-ci-1792063018189.json",
+      "sha256": "09955cbafd30c5b2ddfc2ba02e37c7837df0e62f9ec1c5b133f2d955511d4093",
+      "bytes": 9147
+    },
+    {
+      "file": "revision-3/remote-ci-1792063104854.json",
+      "sha256": "e78c573492a65d56e70c49b6eea578430cbc2f59030f00384662576c2e20569f",
+      "bytes": 10256
+    },
+    {
+      "file": "revision-3/remote-ci-38725529650-job-116390297122.log",
+      "sha256": "3dac5af49da81a3f3528bf1f8060130ae2140bfc673e3a2e159d52448fb4fda9",
+      "bytes": 182825
+    },
+    {
+      "file": "revision-4/browser-failure-analysis.json",
+      "sha256": "c4f231d96541f4f3a5e4a7f5b49fc55711c2214321bbfd44f4d6dd43eb78bfe5",
+      "bytes": 457
+    },
+    {
+      "file": "revision-4/candidate.json",
+      "sha256": "b1b31b10ede8e91a9c06ac59baf23d5a8f26652328a391a553bac6559cf87310",
+      "bytes": 74874
+    },
+    {
+      "file": "revision-4/push.json",
+      "sha256": "55d44d0c3ae182c8334ac001a88e009b3924034c19a6c168f0e71f9a09aaae58",
+      "bytes": 267
+    },
+    {
+      "file": "revision-4/remote-ci-1792063365241.json",
+      "sha256": "8f48777394aeb80fa84fc046601a43ef98adbf40e968485e94f9274ec2d12e3f",
+      "bytes": 8416
+    },
+    {
+      "file": "revision-4/remote-ci-1792063437305.json",
+      "sha256": "9d8301b3e9773ad74a5e71ab1b47574e4a669250ab3b22cf1cb9415ab4195a6c",
+      "bytes": 8674
+    },
+    {
+      "file": "revision-4/remote-ci-1792063528549.json",
+      "sha256": "dbc439ff6b39b14825c4522bd10b3ca004ded37e4885ec44a02139c24dc8629a",
+      "bytes": 9061
+    },
+    {
+      "file": "revision-4/remote-ci-1792063622394.json",
+      "sha256": "75019ee793acab2f4d823f7d34e34aabf3ed373de4c05e5a1cd69b3d3b68c142",
+      "bytes": 10256
+    },
+    {
+      "file": "revision-4/remote-ci-38726724972-job-116394301998.log",
+      "sha256": "25cfecdf126ef176dcd29361484d2a7910d4434bd4d08f5d74a989f491dd5798",
+      "bytes": 179936
+    },
+    {
+      "file": "revision-5/candidate.json",
+      "sha256": "87ee8d214423fabd879e2d82d970a7262e535be84523ae2ec5545dd217d3d923",
+      "bytes": 74874
+    },
+    {
+      "file": "revision-5/push.json",
+      "sha256": "1a49df4ce6b6e148d7fdf47c9218320add0bb5377abca64f62c8345b70cb5a51",
+      "bytes": 267
+    },
+    {
+      "file": "revision-5/remote-ci-1792063750766.json",
+      "sha256": "c88159ae35803b0fa01ae828ce16603fe81aeed77176a04de5537aab1c62ab1a",
+      "bytes": 7715
+    },
+    {
+      "file": "revision-5/remote-ci-1792063839228.json",
+      "sha256": "7da812d4606b5b5f46988b8084a3c25fd93046ef518b402881fbdc5a03231aa6",
+      "bytes": 8416
+    },
+    {
+      "file": "revision-5/remote-ci-1792063887594.json",
+      "sha256": "13a54472cddd51df316c4505697e8eb186622b9c952d8b5ede00ee17f816f99f",
+      "bytes": 8889
+    },
+    {
+      "file": "revision-5/remote-ci-1792063940020.json",
+      "sha256": "a05ff091c7b2fcf00318ff8b32a55ffd2593f368ac661da945bc5c062b98b931",
+      "bytes": 9061
+    },
+    {
+      "file": "revision-5/remote-ci-1792063990070.json",
+      "sha256": "dea76020e4496a452c194168703bc49f954339284eccb6a9ae5cd933f9ce3085",
+      "bytes": 9104
+    },
+    {
+      "file": "revision-5/remote-ci-1792064045196.json",
+      "sha256": "4cd220ee23ffee2d951438fd5cf66bbcb589c96fcae127b6b3fa3dff44ecc566",
+      "bytes": 9524
+    },
+    {
+      "file": "revision-5/remote-ci-1792064093821.json",
+      "sha256": "7918f8fcf0c9e59fb81ff2e69014e3908c6e2b3be6a29574d9fc81ccbda25927",
+      "bytes": 9524
+    },
+    {
+      "file": "revision-5/remote-ci-1792064129119.json",
+      "sha256": "ab2d18040882af2ff6ae060b3005fefdd2cea0d0ff8ac6964337121d82ac9edc",
+      "bytes": 9524
+    },
+    {
+      "file": "revision-5/remote-ci-1792064176026.json",
+      "sha256": "aa727742ac2d78d29a961ac8ca71d5bc98e01ffaedc61388d5d5ef8b3c61cc39",
+      "bytes": 9567
+    },
+    {
+      "file": "revision-5/remote-ci-1792064228009.json",
+      "sha256": "be55dad9a7d17ef7656301521fd9d38c72f1346f807df00278ca99b6f3015cc3",
+      "bytes": 9567
+    },
+    {
+      "file": "revision-5/remote-ci-1792064302458.json",
+      "sha256": "8866304cf0c47abd8b966e09be8d0b8fe89b5d361aaa280af6175c2372e0aa99",
+      "bytes": 10255
+    },
+    {
+      "file": "revision-5/remote-ci-38727582906-job-116397151998.log",
+      "sha256": "ade1081ed70d106c4c43ae9a986f3096b18a3c6bb90655ffee3d1c553d1dfe91",
+      "bytes": 205833
+    }
+  ]
+}

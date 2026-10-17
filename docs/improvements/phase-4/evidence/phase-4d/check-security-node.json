@@ -1,0 +1,10 @@
+{
+  "name": "security-node",
+  "startedAt": "2026-10-17T02:21:05.030Z",
+  "finishedAt": "2026-10-17T02:21:08.289Z",
+  "exitCode": 0,
+  "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/security/*.test.cjs",
+  "cwd": ".",
+  "log": "check-security-node.log",
+  "logSha256": "bb5fed1c85553d2b773d91420565cbfdc434517edcb58427351ce32899453a0e"
+}

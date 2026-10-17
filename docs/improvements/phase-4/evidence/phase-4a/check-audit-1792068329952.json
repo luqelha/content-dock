@@ -1,0 +1,16 @@
+{
+  "operation": "audit",
+  "startedAt": "2026-10-15T12:45:27.908Z",
+  "finishedAt": "2026-10-15T12:45:29.952Z",
+  "command": [
+    "cmd.exe",
+    "/d",
+    "/s",
+    "/c",
+    "npm.cmd audit --omit=dev --audit-level=moderate"
+  ],
+  "exitCode": 0,
+  "log": "check-audit-1792068329952.log",
+  "logSha256": "dc1a4bd9a3ce8b642ccf8bc1045f62643fb99dd06069afda88dde2ba906724fb",
+  "scope": "Working tree validation, not staging or production"
+}

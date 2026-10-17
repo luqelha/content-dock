@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Jakarta",
+  "generatedAt": "2026-10-16T02:52:11.196Z",
+  "scope": "Phase 4C: strictNullChecks/noImplicitAny plus typed request, content, media and export contracts",
+  "status": "passed",
+  "versions": {
+    "node": "v22.18.0",
+    "typescript": "5.9.3",
+    "nest": "11.2.7",
+    "prisma": "5.22.0",
+    "next": "16.3.8",
+    "zod": "4.4.3"
+  },
+  "strictness": {
+    "baseline": {
+      "source": "Initial non-emitting compiler probe captured in task output",
+      "flags": [
+        "strictNullChecks",
+        "noImplicitAny"
+      ],
+      "diagnostics": 42,
+      "sourceDiagnostics": 30,
+      "testDiagnostics": 12
+    },
+    "final": {
+      "apiCompilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "ES2021",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "incremental": true,
+        "skipLibCheck": true,
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "strictBindCallApply": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "types": [
+          "node",
+          "jest"
+        ]
+      },
+      "diagnostics": 0,
+      "sourceAndTestsIncluded": true,
+      "fullStrictEnabled": false
+    },
+    "remainingExplicitAny": {
+      "count": 8,
+      "scope": "API source AST only; excludes tests, dependencies and implicit any flows",
+      "locations": [
+        {
+          "file": "apps/api/src/common/filters/http-exception.filter.ts",
+          "line": 26,
+          "column": 39
+        },
+        {
+          "file": "apps/api/src/common/filters/http-exception.filter.ts",
+          "line": 31,
+          "column": 32
+        },
+        {
+          "file": "apps/api/src/common/filters/prisma-client-exception.filter.ts",
+          "line": 39,
+          "column": 30
+        },
+        {
+          "file": "apps/api/src/common/guards/auth-client-identity.ts",
+          "line": 4,
+          "column": 39
+        },
+        {
+          "file": "apps/api/src/modules/audit/dto/create-audit-log.dto.ts",
+          "line": 7,
+          "column": 13
+        },
+        {
+          "file": "apps/api/src/modules/auth/auth.module.ts",
+          "line": 26,
+          "column": 76
+        },
+        {
+          "file": "apps/api/src/modules/auth/services/auth.service.ts",
+          "line": 55,
+          "column": 88
+        },
+        {
+          "file": "apps/api/src/modules/redis/redis.service.ts",
+          "line": 38,
+          "column": 51
+        }
+      ]
+    }
+  },
+  "tests": {
+    "unit": {
+      "passed": 220,
+      "failed": 0,
+      "suites": 27,
+      "totalSuites": 27,
+      "snapshots": 1,
+      "contracts": 25
+    },
+    "nodeConsumerContracts": {
+      "passed": 7,
+      "evidence": "check-web-contracts.json"
+    },
+    "nodeSecurity": {
+      "passed": 32,
+      "exitCode": 0,
+      "command": "node --test scripts/security/*.test.cjs",
+      "evidence": "Executed together with consumer contracts; 39 total passing tests in task output; individual security log not retained"
+    },
+    "integration": {
+      "passed": 27,
+      "suites": 4
+    },
+    "apiE2e": {
+      "passed": 19,
+      "suites": 3
+    },
+    "browser": "not run"
+  },
+  "coverage": {
+    "total": {
+      "lines": {
+        "total": 1956,
+        "covered": 1203,
+        "skipped": 0,
+        "pct": 61.5
+      },
+      "statements": {
+        "total": 2188,
+        "covered": 1319,
+        "skipped": 0,
+        "pct": 60.28
+      },
+      "functions": {
+        "total": 321,
+        "covered": 159,
+        "skipped": 0,
+        "pct": 49.53
+      },
+      "branches": {
+        "total": 542,
+        "covered": 279,
+        "skipped": 0,
+        "pct": 51.47
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": "Unknown"
+      }
+    },
+    "worker": {
+      "lines": {
+        "total": 62,
+        "covered": 62,
+        "skipped": 0,
+        "pct": 100
+      },
+      "functions": {
+        "total": 4,
+        "covered": 4,
+        "skipped": 0,
+        "pct": 100
+      },
+      "statements": {
+        "total": 65,
+        "covered": 65,
+        "skipped": 0,
+        "pct": 100
+      },
+      "branches": {
+        "total": 14,
+        "covered": 14,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "thresholdsUnchanged": true
+  },
+  "checks": [
+    {
+      "name": "build-api",
+      "startedAt": "2026-10-15T22:15:46.901Z",
+      "finishedAt": "2026-10-15T22:16:06.700Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\@nestjs\\cli\\bin\\nest.js build",
+      "cwd": "apps\\api",
+      "log": "check-build-api.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": "check-build-api.json"
+    },
+    {
+      "name": "build-web",
+      "startedAt": "2026-10-15T22:16:12.565Z",
+      "finishedAt": "2026-10-15T22:17:06.124Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\next\\dist\\bin\\next build",
+      "cwd": "apps\\web-admin",
+      "log": "check-build-web.log",
+      "logSha256": "c518df745c325a0ee5eeae3e822ab9df9c5008709d8507b5f34dfa6db1badf49",
+      "evidence": "check-build-web.json"
+    },
+    {
+      "name": "lint-api",
+      "startedAt": "2026-10-15T22:16:12.457Z",
+      "finishedAt": "2026-10-15T22:17:11.638Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\eslint\\bin\\eslint.js {src,apps,libs,test}/**/*.ts",
+      "cwd": "apps\\api",
+      "log": "check-lint-api.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": "check-lint-api.json"
+    },
+    {
+      "name": "lint-web",
+      "startedAt": "2026-10-16T02:50:22.567Z",
+      "finishedAt": "2026-10-16T02:50:54.283Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\eslint\\bin\\eslint.js .",
+      "cwd": "apps\\web-admin",
+      "log": "check-lint-web.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": "check-lint-web.json"
+    },
+    {
+      "name": "types-api",
+      "startedAt": "2026-10-15T22:16:12.606Z",
+      "finishedAt": "2026-10-15T22:16:43.071Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\typescript\\bin\\tsc --noEmit --incremental false",
+      "cwd": "apps\\api",
+      "log": "check-types-api.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": "check-types-api.json"
+    },
+    {
+      "name": "types-web",
+      "startedAt": "2026-10-15T22:16:43.345Z",
+      "finishedAt": "2026-10-15T22:17:09.776Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\node_modules\\typescript\\bin\\tsc --noEmit --incremental false",
+      "cwd": "apps\\web-admin",
+      "log": "check-types-web.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "evidence": "check-types-web.json"
+    },
+    {
+      "name": "unit",
+      "startedAt": "2026-10-16T02:50:10.464Z",
+      "finishedAt": "2026-10-16T02:50:57.518Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe <repo>\\apps\\api\\node_modules\\jest\\bin\\jest.js --runInBand --coverage --json --outputFile=<repo>\\docs\\improvements\\phase-4\\evidence\\phase-4c\\unit-results.json",
+      "cwd": "apps\\api",
+      "log": "check-unit.log",
+      "logSha256": "fa6e5ae528988923fad0149ccc81a4f56067c565d3e91cd6128f6e36e166483a",
+      "evidence": "check-unit.json"
+    },
+    {
+      "name": "web-contracts",
+      "startedAt": "2026-10-16T02:50:39.626Z",
+      "finishedAt": "2026-10-16T02:50:40.647Z",
+      "exitCode": 0,
+      "command": "C:\\Program Files\\nodejs\\node.exe --test scripts/contracts/*.test.cjs",
+      "cwd": ".",
+      "log": "check-web-contracts.log",
+      "logSha256": "11b6d988f559a3f86e9fa09630a02393ebd0ac4d8fb89a6d1056306e9af13558",
+      "evidence": "check-web-contracts.json"
+    }
+  ],
+  "database": [
+    {
+      "evidence": "database-regression-1792102389782.json",
+      "project": "atlas-phase4c-regression-4f9651f6",
+      "status": "passed",
+      "volumesRetained": true,
+      "checks": [
+        {
+          "name": "migrate",
+          "startedAt": "2026-10-15T22:13:13.927Z",
+          "finishedAt": "2026-10-15T22:13:14.565Z",
+          "exitCode": 0,
+          "log": "database-regression-1792102389782-migrate.log",
+          "logSha256": "70bac1e46dba2e4c7445267af9afaed9a04044a219b99e0fcd250ce377276c36"
+        },
+        {
+          "name": "integration",
+          "startedAt": "2026-10-15T22:13:14.814Z",
+          "finishedAt": "2026-10-15T22:13:53.920Z",
+          "exitCode": 0,
+          "log": "database-regression-1792102389782-integration.log",
+          "logSha256": "b4e950dfa9f55276da68c3f5e3fb9485fa500fb8081146d7098f18ff91c443c1"
+        },
+        {
+          "name": "e2e",
+          "startedAt": "2026-10-15T22:13:54.241Z",
+          "finishedAt": "2026-10-15T22:15:29.457Z",
+          "exitCode": 0,
+          "log": "database-regression-1792102389782-e2e.log",
+          "logSha256": "5fcb5ad3340904f258652473c1ed0d03e8b97a0f47fae8f1548bf9e1b616dab2"
+        }
+      ]
+    }
+  ],
+  "finalTestLint": {
+    "exitCode": 0,
+    "command": "node node_modules/eslint/bin/eslint.js test/unit/contracts/export.contract.spec.ts test/unit/modules/user/user.service.spec.ts",
+    "cwd": "apps/api",
+    "evidence": "Task tool output; no separate log retained"
+  },
+  "limitations": [
+    "Two target flags enabled; remaining strict family is not globally enabled",
+    "No remote CI, browser E2E, new Docker image or production deployment",
+    "Working tree contained extensive user changes; no pre-task preservation snapshot was taken",
+    "First coverage attempt failed and was retained as attempt-1-unit.json; final coverage passed"
+  ]
+}

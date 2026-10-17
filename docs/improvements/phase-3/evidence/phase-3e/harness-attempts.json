@@ -1,0 +1,10 @@
+[
+  {
+    "check": "migrate preflight",
+    "exitCode": 1,
+    "message": "Database must be tmpfs",
+    "cause": "Harness incorrectly treated Docker tmpfs empty options string as absent.",
+    "resolution": "Check key presence with Object.hasOwn, retaining container ID/project/port checks.",
+    "databaseCommandExecuted": false
+  }
+]

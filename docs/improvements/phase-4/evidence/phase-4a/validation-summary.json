@@ -1,0 +1,1094 @@
+{
+  "at": "2026-10-15T13:13:21.856Z",
+  "timezone": "Asia/Jakarta",
+  "phase": "4A",
+  "status": "passed-local-synthetic",
+  "productionReady": false,
+  "remoteCI": "not-executed-for-phase4a; workflow gate added",
+  "scope": "Working tree; private operational package and new local synthetic fixture. No staging/production rollout.",
+  "counts": {
+    "unit": 193,
+    "integration": 26,
+    "e2e": 19,
+    "observabilityRuleScenarios": 18,
+    "ruleCount": 16,
+    "dashboardPanels": 26,
+    "runtimeCheckpoints": 9
+  },
+  "checks": {
+    "types": {
+      "operation": "types",
+      "startedAt": "2026-10-15T12:40:25.440Z",
+      "finishedAt": "2026-10-15T12:40:29.408Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd exec --workspace=@atlas/api -- tsc --noEmit"
+      ],
+      "exitCode": 0,
+      "log": "check-types-1792068029406.log",
+      "logSha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-types-1792068029406.json"
+    },
+    "lint": {
+      "operation": "lint",
+      "startedAt": "2026-10-15T12:39:50.772Z",
+      "finishedAt": "2026-10-15T12:40:27.771Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd run lint --workspace=@atlas/api"
+      ],
+      "exitCode": 0,
+      "log": "check-lint-1792068027768.log",
+      "logSha256": "d0e48794271599a3164a2187bc55242dcc7e17b41e809639141ac44c554dcf5a",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-lint-1792068027768.json"
+    },
+    "unit": {
+      "operation": "unit",
+      "startedAt": "2026-10-15T12:32:43.912Z",
+      "finishedAt": "2026-10-15T12:34:24.127Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd run test:cov --workspace=@atlas/api -- --runInBand"
+      ],
+      "exitCode": 0,
+      "log": "check-unit-1792067664124.log",
+      "logSha256": "e19d3a8121ae07e0044dc72dd2ec20c3ab9b98bf80a8aa89756c0167a75b5d93",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-unit-1792067664124.json"
+    },
+    "security": {
+      "operation": "security",
+      "startedAt": "2026-10-15T12:45:14.514Z",
+      "finishedAt": "2026-10-15T12:46:12.260Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd run test:security"
+      ],
+      "exitCode": 0,
+      "log": "check-security-1792068372258.log",
+      "logSha256": "a549f9018222b8f8ab354a328b081e1cd9fc139148b1dfb6b9621577b682f07d",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-security-1792068372258.json"
+    },
+    "audit": {
+      "operation": "audit",
+      "startedAt": "2026-10-15T12:45:27.908Z",
+      "finishedAt": "2026-10-15T12:45:29.952Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd audit --omit=dev --audit-level=moderate"
+      ],
+      "exitCode": 0,
+      "log": "check-audit-1792068329952.log",
+      "logSha256": "dc1a4bd9a3ce8b642ccf8bc1045f62643fb99dd06069afda88dde2ba906724fb",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-audit-1792068329952.json"
+    },
+    "observability": {
+      "operation": "observability",
+      "startedAt": "2026-10-15T13:09:21.307Z",
+      "finishedAt": "2026-10-15T13:09:24.544Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd run test:observability"
+      ],
+      "exitCode": 0,
+      "log": "check-observability-1792069764542.log",
+      "logSha256": "a6ff40a32f1f5714ac2fff5d6b33caa8389f774a13e626d6f897fd0697bdde8f",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-observability-1792069764542.json"
+    },
+    "rules": {
+      "operation": "rules",
+      "startedAt": "2026-10-15T13:09:22.019Z",
+      "finishedAt": "2026-10-15T13:09:23.171Z",
+      "command": [
+        "docker",
+        "run",
+        "--name",
+        "atlas-phase4a-rules-1792069762019",
+        "--network",
+        "none",
+        "--entrypoint",
+        "/bin/promtool",
+        "-v",
+        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "-w",
+        "/etc/atlas",
+        "prom/prometheus:v3.15.0",
+        "test",
+        "rules",
+        "alerts.test.json"
+      ],
+      "exitCode": 0,
+      "log": "check-rules-1792069763170.log",
+      "logSha256": "cf7206e9b1afba9ea8fb1144cda6abe346fa1230554c514ae6c8b8f79762e029",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-rules-1792069763170.json"
+    },
+    "prometheus": {
+      "operation": "prometheus",
+      "startedAt": "2026-10-15T13:09:23.231Z",
+      "finishedAt": "2026-10-15T13:09:23.861Z",
+      "command": [
+        "docker",
+        "run",
+        "--name",
+        "atlas-phase4a-promcfg-1792069763231",
+        "--network",
+        "none",
+        "--entrypoint",
+        "/bin/promtool",
+        "-v",
+        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "prom/prometheus:v3.15.0",
+        "check",
+        "config",
+        "--syntax-only",
+        "/etc/atlas/prometheus.yml"
+      ],
+      "exitCode": 0,
+      "log": "check-prometheus-1792069763861.log",
+      "logSha256": "d28a6db99f02d9c8dff1f2b8a0377561ffe3d6b5fc85dc6eae5e3f5add6eb24f",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-prometheus-1792069763861.json"
+    },
+    "alertmanager": {
+      "operation": "alertmanager",
+      "startedAt": "2026-10-15T13:09:23.909Z",
+      "finishedAt": "2026-10-15T13:09:24.491Z",
+      "command": [
+        "docker",
+        "run",
+        "--name",
+        "atlas-phase4a-amcfg-1792069763909",
+        "--network",
+        "none",
+        "--entrypoint",
+        "/bin/amtool",
+        "-v",
+        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "prom/alertmanager:v0.34.1",
+        "check-config",
+        "/etc/atlas/alertmanager.yml"
+      ],
+      "exitCode": 0,
+      "log": "check-alertmanager-1792069764490.log",
+      "logSha256": "33963887004956360ba29e04eb58ec2d0ddb94e217355d4dd8e6718b3afe20fe",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-alertmanager-1792069764490.json"
+    },
+    "build": {
+      "operation": "build",
+      "startedAt": "2026-10-15T13:06:13.860Z",
+      "finishedAt": "2026-10-15T13:06:34.581Z",
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/s",
+        "/c",
+        "npm.cmd run build --workspace=@atlas/api"
+      ],
+      "exitCode": 0,
+      "log": "check-build-1792069594579.log",
+      "logSha256": "7165e8cdd3095606c450ecbecb1537491eca0f9169ede92dcd1ac004043d6e20",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-build-1792069594579.json"
+    },
+    "imageApi": {
+      "operation": "imageApi",
+      "startedAt": "2026-10-15T12:32:59.646Z",
+      "finishedAt": "2026-10-15T12:40:51.280Z",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "apps/api/Dockerfile",
+        "-t",
+        "atlas-api:phase4a",
+        "."
+      ],
+      "exitCode": 0,
+      "log": "check-imageApi-1792068051277.log",
+      "logSha256": "1378c531309b81b23cee870a957887068c42bd2af375aac2ffb154517c731d23",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-imageApi-1792068051277.json"
+    },
+    "imageJournal": {
+      "operation": "imageJournal",
+      "startedAt": "2026-10-15T12:39:43.035Z",
+      "finishedAt": "2026-10-15T12:39:48.455Z",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "ops/observability/alert-journal.Dockerfile",
+        "-t",
+        "atlas-alert-journal:phase4a",
+        "."
+      ],
+      "exitCode": 0,
+      "log": "check-imageJournal-1792067988453.log",
+      "logSha256": "c73699177934ed46706be96a8764c77d602e668fef23dc06e56c90842162cab8",
+      "scope": "Working tree validation, not staging or production",
+      "file": "check-imageJournal-1792067988453.json"
+    }
+  },
+  "databaseRegression": {
+    "file": "database-regression-1792069341331.json",
+    "startedAt": "2026-10-15T13:02:21.331Z",
+    "project": "atlas-phase4a-regression-b74da46e",
+    "scope": "New local tmpfs database and isolated E2E vaults only",
+    "checks": [
+      {
+        "name": "migrate",
+        "startedAt": "2026-10-15T13:02:25.088Z",
+        "finishedAt": "2026-10-15T13:02:25.774Z",
+        "exitCode": 0,
+        "log": "database-regression-1792069341331-migrate.log",
+        "logSha256": "d5b9bfbcd4ba336af4b6c543b4de032b638e0e7a32266e1a65a12ed19c6243b5"
+      },
+      {
+        "name": "integration",
+        "startedAt": "2026-10-15T13:02:26.011Z",
+        "finishedAt": "2026-10-15T13:03:10.912Z",
+        "exitCode": 0,
+        "log": "database-regression-1792069341331-integration.log",
+        "logSha256": "4cd62ec2170b78854cadb85189cc0d2db095ef6eaa4ba747f6f3cfd3d04ce66d"
+      },
+      {
+        "name": "e2e",
+        "startedAt": "2026-10-15T13:03:11.150Z",
+        "finishedAt": "2026-10-15T13:04:09.720Z",
+        "exitCode": 0,
+        "log": "database-regression-1792069341331-e2e.log",
+        "logSha256": "e690bcea2121922ee3e72153684a6a862289dbd7c434917956c4db65b2683831"
+      }
+    ],
+    "status": "passed",
+    "containers": [
+      {
+        "service": "postgres",
+        "id": "175b7dc21b1b74045a430349807a5cabb40a1929b7d4c0372d7f9de42a919093",
+        "image": "sha256:f7d23353e1b15400d22ebe31189f4d314b87a4c129cc400c8c2d8d4ca127bf81"
+      },
+      {
+        "service": "redis",
+        "id": "28023190d646d9bc6c7fee3ff43ecc12beb96d843ecb158ec5c25d3887579e8f",
+        "image": "sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499"
+      },
+      {
+        "service": "rabbitmq",
+        "id": "6acab92d5e11e4a1d325f76ed4efda9a7ec20c6b485a7557edebefc4f26f3dc6",
+        "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281"
+      }
+    ],
+    "finishedAt": "2026-10-15T13:04:11.490Z",
+    "volumesRetained": true
+  },
+  "runtime": {
+    "file": "drill-1792068888186.json",
+    "project": "atlas-phase4a-765b8399c3",
+    "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+    "checkpoints": [
+      {
+        "name": "fresh isolated fixture, migrations and restricted grants",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:54:48.721Z",
+        "elapsedSeconds": 17.0375658,
+        "details": {
+          "apiImage": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+          "vaultDriver": "local",
+          "vaultOptions": {
+            "device": "tmpfs",
+            "o": "size=67108864,uid=1000,gid=1000,mode=0700",
+            "type": "tmpfs"
+          },
+          "retentionEnabled": false,
+          "runtimeRole": "atlas_app",
+          "ports": {
+            "api": "http://127.0.0.1:32778",
+            "management": "http://127.0.0.1:32779",
+            "prometheus": "http://127.0.0.1:32773",
+            "alertmanager": "http://127.0.0.1:32772",
+            "grafana": "http://127.0.0.1:32780"
+          }
+        }
+      },
+      {
+        "name": "metrics privacy, private management, real worker and durable canary",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:55:05.762Z",
+        "elapsedSeconds": 0.7706019999999989,
+        "details": {
+          "canaryJob": "9f85ca44-092a-413b-9a56-d9b6eadfcce3",
+          "plaintextZipSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697",
+          "managementPublished": "fixture loopback only; production has no published management port"
+        }
+      },
+      {
+        "name": "redis outage is observed, alerted, and recovered",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:55:06.539Z",
+        "elapsedSeconds": 88.1466312,
+        "details": {
+          "containerId": "48e2499f5fdc13528447c7efcb83bb35d753a81ec37fe49a4b6cb097e7aa5225",
+          "firingReceivedAt": "2026-10-15T12:56:04.351Z",
+          "resolvedReceivedAt": "2026-10-15T12:56:34.350Z",
+          "elapsedSeconds": 88.069
+        }
+      },
+      {
+        "name": "broker outage is observed, alerted, and recovered",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:56:34.687Z",
+        "elapsedSeconds": 89.71729630000002,
+        "details": {
+          "containerId": "5e5726cc63586beb7ddce28f1abb7634a60c884e6dd09cfc9ae81d901bd6de62",
+          "firingReceivedAt": "2026-10-15T12:57:34.333Z",
+          "resolvedReceivedAt": "2026-10-15T12:58:04.332Z",
+          "elapsedSeconds": 89.644,
+          "retainedPendingJob": "44ebfd6e-3e3b-4eb7-a6d1-988291cfaaa7",
+          "recoveredStatus": "Completed"
+        }
+      },
+      {
+        "name": "database outage is observed, alerted, and recovered",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:58:04.410Z",
+        "elapsedSeconds": 90.67788999999999,
+        "details": {
+          "containerId": "477248b37bf419fb3f455f111b196e7a35a3710904ac513cd41f94296023d6c3",
+          "firingReceivedAt": "2026-10-15T12:59:04.331Z",
+          "resolvedReceivedAt": "2026-10-15T12:59:34.328Z",
+          "elapsedSeconds": 90.585
+        }
+      },
+      {
+        "name": "bounded full-vault failure is alerted and existing archives survive",
+        "status": "passed",
+        "startedAt": "2026-10-15T12:59:35.090Z",
+        "elapsedSeconds": 90.79620119999996,
+        "details": {
+          "filledMiB": 64,
+          "failedJob": "f1244200-9ab1-43e5-9312-7c80c94d9351",
+          "recoveredJob": "81e371b0-6bc9-41b2-ba73-62f5b4a8c3e6",
+          "existingArchiveSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697"
+        }
+      },
+      {
+        "name": "API crash, missing scrape alert, expired lease recovery and retained vault",
+        "status": "passed",
+        "startedAt": "2026-10-15T13:01:05.890Z",
+        "elapsedSeconds": 121.50333649999997,
+        "details": {
+          "recoveredLeaseJob": "9394f8fc-df37-4449-9153-363f0002e490",
+          "leaseCleared": true,
+          "existingArchiveSha256": "cc2e23cd8e462662d6f7efbda0c98ac7eeeab8ecc5537e33a6efdf82e9f46697"
+        }
+      },
+      {
+        "name": "SIGTERM drains an active worker before closing the database",
+        "status": "passed",
+        "startedAt": "2026-10-15T13:03:07.397Z",
+        "elapsedSeconds": 13.384833299999999,
+        "details": {
+          "activeJob": "b02e5cc4-aa0c-4c60-90cb-4bc2435ff62c",
+          "shutdownExitCode": 0,
+          "completedBeforeExit": true
+        }
+      },
+      {
+        "name": "Grafana provisioned dashboard, datasource, and PromQL are executable",
+        "status": "passed",
+        "startedAt": "2026-10-15T13:03:20.784Z",
+        "elapsedSeconds": 28.10966889999993,
+        "details": {
+          "uid": "atlas-operations",
+          "provisioned": true,
+          "panels": [
+            {
+              "title": "API scrape availability",
+              "series": 1
+            },
+            {
+              "title": "Worker dependencies",
+              "series": 1
+            },
+            {
+              "title": "Active export handlers",
+              "series": 1
+            },
+            {
+              "title": "Firing alerts",
+              "series": 1
+            },
+            {
+              "title": "Request rate by route",
+              "series": 8
+            },
+            {
+              "title": "HTTP p95 by route",
+              "series": 8
+            },
+            {
+              "title": "Dependency health",
+              "series": 5
+            },
+            {
+              "title": "Probe freshness (seconds)",
+              "series": 3
+            },
+            {
+              "title": "DB operation p95 (includes client queue wait)",
+              "series": 10
+            },
+            {
+              "title": "DB operations in flight",
+              "series": 1
+            },
+            {
+              "title": "Response cache outcomes",
+              "series": 0
+            },
+            {
+              "title": "Exports by state (unexpired; max across replicas)",
+              "series": 4
+            },
+            {
+              "title": "Oldest pending age",
+              "series": 0
+            },
+            {
+              "title": "Expired or missing leases",
+              "series": 1
+            },
+            {
+              "title": "Dispatcher tick age",
+              "series": 1
+            },
+            {
+              "title": "Worker outcomes",
+              "series": 6
+            },
+            {
+              "title": "Worker delivery p95",
+              "series": 1
+            },
+            {
+              "title": "Broker ready / unacknowledged messages",
+              "series": 2
+            },
+            {
+              "title": "Broker consumers",
+              "series": 1
+            },
+            {
+              "title": "Vault available space",
+              "series": 1
+            },
+            {
+              "title": "Process resident memory",
+              "series": 1
+            },
+            {
+              "title": "Process CPU seconds / second",
+              "series": 1
+            },
+            {
+              "title": "Event loop lag p99",
+              "series": 1
+            },
+            {
+              "title": "Notification failures",
+              "series": 18
+            },
+            {
+              "title": "Journal retained firing / resolved notifications",
+              "series": 2
+            },
+            {
+              "title": "Draining instances",
+              "series": 1
+            }
+          ],
+          "datasourceHealthy": true
+        }
+      }
+    ],
+    "faults": [
+      {
+        "service": "redis",
+        "action": "stop",
+        "containerId": "48e2499f5fdc13528447c7efcb83bb35d753a81ec37fe49a4b6cb097e7aa5225",
+        "at": "2026-10-15T12:55:07.066Z"
+      },
+      {
+        "service": "rabbitmq",
+        "action": "stop",
+        "containerId": "5e5726cc63586beb7ddce28f1abb7634a60c884e6dd09cfc9ae81d901bd6de62",
+        "at": "2026-10-15T12:56:36.319Z"
+      },
+      {
+        "service": "postgres",
+        "action": "pause",
+        "containerId": "477248b37bf419fb3f455f111b196e7a35a3710904ac513cd41f94296023d6c3",
+        "at": "2026-10-15T12:58:04.620Z"
+      },
+      {
+        "service": "api",
+        "action": "fill-bounded-tmpfs",
+        "at": "2026-10-15T12:59:36.013Z",
+        "filledMiB": 64
+      },
+      {
+        "service": "api",
+        "action": "SIGKILL",
+        "containerId": "e57c844c0921063e2f0092cf40cd987ba3e339fe0d001581849aaf657cc6b1b3",
+        "at": "2026-10-15T13:01:07.118Z"
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "file": "drill-1792068213259.json",
+      "project": "atlas-phase4a-a12776b993",
+      "status": "failed",
+      "error": "Cannot read properties of undefined (reading 'HostPort')",
+      "checkpoints": 1
+    },
+    {
+      "file": "drill-1792068399816.json",
+      "project": "atlas-phase4a-912568b143",
+      "status": "failed",
+      "error": "Cannot read properties of undefined (reading 'HostPort')",
+      "checkpoints": 1
+    },
+    {
+      "file": "drill-1792068691002.json",
+      "project": "atlas-phase4a-730ac3d36d",
+      "status": "interrupted-see-interruption-record",
+      "checkpoints": 0
+    },
+    {
+      "file": "drill-1792068888186.json",
+      "project": "atlas-phase4a-765b8399c3",
+      "status": "passed",
+      "checkpoints": 9
+    }
+  ],
+  "imageCode": {
+    "at": "2026-10-15T13:07:03.562Z",
+    "method": "SHA-256 of all emitted .js files after CRLF normalization; source maps and root CLI scripts are outside this comparison",
+    "imageId": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
+    "container": "atlas-phase4a-codeverify-1792069622968",
+    "compiledFiles": 105,
+    "identical": true,
+    "differences": [],
+    "compiledManifestSha256": "ca61c3efda471700f4a312c8f98e46fa4f2050f5f766bc50a63bab5c9e6c98f3"
+  },
+  "preservation": {
+    "at": "2026-10-15T13:13:19.234Z",
+    "baselineFiles": 559,
+    "unchanged": 542,
+    "modified": [
+      ".env.production.example",
+      ".github/workflows/ci.yml",
+      "README.md",
+      "apps/api/.env.example",
+      "apps/api/package.json",
+      "apps/api/src/app.module.ts",
+      "apps/api/src/common/interceptors/cache.interceptor.ts",
+      "apps/api/src/config/env.validation.ts",
+      "apps/api/src/database/prisma.service.ts",
+      "apps/api/src/main.ts",
+      "apps/api/src/modules/export/export.service.ts",
+      "apps/api/src/modules/export/worker.controller.ts",
+      "apps/api/src/modules/redis/redis.service.ts",
+      "apps/api/src/modules/storage/storage-retention.service.ts",
+      "docker-compose.prod.yml",
+      "package-lock.json",
+      "package.json"
+    ],
+    "missing": [],
+    "unexpectedModified": [],
+    "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+    "branch": "main",
+    "indexMatchesPhase3FBaseline": true
+  },
+  "qa": {
+    "at": "2026-10-15T13:13:21.681Z",
+    "syntax": [
+      {
+        "file": "scripts/observability/alert-journal.test.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/build-dashboard.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/build-rule-tests.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/config.test.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/database-regression.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/isolate-test-vault.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/resilience-drill.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/summarize.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "scripts/observability/validate.cjs",
+        "exitCode": 0
+      },
+      {
+        "file": "ops/observability/alert-journal.cjs",
+        "exitCode": 0
+      }
+    ],
+    "formatPassed": true,
+    "links": {
+      "checked": 29,
+      "broken": []
+    },
+    "allAlertRulesHaveTests": true
+  },
+  "limitations": [
+    "Human on-call paging receiver and owner are not configured; firing/resolved delivery tested to internal durable journal only.",
+    "No remote CI execution for this new working tree.",
+    "No staging TLS/secrets/grants, off-host restore, or reviewed release rollback pair; Phase 3F gates remain open.",
+    "Local fault timings are not production RTO/RPO or workload capacity.",
+    "DB operation timing includes client queue wait, not a separate pool-wait metric; broker exporter metrics are aggregate."
+  ],
+  "evidenceDigests": [
+    {
+      "file": "artifact-qa.json",
+      "sha256": "f05edf1960e5a388786c4d901fd3725dc01cfd25cbd6216285b7e826bcd40773",
+      "bytes": 1078
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-alert-journal.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-alertmanager.log",
+      "sha256": "a540b15d31cd2f8f70c19c195d74f6027458dd45a283416cfcd6141832105baa",
+      "bytes": 592
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-api.log",
+      "sha256": "7e33d0860ee98fcbcd8836b1c5c58651934b6a4ae99dfb2dba068ce56fe334bc",
+      "bytes": 47346
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-postgres.log",
+      "sha256": "0734bfed07e74d8d51f9289cf55414c23590afe976f6b7579c394e9b9ce61f43",
+      "bytes": 3518
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-prometheus.log",
+      "sha256": "3eef2d44b0f53dd72237d6547578b3dd752683b646ff6f0ab56c61174a1016e9",
+      "bytes": 3436
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-rabbitmq.log",
+      "sha256": "0c823e9394f76781be33892948922608d9265db336f78eff62e137b64376a8a8",
+      "bytes": 48234
+    },
+    {
+      "file": "atlas-phase4a-765b8399c3-redis.log",
+      "sha256": "a9630e0024c0565c275e7f74a9d3c7761e6ed22c71c4b3a7b25c2d544fe88edc",
+      "bytes": 2312
+    },
+    {
+      "file": "atlas-phase4a-912568b143-alert-journal.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "atlas-phase4a-912568b143-alertmanager.log",
+      "sha256": "e05e7fab6cad6d4343c4457bd743d3d5b63fc659e0548deb96faf06e867e8403",
+      "bytes": 592
+    },
+    {
+      "file": "atlas-phase4a-912568b143-api.log",
+      "sha256": "b17eae318941c51be39a3d63056097c92f549d35b8e0a9a104496564852c4da5",
+      "bytes": 12831
+    },
+    {
+      "file": "atlas-phase4a-912568b143-postgres.log",
+      "sha256": "06db9e61c9743417d70967aae815877ad9b41c881f7ec53272946d4104a59b2b",
+      "bytes": 3194
+    },
+    {
+      "file": "atlas-phase4a-912568b143-prometheus.log",
+      "sha256": "3acdd11ddd09ce825fabba7ff0775713828c1a8a69b3ea837f175720dcbbca8e",
+      "bytes": 3453
+    },
+    {
+      "file": "atlas-phase4a-912568b143-rabbitmq.log",
+      "sha256": "f9dd7677d005ccbce10b6bfb75e69e92cdcdf7d072c19e698747ac39c3d5eade",
+      "bytes": 23144
+    },
+    {
+      "file": "atlas-phase4a-912568b143-redis.log",
+      "sha256": "f4921d0aabab97db5c220309efce8dba69c6c137b255e5c909f39c52f969d806",
+      "bytes": 681
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-alert-journal.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-alertmanager.log",
+      "sha256": "bbcfaf10dccf5c9e92621fa43b4df3cb84a522ecb709716975201835c0bb1e98",
+      "bytes": 592
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-api.log",
+      "sha256": "1683ab841f12968a4da85aa71c54383890eff436841ceb5cdeb81b90739fc51e",
+      "bytes": 12831
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-postgres.log",
+      "sha256": "c2cca2ba580f984b5145248bb152d0c1ec73b872543714c14400dcc96654f2ad",
+      "bytes": 3294
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-prometheus.log",
+      "sha256": "40c4842f7d97d80a146d7ddd3fe01976b3b506c205db3788b20f3ee4048a00c3",
+      "bytes": 318
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-rabbitmq.log",
+      "sha256": "50594da65b2c83c4118e5dbe95b243266849f156b626f7eadc57eb83a4c8755e",
+      "bytes": 23035
+    },
+    {
+      "file": "atlas-phase4a-a12776b993-redis.log",
+      "sha256": "2243482210adcaecae3e9d167efda13388e94280f529d41b89be51885a28d229",
+      "bytes": 681
+    },
+    {
+      "file": "check-alertmanager-1792067978742.json",
+      "sha256": "7fa9028d2c60a49a9a40c94dcc42e90610eb7f2bdb867f1a2583a3b49ec819f0",
+      "bytes": 673
+    },
+    {
+      "file": "check-alertmanager-1792067978742.log",
+      "sha256": "33963887004956360ba29e04eb58ec2d0ddb94e217355d4dd8e6718b3afe20fe",
+      "bytes": 132
+    },
+    {
+      "file": "check-alertmanager-1792068905044.json",
+      "sha256": "d1123e107d5feb682a63f9594790c8f8d4a38306670fbc3cf8dff0b4ab3dcce4",
+      "bytes": 673
+    },
+    {
+      "file": "check-alertmanager-1792068905044.log",
+      "sha256": "33963887004956360ba29e04eb58ec2d0ddb94e217355d4dd8e6718b3afe20fe",
+      "bytes": 132
+    },
+    {
+      "file": "check-alertmanager-1792069764490.json",
+      "sha256": "00c520587145169266479e4e59c29e26a57853f60a29c4443c93d7c916b59b4d",
+      "bytes": 673
+    },
+    {
+      "file": "check-alertmanager-1792069764490.log",
+      "sha256": "33963887004956360ba29e04eb58ec2d0ddb94e217355d4dd8e6718b3afe20fe",
+      "bytes": 132
+    },
+    {
+      "file": "check-audit-1792068329952.json",
+      "sha256": "965d50716e53257a033bd6669e778520ebd4af158c21c3c31e9be3383f88d89d",
+      "bytes": 440
+    },
+    {
+      "file": "check-audit-1792068329952.log",
+      "sha256": "dc1a4bd9a3ce8b642ccf8bc1045f62643fb99dd06069afda88dde2ba906724fb",
+      "bytes": 25
+    },
+    {
+      "file": "check-build-1792069594579.json",
+      "sha256": "a28ee2686fbce2ae47db37cbb5270968a42d21de28a3467032ebfe257fb4d41f",
+      "bytes": 433
+    },
+    {
+      "file": "check-build-1792069594579.log",
+      "sha256": "7165e8cdd3095606c450ecbecb1537491eca0f9169ede92dcd1ac004043d6e20",
+      "bytes": 41
+    },
+    {
+      "file": "check-imageApi-1792068051277.json",
+      "sha256": "49bbdb2a65186cccb6b05a196d3c38e64b62cfe2478851042ac82a2f1869ad36",
+      "bytes": 454
+    },
+    {
+      "file": "check-imageApi-1792068051277.log",
+      "sha256": "1378c531309b81b23cee870a957887068c42bd2af375aac2ffb154517c731d23",
+      "bytes": 6139
+    },
+    {
+      "file": "check-imageJournal-1792067988453.json",
+      "sha256": "ef9cb263ed0931c5c2fae5621747e100347c4610db239787489566a7b98368da",
+      "bytes": 495
+    },
+    {
+      "file": "check-imageJournal-1792067988453.log",
+      "sha256": "c73699177934ed46706be96a8764c77d602e668fef23dc06e56c90842162cab8",
+      "bytes": 1745
+    },
+    {
+      "file": "check-lint-1792068027768.json",
+      "sha256": "1b09336661fa8cbaf349270d254e7a18b3885e2d794ba478d034fb7657c884aa",
+      "bytes": 430
+    },
+    {
+      "file": "check-lint-1792068027768.log",
+      "sha256": "d0e48794271599a3164a2187bc55242dcc7e17b41e809639141ac44c554dcf5a",
+      "bytes": 67
+    },
+    {
+      "file": "check-observability-1792068905087.json",
+      "sha256": "ae00fdef429b7693aadcdb302128aa31872965a9e11c8e63bf51e34ae3b2679c",
+      "bytes": 439
+    },
+    {
+      "file": "check-observability-1792068905087.log",
+      "sha256": "08d6693cfeddf8ad74c7f6341d353f859b411f9a40b6692d425f46158dd76050",
+      "bytes": 2920
+    },
+    {
+      "file": "check-observability-1792069764542.json",
+      "sha256": "6cb38ced797b1550156fea8fb4b41816c66e0c2debdaa59ae4892c95fde0960a",
+      "bytes": 439
+    },
+    {
+      "file": "check-observability-1792069764542.log",
+      "sha256": "a6ff40a32f1f5714ac2fff5d6b33caa8389f774a13e626d6f897fd0697bdde8f",
+      "bytes": 2920
+    },
+    {
+      "file": "check-prometheus-1792067978097.json",
+      "sha256": "b2ef88ec8c3bfe6273e83854983d3558e7a9eb4ef2545c9cc6cf5b31b6afab75",
+      "bytes": 697
+    },
+    {
+      "file": "check-prometheus-1792067978097.log",
+      "sha256": "d28a6db99f02d9c8dff1f2b8a0377561ffe3d6b5fc85dc6eae5e3f5add6eb24f",
+      "bytes": 112
+    },
+    {
+      "file": "check-prometheus-1792068904412.json",
+      "sha256": "e41c8b5097f007537cfe541ce3d719e73e90fd3e8587a209eeb582eb96eeac5e",
+      "bytes": 697
+    },
+    {
+      "file": "check-prometheus-1792068904412.log",
+      "sha256": "d28a6db99f02d9c8dff1f2b8a0377561ffe3d6b5fc85dc6eae5e3f5add6eb24f",
+      "bytes": 112
+    },
+    {
+      "file": "check-prometheus-1792069763861.json",
+      "sha256": "5947ddf4a6c45ad75899e9d595592ccbb2e1ed8b24d0e2142b6492547f949fde",
+      "bytes": 697
+    },
+    {
+      "file": "check-prometheus-1792069763861.log",
+      "sha256": "d28a6db99f02d9c8dff1f2b8a0377561ffe3d6b5fc85dc6eae5e3f5add6eb24f",
+      "bytes": 112
+    },
+    {
+      "file": "check-rules-1792067977395.json",
+      "sha256": "a7a47aa5855d3db9b388e647fda3cdee675117a37053dd4f9e08b4adbbea2aaa",
+      "bytes": 681
+    },
+    {
+      "file": "check-rules-1792067977395.log",
+      "sha256": "cf7206e9b1afba9ea8fb1144cda6abe346fa1230554c514ae6c8b8f79762e029",
+      "bytes": 12
+    },
+    {
+      "file": "check-rules-1792068903851.json",
+      "sha256": "e85b9100d15e501eb8d0226161959462cff6a463e563191ad328d0f3fe97dbea",
+      "bytes": 681
+    },
+    {
+      "file": "check-rules-1792068903851.log",
+      "sha256": "cf7206e9b1afba9ea8fb1144cda6abe346fa1230554c514ae6c8b8f79762e029",
+      "bytes": 12
+    },
+    {
+      "file": "check-rules-1792069763170.json",
+      "sha256": "789a5ff7e3bc1b55ea2d93e17227ad6fac2fed96c7523db9c010a933e4924d32",
+      "bytes": 681
+    },
+    {
+      "file": "check-rules-1792069763170.log",
+      "sha256": "cf7206e9b1afba9ea8fb1144cda6abe346fa1230554c514ae6c8b8f79762e029",
+      "bytes": 12
+    },
+    {
+      "file": "check-security-1792068372258.json",
+      "sha256": "d5fb8dd8e7e8389075cd98e8092a2d3ffa99522450a73b895ece0d9f4629a1fe",
+      "bytes": 424
+    },
+    {
+      "file": "check-security-1792068372258.log",
+      "sha256": "a549f9018222b8f8ab354a328b081e1cd9fc139148b1dfb6b9621577b682f07d",
+      "bytes": 9698
+    },
+    {
+      "file": "check-types-1792068029406.json",
+      "sha256": "0e9d6abe7a618b4ea22c25cf60f7f69effc60fd51c6d0234b69e13ce0f6d0c7d",
+      "bytes": 444
+    },
+    {
+      "file": "check-types-1792068029406.log",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "bytes": 1
+    },
+    {
+      "file": "check-unit-1792067664124.json",
+      "sha256": "1b6bd1792165324fbc0dba86b87150dd89797ce5868ac8f6afce1a62a0a39716",
+      "bytes": 449
+    },
+    {
+      "file": "check-unit-1792067664124.log",
+      "sha256": "e19d3a8121ae07e0044dc72dd2ec20c3ab9b98bf80a8aa89756c0167a75b5d93",
+      "bytes": 18295
+    },
+    {
+      "file": "containers-after.json",
+      "sha256": "608fbe6be640a2a479996a6099d1b2056e86c91d6c1da2b53cf21754b96659a9",
+      "bytes": 27139
+    },
+    {
+      "file": "containers-before.json",
+      "sha256": "b75e9809b0f949f04facef5b0e51598b90ba5c37b365229b64edd296bab6b259",
+      "bytes": 3799
+    },
+    {
+      "file": "database-regression-1792069341331-e2e.log",
+      "sha256": "e690bcea2121922ee3e72153684a6a862289dbd7c434917956c4db65b2683831",
+      "bytes": 460
+    },
+    {
+      "file": "database-regression-1792069341331-integration.log",
+      "sha256": "4cd62ec2170b78854cadb85189cc0d2db095ef6eaa4ba747f6f3cfd3d04ce66d",
+      "bytes": 701
+    },
+    {
+      "file": "database-regression-1792069341331-migrate.log",
+      "sha256": "d5b9bfbcd4ba336af4b6c543b4de032b638e0e7a32266e1a65a12ed19c6243b5",
+      "bytes": 787
+    },
+    {
+      "file": "database-regression-1792069341331.json",
+      "sha256": "a9c2586ebff3035f1823328b22046adc1f8106b3a92dec2c60ab1abc41f2046e",
+      "bytes": 1833
+    },
+    {
+      "file": "drill-1792068213259.json",
+      "sha256": "84b7b9b6902a592b8244f3dd2837685a7bc8f418c4e94b5d9df675735ed37b05",
+      "bytes": 11853
+    },
+    {
+      "file": "drill-1792068399816.json",
+      "sha256": "e85d98f77f9ea305a7a59cfbc80aa1cc57fedb7af6d93117bc04cb60da3e9c98",
+      "bytes": 16047
+    },
+    {
+      "file": "drill-1792068691002.json",
+      "sha256": "1b3a960c490418b82c9b398c4c416e8af4cad2772122650d7c6c01e972ef8a92",
+      "bytes": 9347
+    },
+    {
+      "file": "drill-1792068888186.json",
+      "sha256": "c4a34041b064881c861fdaed94637a013777f0da9df75029eb8ab2a3298a1aa7",
+      "bytes": 34004
+    },
+    {
+      "file": "git-status-before.txt",
+      "sha256": "e11da694f167093d4fb7f01303db64e606909b22d3231ba69614e0642ea7972e",
+      "bytes": 26044
+    },
+    {
+      "file": "image-code-verification.json",
+      "sha256": "9f3af63c5fb385d79ba0924206d6b84461b73d4f6e983212e79e574a23e2fa86",
+      "bytes": 481
+    },
+    {
+      "file": "images.json",
+      "sha256": "a8230b8a7fc809aee8da9fec0ca915c95becad6e574f8279a21f068a6167c38b",
+      "bytes": 1756
+    },
+    {
+      "file": "initial-file-hashes.json",
+      "sha256": "9d662857f5416ef32247ed7dce42639ee5b595143abb8fbbeba5e400981adaa6",
+      "bytes": 69477
+    },
+    {
+      "file": "interruption-atlas-phase4a-730ac3d36d.json",
+      "sha256": "c9bdbd8cadbfae2c9fc5e592a9298e49aa2dd54677d3f05d206b4baaf8462816",
+      "bytes": 2023
+    },
+    {
+      "file": "port-probe.json",
+      "sha256": "feac3586777b2317b9978636f8d966de6b838fc932022308694c1c5b9845a2b1",
+      "bytes": 379
+    },
+    {
+      "file": "preservation-check.json",
+      "sha256": "cec61189d26a40113e3788ea01f37c468553e8c3915fbbcc6179773008531520",
+      "bytes": 915
+    },
+    {
+      "file": "README.md",
+      "sha256": "5d40114795659b8750684b6fe4e82dd75dc4a90427d77c745b2600f6089a1979",
+      "bytes": 2103
+    },
+    {
+      "file": "source-file-hashes.json",
+      "sha256": "10d87497faa3bfa1fa006f8d647af69b2ec891d8f240a7d2e95b2a175bac9e13",
+      "bytes": 73035
+    }
+  ]
+}

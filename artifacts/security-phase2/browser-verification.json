@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-13",
+  "method": "Installed Codex Playwright MCP; user explicitly selected it after Browser Codex was unavailable",
+  "target": "http://localhost:3000",
+  "api": "http://127.0.0.1:4400/api",
+  "database": "atlas_test",
+  "viewport": {
+    "mobile": {
+      "width": 375,
+      "height": 812
+    },
+    "desktop": {
+      "width": 1440,
+      "height": 1000
+    }
+  },
+  "passed": [
+    "Protected page redirects to login",
+    "Wrong-password error remains announced beyond 5.5 seconds",
+    "Test account login and logout",
+    "12 keyboard Tab steps stay in category dialog; Escape closes and restores trigger focus",
+    "Create category",
+    "Create draft on mobile; editor has accessible name; no horizontal page overflow",
+    "Remove category and publish; list shows Uncategorized and Published",
+    "Keyboard Enter opens native file chooser",
+    "Upload repository-owned PNG through allowed file chooser",
+    "SVG excluded from picker; GIF matches API support",
+    "Mobile preview action can be clicked; private image decodes at 24x24",
+    "Export finishes; job URL, dates and download link survive refresh",
+    "ZIP download completes without browser download error",
+    "Stale workspace cookie replaced through successful login directly to protected category page"
+  ],
+  "fixes": [
+    "Clear previous workspace selection on successful login, with success/failure regressions",
+    "Replace malformed pagination separator",
+    "Add native keyboard-accessible upload chooser and remove unsupported SVG advertisement",
+    "Make media actions visible and clickable on small screens; decorative background ignores pointer events"
+  ],
+  "screenshots": [
+    "browser-dialog-desktop.png",
+    "browser-export-mobile.png"
+  ],
+  "limitations": [
+    "These are actual assertions through MCP, not a passing invocation of the Playwright test runner or remote CI",
+    "Screen reader and comprehensive cross-browser testing not performed",
+    "Production TLS, environment, secrets, grants, and deployment not accessed"
+  ],
+  "environmentRestored": true
+}

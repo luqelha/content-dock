@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+﻿# ContentDock admin
 
-## Getting Started
+The Next.js frontend for [Atlas Platform](../../README.md), with workspace management, content publishing, private media, members, audit history, and exports.
 
-First, run the development server:
+Install dependencies from the **repository root**, using the root `package-lock.json`. See the [root setup guide](../../README.md#local-development) for infrastructure, environment files, and migrations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+To start only the frontend after the API is running, execute from the repository root:
+
+```sh
+npm run dev --workspace=@atlas/web-admin
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The interface is available at <http://localhost:3000>, with user guides at `/docs`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If development exits with `Another next dev server is already running`, use the existing URL printed by Next.js. To restart instead, press `Ctrl+C` in the terminal running that server before starting `npm run dev` again. Run the root development command in one terminal; it already starts both workspaces.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local`. `API_URL` is the server-side API address, normally `http://localhost:4000/api`. In production, configure the same `AUTH_PROXY_SECRET` on the API and web server; keep it server-side.
 
-## Learn More
+```sh
+npm run lint --workspace=@atlas/web-admin
+npm run typecheck --workspace=@atlas/web-admin
+npm run build --workspace=@atlas/web-admin
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The supported container build uses the repository root as its context and `apps/web-admin/Dockerfile`. Production configuration and HTTPS instructions are in the [root deployment guide](../../README.md#production).

@@ -1,0 +1,46 @@
+[
+  {
+    "service": "postgres",
+    "id": "e9d3a5a05fe682cac8d719e98fcfa892703cc3fcc51a21515126de2dd4385cd6",
+    "image": "sha256:3d0f7584ed7d04e27fa050d6683a74746608faf21f202be78460d679cc56461f",
+    "ports": {
+      "5432/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "55432"
+        }
+      ]
+    },
+    "tmpfs": {
+      "/var/lib/postgresql/data": ""
+    }
+  },
+  {
+    "service": "redis",
+    "id": "243692d5a9d894677bda61c30fcfae3ac3793fae9939bb2362aded14fbb067e8",
+    "image": "sha256:6ab0b6e7381779332f97b8ca76193e45b0756f38d4c0dcda72dbb3c32061ab99",
+    "ports": {
+      "6379/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "56379"
+        }
+      ]
+    },
+    "tmpfs": {}
+  },
+  {
+    "service": "rabbitmq",
+    "id": "bbdb941886b7f4e7974ebf5c23173fdedbc4c3ef532a69e0b70ff89798f2805d",
+    "image": "sha256:606d8c0d6b3c18d1da9afc53bc7cdb2a8d5486df91b5a9830e9e07626c9ae281",
+    "ports": {
+      "5672/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "55672"
+        }
+      ]
+    },
+    "tmpfs": {}
+  }
+]

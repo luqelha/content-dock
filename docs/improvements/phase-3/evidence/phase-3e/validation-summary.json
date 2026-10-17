@@ -1,0 +1,522 @@
+{
+  "finalizedAt": "2026-10-15T10:19:55.865Z",
+  "timezone": "Asia/Jakarta",
+  "head": "e78af99e234687377d0f35a91128e66ac2ace72f",
+  "scope": "working tree; local synthetic fixtures; not remote CI or production release",
+  "testsExecutedOn": "2026-10-14",
+  "resumedOn": "2026-10-15",
+  "regressionStatus": "passed",
+  "phase3Acceptance": "partially completed",
+  "productionReadiness": "not ready: external operational gates and compatible release rollback evidence required",
+  "counts": {
+    "unit": 153,
+    "integration": 26,
+    "e2e": 19,
+    "securityApiSubset": 101,
+    "securityNode": 24,
+    "grants": 3,
+    "browser": 3,
+    "uniqueTests": 228
+  },
+  "coverage": {
+    "lines": {
+      "total": 1589,
+      "covered": 811,
+      "skipped": 0,
+      "pct": 51.03
+    },
+    "statements": {
+      "total": 1782,
+      "covered": 898,
+      "skipped": 0,
+      "pct": 50.39
+    },
+    "functions": {
+      "total": 254,
+      "covered": 103,
+      "skipped": 0,
+      "pct": 40.55
+    },
+    "branches": {
+      "total": 410,
+      "covered": 183,
+      "skipped": 0,
+      "pct": 44.63
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "runtimeAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "toolingAudit": {
+    "counts": {
+      "info": 0,
+      "low": 0,
+      "moderate": 7,
+      "high": 41,
+      "critical": 0,
+      "total": 48
+    },
+    "failures": []
+  },
+  "safetyReview": {
+    "existingDataOrVolumesDeleted": false,
+    "proceduralDeviation": "Registry probe using rabbitmq image and --rm automatically created and deleted one new anonymous diagnostic volume. This violates the no-volume-deletion procedure; no existing volume was mounted or removed.",
+    "evidence": "diagnostic-volume-review.json",
+    "interruption": "Docker state changed between sessions; resumed container preservation is checked separately."
+  },
+  "recovery": {
+    "scope": "fresh local synthetic stack only",
+    "steps": [
+      {
+        "name": "Broker outage retains committed Pending export",
+        "status": "passed"
+      },
+      {
+        "name": "Broker reconnect and outbox deliver the pending export",
+        "status": "passed"
+      },
+      {
+        "name": "Fresh worker reclaims expired Processing lease and serves a decryptable ZIP",
+        "status": "passed"
+      }
+    ],
+    "node": "v22.18.0",
+    "finishedAt": "2026-10-14T03:58:06.295Z"
+  },
+  "resourcePreservation": {
+    "evidence": "containers-after.json",
+    "existingUnchanged": 3,
+    "drillContainersStopped": 14,
+    "projectVolumesRetained": 8
+  },
+  "restore": {
+    "artifact": "drill-1792059490242.json",
+    "status": "passed",
+    "checkpoints": 10,
+    "images": {
+      "candidate": {
+        "api": "sha256:44b58d1088b929aa639ab3c2dc714a6ea4ec22cf561ceaceb730e7a99a8bea7d",
+        "web": "sha256:2d42bc9a27fb9cf0ffccfffddeaba259a02cc2489082112cf276776b9bfeb1a1"
+      },
+      "previous": {}
+    },
+    "projects": [
+      "atlas-phase3e-source-4293c787fa",
+      "atlas-phase3e-restore-16df673b6b"
+    ],
+    "unverified": [
+      "Rollback to a previous compatible release was not executed in Phase 3E"
+    ]
+  },
+  "results": [
+    {
+      "artifact": "unit.json",
+      "name": "unit",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "test:cov",
+        "--workspace=@atlas/api",
+        "--",
+        "--runInBand",
+        "--coverageReporters=json-summary",
+        "--coverageReporters=text"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 113057,
+      "finishedAt": "2026-10-14T03:52:04.302Z"
+    },
+    {
+      "artifact": "security.json",
+      "name": "security",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "test:security"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 91693,
+      "finishedAt": "2026-10-14T03:51:42.934Z"
+    },
+    {
+      "artifact": "lintApi.json",
+      "name": "lintApi",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "lint",
+        "--workspace=@atlas/api"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 57104,
+      "finishedAt": "2026-10-14T03:51:08.368Z"
+    },
+    {
+      "artifact": "lintWeb.json",
+      "name": "lintWeb",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "lint",
+        "--workspace=@atlas/web-admin"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 77598,
+      "finishedAt": "2026-10-14T03:51:28.976Z"
+    },
+    {
+      "artifact": "typesApi.json",
+      "name": "typesApi",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "exec",
+        "--workspace=@atlas/api",
+        "--",
+        "tsc",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 44854,
+      "finishedAt": "2026-10-14T03:50:56.121Z"
+    },
+    {
+      "artifact": "typesWeb.json",
+      "name": "typesWeb",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "exec",
+        "--workspace=@atlas/web-admin",
+        "--",
+        "tsc",
+        "--noEmit",
+        "--incremental",
+        "false"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 46532,
+      "finishedAt": "2026-10-14T03:50:57.848Z"
+    },
+    {
+      "artifact": "format.json",
+      "name": "format",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "format:check:reliability"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 1132,
+      "finishedAt": "2026-10-14T03:50:12.408Z"
+    },
+    {
+      "artifact": "auditRuntime.json",
+      "name": "auditRuntime",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "audit",
+        "--omit=dev",
+        "--audit-level=moderate",
+        "--json"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 3517,
+      "finishedAt": "2026-10-14T03:50:14.833Z"
+    },
+    {
+      "artifact": "auditAll.json",
+      "name": "auditAll",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "audit",
+        "--json"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 1,
+      "durationMs": 24667,
+      "finishedAt": "2026-10-14T03:50:36.061Z"
+    },
+    {
+      "artifact": "generate.json",
+      "name": "generate",
+      "command": [
+        "node",
+        "npm-cli.js",
+        "run",
+        "prisma:generate",
+        "--workspace=@atlas/api"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 1383,
+      "finishedAt": "2026-10-14T03:51:10.626Z"
+    },
+    {
+      "artifact": "migrate.json",
+      "name": "migrate",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--workspace=@atlas/api",
+        "--",
+        "prisma",
+        "migrate",
+        "deploy"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 2734,
+      "finishedAt": "2026-10-14T03:51:56.074Z"
+    },
+    {
+      "artifact": "migrationStatus.json",
+      "name": "migrationStatus",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "exec",
+        "--workspace=@atlas/api",
+        "--",
+        "prisma",
+        "migrate",
+        "status"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 5328,
+      "finishedAt": "2026-10-14T03:56:17.855Z"
+    },
+    {
+      "artifact": "provision.json",
+      "exitCode": 0,
+      "finishedAt": "2026-10-14T03:52:26.123Z",
+      "scope": "fresh fixture only"
+    },
+    {
+      "artifact": "grants.json",
+      "name": "grants",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test:security:db"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 947,
+      "finishedAt": "2026-10-14T03:52:27.815Z"
+    },
+    {
+      "artifact": "integration.json",
+      "name": "integration",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test:int",
+        "--workspace=@atlas/api"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 22157,
+      "finishedAt": "2026-10-14T03:53:07.924Z"
+    },
+    {
+      "artifact": "e2e.json",
+      "name": "e2e",
+      "command": [
+        "node",
+        "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\jest\\bin\\jest.js",
+        "--config",
+        "{\"moduleFileExtensions\":[\"js\",\"json\",\"ts\"],\"rootDir\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\test\",\"testEnvironment\":\"node\",\"testRegex\":\".e2e-spec.ts$\",\"transform\":{\"^.+\\\\.(t|j)s$\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\node_modules\\\\ts-jest\\\\dist\\\\index.js\",{\"tsconfig\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\tsconfig.json\"}]},\"moduleNameMapper\":{\"^uuid$\":\"<rootDir>/e2e/__mocks__/uuid.ts\",\"^archiver$\":\"<rootDir>/e2e/__mocks__/archiver.ts\"},\"setupFiles\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\docs\\\\improvements\\\\phase-3\\\\evidence\\\\phase-3e\\\\isolate-vault.cjs\"]}",
+        "--runInBand"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 39871,
+      "finishedAt": "2026-10-14T03:54:39.315Z"
+    },
+    {
+      "artifact": "buildApi.json",
+      "name": "buildApi",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build",
+        "--workspace=@atlas/api"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 19103,
+      "finishedAt": "2026-10-14T03:52:16.028Z"
+    },
+    {
+      "artifact": "buildWeb.json",
+      "name": "buildWeb",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build",
+        "--workspace=@atlas/web-admin"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 18231,
+      "finishedAt": "2026-10-14T03:52:46.529Z"
+    },
+    {
+      "artifact": "browser.json",
+      "name": "browser",
+      "command": [
+        "node",
+        "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "test:browser",
+        "--",
+        "--retries=0"
+      ],
+      "node": "v22.18.0",
+      "exitCode": 0,
+      "durationMs": 47557,
+      "finishedAt": "2026-10-14T03:55:40.900Z"
+    },
+    {
+      "artifact": "proxy.json",
+      "name": "proxy",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "scripts/security/proxy-smoke.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 7416,
+      "finishedAt": "2026-10-14T03:55:10.666Z"
+    },
+    {
+      "artifact": "recovery.json",
+      "name": "recovery",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 84398,
+      "finishedAt": "2026-10-14T03:58:06.357Z"
+    },
+    {
+      "artifact": "imageApi.json",
+      "name": "imageApi",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "apps/api/Dockerfile",
+        "-t",
+        "atlas-api:phase3e-verify",
+        "."
+      ],
+      "exitCode": 0,
+      "durationMs": 301034,
+      "finishedAt": "2026-10-14T03:58:19.290Z"
+    },
+    {
+      "artifact": "imageWeb.json",
+      "name": "imageWeb",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "apps/web-admin/Dockerfile",
+        "-t",
+        "atlas-web:phase3e-verify",
+        "."
+      ],
+      "exitCode": 0,
+      "durationMs": 174719,
+      "finishedAt": "2026-10-14T03:57:03.962Z"
+    },
+    {
+      "artifact": "imageApi-resume.json",
+      "name": "imageApi",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "apps/api/Dockerfile",
+        "-t",
+        "atlas-api:phase3e-verify",
+        "."
+      ],
+      "exitCode": 0,
+      "durationMs": 725496,
+      "finishedAt": "2026-10-15T10:15:52.651Z"
+    },
+    {
+      "artifact": "imageWeb-resume.json",
+      "name": "imageWeb",
+      "command": [
+        "docker",
+        "build",
+        "-f",
+        "apps/web-admin/Dockerfile",
+        "-t",
+        "atlas-web:phase3e-verify",
+        "."
+      ],
+      "exitCode": 0,
+      "durationMs": 665605,
+      "finishedAt": "2026-10-15T10:14:56.916Z"
+    },
+    {
+      "artifact": "restore-resume.json",
+      "name": "restore",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
+        "--approved-isolated-local"
+      ],
+      "exitCode": 0,
+      "durationMs": 112897,
+      "finishedAt": "2026-10-15T10:18:10.276Z"
+    }
+  ],
+  "limitations": [
+    "Windows Node 22 local suite is not Ubuntu Node 24 GitHub Actions",
+    "Chromium only; no manual screen reader or other browsers",
+    "No fresh HTTP before/after benchmark",
+    "No production TLS/secrets/grants/off-host recovery",
+    "No compatible previous-release rollback rehearsal",
+    "Docker baseline changed during interruption; preservation checked separately for resumed work"
+  ]
+}

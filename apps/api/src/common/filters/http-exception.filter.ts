@@ -24,21 +24,20 @@ export class HttpExceptionFilter implements ExceptionFilter {
       status = exception.getStatus();
       const exceptionResponse = exception.getResponse();
       message = (exceptionResponse as any).message || exceptionResponse;
-    } else if (exception instanceof Error) {
-      // Log unexpected errors
-      this.logger.error(
-        `[${request.method}] ${request.url} - ${exception.message}`,
-        exception.stack,
-      );
-      message = exception.message;
     } else {
-      this.logger.error(`[${request.method}] ${request.url} - Unexpected error`, exception);
+      // Unknown database/transport errors may embed credentials and query values.
+      this.logger.error({
+        event: 'UNEXPECTED_REQUEST_ERROR',
+        requestId: (request as any).id,
+        method: request.method,
+        path: request.path,
+      });
     }
 
     response.status(status).json({
       statusCode: status,
       timestamp: new Date().toISOString(),
-      path: request.url,
+      path: request.path,
       message: message,
     });
   }
