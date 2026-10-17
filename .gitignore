@@ -77,6 +77,56 @@ web_modules/
 !.env.example
 !.env.*.example
 
+# Private keys, certificates, and signing stores
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+# Public, self-signed localhost fixtures required by browser tests
+!/tests/browser/fixtures/localhost-cert.pem
+!/tests/browser/fixtures/localhost-key.pem
+
+# Local credentials and machine-specific agent/cloud configuration
+.aws/
+.ssh/
+.codex/
+.agents/
+.npmrc
+.pypirc
+.netrc
+credentials.json
+credentials.*.json
+service-account*.json
+service_account*.json
+*-firebase-adminsdk-*.json
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Local database files and backups (keep SQL migrations tracked)
+*.dump
+*.backup
+*.bak
+*.sql.gz
+*.sql.zip
+*.sqlite
+*.sqlite3
+*.db
+/backups/
+/secrets/
+
+# Removed local security remediation reports
+/SECURITY-REMEDIATION-PHASE-1.md
+/SECURITY-REMEDIATION-PHASE-2.md
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
