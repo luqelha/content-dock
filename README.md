@@ -1,152 +1,191 @@
+﻿<div align="center">
+
 # ContentDock
 
-ContentDock is a multi-tenant headless CMS with a Next.js administration interface and a NestJS API. Manage content, private media, workspace members, audit history, and asynchronous audit exports from one workspace.
+### Your content. Every workspace. One platform.
 
-## Features
+An open-source, multi-tenant headless CMS for publishing content,<br />
+managing private media, and collaborating across workspaces.
 
-- **Workspaces:** create and switch organizations, update settings, and manage Admin, Editor, and Viewer access.
-- **Authentication:** registration, login, refresh rotation, HTTP-only session cookies, profile, avatar, and password changes.
-- **Content:** rich-text editing, categories, draft/published status, search, filters, and server pagination.
-- **Media:** image/PDF uploads, authenticated previews/downloads, and encrypted file storage.
-- **Members:** shareable invitations valid for seven days, role changes, and removal of workspace access.
-- **Audit and exports:** filtered activity history and tenant/date-bounded ZIP exports processed through RabbitMQ, with progress tracking and requester-only downloads.
-- **Operations:** health checks, optional Prometheus/Grafana monitoring, retention tooling, and operational runbooks.
-- **Interface:** responsive light/dark themes and built-in user guides at `/docs`.
+[![CI](https://github.com/luqelha/atlas-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/luqelha/atlas-platform/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-18181b?style=flat-square)](LICENSE)
+[![Node.js](https://img.shields.io/badge/Node.js-24-417e38?style=flat-square)](.node-version)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](package.json)
 
-Invitations do not send email automatically. Password recovery email, billing, GraphQL, and content revision history are not implemented. Workspace domains are identifiers; entering one does not configure DNS.
+[Getting started](#local-development) · [Architecture](#architecture) · [Documentation](#documentation) · [Deployment](#production)
 
-## Stack
+</div>
 
-| Layer          | Technology                                       |
-| -------------- | ------------------------------------------------ |
-| Admin          | Next.js 16, React 19, TypeScript, Tailwind CSS 4 |
-| API            | NestJS 11, Prisma 5, JWT, Swagger/OpenAPI        |
-| Infrastructure | PostgreSQL 15, Redis 7, RabbitMQ 3               |
-| Tooling        | npm workspaces, Turborepo, Jest, Playwright      |
-| Deployment     | Docker Compose, Nginx, optional Caddy TLS        |
+---
+
+ContentDock brings a responsive administration interface and a REST API into one monorepo. Teams can organize articles, publish content, manage files, and control access in separate workspaces, with an audit trail for administrative activity.
+
+The admin includes light and dark themes, a rich-text editor, and built-in user guides. The backend handles authorization, encrypted media storage, and queued exports.
+
+## Capabilities
+
+| Area                   | What you can do                                                                                                    |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------- |
+| **Content publishing** | Write rich-text articles, organize categories, manage drafts, publish, and search paginated content lists.         |
+| **Workspaces**         | Create and switch organizations while keeping their content, files, and memberships separate.                      |
+| **Team access**        | Invite members through shareable links and assign Admin, Editor, or Viewer roles.                                  |
+| **Private media**      | Upload images and PDFs, preview and download authenticated files, and store media encrypted at rest.               |
+| **Accounts**           | Register, sign in, manage profiles and avatars, and change passwords with HTTP-only session cookies.               |
+| **Audit & exports**    | Filter activity history and request workspace-scoped ZIP exports with background processing and progress tracking. |
+| **Operations**         | Inspect health checks, enable Prometheus/Grafana monitoring, and use retention and recovery tooling.               |
+
+## Architecture
+
+```mermaid
+flowchart LR
+    User[Browser] --> Web[Next.js admin]
+    Web --> API[NestJS REST API]
+    API --> DB[(PostgreSQL)]
+    API --> Cache[(Redis)]
+    API --> Vault[Encrypted file storage]
+    API --> Queue[RabbitMQ]
+    Queue --> Worker[Export worker]
+    Worker --> DB
+    Worker --> Vault
+```
+
+Workspace authorization is enforced by the API. Export jobs run asynchronously through RabbitMQ, with durable task records in PostgreSQL. See the [architecture guide](apps/api/docs/ARCHITECTURE.md) for request flows, service boundaries, and deployment topology.
+
+| Layer           | Technologies                                                 |
+| :-------------- | :----------------------------------------------------------- |
+| **Admin**       | Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Tiptap |
+| **API**         | NestJS 11 · Prisma 5 · JWT · Swagger / OpenAPI               |
+| **Data & jobs** | PostgreSQL 15 · Redis 7 · RabbitMQ 3                         |
+| **Development** | npm workspaces · Turborepo · Jest · Playwright               |
+| **Deployment**  | Docker Compose · Nginx · optional Caddy TLS                  |
 
 ## Local development
 
-Prerequisites: **Node.js 24** (see `.node-version`), **npm 10.9.9**, and Docker with Compose. The supported Node range is declared in `package.json`. Run commands from the repository root unless stated otherwise.
+### Prerequisites
 
-1. Install dependencies and copy the environment examples:
+- **Node.js 24**, matching [`.node-version`](.node-version).
+- **npm 10.9.9**, matching the root `packageManager` field.
+- **Docker with Compose** for PostgreSQL, Redis, and RabbitMQ.
 
-   ```sh
-   npm ci
-   cp apps/api/.env.example apps/api/.env
-   cp apps/web-admin/.env.example apps/web-admin/.env.local
-   ```
-
-   On PowerShell, `Copy-Item` also works. Use `npm.cmd` / `npx.cmd` if PowerShell blocks npm scripts.
-
-2. Set distinct `JWT_SECRET` and `JWT_REFRESH_SECRET` values in `apps/api/.env`, each at least 32 characters. For example, generate each value separately:
-
-   ```sh
-   node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
-   ```
-
-   The example database, Redis, and RabbitMQ URLs match the local Compose services. The frontend uses `API_URL=http://localhost:4000/api`.
-
-3. Start infrastructure and generate the database client:
-
-   ```sh
-   docker compose up -d
-   npm run prisma:generate --workspace=@atlas/api
-   ```
-
-4. Apply committed migrations from `apps/api`, then return to the repository root:
-
-   ```sh
-   cd apps/api
-   npx prisma migrate deploy
-   cd ../..
-   npm run dev
-   ```
-
-| Service             | Local address                  |
-| ------------------- | ------------------------------ |
-| Admin               | http://localhost:3000          |
-| User guides         | http://localhost:3000/docs     |
-| API                 | http://localhost:4000/api      |
-| Swagger             | http://localhost:4000/api/docs |
-| RabbitMQ management | http://localhost:15672         |
-
-Register an account, create a workspace, and invite teammates from **Members**. Infrastructure binds to loopback. If a port is occupied, adjust the Compose mapping and corresponding environment URL.
-
-### Troubleshooting startup
-
-- **`Another next dev server is already running`:** stop the previous development command with `Ctrl+C` in its terminal, then run `npm run dev` once from the root. This command starts both workspaces; do not also start a second frontend command. Next.js prints the existing server's URL and PID if a duplicate is detected.
-- **`Cannot find module .../apps/api/dist/main`:** the compiled API entry point is missing. For development, use the root `npm run dev`, which compiles the API in watch mode. For production-style local startup, first run `npm run build --workspace=@atlas/api`, then `npm run start:prod --workspace=@atlas/api`. Avoid running an API build alongside its development watcher because both use `apps/api/dist`.
-- **Custom API ports:** set the frontend's `API_URL` to the API's configured `PORT`, including the `/api` prefix. The addresses above describe the example environment; existing local environment files may use different ports.
-
-## Repository layout
-
-| Path                 | Purpose                                                                       |
-| -------------------- | ----------------------------------------------------------------------------- |
-| `apps/api/src`       | API modules, authorization, queue worker, encrypted file vault                |
-| `apps/api/prisma`    | Database schema and committed migrations                                      |
-| `apps/api/test`      | Unit, contract, integration, and API end-to-end tests                         |
-| `apps/web-admin/src` | Admin interface, user guides, server actions, authentication proxy            |
-| `apps/api/docs`      | Architecture, API contract, security, testing, and release notes              |
-| `tests/browser`      | Playwright browser and accessibility checks                                   |
-| `scripts`            | Database provisioning, regression checks, benchmarks, and maintenance         |
-| `ops`                | Observability configuration and dependency lifecycle policy                   |
-| `docs/improvements`  | Improvement reports, operational guides, and historical verification evidence |
-
-Use the **root `package-lock.json`** for both workspaces. Install dependencies from the root to keep local, CI, and Docker dependency resolution consistent.
-
-## Validation
+### 1. Clone and install
 
 ```sh
-npm run lint
-npm run typecheck
-npm run test:contracts
-npm run test:cov --workspace=@atlas/api -- --runInBand
-npm run build
+git clone https://github.com/luqelha/atlas-platform.git
+cd atlas-platform
+npm ci
+cp apps/api/.env.example apps/api/.env
+cp apps/web-admin/.env.example apps/web-admin/.env.local
 ```
 
-Integration, API end-to-end, and browser tests require isolated test infrastructure. Follow the [test strategy](apps/api/docs/TEST_STRATEGY.md) before running them; database cleanup helpers reject normal database names.
+### 2. Configure authentication
 
-Additional commands are in `package.json`, including `test:security`, `test:observability`, `test:browser`, `audit:dependencies`, and `maintenance:dependencies`. CI runs the fullstack checks and container builds; the maintenance workflow handles scheduled dependency reviews.
+In `apps/api/.env`, set **different** values for `JWT_SECRET` and `JWT_REFRESH_SECRET`, each at least 32 characters long. Run this command separately for each value:
 
-For the authenticated 1,000-read smoke benchmark, run `node scripts/benchmark.mjs` against a separately started test API with `DATABASE_URL` set to its dedicated test database and `E2E_API_URL` set to the API address (default `http://127.0.0.1:4400/api`). Results are generated in `artifacts/benchmark`. See the [performance report](apps/api/docs/PERFORMANCE_REPORT.md) for measured workloads and limitations.
+```sh
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+```
+
+The environment examples already match the local Compose services. The frontend connects to `API_URL=http://localhost:4000/api`.
+
+### 3. Start services and apply migrations
+
+```sh
+docker compose up -d
+npm run prisma:generate --workspace=@atlas/api
+cd apps/api
+npx prisma migrate deploy
+cd ../..
+npm run dev
+```
+
+Open **[localhost:3000](http://localhost:3000)**, register an account, and create your first workspace. Invite teammates from **Members**.
+
+| Service             | Address                                                   |
+| :------------------ | :-------------------------------------------------------- |
+| Admin               | [localhost:3000](http://localhost:3000)                   |
+| User guides         | [localhost:3000/docs](http://localhost:3000/docs)         |
+| REST API            | [localhost:4000/api](http://localhost:4000/api)           |
+| Swagger UI          | [localhost:4000/api/docs](http://localhost:4000/api/docs) |
+| RabbitMQ management | [localhost:15672](http://localhost:15672)                 |
+
+<details>
+<summary><strong>Windows and startup troubleshooting</strong></summary>
+
+- On PowerShell, use `Copy-Item` instead of `cp` if preferred. Use `npm.cmd` and `npx.cmd` if execution policy blocks their PowerShell wrappers.
+- Run the root `npm run dev` once: it starts both applications. If Next.js reports another development server, stop the previous process in its terminal before restarting.
+- If `apps/api/dist/main` is missing during production-style startup, run `npm run build --workspace=@atlas/api` before `npm run start:prod --workspace=@atlas/api`. Avoid building the API while its development watcher is running.
+- If you change the API port, update the frontend's `API_URL`, retaining the `/api` suffix. Local infrastructure binds to loopback; adjust Compose mappings if ports are occupied.
+
+</details>
+
+The `@atlas/*` workspace names and repository URL are existing internal identifiers. The product is **ContentDock**; use the identifiers shown above when running commands.
+
+## Development & testing
+
+Run commands from the repository root. Both applications share the root `package-lock.json`.
+
+| Command                                              | Purpose                                     |
+| :--------------------------------------------------- | :------------------------------------------ |
+| `npm run dev`                                        | Start the API and admin in development mode |
+| `npm run build`                                      | Build both applications                     |
+| `npm run lint`                                       | Lint both workspaces                        |
+| `npm run typecheck`                                  | Check application types                     |
+| `npm run test --workspace=@atlas/api -- --runInBand` | Run API unit tests                          |
+| `npm run test:contracts`                             | Verify API and consumer contracts           |
+| `npm run test:security`                              | Run security regression checks              |
+| `npm run test:browser`                               | Run Playwright browser tests                |
+
+Integration, API end-to-end, and browser checks use isolated test infrastructure. Follow the [test strategy](apps/api/docs/TEST_STRATEGY.md) for setup. Performance measurements and workload limitations are documented in the [performance report](apps/api/docs/PERFORMANCE_REPORT.md).
 
 ## Production
 
-Copy `.env.production.example` to `.env.production`. Configure database and broker credentials, the restricted `DATABASE_APP_URL`, hostname, and three distinct secrets: `JWT_SECRET`, `JWT_REFRESH_SECRET`, and `AUTH_PROXY_SECRET` (each at least 32 characters).
+The production Compose stack includes the admin, API, migration service, PostgreSQL, Redis, RabbitMQ, and Nginx. An optional Caddy profile provides TLS.
 
-Set a persistent `STORAGE_ENCRYPTION_KEY` containing 64 hexadecimal characters (32 random bytes). The generation command above produces this format. Back up the key securely alongside the database and encrypted files.
+Before launching:
 
-Before startup, follow [database runtime role provisioning](scripts/database/README.md): apply migrations with the owner role, provision or review `atlas_app`, and grant the required `ExportTask` permissions. Existing installations must also review volume names, credentials, and storage migration in the [release notes](apps/api/docs/RELEASE_NOTES.md).
+1. Copy `.env.production.example` to `.env.production` and configure credentials, hostname, and distinct authentication secrets.
+2. Set a persistent `STORAGE_ENCRYPTION_KEY` to 64 hexadecimal characters. Back it up alongside the database and encrypted files.
+3. Follow [runtime database role provisioning](scripts/database/README.md) to configure the restricted `DATABASE_APP_URL` separately from migration credentials.
+4. Review the [release notes](apps/api/docs/RELEASE_NOTES.md), configure DNS, and make ports 80/443 available for TLS.
 
 ```sh
 docker compose --env-file .env.production -f docker-compose.prod.yml build
 docker compose --env-file .env.production -f docker-compose.prod.yml --profile tls up -d
 ```
 
-The TLS profile requires DNS pointing to the server and available ports 80/443. Without it, Nginx is exposed at `127.0.0.1:8080` for local inspection. Production sessions require HTTPS. The migration service runs before the API; production infrastructure has no published PostgreSQL, Redis, or RabbitMQ ports.
+Production sessions require HTTPS. Without the TLS profile, Nginx binds to `127.0.0.1:8080` for local inspection. Database and broker ports are not published by the production stack.
 
-Optional monitoring uses `docker-compose.observability.yml`; follow the [observability guide](docs/improvements/phase-4/OBSERVABILITY.md) for configuration. Review staging, backups, and restore procedures before production deployment.
-
-## Repository hygiene
-
-Commit source code, migrations, tests and their fixtures, sanitized environment examples, deployment configuration, and documentation. Git ignores local `.env` variants, dependencies, build output, coverage, temporary browser reports, and generated audit/maintenance reports.
-
-Historical verification evidence under `docs/improvements`, the documentation screenshots in `artifacts/docs`, and the security evidence in `artifacts/security-phase2` are retained because project reports refer to them. New generated reports should stay in ignored output directories or be deliberately curated as documentation evidence.
+For monitoring, backup, recovery, and retention procedures, use the operational guides below.
 
 ## Documentation
 
-- [Architecture and fullstack diagram](apps/api/docs/ARCHITECTURE.md)
-- [API contract](apps/api/docs/API_SPECIFICATION.md)
-- [Security boundaries](apps/api/docs/SECURITY.md)
-- [Test strategy](apps/api/docs/TEST_STRATEGY.md)
-- [Design decisions](apps/api/docs/DECISION_LOG.md)
-- [Release and upgrade notes](apps/api/docs/RELEASE_NOTES.md)
-- [Development roadmap and historical verification](DEVELOPMENT.md)
-- [Operational metrics and dashboard](docs/improvements/phase-4/OBSERVABILITY.md)
-- [Incident and resilience runbooks](docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md)
-- [Maintenance and dependency lifecycle](docs/improvements/phase-4/LONG-TERM-MAINTENANCE.md)
-- [Retention policy](docs/improvements/phase-4/RETENTION-POLICY.md)
-- [Browser and accessibility verification](docs/improvements/phase-4/BROWSER-ACCESSIBILITY.md)
+| Guide                                                                         | Contents                                                  |
+| :---------------------------------------------------------------------------- | :-------------------------------------------------------- |
+| [Architecture](apps/api/docs/ARCHITECTURE.md)                                 | System boundaries, request flows, and deployment diagrams |
+| [API specification](apps/api/docs/API_SPECIFICATION.md)                       | Endpoints and API contracts                               |
+| [Security](apps/api/docs/SECURITY.md)                                         | Authentication, authorization, and storage boundaries     |
+| [Testing](apps/api/docs/TEST_STRATEGY.md)                                     | Unit, integration, API, and browser validation            |
+| [Observability](docs/improvements/phase-4/OBSERVABILITY.md)                   | Metrics, dashboards, and alerting                         |
+| [Operational runbooks](docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md)     | Incidents, resilience, and recovery                       |
+| [Maintenance](docs/improvements/phase-4/LONG-TERM-MAINTENANCE.md)             | Dependency lifecycle and ongoing checks                   |
+| [Retention](docs/improvements/phase-4/RETENTION-POLICY.md)                    | File retention and cleanup procedures                     |
+| [Browser & accessibility](docs/improvements/phase-4/BROWSER-ACCESSIBILITY.md) | Browser coverage and accessibility verification           |
+| [Release notes](apps/api/docs/RELEASE_NOTES.md)                               | Upgrade considerations and migration details              |
+| [Decision log](apps/api/docs/DECISION_LOG.md)                                 | Technical choices and tradeoffs                           |
+| [Development history](DEVELOPMENT.md)                                         | Roadmap and implementation evidence                       |
 
-Licensed under [MIT](LICENSE).
+## Project scope
+
+Invitations use shareable links; automatic invitation emails and password recovery emails are not implemented. Billing, GraphQL, and content revision history are outside the current feature set. Workspace domains are identifiers and do not configure DNS.
+
+Deployment configuration and local verification evidence are included in the repository. Review staging behavior, backup restoration, and your environment before deploying to production.
+
+## Contributing
+
+Keep changes focused and include the relevant checks from the [test strategy](apps/api/docs/TEST_STRATEGY.md). For pull requests, describe the behavior changed and how it was verified.
+
+Commit source, migrations, fixtures, sanitized configuration examples, and documentation. Keep credentials, local environment files, dependencies, and build output out of Git. Historical evidence under `docs/improvements` and curated assets under `artifacts` support linked project reports; new generated reports should use ignored output directories unless deliberately curated.
+
+## License
+
+[MIT](LICENSE) · Copyright © 2026 [luqelha](https://github.com/luqelha)
