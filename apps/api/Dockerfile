@@ -1,4 +1,4 @@
-FROM node:24-slim AS build
+FROM node:25-slim AS build
 RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -9,7 +9,7 @@ COPY apps/api ./apps/api
 RUN npm run prisma:generate --workspace=@atlas/api && npm run build --workspace=@atlas/api
 RUN npm prune --omit=dev --workspace=@atlas/api --include-workspace-root=false
 
-FROM node:24-slim AS runtime
+FROM node:25-slim AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 ENV NODE_ENV=production PORT=4000
