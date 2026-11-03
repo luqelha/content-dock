@@ -1,4 +1,4 @@
-# Atlas 1.0 release candidate
+# ContentDock 1.0 release candidate
 
 ## Changes
 

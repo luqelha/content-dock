@@ -72,7 +72,7 @@ export function dashboardDestination(referer: string | null) {
   try {
     const from = referer ? new URL(referer).searchParams.get("from") : null;
     if (!from || /[\\\u0000-\u001f\u007f]/.test(from)) return "/dashboard";
-    const base = "https://atlas.invalid";
+    const base = "https://contentdock.invalid";
     const target = new URL(from, base);
     const decodedPath = decodeURIComponent(target.pathname);
     if (

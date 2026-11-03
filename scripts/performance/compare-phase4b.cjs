@@ -32,12 +32,12 @@ function summarize(runs) {
   const requests = runs.reduce((n, r) => n + r.requests, 0);
   const cacheHits = runs.reduce(
     (n, r) =>
-      n + (r.metricsDelta['atlas_cache_access_total{outcome="hit"}'] || 0),
+      n + (r.metricsDelta['contentdock_cache_access_total{outcome="hit"}'] || 0),
     0,
   );
   const cacheMisses = runs.reduce(
     (n, r) =>
-      n + (r.metricsDelta['atlas_cache_access_total{outcome="miss"}'] || 0),
+      n + (r.metricsDelta['contentdock_cache_access_total{outcome="miss"}'] || 0),
     0,
   );
   return {

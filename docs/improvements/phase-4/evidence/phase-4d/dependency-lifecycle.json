@@ -1012,7 +1012,7 @@
         "wanted": "1.9.0",
         "latest": "1.9.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\@base-ui\\react",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\@base-ui\\react",
         "type": "dependencies",
         "homepage": "https://base-ui.com",
         "dependedByLocation": "apps/web-admin"
@@ -1022,7 +1022,7 @@
         "wanted": "5.9.1",
         "latest": "5.9.1",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\web-admin\\node_modules\\@hookform\\resolvers",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\web-admin\\node_modules\\@hookform\\resolvers",
         "type": "dependencies",
         "homepage": "https://react-hook-form.com",
         "dependedByLocation": "apps/web-admin"
@@ -1032,7 +1032,7 @@
         "wanted": "11.0.24",
         "latest": "12.0.8",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\cli",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\cli",
         "type": "devDependencies",
         "homepage": "https://github.com/nestjs/nest-cli#readme",
         "dependedByLocation": "apps/api"
@@ -1042,7 +1042,7 @@
         "wanted": "11.2.7",
         "latest": "12.1.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\common",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\common",
         "type": "dependencies",
         "homepage": "https://nestjs.com",
         "dependedByLocation": "apps/api"
@@ -1052,7 +1052,7 @@
         "wanted": "4.0.4",
         "latest": "12.0.1",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\config",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\config",
         "type": "dependencies",
         "homepage": "https://github.com/nestjs/config#readme",
         "dependedByLocation": "apps/api"
@@ -1062,7 +1062,7 @@
         "wanted": "11.2.7",
         "latest": "12.1.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\core",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\core",
         "type": "dependencies",
         "homepage": "https://nestjs.com",
         "dependedByLocation": "apps/api"
@@ -1072,7 +1072,7 @@
         "wanted": "11.0.2",
         "latest": "12.0.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\jwt",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\jwt",
         "type": "dependencies",
         "homepage": "https://github.com/nestjs/jwt#readme",
         "dependedByLocation": "apps/api"
@@ -1082,7 +1082,7 @@
         "wanted": "11.2.7",
         "latest": "12.1.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\microservices",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\microservices",
         "type": "dependencies",
         "homepage": "https://nestjs.com",
         "dependedByLocation": "apps/api"
@@ -1092,7 +1092,7 @@
         "wanted": "11.0.5",
         "latest": "12.0.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\passport",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\passport",
         "type": "dependencies",
         "homepage": "https://github.com/nestjs/passport#readme",
         "dependedByLocation": "apps/api"
@@ -1102,7 +1102,7 @@
         "wanted": "11.2.7",
         "latest": "12.1.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\platform-express",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\platform-express",
         "type": "dependencies",
         "homepage": "https://nestjs.com",
         "dependedByLocation": "apps/api"
@@ -1112,7 +1112,7 @@
         "wanted": "11.1.0",
         "latest": "12.0.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\schematics",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\schematics",
         "type": "devDependencies",
         "homepage": "https://github.com/nestjs/schematics#readme",
         "dependedByLocation": "apps/api"
@@ -1122,7 +1122,7 @@
         "wanted": "5.0.5",
         "latest": "12.0.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\serve-static",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\serve-static",
         "type": "dependencies",
         "homepage": "https://github.com/nestjs/serve-static#readme",
         "dependedByLocation": "apps/api"
@@ -1132,7 +1132,7 @@
         "wanted": "11.4.7",
         "latest": "12.0.2",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\swagger",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\swagger",
         "type": "dependencies",
         "homepage": "https://github.com/nestjs/swagger#readme",
         "dependedByLocation": "apps/api"
@@ -1142,7 +1142,7 @@
         "wanted": "11.2.7",
         "latest": "12.1.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@nestjs\\testing",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@nestjs\\testing",
         "type": "devDependencies",
         "homepage": "https://nestjs.com",
         "dependedByLocation": "apps/api"
@@ -1152,7 +1152,7 @@
         "wanted": "5.22.0",
         "latest": "7.10.1",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@prisma\\client",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@prisma\\client",
         "type": "dependencies",
         "homepage": "https://www.prisma.io",
         "dependedByLocation": "apps/api"
@@ -1162,7 +1162,7 @@
         "wanted": "1.5.0",
         "latest": "1.5.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\@radix-ui\\react-slot",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\@radix-ui\\react-slot",
         "type": "dependencies",
         "homepage": "https://radix-ui.com/primitives",
         "dependedByLocation": "apps/web-admin"
@@ -1172,7 +1172,7 @@
         "wanted": "8.21.3",
         "latest": "9.3.1",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\web-admin\\node_modules\\@tanstack\\react-table",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\web-admin\\node_modules\\@tanstack\\react-table",
         "type": "dependencies",
         "homepage": "https://tanstack.com/table",
         "dependedByLocation": "apps/web-admin"
@@ -1182,7 +1182,7 @@
         "wanted": "3.31.4",
         "latest": "3.32.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\web-admin\\node_modules\\@tiptap\\extension-image",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\web-admin\\node_modules\\@tiptap\\extension-image",
         "type": "dependencies",
         "homepage": "https://tiptap.dev",
         "dependedByLocation": "apps/web-admin"
@@ -1192,7 +1192,7 @@
         "wanted": "3.31.4",
         "latest": "3.32.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\web-admin\\node_modules\\@tiptap\\react",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\web-admin\\node_modules\\@tiptap\\react",
         "type": "dependencies",
         "homepage": "https://tiptap.dev",
         "dependedByLocation": "apps/web-admin"
@@ -1202,7 +1202,7 @@
         "wanted": "3.31.4",
         "latest": "3.32.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\@tiptap\\starter-kit",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\@tiptap\\starter-kit",
         "type": "dependencies",
         "homepage": "https://tiptap.dev",
         "dependedByLocation": "apps/web-admin"
@@ -1212,7 +1212,7 @@
         "wanted": "4.17.25",
         "latest": "5.0.6",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@types\\express",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@types\\express",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/express",
         "dependedByLocation": "apps/api"
@@ -1222,7 +1222,7 @@
         "wanted": "29.5.14",
         "latest": "30.0.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@types\\jest",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@types\\jest",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jest",
         "dependedByLocation": "apps/api"
@@ -1232,7 +1232,7 @@
         "wanted": "2.3.0",
         "latest": "2.3.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@types\\multer",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@types\\multer",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/multer",
         "dependedByLocation": "apps/api"
@@ -1243,7 +1243,7 @@
           "wanted": "20.19.43",
           "latest": "26.6.5",
           "dependent": "api",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@types\\node",
+          "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@types\\node",
           "type": "devDependencies",
           "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
           "dependedByLocation": "apps/api"
@@ -1253,7 +1253,7 @@
           "wanted": "20.19.43",
           "latest": "26.6.5",
           "dependent": "web-admin",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\web-admin\\node_modules\\@types\\node",
+          "location": "C:\\Projects\\webdev\\contentdock\\apps\\web-admin\\node_modules\\@types\\node",
           "type": "devDependencies",
           "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
           "dependedByLocation": "apps/web-admin"
@@ -1264,7 +1264,7 @@
         "wanted": "19.3.0",
         "latest": "19.3.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\@types\\react",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\@types\\react",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react",
         "dependedByLocation": "apps/web-admin"
@@ -1274,7 +1274,7 @@
         "wanted": "19.3.0",
         "latest": "19.3.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\@types\\react-dom",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\@types\\react-dom",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom",
         "dependedByLocation": "apps/web-admin"
@@ -1284,7 +1284,7 @@
         "wanted": "2.0.16",
         "latest": "7.2.1",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@types\\supertest",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@types\\supertest",
         "type": "devDependencies",
         "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/supertest",
         "dependedByLocation": "apps/api"
@@ -1294,7 +1294,7 @@
         "wanted": "7.18.0",
         "latest": "8.71.2",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@typescript-eslint\\eslint-plugin",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@typescript-eslint\\eslint-plugin",
         "type": "devDependencies",
         "homepage": "https://typescript-eslint.io/packages/eslint-plugin",
         "dependedByLocation": "apps/api"
@@ -1304,7 +1304,7 @@
         "wanted": "7.18.0",
         "latest": "8.71.2",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\@typescript-eslint\\parser",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\@typescript-eslint\\parser",
         "type": "devDependencies",
         "homepage": "https://typescript-eslint.io/packages/parser",
         "dependedByLocation": "apps/api"
@@ -1314,7 +1314,7 @@
         "wanted": "2.2.0",
         "latest": "2.2.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\amqplib",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\amqplib",
         "type": "dependencies",
         "homepage": "http://amqp-node.github.io/amqplib/",
         "dependedByLocation": "apps/api"
@@ -1325,7 +1325,7 @@
           "wanted": "8.57.1",
           "latest": "10.13.0",
           "dependent": "api",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\eslint",
+          "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\eslint",
           "type": "devDependencies",
           "homepage": "https://eslint.org",
           "dependedByLocation": "apps/api"
@@ -1335,7 +1335,7 @@
           "wanted": "9.39.5",
           "latest": "10.13.0",
           "dependent": "web-admin",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\eslint",
+          "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\eslint",
           "type": "devDependencies",
           "homepage": "https://eslint.org",
           "dependedByLocation": "apps/web-admin"
@@ -1346,7 +1346,7 @@
         "wanted": "16.3.8",
         "latest": "16.4.2",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\eslint-config-next",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\eslint-config-next",
         "type": "devDependencies",
         "homepage": "https://nextjs.org/docs/app/api-reference/config/eslint",
         "dependedByLocation": "apps/web-admin"
@@ -1356,7 +1356,7 @@
         "wanted": "9.1.2",
         "latest": "10.1.8",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\eslint-config-prettier",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\eslint-config-prettier",
         "type": "devDependencies",
         "homepage": "https://github.com/prettier/eslint-config-prettier#readme",
         "dependedByLocation": "apps/api"
@@ -1366,7 +1366,7 @@
         "wanted": "5.5.7",
         "latest": "5.5.7",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\eslint-plugin-prettier",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\eslint-plugin-prettier",
         "type": "devDependencies",
         "homepage": "https://github.com/prettier/eslint-plugin-prettier#readme",
         "dependedByLocation": "apps/api"
@@ -1376,7 +1376,7 @@
         "wanted": "13.5.1",
         "latest": "14.3.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\framer-motion",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\framer-motion",
         "type": "dependencies",
         "homepage": "https://github.com/motiondivision/motion#readme",
         "dependedByLocation": "apps/web-admin"
@@ -1386,7 +1386,7 @@
         "wanted": "29.7.0",
         "latest": "30.5.2",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\jest",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\jest",
         "type": "devDependencies",
         "homepage": "https://jestjs.io/",
         "dependedByLocation": "apps/api"
@@ -1396,7 +1396,7 @@
         "wanted": "18.2.9",
         "latest": "18.3.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\joi",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\joi",
         "type": "dependencies",
         "homepage": "https://github.com/hapijs/joi#readme",
         "dependedByLocation": "apps/api"
@@ -1406,7 +1406,7 @@
         "wanted": "1.58.0",
         "latest": "1.58.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\lucide-react",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\lucide-react",
         "type": "dependencies",
         "homepage": "https://lucide.dev",
         "dependedByLocation": "apps/web-admin"
@@ -1416,7 +1416,7 @@
         "wanted": "4.6.1",
         "latest": "5.3.1",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\nestjs-pino",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\nestjs-pino",
         "type": "dependencies",
         "homepage": "https://github.com/iamolegga/nestjs-pino#readme",
         "dependedByLocation": "apps/api"
@@ -1426,7 +1426,7 @@
         "wanted": "16.3.8",
         "latest": "16.4.2",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\next",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\next",
         "type": "dependencies",
         "homepage": "https://nextjs.org",
         "dependedByLocation": "apps/web-admin"
@@ -1436,7 +1436,7 @@
         "wanted": "13.2.0",
         "latest": "13.2.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\pino-pretty",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\pino-pretty",
         "type": "dependencies",
         "homepage": "https://github.com/pinojs/pino-pretty#readme",
         "dependedByLocation": "apps/api"
@@ -1446,7 +1446,7 @@
         "wanted": "3.9.10",
         "latest": "3.9.10",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\prettier",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\prettier",
         "type": "devDependencies",
         "homepage": "https://prettier.io",
         "dependedByLocation": "apps/api"
@@ -1456,7 +1456,7 @@
         "wanted": "5.22.0",
         "latest": "8.0.0-rc.23",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\prisma",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\prisma",
         "type": "dependencies",
         "homepage": "https://github.com/prisma/prisma-cli#readme",
         "dependedByLocation": "apps/api"
@@ -1466,7 +1466,7 @@
         "wanted": "19.2.8",
         "latest": "19.3.1",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\react",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\react",
         "type": "dependencies",
         "homepage": "https://react.dev/",
         "dependedByLocation": "apps/web-admin"
@@ -1476,7 +1476,7 @@
         "wanted": "19.2.8",
         "latest": "19.3.1",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\react-dom",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\react-dom",
         "type": "dependencies",
         "homepage": "https://react.dev/",
         "dependedByLocation": "apps/web-admin"
@@ -1486,7 +1486,7 @@
         "wanted": "7.90.0",
         "latest": "7.90.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\react-hook-form",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\react-hook-form",
         "type": "dependencies",
         "homepage": "https://react-hook-form.com",
         "dependedByLocation": "apps/web-admin"
@@ -1496,7 +1496,7 @@
         "wanted": "6.3.0",
         "latest": "6.3.0",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\redis",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\redis",
         "type": "dependencies",
         "homepage": "https://github.com/redis/node-redis",
         "dependedByLocation": "apps/api"
@@ -1506,7 +1506,7 @@
         "wanted": "0.1.14",
         "latest": "0.2.2",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\reflect-metadata",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\reflect-metadata",
         "type": "dependencies",
         "homepage": "http://rbuckton.github.io/reflect-metadata",
         "dependedByLocation": "apps/api"
@@ -1516,7 +1516,7 @@
         "wanted": "4.22.0",
         "latest": "4.22.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\shadcn",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\shadcn",
         "type": "devDependencies",
         "homepage": "https://ui.shadcn.com",
         "dependedByLocation": "apps/web-admin"
@@ -1526,7 +1526,7 @@
         "wanted": "6.3.4",
         "latest": "7.3.1",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\supertest",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\supertest",
         "type": "devDependencies",
         "homepage": "https://github.com/ladjs/supertest#readme",
         "dependedByLocation": "apps/api"
@@ -1536,7 +1536,7 @@
         "wanted": "3.7.0",
         "latest": "3.7.0",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\tailwind-merge",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\tailwind-merge",
         "type": "dependencies",
         "homepage": "https://github.com/dcastil/tailwind-merge",
         "dependedByLocation": "apps/web-admin"
@@ -1546,7 +1546,7 @@
         "wanted": "29.4.15",
         "latest": "29.4.15",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\ts-jest",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\ts-jest",
         "type": "devDependencies",
         "homepage": "https://kulshekhar.github.io/ts-jest",
         "dependedByLocation": "apps/api"
@@ -1557,7 +1557,7 @@
           "wanted": "5.9.3",
           "latest": "7.0.2",
           "dependent": "api",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\typescript",
+          "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\typescript",
           "type": "devDependencies",
           "homepage": "https://www.typescriptlang.org/",
           "dependedByLocation": "apps/api"
@@ -1567,7 +1567,7 @@
           "wanted": "5.9.3",
           "latest": "7.0.2",
           "dependent": "web-admin",
-          "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\typescript",
+          "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\typescript",
           "type": "devDependencies",
           "homepage": "https://www.typescriptlang.org/",
           "dependedByLocation": "apps/web-admin"
@@ -1578,7 +1578,7 @@
         "wanted": "14.0.3",
         "latest": "14.0.3",
         "dependent": "api",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\uuid",
+        "location": "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\uuid",
         "type": "dependencies",
         "homepage": "https://github.com/uuidjs/uuid#readme",
         "dependedByLocation": "apps/api"
@@ -1588,7 +1588,7 @@
         "wanted": "4.6.7",
         "latest": "4.6.7",
         "dependent": "web-admin",
-        "location": "C:\\Projects\\webdev\\atlas-platform\\node_modules\\zod",
+        "location": "C:\\Projects\\webdev\\contentdock\\node_modules\\zod",
         "type": "dependencies",
         "homepage": "https://zod.dev",
         "dependedByLocation": "apps/web-admin"

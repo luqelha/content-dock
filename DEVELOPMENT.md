@@ -1,4 +1,4 @@
-# Development status — Atlas Platform
+# Development status — ContentDock
 
 Updated: 6 October 2026. This roadmap records implemented behavior and actual local verification, replacing the previous inconsistent completion percentages.
 

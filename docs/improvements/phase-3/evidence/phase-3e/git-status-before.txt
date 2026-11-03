@@ -172,7 +172,7 @@
 ?? apps/web-admin/src/app/dashboard/users/
 ?? apps/web-admin/src/app/dashboard/workspaces/
 ?? apps/web-admin/src/app/error.tsx
-?? apps/web-admin/src/components/atlas-mark.tsx
+?? apps/web-admin/src/components/contentdock-mark.tsx
 ?? apps/web-admin/src/components/dashboard/exports-client.tsx
 ?? apps/web-admin/src/components/dashboard/list-pagination.tsx
 ?? apps/web-admin/src/components/dashboard/members-client.tsx

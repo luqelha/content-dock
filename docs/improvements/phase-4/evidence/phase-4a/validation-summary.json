@@ -25,7 +25,7 @@
         "/d",
         "/s",
         "/c",
-        "npm.cmd exec --workspace=@atlas/api -- tsc --noEmit"
+        "npm.cmd exec --workspace=@contentdock/api -- tsc --noEmit"
       ],
       "exitCode": 0,
       "log": "check-types-1792068029406.log",
@@ -42,7 +42,7 @@
         "/d",
         "/s",
         "/c",
-        "npm.cmd run lint --workspace=@atlas/api"
+        "npm.cmd run lint --workspace=@contentdock/api"
       ],
       "exitCode": 0,
       "log": "check-lint-1792068027768.log",
@@ -59,7 +59,7 @@
         "/d",
         "/s",
         "/c",
-        "npm.cmd run test:cov --workspace=@atlas/api -- --runInBand"
+        "npm.cmd run test:cov --workspace=@contentdock/api -- --runInBand"
       ],
       "exitCode": 0,
       "log": "check-unit-1792067664124.log",
@@ -126,15 +126,15 @@
         "docker",
         "run",
         "--name",
-        "atlas-phase4a-rules-1792069762019",
+        "contentdock-phase4a-rules-1792069762019",
         "--network",
         "none",
         "--entrypoint",
         "/bin/promtool",
         "-v",
-        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "C:/Projects/webdev/contentDock/ops/observability:/etc/contentdock:ro",
         "-w",
-        "/etc/atlas",
+        "/etc/contentdock",
         "prom/prometheus:v3.15.0",
         "test",
         "rules",
@@ -154,18 +154,18 @@
         "docker",
         "run",
         "--name",
-        "atlas-phase4a-promcfg-1792069763231",
+        "contentdock-phase4a-promcfg-1792069763231",
         "--network",
         "none",
         "--entrypoint",
         "/bin/promtool",
         "-v",
-        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "C:/Projects/webdev/contentDock/ops/observability:/etc/contentdock:ro",
         "prom/prometheus:v3.15.0",
         "check",
         "config",
         "--syntax-only",
-        "/etc/atlas/prometheus.yml"
+        "/etc/contentdock/prometheus.yml"
       ],
       "exitCode": 0,
       "log": "check-prometheus-1792069763861.log",
@@ -181,16 +181,16 @@
         "docker",
         "run",
         "--name",
-        "atlas-phase4a-amcfg-1792069763909",
+        "contentdock-phase4a-amcfg-1792069763909",
         "--network",
         "none",
         "--entrypoint",
         "/bin/amtool",
         "-v",
-        "C:/Projects/webdev/atlas-platform/ops/observability:/etc/atlas:ro",
+        "C:/Projects/webdev/contentDock/ops/observability:/etc/contentdock:ro",
         "prom/alertmanager:v0.34.1",
         "check-config",
-        "/etc/atlas/alertmanager.yml"
+        "/etc/contentdock/alertmanager.yml"
       ],
       "exitCode": 0,
       "log": "check-alertmanager-1792069764490.log",
@@ -207,7 +207,7 @@
         "/d",
         "/s",
         "/c",
-        "npm.cmd run build --workspace=@atlas/api"
+        "npm.cmd run build --workspace=@contentdock/api"
       ],
       "exitCode": 0,
       "log": "check-build-1792069594579.log",
@@ -225,7 +225,7 @@
         "-f",
         "apps/api/Dockerfile",
         "-t",
-        "atlas-api:phase4a",
+        "contentdock-api:phase4a",
         "."
       ],
       "exitCode": 0,
@@ -244,7 +244,7 @@
         "-f",
         "ops/observability/alert-journal.Dockerfile",
         "-t",
-        "atlas-alert-journal:phase4a",
+        "contentdock-alert-journal:phase4a",
         "."
       ],
       "exitCode": 0,
@@ -257,7 +257,7 @@
   "databaseRegression": {
     "file": "database-regression-1792069341331.json",
     "startedAt": "2026-10-15T13:02:21.331Z",
-    "project": "atlas-phase4a-regression-b74da46e",
+    "project": "contentdock-phase4a-regression-b74da46e",
     "scope": "New local tmpfs database and isolated E2E vaults only",
     "checks": [
       {
@@ -308,7 +308,7 @@
   },
   "runtime": {
     "file": "drill-1792068888186.json",
-    "project": "atlas-phase4a-765b8399c3",
+    "project": "contentdock-phase4a-765b8399c3",
     "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
     "checkpoints": [
       {
@@ -325,7 +325,7 @@
             "type": "tmpfs"
           },
           "retentionEnabled": false,
-          "runtimeRole": "atlas_app",
+          "runtimeRole": "contentdock_app",
           "ports": {
             "api": "http://127.0.0.1:32778",
             "management": "http://127.0.0.1:32779",
@@ -424,7 +424,7 @@
         "startedAt": "2026-10-15T13:03:20.784Z",
         "elapsedSeconds": 28.10966889999993,
         "details": {
-          "uid": "atlas-operations",
+          "uid": "contentdock-operations",
           "provisioned": true,
           "panels": [
             {
@@ -572,27 +572,27 @@
   "attempts": [
     {
       "file": "drill-1792068213259.json",
-      "project": "atlas-phase4a-a12776b993",
+      "project": "contentdock-phase4a-a12776b993",
       "status": "failed",
       "error": "Cannot read properties of undefined (reading 'HostPort')",
       "checkpoints": 1
     },
     {
       "file": "drill-1792068399816.json",
-      "project": "atlas-phase4a-912568b143",
+      "project": "contentdock-phase4a-912568b143",
       "status": "failed",
       "error": "Cannot read properties of undefined (reading 'HostPort')",
       "checkpoints": 1
     },
     {
       "file": "drill-1792068691002.json",
-      "project": "atlas-phase4a-730ac3d36d",
+      "project": "contentdock-phase4a-730ac3d36d",
       "status": "interrupted-see-interruption-record",
       "checkpoints": 0
     },
     {
       "file": "drill-1792068888186.json",
-      "project": "atlas-phase4a-765b8399c3",
+      "project": "contentdock-phase4a-765b8399c3",
       "status": "passed",
       "checkpoints": 9
     }
@@ -601,7 +601,7 @@
     "at": "2026-10-15T13:07:03.562Z",
     "method": "SHA-256 of all emitted .js files after CRLF normalization; source maps and root CLI scripts are outside this comparison",
     "imageId": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
-    "container": "atlas-phase4a-codeverify-1792069622968",
+    "container": "contentdock-phase4a-codeverify-1792069622968",
     "compiledFiles": 105,
     "identical": true,
     "differences": [],
@@ -701,107 +701,107 @@
       "bytes": 1078
     },
     {
-      "file": "atlas-phase4a-765b8399c3-alert-journal.log",
+      "file": "contentdock-phase4a-765b8399c3-alert-journal.log",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "bytes": 1
     },
     {
-      "file": "atlas-phase4a-765b8399c3-alertmanager.log",
+      "file": "contentdock-phase4a-765b8399c3-alertmanager.log",
       "sha256": "a540b15d31cd2f8f70c19c195d74f6027458dd45a283416cfcd6141832105baa",
       "bytes": 592
     },
     {
-      "file": "atlas-phase4a-765b8399c3-api.log",
+      "file": "contentdock-phase4a-765b8399c3-api.log",
       "sha256": "7e33d0860ee98fcbcd8836b1c5c58651934b6a4ae99dfb2dba068ce56fe334bc",
       "bytes": 47346
     },
     {
-      "file": "atlas-phase4a-765b8399c3-postgres.log",
+      "file": "contentdock-phase4a-765b8399c3-postgres.log",
       "sha256": "0734bfed07e74d8d51f9289cf55414c23590afe976f6b7579c394e9b9ce61f43",
       "bytes": 3518
     },
     {
-      "file": "atlas-phase4a-765b8399c3-prometheus.log",
+      "file": "contentdock-phase4a-765b8399c3-prometheus.log",
       "sha256": "3eef2d44b0f53dd72237d6547578b3dd752683b646ff6f0ab56c61174a1016e9",
       "bytes": 3436
     },
     {
-      "file": "atlas-phase4a-765b8399c3-rabbitmq.log",
+      "file": "contentdock-phase4a-765b8399c3-rabbitmq.log",
       "sha256": "0c823e9394f76781be33892948922608d9265db336f78eff62e137b64376a8a8",
       "bytes": 48234
     },
     {
-      "file": "atlas-phase4a-765b8399c3-redis.log",
+      "file": "contentdock-phase4a-765b8399c3-redis.log",
       "sha256": "a9630e0024c0565c275e7f74a9d3c7761e6ed22c71c4b3a7b25c2d544fe88edc",
       "bytes": 2312
     },
     {
-      "file": "atlas-phase4a-912568b143-alert-journal.log",
+      "file": "contentdock-phase4a-912568b143-alert-journal.log",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "bytes": 1
     },
     {
-      "file": "atlas-phase4a-912568b143-alertmanager.log",
+      "file": "contentdock-phase4a-912568b143-alertmanager.log",
       "sha256": "e05e7fab6cad6d4343c4457bd743d3d5b63fc659e0548deb96faf06e867e8403",
       "bytes": 592
     },
     {
-      "file": "atlas-phase4a-912568b143-api.log",
+      "file": "contentdock-phase4a-912568b143-api.log",
       "sha256": "b17eae318941c51be39a3d63056097c92f549d35b8e0a9a104496564852c4da5",
       "bytes": 12831
     },
     {
-      "file": "atlas-phase4a-912568b143-postgres.log",
+      "file": "contentdock-phase4a-912568b143-postgres.log",
       "sha256": "06db9e61c9743417d70967aae815877ad9b41c881f7ec53272946d4104a59b2b",
       "bytes": 3194
     },
     {
-      "file": "atlas-phase4a-912568b143-prometheus.log",
+      "file": "contentdock-phase4a-912568b143-prometheus.log",
       "sha256": "3acdd11ddd09ce825fabba7ff0775713828c1a8a69b3ea837f175720dcbbca8e",
       "bytes": 3453
     },
     {
-      "file": "atlas-phase4a-912568b143-rabbitmq.log",
+      "file": "contentdock-phase4a-912568b143-rabbitmq.log",
       "sha256": "f9dd7677d005ccbce10b6bfb75e69e92cdcdf7d072c19e698747ac39c3d5eade",
       "bytes": 23144
     },
     {
-      "file": "atlas-phase4a-912568b143-redis.log",
+      "file": "contentdock-phase4a-912568b143-redis.log",
       "sha256": "f4921d0aabab97db5c220309efce8dba69c6c137b255e5c909f39c52f969d806",
       "bytes": 681
     },
     {
-      "file": "atlas-phase4a-a12776b993-alert-journal.log",
+      "file": "contentdock-phase4a-a12776b993-alert-journal.log",
       "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
       "bytes": 1
     },
     {
-      "file": "atlas-phase4a-a12776b993-alertmanager.log",
+      "file": "contentdock-phase4a-a12776b993-alertmanager.log",
       "sha256": "bbcfaf10dccf5c9e92621fa43b4df3cb84a522ecb709716975201835c0bb1e98",
       "bytes": 592
     },
     {
-      "file": "atlas-phase4a-a12776b993-api.log",
+      "file": "contentdock-phase4a-a12776b993-api.log",
       "sha256": "1683ab841f12968a4da85aa71c54383890eff436841ceb5cdeb81b90739fc51e",
       "bytes": 12831
     },
     {
-      "file": "atlas-phase4a-a12776b993-postgres.log",
+      "file": "contentdock-phase4a-a12776b993-postgres.log",
       "sha256": "c2cca2ba580f984b5145248bb152d0c1ec73b872543714c14400dcc96654f2ad",
       "bytes": 3294
     },
     {
-      "file": "atlas-phase4a-a12776b993-prometheus.log",
+      "file": "contentdock-phase4a-a12776b993-prometheus.log",
       "sha256": "40c4842f7d97d80a146d7ddd3fe01976b3b506c205db3788b20f3ee4048a00c3",
       "bytes": 318
     },
     {
-      "file": "atlas-phase4a-a12776b993-rabbitmq.log",
+      "file": "contentdock-phase4a-a12776b993-rabbitmq.log",
       "sha256": "50594da65b2c83c4118e5dbe95b243266849f156b626f7eadc57eb83a4c8755e",
       "bytes": 23035
     },
     {
-      "file": "atlas-phase4a-a12776b993-redis.log",
+      "file": "contentdock-phase4a-a12776b993-redis.log",
       "sha256": "2243482210adcaecae3e9d167efda13388e94280f529d41b89be51885a28d229",
       "bytes": 681
     },
@@ -1066,7 +1066,7 @@
       "bytes": 69477
     },
     {
-      "file": "interruption-atlas-phase4a-730ac3d36d.json",
+      "file": "interruption-contentdock-phase4a-730ac3d36d.json",
       "sha256": "c9bdbd8cadbfae2c9fc5e592a9298e49aa2dd54677d3f05d206b4baaf8462816",
       "bytes": 2023
     },

@@ -5,7 +5,7 @@ import path from "node:path";
 
 // A fresh vault keeps synthetic uploads and fixture encryption keys away from local storage.
 const apiRuntime = process.env.CI
-  ? mkdtempSync(path.join(tmpdir(), "atlas-browser-"))
+  ? mkdtempSync(path.join(tmpdir(), "contentdock-browser-"))
   : undefined;
 
 // CI owns these isolated servers. Local review uses a user-started frontend.
@@ -14,7 +14,8 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI && !process.env.ATLAS_BROWSER_NO_RETRIES ? 1 : 0,
+  retries:
+    process.env.CI && !process.env.CONTENTDOCK_BROWSER_NO_RETRIES ? 1 : 0,
   timeout: 45000,
   globalTimeout: 20 * 60 * 1000,
   reporter: [
@@ -52,7 +53,7 @@ export default defineConfig({
         },
         {
           command:
-            "npm run start --workspace=@atlas/web-admin -- --hostname 127.0.0.1 --port 3300",
+            "npm run start --workspace=@contentdock/web-admin -- --hostname 127.0.0.1 --port 3300",
           url: "http://127.0.0.1:3300/login",
           reuseExistingServer: false,
           timeout: 120000,

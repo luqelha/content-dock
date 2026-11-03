@@ -47,22 +47,22 @@
     }
   ],
   "images": {
-    "atlas-api:phase3b-candidate": {
+    "contentdock-api:phase3b-candidate": {
       "id": "sha256:f518cb7120a15da7fab0d41bb06094c6df290342cdf2198abfab777d32f660f6",
       "created": "2026-10-13T05:39:24.464757761Z",
       "platform": "linux/amd64"
     },
-    "atlas-web:phase3b-candidate": {
+    "contentdock-web:phase3b-candidate": {
       "id": "sha256:e77b3c0de20f0d0572176b7b77c7dd52080041b5d93e937e0b394bfd3c5ead91",
       "created": "2026-10-12T22:46:25.897528373Z",
       "platform": "linux/amd64"
     },
-    "atlas-api:security-phase2": {
+    "contentdock-api:security-phase2": {
       "id": "sha256:e3508017701c11ab1feac562435988bb314820e4abf684e77b0315fd571bb9ce",
       "created": "2026-10-12T03:59:06.101819944Z",
       "platform": "linux/amd64"
     },
-    "atlas-web:security-phase2": {
+    "contentdock-web:security-phase2": {
       "id": "sha256:fcc261a20be480d96ad552b60c885f2ad5526bbdd8ebeacf953fcbe6d86d7579",
       "created": "2026-10-12T22:46:25.897528373Z",
       "platform": "linux/amd64"
@@ -73,8 +73,8 @@
     "report": "drill-1791871073983.json",
     "approvedEnvironment": "new isolated local Docker stack; synthetic data; explicit user approval",
     "projects": [
-      "atlas-phase3b-source-e634c942d6",
-      "atlas-phase3b-restore-3af2f55ac3"
+      "contentdock-phase3b-source-e634c942d6",
+      "contentdock-phase3b-restore-3af2f55ac3"
     ],
     "rollbackSeconds": 20.074,
     "restoreSeconds": 34.726,

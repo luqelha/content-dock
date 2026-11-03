@@ -112,8 +112,8 @@
       "previous": {}
     },
     "projects": [
-      "atlas-phase3e-source-4293c787fa",
-      "atlas-phase3e-restore-16df673b6b"
+      "contentdock-phase3e-source-4293c787fa",
+      "contentdock-phase3e-restore-16df673b6b"
     ],
     "unverified": [
       "Rollback to a previous compatible release was not executed in Phase 3E"
@@ -128,7 +128,7 @@
         "npm-cli.js",
         "run",
         "test:cov",
-        "--workspace=@atlas/api",
+        "--workspace=@contentdock/api",
         "--",
         "--runInBand",
         "--coverageReporters=json-summary",
@@ -161,7 +161,7 @@
         "npm-cli.js",
         "run",
         "lint",
-        "--workspace=@atlas/api"
+        "--workspace=@contentdock/api"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -176,7 +176,7 @@
         "npm-cli.js",
         "run",
         "lint",
-        "--workspace=@atlas/web-admin"
+        "--workspace=@contentdock/web-admin"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -190,7 +190,7 @@
         "node",
         "npm-cli.js",
         "exec",
-        "--workspace=@atlas/api",
+        "--workspace=@contentdock/api",
         "--",
         "tsc",
         "--noEmit",
@@ -209,7 +209,7 @@
         "node",
         "npm-cli.js",
         "exec",
-        "--workspace=@atlas/web-admin",
+        "--workspace=@contentdock/web-admin",
         "--",
         "tsc",
         "--noEmit",
@@ -273,7 +273,7 @@
         "npm-cli.js",
         "run",
         "prisma:generate",
-        "--workspace=@atlas/api"
+        "--workspace=@contentdock/api"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -287,7 +287,7 @@
         "node",
         "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
         "exec",
-        "--workspace=@atlas/api",
+        "--workspace=@contentdock/api",
         "--",
         "prisma",
         "migrate",
@@ -305,7 +305,7 @@
         "node",
         "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
         "exec",
-        "--workspace=@atlas/api",
+        "--workspace=@contentdock/api",
         "--",
         "prisma",
         "migrate",
@@ -344,7 +344,7 @@
         "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
         "run",
         "test:int",
-        "--workspace=@atlas/api"
+        "--workspace=@contentdock/api"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -356,9 +356,9 @@
       "name": "e2e",
       "command": [
         "node",
-        "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\jest\\bin\\jest.js",
+        "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\jest\\bin\\jest.js",
         "--config",
-        "{\"moduleFileExtensions\":[\"js\",\"json\",\"ts\"],\"rootDir\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\test\",\"testEnvironment\":\"node\",\"testRegex\":\".e2e-spec.ts$\",\"transform\":{\"^.+\\\\.(t|j)s$\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\node_modules\\\\ts-jest\\\\dist\\\\index.js\",{\"tsconfig\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\tsconfig.json\"}]},\"moduleNameMapper\":{\"^uuid$\":\"<rootDir>/e2e/__mocks__/uuid.ts\",\"^archiver$\":\"<rootDir>/e2e/__mocks__/archiver.ts\"},\"setupFiles\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\docs\\\\improvements\\\\phase-3\\\\evidence\\\\phase-3e\\\\isolate-vault.cjs\"]}",
+        "{\"moduleFileExtensions\":[\"js\",\"json\",\"ts\"],\"rootDir\":\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\test\",\"testEnvironment\":\"node\",\"testRegex\":\".e2e-spec.ts$\",\"transform\":{\"^.+\\\\.(t|j)s$\":[\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\node_modules\\\\ts-jest\\\\dist\\\\index.js\",{\"tsconfig\":\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\tsconfig.json\"}]},\"moduleNameMapper\":{\"^uuid$\":\"<rootDir>/e2e/__mocks__/uuid.ts\",\"^archiver$\":\"<rootDir>/e2e/__mocks__/archiver.ts\"},\"setupFiles\":[\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\docs\\\\improvements\\\\phase-3\\\\evidence\\\\phase-3e\\\\isolate-vault.cjs\"]}",
         "--runInBand"
       ],
       "node": "v22.18.0",
@@ -374,7 +374,7 @@
         "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
         "run",
         "build",
-        "--workspace=@atlas/api"
+        "--workspace=@contentdock/api"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -389,7 +389,7 @@
         "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
         "run",
         "build",
-        "--workspace=@atlas/web-admin"
+        "--workspace=@contentdock/web-admin"
       ],
       "node": "v22.18.0",
       "exitCode": 0,
@@ -428,7 +428,7 @@
       "name": "recovery",
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
-        "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
+        "C:\\Projects\\webdev\\contentdock\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
       ],
       "exitCode": 0,
       "durationMs": 84398,
@@ -443,7 +443,7 @@
         "-f",
         "apps/api/Dockerfile",
         "-t",
-        "atlas-api:phase3e-verify",
+        "contentdock-api:phase3e-verify",
         "."
       ],
       "exitCode": 0,
@@ -459,7 +459,7 @@
         "-f",
         "apps/web-admin/Dockerfile",
         "-t",
-        "atlas-web:phase3e-verify",
+        "contentdock-web:phase3e-verify",
         "."
       ],
       "exitCode": 0,
@@ -475,7 +475,7 @@
         "-f",
         "apps/api/Dockerfile",
         "-t",
-        "atlas-api:phase3e-verify",
+        "contentdock-api:phase3e-verify",
         "."
       ],
       "exitCode": 0,
@@ -491,7 +491,7 @@
         "-f",
         "apps/web-admin/Dockerfile",
         "-t",
-        "atlas-web:phase3e-verify",
+        "contentdock-web:phase3e-verify",
         "."
       ],
       "exitCode": 0,
@@ -503,7 +503,7 @@
       "name": "restore",
       "command": [
         "C:\\Program Files\\nodejs\\node.exe",
-        "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
+        "C:\\Projects\\webdev\\contentdock\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
         "--approved-isolated-local"
       ],
       "exitCode": 0,

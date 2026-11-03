@@ -16,7 +16,7 @@ Prioritas berikutnya adalah persiapan/verifikasi deployment dan CI, perbaikan te
 - Kondisi awal: 110 modified, 18 deleted, 99 untracked file menurut `git status --short --untracked-files=all`. Tidak ada reset, checkout, staging, commit atau penghapusan perubahan tersebut.
 - Inventaris Git tracked + untracked non-ignored: 350 path, 332 file masih ada, 18 sudah dihapus sebelumnya. Snapshot hash mencakup 332 file; tidak mencakup seluruh ignored/generated files atau isi node_modules. Artefak Phase 2 yang ignored dibaca secara eksplisit.
 - Membaca laporan [Phase 1](../../../SECURITY-REMEDIATION-PHASE-1.md), [Phase 2](../../../SECURITY-REMEDIATION-PHASE-2.md), [CHANGED-FILES](../../../artifacts/security-phase2/CHANGED-FILES.md), manifest hash, log pengujian, benchmark, browser, dan restore sebelumnya.
-- Audit asli tersedia dan ditinjau: `C:/Users/LENOVO/AppData/Local/Temp/atlas-audit-20261011/FULL-PROJECT-AUDIT.md`, tertanggal 11 Oktober 2026. Dokumen Temp bukan arsip permanen.
+- Audit asli tersedia dan ditinjau: `C:/Users/LENOVO/AppData/Local/Temp/contentdock-audit-20261011/FULL-PROJECT-AUDIT.md`, tertanggal 11 Oktober 2026. Dokumen Temp bukan arsip permanen.
 - Inspeksi source difokuskan pada auth/guard/error, transaksi/audit/cache, kategori, storage/upload, export/outbox/worker, frontend auth/BFF/error, serta suite regresinya; juga manifest/dua lockfile, tiga migration, Compose/Docker/edge, CI, template environment dan runbook. Inventaris seluruh struktur **tidak berarti** setiap primitive UI atau dependency dibaca baris demi baris.
 - Docker hanya diinspeksi. Tidak menyalakan/mematikan/recreate container, tidak menyambung ke DB existing, tidak menjalankan migration, collector atau benchmark. Tidak membaca/mencetak nilai secret aktual.
 - Tes lokal menggunakan mock atau fixture sementara; simulasi worker memakai source aktual dengan DB, kompresi dan clock tiruan. Bukan pengujian race PostgreSQL/RabbitMQ nyata.
@@ -26,7 +26,7 @@ Prioritas berikutnya adalah persiapan/verifikasi deployment dan CI, perbaikan te
 ## Arsitektur aktual
 
 ```text
-atlas-platform/
+contentdock/
   apps/api/                  Nest modular monolith, Prisma, worker dalam proses API
     src/common/              guard, filter, interceptor, DTO, validation
     src/modules/             auth, user, tenant/membership, CMS, audit, analytics,
@@ -160,7 +160,7 @@ CI sudah memiliki `contents: read`, hosted runner, timeout 25 menit, credential 
 | ID | Prioritas / severity | Status dan bukti | Dampak / tindak lanjut |
 | --- | --- | --- | --- |
 | P3A-01 | P0 release gate / tinggi operasional | Not yet verified: secrets/grants/TLS/staging/restore/rollback production | Tahan deklarasi production-ready sampai bukti lingkungan disetujui tersedia. Bukan kerentanan production yang telah terbukti. |
-| P3A-02 | P1 / sedang operasional | Verified incomplete: Docker menunjukkan `atlas-platform-api-1` dan `-2` unhealthy, `atlas_nginx` restarting; stack legacy sudah dilaporkan Phase 2 | Inventaris target/image/volume dan maintenance plan. Tidak restart/recreate otomatis; akar kegagalan saat ini belum didiagnosis ulang dari log. |
+| P3A-02 | P1 / sedang operasional | Verified incomplete: Docker menunjukkan `contentdock-api-1` dan `-2` unhealthy, `contentdock_nginx` restarting; stack legacy sudah dilaporkan Phase 2 | Inventaris target/image/volume dan maintenance plan. Tidak restart/recreate otomatis; akar kegagalan saat ini belum didiagnosis ulang dari log. |
 | P3A-03 | P1 / sedang reliabilitas | **New issue identified**: `worker.controller.ts:27,49,62`; claim mengecek expiry, final update hanya `where: { id }`, tanpa attempt token | Probe source aktual: A menunggu, clock maju 600001 ms, B reclaim dan Completed, A gagal dan menulis Failed. Risiko stale completion/cleanup serta nama archive bersama (`compression.service.ts:21`, `file-vault.service.ts:83`). Efek file concurrent belum diuji. |
 | P3A-04 | P1 / High advisories tooling | Verified incomplete: audit 48/3 advisory, runtime 0 | Triage/upgrades per jalur, batasi untrusted CI inputs; bukan alasan major override massal. |
 | P3A-05 | P1 / sedang assurance | Partially completed: `.github/workflows/ci.yml:47` menjalankan migrate/test sebagai owner fixture; tidak memanggil `test:security:db`; `playwright.config.ts:28` API NODE_ENV=test | Jalankan workflow remote dan tambah gate role terbatas serta production-mode smoke terisolasi. Suite browser sekarang tidak membuktikan API production-mode/HMAC edge. |
@@ -181,7 +181,7 @@ Sebelum deployment:
 1. Tetapkan staging/host/domain yang disetujui, owner operasi dan release identity; petakan volume/stack legacy agar tidak salah sasaran.
 2. Backup dan buktikan restore **bersama** database, vault, encryption key, role/grants serta konfigurasi. Historical dump/restore sembilan tabel fixture saja belum memenuhi ini.
 3. Sediakan secret JWT access/refresh/proxy yang berbeda >=32 karakter, key storage persisten 64 hex, runtime DB URL non-owner terpisah, broker credential, CORS/domain yang benar. Verifikasi secret tanpa mencetak nilainya.
-4. Review/apply tiga migration dengan owner pada target disetujui; provision/review atlas_app; grant ExportTask; jalankan verifier read-only melalui runtime connection. UUID tidak memerlukan sequence grant saat ini.
+4. Review/apply tiga migration dengan owner pada target disetujui; provision/review contentdock_app; grant ExportTask; jalankan verifier read-only melalui runtime connection. UUID tidak memerlukan sequence grant saat ini.
 5. Deploy API/web/edge terkoordinasi; file storage persisten; target multi-replica memerlukan akses storage yang konsisten. Selesaikan atau buat ulang job Redis legacy dan antisipasi login ulang JWT.
 6. Buktikan DNS/TLS publik, forwarded identity, HTTPS cookies, network exposure, auth/refresh, tenant isolation, upload/export/download dan failure recovery dengan mode production pada staging disetujui.
 7. Buktikan remote CI dan rollback image kompatibel schema, tetapkan alert/resource budget. Pertahankan runtime role terbatas saat rollback; jangan rollback migration dengan mengedit history.

@@ -7,7 +7,7 @@
     "/d",
     "/s",
     "/c",
-    "npm.cmd exec --workspace=@atlas/api -- tsc --noEmit"
+    "npm.cmd exec --workspace=@contentdock/api -- tsc --noEmit"
   ],
   "exitCode": 0,
   "log": "check-types-1792068029406.log",

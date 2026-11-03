@@ -3,7 +3,7 @@
   "command": [
     "npm",
     "exec",
-    "--workspace=@atlas/web-admin",
+    "--workspace=@contentdock/web-admin",
     "--",
     "tsc",
     "--noEmit",

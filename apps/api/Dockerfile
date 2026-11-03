@@ -4,10 +4,10 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web-admin/package.json ./apps/web-admin/package.json
-RUN npm ci --workspace=@atlas/api --include-workspace-root=false
+RUN npm ci --workspace=@contentdock/api --include-workspace-root=false
 COPY apps/api ./apps/api
-RUN npm run prisma:generate --workspace=@atlas/api && npm run build --workspace=@atlas/api
-RUN npm prune --omit=dev --workspace=@atlas/api --include-workspace-root=false
+RUN npm run prisma:generate --workspace=@contentdock/api && npm run build --workspace=@contentdock/api
+RUN npm prune --omit=dev --workspace=@contentdock/api --include-workspace-root=false
 
 FROM node:24-slim AS runtime
 RUN apt-get update && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*

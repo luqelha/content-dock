@@ -6,7 +6,7 @@ COPY apps/api/package.json ./apps/api/package.json
 COPY apps/web-admin/package.json ./apps/web-admin/package.json
 RUN npm ci
 COPY apps/web-admin ./apps/web-admin
-RUN npm run build --workspace=@atlas/web-admin
+RUN npm run build --workspace=@contentdock/web-admin
 
 FROM node:24-slim AS runtime
 ENV NODE_ENV=production HOSTNAME=0.0.0.0 PORT=3000

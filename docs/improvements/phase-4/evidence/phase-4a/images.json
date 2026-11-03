@@ -4,10 +4,10 @@
     {
       "id": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
       "tags": [
-        "atlas-api:phase4a"
+        "contentdock-api:phase4a"
       ],
       "repoDigests": [
-        "atlas-api@sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5"
+        "contentdock-api@sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5"
       ],
       "os": "linux",
       "architecture": "amd64"
@@ -15,10 +15,10 @@
     {
       "id": "sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49",
       "tags": [
-        "atlas-alert-journal:phase4a"
+        "contentdock-alert-journal:phase4a"
       ],
       "repoDigests": [
-        "atlas-alert-journal@sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49"
+        "contentdock-alert-journal@sha256:e96daa729325003174fea25e73fb30eb64b367beafaf8ee238ee021e675ebd49"
       ],
       "os": "linux",
       "architecture": "amd64"

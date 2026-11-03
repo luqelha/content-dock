@@ -7,10 +7,10 @@ DECLARE
   table_name text;
 BEGIN
   SELECT * INTO role_record FROM pg_roles WHERE rolname = current_user;
-  IF current_user <> 'atlas_app' OR role_record.rolsuper OR role_record.rolcreatedb
+  IF current_user <> 'contentdock_app' OR role_record.rolsuper OR role_record.rolcreatedb
     OR role_record.rolcreaterole OR role_record.rolreplication OR role_record.rolbypassrls
     OR role_record.rolinherit THEN
-    RAISE EXCEPTION 'Runtime must use the restricted atlas_app login';
+    RAISE EXCEPTION 'Runtime must use the restricted contentdock_app login';
   END IF;
   IF EXISTS (SELECT 1 FROM pg_auth_members WHERE member = role_record.oid) THEN
     RAISE EXCEPTION 'Runtime must not be a member of other roles';

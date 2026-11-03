@@ -200,7 +200,7 @@ const existingChanged = before.filter(
     ),
 );
 const taskContainers = current.filter((c) =>
-  c.name.startsWith("atlas-phase4a-"),
+  c.name.startsWith("contentdock-phase4a-"),
 );
 assert.equal(existingChanged.length, 0);
 assert.ok(
@@ -221,8 +221,8 @@ const images = JSON.parse(
   command("docker", [
     "image",
     "inspect",
-    "atlas-api:phase4a",
-    "atlas-alert-journal:phase4a",
+    "contentdock-api:phase4a",
+    "contentdock-alert-journal:phase4a",
     "prom/prometheus:v3.15.0",
     "prom/alertmanager:v0.34.1",
     "grafana/grafana:13.2.4",

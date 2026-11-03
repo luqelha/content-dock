@@ -1,5 +1,7 @@
 {
-  "rule_files": ["alerts.yml"],
+  "rule_files": [
+    "alerts.yml"
+  ],
   "evaluation_interval": "15s",
   "tests": [
     {
@@ -7,29 +9,29 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_dependency_up{job=\"atlas-api\",instance=\"api:9091\",dependency=\"redis\"}",
+          "series": "contentdock_dependency_up{job=\"contentdock-api\",instance=\"api:9091\",dependency=\"redis\"}",
           "values": "1 0 0 0 1+0x20"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "30s",
-          "alertname": "AtlasDependencyUnavailable",
+          "alertname": "ContentDockDependencyUnavailable",
           "exp_alerts": []
         },
         {
           "eval_time": "45s",
-          "alertname": "AtlasDependencyUnavailable",
+          "alertname": "ContentDockDependencyUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "dependency": "redis",
                 "severity": "critical"
               },
               "exp_annotations": {
-                "summary": "Atlas dependency is unavailable",
+                "summary": "ContentDock dependency is unavailable",
                 "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#dependency-outage"
               }
             }
@@ -37,7 +39,7 @@
         },
         {
           "eval_time": "1m",
-          "alertname": "AtlasDependencyUnavailable",
+          "alertname": "ContentDockDependencyUnavailable",
           "exp_alerts": []
         }
       ]
@@ -47,14 +49,14 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_export_oldest_pending_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_export_oldest_pending_timestamp_seconds{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "0+0x40"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "5m",
-          "alertname": "AtlasExportBacklog",
+          "alertname": "ContentDockExportBacklog",
           "exp_alerts": []
         }
       ]
@@ -64,22 +66,22 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_export_oldest_pending_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_export_oldest_pending_timestamp_seconds{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "1+0x40"
         },
         {
-          "series": "atlas_export_expired_leases{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_export_expired_leases{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "1+0x4 0+0x35"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "4m",
-          "alertname": "AtlasExportBacklog",
+          "alertname": "ContentDockExportBacklog",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -92,11 +94,11 @@
         },
         {
           "eval_time": "1m",
-          "alertname": "AtlasExpiredLease",
+          "alertname": "ContentDockExpiredLease",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -109,7 +111,7 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasExpiredLease",
+          "alertname": "ContentDockExpiredLease",
           "exp_alerts": []
         }
       ]
@@ -119,23 +121,23 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_dependency_last_check_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\",dependency=\"database\"}",
+          "series": "contentdock_dependency_last_check_timestamp_seconds{job=\"contentdock-api\",instance=\"api:9091\",dependency=\"database\"}",
           "values": "0+0x30"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasProbeStale",
+          "alertname": "ContentDockProbeStale",
           "exp_alerts": []
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasProbeStale",
+          "alertname": "ContentDockProbeStale",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "dependency": "database",
                 "severity": "warning"
@@ -154,22 +156,22 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_vault_available_bytes{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_vault_available_bytes{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "5+0x3 50+0x20"
         },
         {
-          "series": "atlas_vault_size_bytes{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_vault_size_bytes{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "100+0x30"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "30s",
-          "alertname": "AtlasVaultSpaceLow",
+          "alertname": "ContentDockVaultSpaceLow",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "critical"
               },
@@ -182,7 +184,7 @@
         },
         {
           "eval_time": "1m",
-          "alertname": "AtlasVaultSpaceLow",
+          "alertname": "ContentDockVaultSpaceLow",
           "exp_alerts": []
         }
       ]
@@ -192,28 +194,28 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "up{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "up{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "0+0x4 1+0x20"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "45s",
-          "alertname": "AtlasApiUnavailable",
+          "alertname": "ContentDockApiUnavailable",
           "exp_alerts": []
         },
         {
           "eval_time": "1m",
-          "alertname": "AtlasApiUnavailable",
+          "alertname": "ContentDockApiUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "critical"
               },
               "exp_annotations": {
-                "summary": "Atlas metrics/liveness target is unavailable",
+                "summary": "ContentDock metrics/liveness target is unavailable",
                 "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#api-unavailable"
               }
             }
@@ -221,7 +223,7 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasApiUnavailable",
+          "alertname": "ContentDockApiUnavailable",
           "exp_alerts": []
         }
       ]
@@ -233,15 +235,15 @@
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasApiUnavailable",
+          "alertname": "ContentDockApiUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "severity": "critical"
               },
               "exp_annotations": {
-                "summary": "Atlas metrics/liveness target is unavailable",
+                "summary": "ContentDock metrics/liveness target is unavailable",
                 "runbook": "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#api-unavailable"
               }
             }
@@ -254,18 +256,18 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_export_worker_total{job=\"atlas-api\",instance=\"api:9091\",outcome=\"failed\"}",
+          "series": "contentdock_export_worker_total{job=\"contentdock-api\",instance=\"api:9091\",outcome=\"failed\"}",
           "values": "0 1+0x40"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "30s",
-          "alertname": "AtlasExportFailures",
+          "alertname": "ContentDockExportFailures",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -278,7 +280,7 @@
         },
         {
           "eval_time": "6m",
-          "alertname": "AtlasExportFailures",
+          "alertname": "ContentDockExportFailures",
           "exp_alerts": []
         }
       ]
@@ -288,27 +290,27 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
+          "series": "contentdock_http_requests_total{job=\"contentdock-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
           "values": "0+5x40"
         },
         {
-          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"2xx\"}",
+          "series": "contentdock_http_requests_total{job=\"contentdock-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"2xx\"}",
           "values": "0+45x40"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasHttpErrors",
+          "alertname": "ContentDockHttpErrors",
           "exp_alerts": []
         },
         {
           "eval_time": "4m",
-          "alertname": "AtlasHttpErrors",
+          "alertname": "ContentDockHttpErrors",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -326,14 +328,14 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_http_requests_total{job=\"atlas-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
+          "series": "contentdock_http_requests_total{job=\"contentdock-api\",instance=\"api:9091\",route=\"/api/test\",method=\"GET\",status_class=\"5xx\"}",
           "values": "0 1+0x40"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "4m",
-          "alertname": "AtlasHttpErrors",
+          "alertname": "ContentDockHttpErrors",
           "exp_alerts": []
         }
       ]
@@ -343,18 +345,18 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_export_dispatch_last_tick_timestamp_seconds{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_export_dispatch_last_tick_timestamp_seconds{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "0+0x12 180+15x30"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "2m30s",
-          "alertname": "AtlasDispatcherStalled",
+          "alertname": "ContentDockDispatcherStalled",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "critical"
               },
@@ -367,7 +369,7 @@
         },
         {
           "eval_time": "4m",
-          "alertname": "AtlasDispatcherStalled",
+          "alertname": "ContentDockDispatcherStalled",
           "exp_alerts": []
         }
       ]
@@ -377,26 +379,26 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"1\"}",
+          "series": "contentdock_http_request_duration_seconds_bucket{job=\"contentdock-api\",instance=\"api:9091\",le=\"1\"}",
           "values": "0+1x28 28+100x40"
         },
         {
-          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"5\"}",
+          "series": "contentdock_http_request_duration_seconds_bucket{job=\"contentdock-api\",instance=\"api:9091\",le=\"5\"}",
           "values": "0+100x69"
         },
         {
-          "series": "atlas_http_request_duration_seconds_bucket{job=\"atlas-api\",instance=\"api:9091\",le=\"+Inf\"}",
+          "series": "contentdock_http_request_duration_seconds_bucket{job=\"contentdock-api\",instance=\"api:9091\",le=\"+Inf\"}",
           "values": "0+100x69"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "6m",
-          "alertname": "AtlasHttpLatency",
+          "alertname": "ContentDockHttpLatency",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -409,7 +411,7 @@
         },
         {
           "eval_time": "14m",
-          "alertname": "AtlasHttpLatency",
+          "alertname": "ContentDockHttpLatency",
           "exp_alerts": []
         }
       ]
@@ -419,18 +421,18 @@
       "interval": "15s",
       "input_series": [
         {
-          "series": "atlas_retention_errors_total{job=\"atlas-api\",instance=\"api:9091\"}",
+          "series": "contentdock_retention_errors_total{job=\"contentdock-api\",instance=\"api:9091\"}",
           "values": "0 1+0x85"
         }
       ],
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasRetentionErrors",
+          "alertname": "ContentDockRetentionErrors",
           "exp_alerts": [
             {
               "exp_labels": {
-                "job": "atlas-api",
+                "job": "contentdock-api",
                 "instance": "api:9091",
                 "severity": "warning"
               },
@@ -443,13 +445,13 @@
         },
         {
           "eval_time": "20m",
-          "alertname": "AtlasRetentionErrors",
+          "alertname": "ContentDockRetentionErrors",
           "exp_alerts": []
         }
       ]
     },
     {
-      "name": "AtlasBrokerExporterUnavailable hold and recovery",
+      "name": "ContentDockBrokerExporterUnavailable hold and recovery",
       "interval": "15s",
       "input_series": [
         {
@@ -460,7 +462,7 @@
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasBrokerExporterUnavailable",
+          "alertname": "ContentDockBrokerExporterUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
@@ -477,13 +479,13 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasBrokerExporterUnavailable",
+          "alertname": "ContentDockBrokerExporterUnavailable",
           "exp_alerts": []
         }
       ]
     },
     {
-      "name": "AtlasAlertmanagerUnavailable hold and recovery",
+      "name": "ContentDockAlertmanagerUnavailable hold and recovery",
       "interval": "15s",
       "input_series": [
         {
@@ -494,7 +496,7 @@
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasAlertmanagerUnavailable",
+          "alertname": "ContentDockAlertmanagerUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
@@ -511,13 +513,13 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasAlertmanagerUnavailable",
+          "alertname": "ContentDockAlertmanagerUnavailable",
           "exp_alerts": []
         }
       ]
     },
     {
-      "name": "AtlasAlertJournalUnavailable hold and recovery",
+      "name": "ContentDockAlertJournalUnavailable hold and recovery",
       "interval": "15s",
       "input_series": [
         {
@@ -528,7 +530,7 @@
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasAlertJournalUnavailable",
+          "alertname": "ContentDockAlertJournalUnavailable",
           "exp_alerts": [
             {
               "exp_labels": {
@@ -545,7 +547,7 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasAlertJournalUnavailable",
+          "alertname": "ContentDockAlertJournalUnavailable",
           "exp_alerts": []
         }
       ]
@@ -566,7 +568,7 @@
       "alert_rule_test": [
         {
           "eval_time": "1m",
-          "alertname": "AtlasBrokerNoConsumers",
+          "alertname": "ContentDockBrokerNoConsumers",
           "exp_alerts": [
             {
               "exp_labels": {
@@ -583,7 +585,7 @@
         },
         {
           "eval_time": "2m",
-          "alertname": "AtlasBrokerNoConsumers",
+          "alertname": "ContentDockBrokerNoConsumers",
           "exp_alerts": []
         }
       ]
@@ -600,7 +602,7 @@
       "alert_rule_test": [
         {
           "eval_time": "2m",
-          "alertname": "AtlasAlertDeliveryFailed",
+          "alertname": "ContentDockAlertDeliveryFailed",
           "exp_alerts": [
             {
               "exp_labels": {
@@ -618,7 +620,7 @@
         },
         {
           "eval_time": "9m",
-          "alertname": "AtlasAlertDeliveryFailed",
+          "alertname": "ContentDockAlertDeliveryFailed",
           "exp_alerts": []
         }
       ]

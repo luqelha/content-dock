@@ -1,6 +1,6 @@
 {
   "measuredAt": "2026-10-15T21:59:50.648Z",
-  "project": "atlas-phase4b-2eb6875e73",
+  "project": "contentdock-phase4b-2eb6875e73",
   "image": "sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5",
   "design": "A1 B1 B2 A2; two rounds/block. A=no candidate indexes, B=both candidate indexes. Same API process, fixture and pool. PostgreSQL buffers warm; cold means Redis response-cache miss only.",
   "primaryComparison": "Steady-state baseline-b (A2) versus optimized-b (B2). Early baseline-a retained but excluded from improvement claims because unaffected warm-cache controls also improved after initial warmup.",

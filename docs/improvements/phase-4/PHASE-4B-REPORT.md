@@ -21,7 +21,7 @@ Kontrak JSON, pagination, otorisasi, cache invalidation, kuota export dan format
 
 - Windows, Intel i5-13450HX, 16 logical CPU, sekitar 12 GiB RAM host. Load generator Node 22.18.0; API production-mode Node 24.22.0, NestJS 11.2.7, Prisma 5.22.0.
 - PostgreSQL 15.19 di Docker tmpfs; shared buffers 128 MiB, work_mem 4 MiB. Redis 7 dan RabbitMQ terpisah. Satu API/embedded worker, pool Prisma 10 koneksi, telemetry aktif.
-- Project baru `atlas-phase4b-2eb6875e73`, database baru, runtime restricted `atlas_app`; port API/management acak hanya loopback. DB/Redis/broker tidak dipublish. Owner hanya untuk fixture/migration; grants runtime diverifikasi sebelum/sesudah indeks.
+- Project baru `contentdock-phase4b-2eb6875e73`, database baru, runtime restricted `contentdock_app`; port API/management acak hanya loopback. DB/Redis/broker tidak dipublish. Owner hanya untuk fixture/migration; grants runtime diverifikasi sebelum/sesudah indeks.
 - Empat tenant besar masing-masing memiliki 20.000 konten HTML sekitar 2 KiB, 25% published, 20 kategori, 2.000 metadata media dan 25.000 audit rows. Tenant kelima mempunyai 25 konten sebagai kontrol bentuk benchmark historis. Satu admin sintetis menjadi anggota kelima tenant.
 - Urutan **A1 → B1 → B2 → A2**, dua round per block. A tanpa kedua indeks kandidat; B dengan keduanya. Image/proses API/pool/dataset pokok/concurrency/jumlah request sama. Sebelum setiap block: 100 dashboard/content reads untuk warmup.
 - Perbandingan utama **A2 (`baseline-b`) vs B2 (`optimized-b`)**. A1 dipertahankan tetapi dikeluarkan dari klaim: kontrol cache hangat yang tidak memakai query kandidat juga jauh lebih cepat setelah warmup awal. A2 kembali ke dashboard p95 56–57 ms, sedangkan B1/B2 sekitar 21–25 ms.
@@ -65,7 +65,7 @@ Lihat [validation summary](evidence/phase-4b/validation-summary.json), [correctn
 
 [Evidence README](evidence/phase-4b/README.md) memuat command lengkap. Runner membuat project/DB sendiri dan memverifikasi container ID/label, tmpfs, named volumes, port loopback serta seluruh emitted JS terhadap build lokal. Secret berada di temporary directory; pointer lokal di `artifacts/benchmark` yang diabaikan Git. Direktori/label baru mencegah hasil lama tertimpa.
 
-Operator menerapkan kedua migration dengan credential owner melalui pipeline existing; aplikasi tetap `atlas_app`. Jangan membungkus concurrent migration ini dengan transaction. Periksa disk/IO sebelum build dan `pg_index.indisvalid` sesudahnya. Pemasangan lokal sekitar 2,2 detik tidak memperkirakan durasi production.
+Operator menerapkan kedua migration dengan credential owner melalui pipeline existing; aplikasi tetap `contentdock_app`. Jangan membungkus concurrent migration ini dengan transaction. Periksa disk/IO sebelum build dan `pg_index.indisvalid` sesudahnya. Pemasangan lokal sekitar 2,2 detik tidak memperkirakan durasi production.
 
 Jika concurrent build gagal, periksa indeks/migration pada target teridentifikasi. Hapus hanya indeks invalid milik migration tersebut secara concurrent, tandai **migration gagal saja** sebagai rolled back melalui Prisma, lalu retry. `IF NOT EXISTS` tidak dipakai karena dapat menyembunyikan indeks invalid. Pemulihan migration dalam pekerjaan ini hanya pada fixture.
 
@@ -81,6 +81,6 @@ Migration awal berisi dua concurrent statements dalam satu file dan gagal **2500
 
 Build baseline baru gagal `ECONNRESET` dari registry npm. Benchmark memakai image lokal `sha256:43d8ad230b4f9c12ac6d891f1308d6e0e9e0b383ada86d5a1e3882e1ea7decf5`: 116 hash source/config awal identik dengan snapshot pembentuk image, dan **105 emitted JS files** cocok dengan build working tree setelah normalisasi CRLF. Migration Phase 4B diuji dari source lewat bind mount read-only. Status build image final dicatat terpisah pada validation summary; ini tidak menjadi klaim publish registry/remote CI.
 
-Percobaan build image final `atlas-api:phase4b` juga berhenti berprogres pada `npm ci`; client build milik tugas dihentikan setelah lebih dari lima menit. **Fresh Docker image build belum terverifikasi.** Local API build, kesetaraan kode image benchmark, migration dan tes regresi telah lulus; image release final masih perlu dibangun saat registry dapat diakses.
+Percobaan build image final `contentdock-api:phase4b` juga berhenti berprogres pada `npm ci`; client build milik tugas dihentikan setelah lebih dari lima menit. **Fresh Docker image build belum terverifikasi.** Local API build, kesetaraan kode image benchmark, migration dan tes regresi telah lulus; image release final masih perlu dibangun saat registry dapat diakses.
 
 Metode indeks dikonfirmasi melalui Context7 pada [Prisma: improving query performance using indexes](https://www.prisma.io/blog/improving-query-performance-using-indexes-2-MyoiJNMFTsfq). Perilaku migration diverifikasi dengan **Prisma 5.22.0** terpasang, karena dokumentasi terbaru dapat membahas generasi migration berbeda.

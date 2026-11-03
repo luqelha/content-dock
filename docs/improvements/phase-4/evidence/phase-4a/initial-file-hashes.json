@@ -241,7 +241,7 @@
   "apps/web-admin/src/app/layout.tsx": "38bf6e28e9eb3b3ca19fe4ced23f340965998514d1418b2c69cd120e3afa97b4",
   "apps/web-admin/src/app/page.tsx": "c1015d7139ecf7fc061abc6ed938de94d8cd29df0b593a2c871c797590e18da0",
   "apps/web-admin/src/components/app-sidebar.tsx": "4573e8e8a004186d61e57f51667b36f42aed5b9c8e2149a863e6bcc124e68b34",
-  "apps/web-admin/src/components/atlas-mark.tsx": "abbd44f29a7884d9d68051f649255b3a375c4a19606e800dd371345845bd80ff",
+  "apps/web-admin/src/components/contentdock-mark.tsx": "abbd44f29a7884d9d68051f649255b3a375c4a19606e800dd371345845bd80ff",
   "apps/web-admin/src/components/auth-feedback.tsx": "f13df5546fecf80b1ba9fa09e34d9d39627846c2dac02513bd3aaa0499b650ab",
   "apps/web-admin/src/components/dashboard/categories/categories-client.tsx": "01a385e53d8887b120913ff09c4feea340f61b246281d5881799e689536509e6",
   "apps/web-admin/src/components/dashboard/categories/category-modal.tsx": "b330dc4e55ab9108bbbca960b8bbe635744afd90295a7ec4df09c62cedd5470b",

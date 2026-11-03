@@ -33,10 +33,10 @@ source = source.replace(
 );
 source = source
   .replaceAll(
-    "atlas-${service}:phase3b-candidate",
-    "atlas-${service}:phase3e-verify",
+    "contentdock-${service}:phase3b-candidate",
+    "contentdock-${service}:phase3e-verify",
   )
-  .replaceAll("atlas-phase3b-", "atlas-phase3e-")
+  .replaceAll("contentdock-phase3b-", "contentdock-phase3e-")
   .replace(
     "docs/improvements/phase-3/evidence/phase-3b",
     "docs/improvements/phase-3/evidence/phase-3e",

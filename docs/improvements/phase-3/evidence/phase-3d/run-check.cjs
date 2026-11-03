@@ -29,15 +29,15 @@ if (name === 'preservation') {
   process.exit(changed.length ? 1 : 0);
 }
 const checks = {
-  typesApi: ['exec', '--workspace=@atlas/api', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false'],
-  typesWeb: ['exec', '--workspace=@atlas/web-admin', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false'],
-  strictApi: ['exec', '--workspace=@atlas/api', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false', '--strictNullChecks', '--noImplicitAny'],
-  lintApi: ['run', 'lint', '--workspace=@atlas/api'],
-  lintWeb: ['run', 'lint', '--workspace=@atlas/web-admin'],
-  unit: ['run', 'test', '--workspace=@atlas/api', '--', '--runInBand'],
+  typesApi: ['exec', '--workspace=@contentdock/api', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false'],
+  typesWeb: ['exec', '--workspace=@contentdock/web-admin', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false'],
+  strictApi: ['exec', '--workspace=@contentdock/api', '--', 'tsc', '--noEmit', '--incremental', 'false', '--pretty', 'false', '--strictNullChecks', '--noImplicitAny'],
+  lintApi: ['run', 'lint', '--workspace=@contentdock/api'],
+  lintWeb: ['run', 'lint', '--workspace=@contentdock/web-admin'],
+  unit: ['run', 'test', '--workspace=@contentdock/api', '--', '--runInBand'],
   security: ['run', 'test:security'],
-  buildApi: ['run', 'build', '--workspace=@atlas/api'],
-  buildWeb: ['run', 'build', '--workspace=@atlas/web-admin'],
+  buildApi: ['run', 'build', '--workspace=@contentdock/api'],
+  buildWeb: ['run', 'build', '--workspace=@contentdock/web-admin'],
 };
 const npmCli = process.env.npm_execpath || (process.platform === 'win32'
   ? path.join(process.env.APPDATA, 'npm/node_modules/npm/bin/npm-cli.js')
@@ -46,7 +46,7 @@ if (!checks[name] || !fs.existsSync(npmCli)) throw new Error('Use a known check 
 const env = {
   ...process.env,
   NODE_ENV: name.startsWith('build') ? 'production' : 'test',
-  DATABASE_URL: 'postgresql://fixture:fixture@127.0.0.1:1/atlas_phase3d_test?schema=public',
+  DATABASE_URL: 'postgresql://fixture:fixture@127.0.0.1:1/contentdock_phase3d_test?schema=public',
   REDIS_URL: 'redis://127.0.0.1:1',
   RABBITMQ_URL: 'amqp://fixture:fixture@127.0.0.1:1',
   API_URL: 'http://127.0.0.1:1/api',

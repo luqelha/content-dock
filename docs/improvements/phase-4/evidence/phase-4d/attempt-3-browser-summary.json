@@ -652,7 +652,7 @@
       "status": "unexpected",
       "attempts": 1,
       "errors": [
-        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"Lax\"\nReceived: \"None\"\n\n  49 |       expect(cookie?.secure).toBe(true);\n  50 |       expect(cookie?.httpOnly).toBe(true);\n> 51 |       expect(cookie?.sameSite).toBe(\"Lax\");\n     |                                ^\n  52 |     }\n  53 |   }\n  54 |   const switchTo = async (name: string) => {\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:51:32"
+        "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: \"Lax\"\nReceived: \"None\"\n\n  49 |       expect(cookie?.secure).toBe(true);\n  50 |       expect(cookie?.httpOnly).toBe(true);\n> 51 |       expect(cookie?.sameSite).toBe(\"Lax\");\n     |                                ^\n  52 |     }\n  53 |   }\n  54 |   const switchTo = async (name: string) => {\n    at C:\\Projects\\webdev\\contentdock\\tests\\browser\\security-flows.spec.ts:51:32"
       ],
       "scans": []
     },

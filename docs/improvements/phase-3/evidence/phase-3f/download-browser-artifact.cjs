@@ -26,11 +26,11 @@ async function main() {
     ?.slice(9);
   if (!token) throw Error("Credential unavailable");
   const response = await fetch(
-    `https://api.github.com/repos/luqelha/atlas-platform/actions/artifacts/${report.artifactId}/zip`,
+    `https://api.github.com/repos/luqelha/contentDock/actions/artifacts/${report.artifactId}/zip`,
     {
       headers: {
         Accept: "application/vnd.github+json",
-        "User-Agent": "atlas-phase3f-evidence",
+        "User-Agent": "contentdock-phase3f-evidence",
         Authorization: `Bearer ${token}`,
       },
       redirect: "manual",
@@ -46,7 +46,7 @@ async function main() {
   report.sha256 = crypto.createHash("sha256").update(data).digest("hex");
   if (report.sha256 !== report.expectedSha256)
     throw Error("Artifact digest mismatch");
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "atlas-phase3f-artifact-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "contentdock-phase3f-artifact-"));
   report.file = path.join(dir, "validation-results.zip");
   fs.writeFileSync(report.file, data);
   Object.assign(report, {

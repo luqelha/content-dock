@@ -6,7 +6,7 @@
     "-f",
     "apps/api/Dockerfile",
     "-t",
-    "atlas-api:phase3e-verify",
+    "contentdock-api:phase3e-verify",
     "."
   ],
   "exitCode": 0,

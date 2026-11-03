@@ -4,7 +4,7 @@
     "node",
     "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
     "exec",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "prisma",
     "migrate",

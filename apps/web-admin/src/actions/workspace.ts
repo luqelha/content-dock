@@ -29,7 +29,7 @@ async function run<T>(action: () => Promise<T>): Promise<Result<T>> {
   }
 }
 async function tenantId() {
-  const id = (await cookies()).get("atlas_active_tenant_id")?.value;
+  const id = (await cookies()).get("contentdock_active_tenant_id")?.value;
   if (!id) throw new Error("Select a workspace first.");
   return id;
 }
@@ -54,7 +54,7 @@ export async function createWorkspace(form: FormData) {
         ...(form.get("domain") ? { domain: form.get("domain") } : {}),
       }),
     });
-    (await cookies()).set("atlas_active_tenant_id", tenant.id, {
+    (await cookies()).set("contentdock_active_tenant_id", tenant.id, {
       path: "/",
       sameSite: "lax",
       httpOnly: true,
@@ -68,7 +68,7 @@ export async function selectWorkspace(id: string) {
     const tenants = await workspaceRequest("/tenants", tenantsSchema);
     if (!tenants.some((t) => t.id === id))
       throw new Error("Workspace is not available.");
-    (await cookies()).set("atlas_active_tenant_id", id, {
+    (await cookies()).set("contentdock_active_tenant_id", id, {
       path: "/",
       sameSite: "lax",
       httpOnly: true,
@@ -111,7 +111,7 @@ export async function acceptInvitation(token: string) {
       acceptedInvitationSchema,
       { method: "POST", body: JSON.stringify({ token }) },
     );
-    (await cookies()).set("atlas_active_tenant_id", data.tenantId, {
+    (await cookies()).set("contentdock_active_tenant_id", data.tenantId, {
       path: "/",
       sameSite: "lax",
       httpOnly: true,

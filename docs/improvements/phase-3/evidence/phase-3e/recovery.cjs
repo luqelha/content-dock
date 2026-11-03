@@ -17,7 +17,7 @@ for (const fixture of saved) {
   if (
     actual.Id !== fixture.id ||
     actual.Config.Labels["com.docker.compose.project"] !==
-      "atlas-phase3e-review"
+      "contentdock-phase3e-review"
   )
     throw new Error("Fixture mismatch");
 }

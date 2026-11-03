@@ -54,7 +54,7 @@ function extractSingleZipEntry(zip) {
 }
 test("real archive writer produces a decryptable tenant-scoped ZIP and removes failed partial output", async () => {
   const root = fs.mkdtempSync(
-    path.join(os.tmpdir(), "atlas-export-regression-"),
+    path.join(os.tmpdir(), "contentdock-export-regression-"),
   );
   const original = process.cwd();
   const key = process.env.STORAGE_ENCRYPTION_KEY;

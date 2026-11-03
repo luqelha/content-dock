@@ -10,9 +10,9 @@ describe('Trusted web authentication identity', () => {
       ip: '172.20.0.5',
       body: { email },
       headers: {
-        'x-atlas-client-ip': ip,
-        'x-atlas-auth-time': timestamp,
-        'x-atlas-auth-signature': createHmac('sha256', secret)
+        'x-contentdock-client-ip': ip,
+        'x-contentdock-auth-time': timestamp,
+        'x-contentdock-auth-signature': createHmac('sha256', secret)
           .update(`${timestamp}\n${ip}\n${email.trim().toLowerCase()}`)
           .digest('hex'),
       },
@@ -24,7 +24,7 @@ describe('Trusted web authentication identity', () => {
   });
   it('ignores forged, expired and account-rebound identity headers', () => {
     const forged = request('192.0.2.1');
-    forged.headers['x-atlas-auth-signature'] = '0'.repeat(64);
+    forged.headers['x-contentdock-auth-signature'] = '0'.repeat(64);
     const rebound = request('192.0.2.1');
     rebound.body.email = 'another@example.com';
     for (const req of [

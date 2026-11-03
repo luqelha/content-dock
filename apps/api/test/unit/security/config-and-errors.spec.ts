@@ -13,7 +13,7 @@ import { JwtRefreshStrategy } from '../../../src/modules/auth/strategies/jwt-ref
 const accessSecret = 'test-access-secret-with-at-least-32-characters';
 const refreshSecret = 'test-refresh-secret-with-at-least-32-characters';
 const environment = {
-  DATABASE_URL: 'postgresql://test:test@localhost/atlas_test',
+  DATABASE_URL: 'postgresql://test:test@localhost/contentdock_test',
   REDIS_URL: 'redis://localhost',
   RABBITMQ_URL: 'amqp://localhost',
   JWT_SECRET: accessSecret,
@@ -130,7 +130,7 @@ describe('Config, token and error security contracts', () => {
         strategy.authenticate({ headers: { authorization: `Bearer ${token}` } });
       });
     const payload = { sub: 'user-1', email: 'user@example.com', token_use: 'access' };
-    const options = { issuer: 'atlas-platform', audience: 'atlas-api' };
+    const options = { issuer: 'contentdock', audience: 'contentdock-api' };
     expect(await authenticate(signer.sign(payload, options))).toBe(true);
     expect(await authenticate(signer.sign({ ...payload, token_use: 'refresh' }, options))).toBe(
       false,

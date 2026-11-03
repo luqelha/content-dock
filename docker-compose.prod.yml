@@ -3,15 +3,15 @@ services:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
-    image: atlas-api:1.0.0
+    image: contentdock-api:1.0.0
     command: ["npx", "prisma", "migrate", "deploy"]
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER:-atlas}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-atlas}?schema=public
+      DATABASE_URL: postgresql://${POSTGRES_USER:-contentdock}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-contentdock}?schema=public
     depends_on:
       postgres:
         condition: service_healthy
   api:
-    image: atlas-api:1.0.0
+    image: contentdock-api:1.0.0
     build:
       context: .
       dockerfile: apps/api/Dockerfile
@@ -22,9 +22,9 @@ services:
       OBSERVABILITY_HOST: "0.0.0.0"
       OBSERVABILITY_PORT: "9091"
       SHUTDOWN_GRACE_MS: "330000"
-      DATABASE_URL: ${DATABASE_APP_URL:?Set DATABASE_APP_URL to the provisioned non-owner atlas_app role}
+      DATABASE_URL: ${DATABASE_APP_URL:?Set DATABASE_APP_URL to the provisioned non-owner contentdock_app role}
       REDIS_URL: redis://redis:6379
-      RABBITMQ_URL: amqp://${RABBITMQ_USER:-atlas}:${RABBITMQ_PASS:?Set RABBITMQ_PASS}@rabbitmq:5672
+      RABBITMQ_URL: amqp://${RABBITMQ_USER:-contentdock}:${RABBITMQ_PASS:?Set RABBITMQ_PASS}@rabbitmq:5672
       JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?Set JWT_REFRESH_SECRET}
       AUTH_PROXY_SECRET: ${AUTH_PROXY_SECRET:?Set a separate AUTH_PROXY_SECRET for web-to-API authentication}
@@ -32,7 +32,7 @@ services:
       STORAGE_RETENTION_ENABLED: ${STORAGE_RETENTION_ENABLED:-false}
       STORAGE_RETENTION_DRY_RUN: ${STORAGE_RETENTION_DRY_RUN:-true}
       CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:8080}
-      QUEUE_NAME: atlas_exports
+      QUEUE_NAME: contentdock_exports
       TRUST_PROXY: "1"
     volumes: [api_storage:/app/apps/api/storage]
     stop_grace_period: 360s
@@ -57,7 +57,7 @@ services:
       start_period: 30s
       retries: 3
   web:
-    image: atlas-web:1.0.0
+    image: contentdock-web:1.0.0
     build:
       context: .
       dockerfile: apps/web-admin/Dockerfile
@@ -90,16 +90,16 @@ services:
   postgres:
     image: postgres:15-alpine
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-atlas}
+      POSTGRES_USER: ${POSTGRES_USER:-contentdock}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB:-atlas}
+      POSTGRES_DB: ${POSTGRES_DB:-contentdock}
     volumes: [postgres_data_prod:/var/lib/postgresql/data]
     restart: unless-stopped
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER:-atlas} -d ${POSTGRES_DB:-atlas}",
+          "pg_isready -U ${POSTGRES_USER:-contentdock} -d ${POSTGRES_DB:-contentdock}",
         ]
       interval: 5s
       retries: 10
@@ -115,7 +115,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     environment:
-      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-atlas}
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-contentdock}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS:?Set RABBITMQ_PASS}
     volumes: [rabbitmq_data_prod:/var/lib/rabbitmq]
     restart: unless-stopped

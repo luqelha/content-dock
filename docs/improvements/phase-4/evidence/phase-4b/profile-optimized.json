@@ -1,6 +1,6 @@
 {
   "measuredAt": "2026-10-15T21:51:05.969Z",
-  "project": "atlas-phase4b-2eb6875e73",
+  "project": "contentdock-phase4b-2eb6875e73",
   "plans": {
     "dashboardRecent": {
       "query": "SELECT id,title,status,\"updatedAt\",\"categoryId\",\"authorId\" FROM \"Content\" WHERE \"tenantId\"='4ab24d3b-f679-4855-86ca-e695989c0548' ORDER BY \"updatedAt\" DESC LIMIT 8",

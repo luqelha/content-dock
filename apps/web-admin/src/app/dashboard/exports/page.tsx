@@ -7,7 +7,7 @@ export default async function ExportsPage({
 }: {
   searchParams: Promise<{ job?: string }>;
 }) {
-  const id = (await cookies()).get("atlas_active_tenant_id")?.value;
+  const id = (await cookies()).get("contentdock_active_tenant_id")?.value;
   const tenants = await workspaceRequest("/tenants", tenantsSchema);
   if (tenants.find((t) => t.id === id)?.role !== "ADMIN")
     return (

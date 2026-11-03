@@ -5,7 +5,7 @@
     "npm-cli.js",
     "run",
     "lint",
-    "--workspace=@atlas/api"
+    "--workspace=@contentdock/api"
   ],
   "node": "v22.18.0",
   "exitCode": 0,

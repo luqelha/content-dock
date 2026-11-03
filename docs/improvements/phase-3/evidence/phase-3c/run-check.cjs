@@ -1,17 +1,17 @@
-// Reproducible local checks against the dedicated atlas-phase3c-review fixture.
+// Reproducible local checks against the dedicated contentdock-phase3c-review fixture.
 // Run via node <this-file> <check>; never reads private env files.
 const fs = require('node:fs');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const checks = {
-  unit: ['run', 'test:cov', '--workspace=@atlas/api', '--', '--runInBand', '--coverageReporters=json-summary', '--coverageReporters=text'],
+  unit: ['run', 'test:cov', '--workspace=@contentdock/api', '--', '--runInBand', '--coverageReporters=json-summary', '--coverageReporters=text'],
   security: ['run', 'test:security'],
-  integration: ['run', 'test:int', '--workspace=@atlas/api'],
-  e2e: ['run', 'test:e2e', '--workspace=@atlas/api'],
+  integration: ['run', 'test:int', '--workspace=@contentdock/api'],
+  e2e: ['run', 'test:e2e', '--workspace=@contentdock/api'],
   grants: ['run', 'test:security:db'],
   lint: ['run', 'lint'],
-  typesApi: ['exec', '--workspace=@atlas/api', '--', 'tsc', '--noEmit'],
-  typesWeb: ['run', 'typecheck', '--workspace=@atlas/web-admin'],
+  typesApi: ['exec', '--workspace=@contentdock/api', '--', 'tsc', '--noEmit'],
+  typesWeb: ['run', 'typecheck', '--workspace=@contentdock/web-admin'],
   format: ['run', 'format:check:reliability'],
   audit: ['run', 'audit:dependencies'],
   auditRuntime: ['audit', '--omit=dev', '--audit-level=moderate', '--json'],
@@ -25,7 +25,7 @@ const npmCli = process.env.npm_execpath || (process.platform === 'win32'
 if (!checks[name] || !fs.existsSync(npmCli)) throw new Error('Use a known check name and an installed npm CLI');
 const env = {
   ...process.env,
-  DATABASE_URL: 'postgresql://atlas_test:atlas_test@127.0.0.1:55432/atlas_test?schema=public',
+  DATABASE_URL: 'postgresql://contentdock_test:contentdock_test@127.0.0.1:55432/contentdock_test?schema=public',
   REDIS_URL: 'redis://127.0.0.1:56379',
   RABBITMQ_URL: 'amqp://guest:guest@127.0.0.1:55672',
   QUEUE_NAME: 'phase3c_test_exports',
@@ -39,7 +39,7 @@ const env = {
   NODE_ENV: name === 'build' ? 'production' : 'test',
 };
 delete env.DATABASE_APP_URL;
-if (['grants', 'browser'].includes(name)) env.DATABASE_APP_URL = 'postgresql://atlas_app:phase3c-test-runtime-password-not-production@127.0.0.1:55432/atlas_test?schema=public';
+if (['grants', 'browser'].includes(name)) env.DATABASE_APP_URL = 'postgresql://contentdock_app:phase3c-test-runtime-password-not-production@127.0.0.1:55432/contentdock_test?schema=public';
 if (name === 'browser') env.CI = '1';
 const started = Date.now();
 const result = spawnSync(process.execPath, [npmCli, ...checks[name]], { env, encoding: 'utf8', windowsHide: true, timeout: 900000, maxBuffer: 20 * 1024 * 1024 });

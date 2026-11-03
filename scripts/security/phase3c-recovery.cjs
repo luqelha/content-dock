@@ -8,12 +8,12 @@ const { randomUUID } = require("node:crypto");
 const { once } = require("node:events");
 const { PrismaClient } = require("../../apps/api/node_modules/@prisma/client");
 const root = path.resolve(__dirname, "../..");
-const project = "atlas-phase3c-review";
+const project = "contentdock-phase3c-review";
 const api = "http://127.0.0.1:4401/api";
 const database =
-  "postgresql://atlas_test:atlas_test@127.0.0.1:55432/atlas_test?schema=public";
+  "postgresql://contentdock_test:contentdock_test@127.0.0.1:55432/contentdock_test?schema=public";
 const runtime =
-  "postgresql://atlas_app:phase3c-test-runtime-password-not-production@127.0.0.1:55432/atlas_test?schema=public";
+  "postgresql://contentdock_app:phase3c-test-runtime-password-not-production@127.0.0.1:55432/contentdock_test?schema=public";
 const report = {
   scope: "fresh local synthetic stack only",
   steps: [],
@@ -22,7 +22,7 @@ const report = {
 let child;
 let brokerStopped = false;
 const prisma = new PrismaClient({ datasources: { db: { url: database } } });
-const folder = fs.mkdtempSync(path.join(os.tmpdir(), "atlas-recovery-"));
+const folder = fs.mkdtempSync(path.join(os.tmpdir(), "contentdock-recovery-"));
 const log = fs.openSync(path.join(folder, "api.log"), "a");
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 function docker(args) {
@@ -93,7 +93,7 @@ async function startApi() {
     if (!response.ok) return false;
     const health = await response.json();
     assert.equal(health.environment, "test");
-    assert.equal(health.testDatabase, "atlas_test");
+    assert.equal(health.testDatabase, "contentdock_test");
     return true;
   }, 30000);
 }

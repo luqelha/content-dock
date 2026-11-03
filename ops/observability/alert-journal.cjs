@@ -33,11 +33,11 @@ async function main() {
     if (request.method === "GET" && request.url === "/metrics") {
       response.setHeader("Content-Type", "text/plain; version=0.0.4");
       response.end(
-        "# HELP atlas_alert_journal_events Notifications retained in the bounded durable journal.\n# TYPE atlas_alert_journal_events gauge\n" +
+        "# HELP contentdock_alert_journal_events Notifications retained in the bounded durable journal.\n# TYPE contentdock_alert_journal_events gauge\n" +
           ["firing", "resolved"]
             .map(
               (status) =>
-                `atlas_alert_journal_events{status="${status}"} ${events.filter((event) => event.status === status).length}`,
+                `contentdock_alert_journal_events{status="${status}"} ${events.filter((event) => event.status === status).length}`,
             )
             .join("\n") +
           "\n",

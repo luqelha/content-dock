@@ -8,7 +8,7 @@
     "-f",
     "apps/api/Dockerfile",
     "-t",
-    "atlas-api:phase4a",
+    "contentdock-api:phase4a",
     "."
   ],
   "exitCode": 0,

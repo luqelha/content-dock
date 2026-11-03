@@ -20,7 +20,7 @@ export default async function MediaPage({
   const page = listPage((await searchParams).page);
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const activeTenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   let mediaItems: MediaItem[] = [];
 

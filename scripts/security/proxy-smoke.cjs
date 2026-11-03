@@ -2,7 +2,7 @@
 const { execFileSync } = require("node:child_process");
 const path = require("node:path");
 const suffix = `${process.pid}-${Date.now()}`;
-const network = `atlas-proxy-test-${suffix}`;
+const network = `contentdock-proxy-test-${suffix}`;
 const echo = `${network}-echo`;
 const edge = `${network}-edge`;
 function docker(...args) {
@@ -54,15 +54,15 @@ async function main() {
       async function ready(){for(let i=0;i<30;i++){try{const r=await fetch('http://edge/api/probe');if(r.ok)return;}catch{}await new Promise(r=>setTimeout(r,200));}throw Error('Proxy not ready');}
       (async()=>{
         await ready();
-        const direct=await (await fetch('http://edge/api/probe',{headers:{'X-Forwarded-For':'203.0.113.99','X-Atlas-Client-IP':'203.0.113.99','X-Real-IP':'203.0.113.99','X-Forwarded-Proto':'https'}})).json();
+        const direct=await (await fetch('http://edge/api/probe',{headers:{'X-Forwarded-For':'203.0.113.99','X-Contentdock-Client-IP':'203.0.113.99','X-Real-IP':'203.0.113.99','X-Forwarded-Proto':'https'}})).json();
         assert.notEqual(direct['x-forwarded-for'],'203.0.113.99');
-        assert.equal(direct['x-forwarded-for'],direct['x-atlas-client-ip']);
-        assert.equal(direct['x-real-ip'],direct['x-atlas-client-ip']);
+        assert.equal(direct['x-forwarded-for'],direct['x-contentdock-client-ip']);
+        assert.equal(direct['x-real-ip'],direct['x-contentdock-client-ip']);
         assert.equal(direct['x-forwarded-proto'],'http');
         for(const ip of ['198.51.100.11','198.51.100.12']){
-          const raw=await new Promise((resolve,reject)=>{let data='';const socket=net.connect(81,'edge',()=>socket.write('PROXY TCP4 '+ip+' 192.0.2.1 1234 443\\r\\nGET /api/probe HTTP/1.0\\r\\nHost: atlas.test\\r\\nX-Atlas-Client-IP: 203.0.113.99\\r\\nX-Forwarded-For: 203.0.113.99\\r\\n\\r\\n'));socket.setTimeout(5000,()=>socket.destroy(Error('timeout')));socket.on('data',chunk=>data+=chunk);socket.on('end',()=>resolve(data));socket.on('error',reject);});
+          const raw=await new Promise((resolve,reject)=>{let data='';const socket=net.connect(81,'edge',()=>socket.write('PROXY TCP4 '+ip+' 192.0.2.1 1234 443\\r\\nGET /api/probe HTTP/1.0\\r\\nHost: contentdock.test\\r\\nX-Contentdock-Client-IP: 203.0.113.99\\r\\nX-Forwarded-For: 203.0.113.99\\r\\n\\r\\n'));socket.setTimeout(5000,()=>socket.destroy(Error('timeout')));socket.on('data',chunk=>data+=chunk);socket.on('end',()=>resolve(data));socket.on('error',reject);});
           assert.match(raw,/200 OK/);const headers=JSON.parse(raw.split('\\r\\n\\r\\n')[1]);
-          assert.equal(headers['x-atlas-client-ip'],ip);assert.equal(headers['x-forwarded-for'],ip);assert.equal(headers['x-forwarded-proto'],'https');
+          assert.equal(headers['x-contentdock-client-ip'],ip);assert.equal(headers['x-forwarded-for'],ip);assert.equal(headers['x-forwarded-proto'],'https');
         }
         console.log('PASS: spoofed headers replaced; two PROXY-protocol clients preserved; HTTPS origin preserved');
       })().catch(e=>{console.error(e);process.exitCode=1});

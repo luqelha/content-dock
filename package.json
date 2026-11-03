@@ -1,5 +1,5 @@
 {
-  "name": "atlas-platform-monorepo",
+  "name": "contentdock-monorepo",
   "private": true,
   "workspaces": [
     "apps/*"
@@ -8,7 +8,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "test:security": "npm run test --workspace=@atlas/api -- --runInBand test/unit/security && node --test scripts/security/*.test.cjs",
+    "test:security": "npm run test --workspace=@contentdock/api -- --runInBand test/unit/security && node --test scripts/security/*.test.cjs",
     "test:security:db": "node --test scripts/security/database-regression.cjs",
     "test:observability": "node --test scripts/observability/*.test.cjs && node scripts/observability/validate.cjs rules && node scripts/observability/validate.cjs prometheus && node scripts/observability/validate.cjs alertmanager",
     "drill:resilience": "node scripts/observability/resilience-drill.cjs --run-isolated",
@@ -20,7 +20,7 @@
     "audit:dependencies": "node scripts/security/dependency-audit.cjs",
     "format:check:reliability": "prettier --check .github/workflows/ci.yml playwright.config.ts \"tests/browser/*.ts\" \"scripts/security/dependency-*.cjs\"",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "test:contracts": "npm run test --workspace=@atlas/api -- --runInBand --testPathPattern=contracts && node --test scripts/contracts/*.test.cjs",
+    "test:contracts": "npm run test --workspace=@contentdock/api -- --runInBand --testPathPattern=contracts && node --test scripts/contracts/*.test.cjs",
     "test:quality:db": "node scripts/quality/phase4c-database.cjs",
     "maintenance:dependencies": "node scripts/maintenance/dependency-lifecycle.cjs",
     "maintenance:dependencies:registry": "node scripts/maintenance/dependency-lifecycle.cjs --outdated",

@@ -13,7 +13,7 @@ export default async function DashboardLayout({
 }>) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const activeTenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   let initialUser = null;
   let initialTenants: Awaited<ReturnType<typeof fetchTenants>> = [];

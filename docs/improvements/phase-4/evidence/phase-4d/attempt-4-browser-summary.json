@@ -492,7 +492,7 @@
       "status": "unexpected",
       "attempts": 1,
       "errors": [
-        "Error: page.reload: NS_BINDING_ABORTED\nCall log:\n  - waiting for navigation until \"load\"\n\n\n  279 |   await expect(page).toHaveURL(/[?&]job=[a-f0-9-]{36}/);\n  280 |   const url = page.url();\n> 281 |   await page.reload();\n      |              ^\n  282 |   await expect(page).toHaveURL(url);\n  283 |   await expect(page.getByRole(\"link\", { name: /download/i })).toBeVisible({\n  284 |     timeout: 30000,\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:281:14"
+        "Error: page.reload: NS_BINDING_ABORTED\nCall log:\n  - waiting for navigation until \"load\"\n\n\n  279 |   await expect(page).toHaveURL(/[?&]job=[a-f0-9-]{36}/);\n  280 |   const url = page.url();\n> 281 |   await page.reload();\n      |              ^\n  282 |   await expect(page).toHaveURL(url);\n  283 |   await expect(page.getByRole(\"link\", { name: /download/i })).toBeVisible({\n  284 |     timeout: 30000,\n    at C:\\Projects\\webdev\\contentdock\\tests\\browser\\security-flows.spec.ts:281:14"
       ],
       "scans": [
         {

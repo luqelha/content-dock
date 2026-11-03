@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const runbook = "docs/improvements/phase-4/OPERATIONAL-RUNBOOKS.md#";
-const labels = { job: "atlas-api", instance: "api:9091" };
+const labels = { job: "contentdock-api", instance: "api:9091" };
 function check(
   alertname,
   time,
@@ -26,20 +26,20 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_dependency_up{job="atlas-api",instance="api:9091",dependency="redis"}',
+          'contentdock_dependency_up{job="contentdock-api",instance="api:9091",dependency="redis"}',
         values: "1 0 0 0 1+0x20",
       },
     ],
     alert_rule_test: [
-      check("AtlasDependencyUnavailable", "30s"),
+      check("ContentDockDependencyUnavailable", "30s"),
       check(
-        "AtlasDependencyUnavailable",
+        "ContentDockDependencyUnavailable",
         "45s",
         [{ dependency: "redis" }],
         "critical",
-        "Atlas dependency is unavailable",
+        "ContentDock dependency is unavailable",
       ),
-      check("AtlasDependencyUnavailable", "1m"),
+      check("ContentDockDependencyUnavailable", "1m"),
     ],
   },
   {
@@ -48,11 +48,11 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_export_oldest_pending_timestamp_seconds{job="atlas-api",instance="api:9091"}',
+          'contentdock_export_oldest_pending_timestamp_seconds{job="contentdock-api",instance="api:9091"}',
         values: "0+0x40",
       },
     ],
-    alert_rule_test: [check("AtlasExportBacklog", "5m")],
+    alert_rule_test: [check("ContentDockExportBacklog", "5m")],
   },
   {
     name: "old pending backlog and expired leases",
@@ -60,18 +60,18 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_export_oldest_pending_timestamp_seconds{job="atlas-api",instance="api:9091"}',
+          'contentdock_export_oldest_pending_timestamp_seconds{job="contentdock-api",instance="api:9091"}',
         values: "1+0x40",
       },
       {
         series:
-          'atlas_export_expired_leases{job="atlas-api",instance="api:9091"}',
+          'contentdock_export_expired_leases{job="contentdock-api",instance="api:9091"}',
         values: "1+0x4 0+0x35",
       },
     ],
     alert_rule_test: [
       check(
-        "AtlasExportBacklog",
+        "ContentDockExportBacklog",
         "4m",
         [{}],
         "warning",
@@ -79,14 +79,14 @@ const tests = [
         "export-backlog",
       ),
       check(
-        "AtlasExpiredLease",
+        "ContentDockExpiredLease",
         "1m",
         [{}],
         "warning",
         "Export lease recovery is overdue",
         "export-backlog",
       ),
-      check("AtlasExpiredLease", "2m"),
+      check("ContentDockExpiredLease", "2m"),
     ],
   },
   {
@@ -95,14 +95,14 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_dependency_last_check_timestamp_seconds{job="atlas-api",instance="api:9091",dependency="database"}',
+          'contentdock_dependency_last_check_timestamp_seconds{job="contentdock-api",instance="api:9091",dependency="database"}',
         values: "0+0x30",
       },
     ],
     alert_rule_test: [
-      check("AtlasProbeStale", "1m"),
+      check("ContentDockProbeStale", "1m"),
       check(
-        "AtlasProbeStale",
+        "ContentDockProbeStale",
         "2m",
         [{ dependency: "database" }],
         "warning",
@@ -117,24 +117,24 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_vault_available_bytes{job="atlas-api",instance="api:9091"}',
+          'contentdock_vault_available_bytes{job="contentdock-api",instance="api:9091"}',
         values: "5+0x3 50+0x20",
       },
       {
-        series: 'atlas_vault_size_bytes{job="atlas-api",instance="api:9091"}',
+        series: 'contentdock_vault_size_bytes{job="contentdock-api",instance="api:9091"}',
         values: "100+0x30",
       },
     ],
     alert_rule_test: [
       check(
-        "AtlasVaultSpaceLow",
+        "ContentDockVaultSpaceLow",
         "30s",
         [{}],
         "critical",
         "Vault filesystem has less than ten percent available",
         "vault-space",
       ),
-      check("AtlasVaultSpaceLow", "1m"),
+      check("ContentDockVaultSpaceLow", "1m"),
     ],
   },
   {
@@ -142,21 +142,21 @@ const tests = [
     interval: "15s",
     input_series: [
       {
-        series: 'up{job="atlas-api",instance="api:9091"}',
+        series: 'up{job="contentdock-api",instance="api:9091"}',
         values: "0+0x4 1+0x20",
       },
     ],
     alert_rule_test: [
-      check("AtlasApiUnavailable", "45s"),
+      check("ContentDockApiUnavailable", "45s"),
       check(
-        "AtlasApiUnavailable",
+        "ContentDockApiUnavailable",
         "1m",
         [{}],
         "critical",
-        "Atlas metrics/liveness target is unavailable",
+        "ContentDock metrics/liveness target is unavailable",
         "api-unavailable",
       ),
-      check("AtlasApiUnavailable", "2m"),
+      check("ContentDockApiUnavailable", "2m"),
     ],
   },
   {
@@ -166,12 +166,12 @@ const tests = [
     alert_rule_test: [
       {
         eval_time: "1m",
-        alertname: "AtlasApiUnavailable",
+        alertname: "ContentDockApiUnavailable",
         exp_alerts: [
           {
-            exp_labels: { job: "atlas-api", severity: "critical" },
+            exp_labels: { job: "contentdock-api", severity: "critical" },
             exp_annotations: {
-              summary: "Atlas metrics/liveness target is unavailable",
+              summary: "ContentDock metrics/liveness target is unavailable",
               runbook: runbook + "api-unavailable",
             },
           },
@@ -185,20 +185,20 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_export_worker_total{job="atlas-api",instance="api:9091",outcome="failed"}',
+          'contentdock_export_worker_total{job="contentdock-api",instance="api:9091",outcome="failed"}',
         values: "0 1+0x40",
       },
     ],
     alert_rule_test: [
       check(
-        "AtlasExportFailures",
+        "ContentDockExportFailures",
         "30s",
         [{}],
         "warning",
         "Export deliveries have failed or require recovery",
         "export-backlog",
       ),
-      check("AtlasExportFailures", "6m"),
+      check("ContentDockExportFailures", "6m"),
     ],
   },
   {
@@ -207,19 +207,19 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_http_requests_total{job="atlas-api",instance="api:9091",route="/api/test",method="GET",status_class="5xx"}',
+          'contentdock_http_requests_total{job="contentdock-api",instance="api:9091",route="/api/test",method="GET",status_class="5xx"}',
         values: "0+5x40",
       },
       {
         series:
-          'atlas_http_requests_total{job="atlas-api",instance="api:9091",route="/api/test",method="GET",status_class="2xx"}',
+          'contentdock_http_requests_total{job="contentdock-api",instance="api:9091",route="/api/test",method="GET",status_class="2xx"}',
         values: "0+45x40",
       },
     ],
     alert_rule_test: [
-      check("AtlasHttpErrors", "1m"),
+      check("ContentDockHttpErrors", "1m"),
       check(
-        "AtlasHttpErrors",
+        "ContentDockHttpErrors",
         "4m",
         [{}],
         "warning",
@@ -234,11 +234,11 @@ const tests = [
     input_series: [
       {
         series:
-          'atlas_http_requests_total{job="atlas-api",instance="api:9091",route="/api/test",method="GET",status_class="5xx"}',
+          'contentdock_http_requests_total{job="contentdock-api",instance="api:9091",route="/api/test",method="GET",status_class="5xx"}',
         values: "0 1+0x40",
       },
     ],
-    alert_rule_test: [check("AtlasHttpErrors", "4m")],
+    alert_rule_test: [check("ContentDockHttpErrors", "4m")],
   },
 ];
 tests.push({
@@ -247,20 +247,20 @@ tests.push({
   input_series: [
     {
       series:
-        'atlas_export_dispatch_last_tick_timestamp_seconds{job="atlas-api",instance="api:9091"}',
+        'contentdock_export_dispatch_last_tick_timestamp_seconds{job="contentdock-api",instance="api:9091"}',
       values: "0+0x12 180+15x30",
     },
   ],
   alert_rule_test: [
     check(
-      "AtlasDispatcherStalled",
+      "ContentDockDispatcherStalled",
       "2m30s",
       [{}],
       "critical",
       "Export dispatcher has stopped polling",
       "export-backlog",
     ),
-    check("AtlasDispatcherStalled", "4m"),
+    check("ContentDockDispatcherStalled", "4m"),
   ],
 });
 tests.push({
@@ -269,30 +269,30 @@ tests.push({
   input_series: [
     {
       series:
-        'atlas_http_request_duration_seconds_bucket{job="atlas-api",instance="api:9091",le="1"}',
+        'contentdock_http_request_duration_seconds_bucket{job="contentdock-api",instance="api:9091",le="1"}',
       values: "0+1x28 28+100x40",
     },
     {
       series:
-        'atlas_http_request_duration_seconds_bucket{job="atlas-api",instance="api:9091",le="5"}',
+        'contentdock_http_request_duration_seconds_bucket{job="contentdock-api",instance="api:9091",le="5"}',
       values: "0+100x69",
     },
     {
       series:
-        'atlas_http_request_duration_seconds_bucket{job="atlas-api",instance="api:9091",le="+Inf"}',
+        'contentdock_http_request_duration_seconds_bucket{job="contentdock-api",instance="api:9091",le="+Inf"}',
       values: "0+100x69",
     },
   ],
   alert_rule_test: [
     check(
-      "AtlasHttpLatency",
+      "ContentDockHttpLatency",
       "6m",
       [{}],
       "warning",
       "HTTP p95 exceeds two seconds",
       "http-errors-or-latency",
     ),
-    check("AtlasHttpLatency", "14m"),
+    check("ContentDockHttpLatency", "14m"),
   ],
 });
 tests.push({
@@ -301,25 +301,25 @@ tests.push({
   input_series: [
     {
       series:
-        'atlas_retention_errors_total{job="atlas-api",instance="api:9091"}',
+        'contentdock_retention_errors_total{job="contentdock-api",instance="api:9091"}',
       values: "0 1+0x85",
     },
   ],
   alert_rule_test: [
     check(
-      "AtlasRetentionErrors",
+      "ContentDockRetentionErrors",
       "1m",
       [{}],
       "warning",
       "Vault retention inventory or cleanup failed",
       "vault-space",
     ),
-    check("AtlasRetentionErrors", "20m"),
+    check("ContentDockRetentionErrors", "20m"),
   ],
 });
 for (const [alert, job, instance, severity, summary, anchor] of [
   [
-    "AtlasBrokerExporterUnavailable",
+    "ContentDockBrokerExporterUnavailable",
     "rabbitmq",
     "rabbitmq:15692",
     "warning",
@@ -327,7 +327,7 @@ for (const [alert, job, instance, severity, summary, anchor] of [
     "dependency-outage",
   ],
   [
-    "AtlasAlertmanagerUnavailable",
+    "ContentDockAlertmanagerUnavailable",
     "alertmanager",
     "alertmanager:9093",
     "critical",
@@ -335,7 +335,7 @@ for (const [alert, job, instance, severity, summary, anchor] of [
     "alert-delivery",
   ],
   [
-    "AtlasAlertJournalUnavailable",
+    "ContentDockAlertJournalUnavailable",
     "alert-journal",
     "alert-journal:9099",
     "critical",
@@ -374,14 +374,14 @@ tests.push({
   ],
   alert_rule_test: [
     check(
-      "AtlasBrokerNoConsumers",
+      "ContentDockBrokerNoConsumers",
       "1m",
       [{ job: "rabbitmq", instance: "rabbitmq:15692" }],
       "critical",
       "Broker has queued messages without consumers",
       "export-backlog",
     ),
-    check("AtlasBrokerNoConsumers", "2m"),
+    check("ContentDockBrokerNoConsumers", "2m"),
   ],
 });
 tests.push({
@@ -396,7 +396,7 @@ tests.push({
   ],
   alert_rule_test: [
     check(
-      "AtlasAlertDeliveryFailed",
+      "ContentDockAlertDeliveryFailed",
       "2m",
       [
         {
@@ -409,7 +409,7 @@ tests.push({
       "Alertmanager cannot deliver notifications",
       "alert-delivery",
     ),
-    check("AtlasAlertDeliveryFailed", "9m"),
+    check("ContentDockAlertDeliveryFailed", "9m"),
   ],
 });
 fs.writeFileSync(

@@ -18,8 +18,8 @@ Laporan: [PHASE-4B-REPORT.md](../../PHASE-4B-REPORT.md). Timestamp JSON UTC; tan
 Docker harus lokal. Dari root, PowerShell; source saat ini sudah memuat migration kedua indeks sehingga setup memasangnya, lalu `indexes off` membuat baseline A1:
 
 ```powershell
-npm.cmd run build --workspace=@atlas/api
-docker build -t atlas-api:phase4b-baseline -f apps/api/Dockerfile .
+npm.cmd run build --workspace=@contentdock/api
+docker build -t contentdock-api:phase4b-baseline -f apps/api/Dockerfile .
 $env:PHASE4B_EVIDENCE_DIR = "artifacts/benchmark/phase4b-repeat-$(Get-Date -Format yyyyMMdd-HHmmss)"
 npm.cmd run benchmark:phase4b -- setup --run-isolated
 npm.cmd run benchmark:phase4b -- indexes off

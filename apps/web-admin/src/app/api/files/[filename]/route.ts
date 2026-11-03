@@ -13,8 +13,8 @@ export async function GET(
   const res = await fetch(`${API_URL}/media-files/${filename}`, {
     headers: {
       Authorization: `Bearer ${token}`,
-      ...(jar.get("atlas_active_tenant_id")?.value
-        ? { "x-tenant-id": jar.get("atlas_active_tenant_id")!.value }
+      ...(jar.get("contentdock_active_tenant_id")?.value
+        ? { "x-tenant-id": jar.get("contentdock_active_tenant_id")!.value }
         : {}),
     },
     cache: "no-store",

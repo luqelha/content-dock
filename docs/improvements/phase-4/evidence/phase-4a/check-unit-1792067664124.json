@@ -7,7 +7,7 @@
     "/d",
     "/s",
     "/c",
-    "npm.cmd run test:cov --workspace=@atlas/api -- --runInBand"
+    "npm.cmd run test:cov --workspace=@contentdock/api -- --runInBand"
   ],
   "exitCode": 0,
   "log": "check-unit-1792067664124.log",

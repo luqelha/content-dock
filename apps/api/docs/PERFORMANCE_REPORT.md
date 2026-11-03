@@ -1,4 +1,4 @@
-﻿# Measured performance
+# Measured performance
 
 ## Phase 4B — 16 October 2026
 
@@ -13,7 +13,7 @@ Measured on 12 October 2026 during security remediation. This is a local load sm
 ## Environment and workload
 
 - Windows, Node.js v22.18.0, Intel Core i5-13450HX.
-- Built NestJS API image using restricted `atlas_app`; PostgreSQL, Redis, and RabbitMQ in isolated Docker services.
+- Built NestJS API image using restricted `contentdock_app`; PostgreSQL, Redis, and RabbitMQ in isolated Docker services.
 - One newly created workspace with 25 content records.
 - Authenticated GET /api/contents?page=1&take=20, warmed Redis cache.
 - 1,000 requests in total, 25 concurrent clients, local loopback network.

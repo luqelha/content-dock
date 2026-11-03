@@ -8,7 +8,7 @@ describe('File vault', () => {
   let directory: string;
   const oldKey = process.env.STORAGE_ENCRYPTION_KEY;
   beforeEach(() => {
-    directory = mkdtempSync(join(tmpdir(), 'atlas-vault-test-'));
+    directory = mkdtempSync(join(tmpdir(), 'contentdock-vault-test-'));
     process.env.STORAGE_ENCRYPTION_KEY = 'a'.repeat(64);
     const cwd = jest.spyOn(process, 'cwd').mockReturnValue(directory);
     vault = new FileVaultService();

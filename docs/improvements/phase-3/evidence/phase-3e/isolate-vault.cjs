@@ -2,4 +2,4 @@
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
-process.chdir(fs.mkdtempSync(path.join(os.tmpdir(), "atlas-phase3e-e2e-")));
+process.chdir(fs.mkdtempSync(path.join(os.tmpdir(), "contentdock-phase3e-e2e-")));

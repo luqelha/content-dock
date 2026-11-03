@@ -5,7 +5,7 @@
     "npm-cli.js",
     "run",
     "test:cov",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "--runInBand",
     "--coverageReporters=json-summary",

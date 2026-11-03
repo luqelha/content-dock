@@ -20,7 +20,7 @@ export async function workspaceRequest<T>(
     throw new Error("Your session has expired. Please sign in again.");
   if (path === "/tenants" && (!init.method || init.method === "GET"))
     return parseContract(schema, await fetchTenants(token));
-  const tenant = tenantId ?? jar.get("atlas_active_tenant_id")?.value;
+  const tenant = tenantId ?? jar.get("contentdock_active_tenant_id")?.value;
   const headers = new Headers(init.headers);
   headers.set("Authorization", `Bearer ${token}`);
   if (tenant) headers.set("x-tenant-id", tenant);

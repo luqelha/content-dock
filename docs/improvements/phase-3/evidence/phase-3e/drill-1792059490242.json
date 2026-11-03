@@ -8,17 +8,17 @@
       "at": "2026-10-15T10:16:18.375Z"
     },
     {
-      "name": "atlas-phase3e-source-4293c787fa: effective runtime grants and eight denied operations",
+      "name": "contentdock-phase3e-source-4293c787fa: effective runtime grants and eight denied operations",
       "status": "passed",
       "at": "2026-10-15T10:16:38.497Z"
     },
     {
-      "name": "atlas-phase3e-source-4293c787fa: resource isolation",
+      "name": "contentdock-phase3e-source-4293c787fa: resource isolation",
       "status": "passed",
       "at": "2026-10-15T10:17:22.208Z"
     },
     {
-      "name": "atlas-phase3e-source-4293c787fa: seed smoke",
+      "name": "contentdock-phase3e-source-4293c787fa: seed smoke",
       "status": "passed",
       "at": "2026-10-15T10:17:23.727Z",
       "mode": "seed",
@@ -44,17 +44,17 @@
       "vaultSha256": "6b98b79249c599392e84014cd71a9719535ef7ab5cb519a7b696e9bd6d87f5ae"
     },
     {
-      "name": "atlas-phase3e-restore-16df673b6b: effective runtime grants and eight denied operations",
+      "name": "contentdock-phase3e-restore-16df673b6b: effective runtime grants and eight denied operations",
       "status": "passed",
       "at": "2026-10-15T10:17:54.001Z"
     },
     {
-      "name": "atlas-phase3e-restore-16df673b6b: resource isolation",
+      "name": "contentdock-phase3e-restore-16df673b6b: resource isolation",
       "status": "passed",
       "at": "2026-10-15T10:18:04.104Z"
     },
     {
-      "name": "atlas-phase3e-restore-16df673b6b: verify smoke",
+      "name": "contentdock-phase3e-restore-16df673b6b: verify smoke",
       "status": "passed",
       "at": "2026-10-15T10:18:06.865Z",
       "mode": "verify",
@@ -93,9 +93,9 @@
     "previous": {}
   },
   "existingContainers": [
-    "19c7c475dcf8|atlas_postgres|postgres:15-alpine",
-    "2057b6d16f61|atlas_rabbitmq|rabbitmq:3-management-alpine",
-    "58f6c076a444|atlas_redis|redis:7-alpine"
+    "19c7c475dcf8|contentdock_postgres|postgres:15-alpine",
+    "2057b6d16f61|contentdock_rabbitmq|rabbitmq:3-management-alpine",
+    "58f6c076a444|contentdock_redis|redis:7-alpine"
   ],
   "unverified": [
     "Rollback to a previous compatible release was not executed in Phase 3E"
@@ -144,11 +144,11 @@
   },
   "status": "passed",
   "projects": [
-    "atlas-phase3e-source-4293c787fa",
-    "atlas-phase3e-restore-16df673b6b"
+    "contentdock-phase3e-source-4293c787fa",
+    "contentdock-phase3e-restore-16df673b6b"
   ],
   "privateArtifacts": {
-    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase3e-IWl6KP",
+    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\contentdock-phase3e-IWl6KP",
     "warning": "Synthetic credentials/config; backup and fixture only when runtime drill executes. Never commit."
   },
   "finishedAt": "2026-10-15T10:18:10.241Z",

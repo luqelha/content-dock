@@ -25,7 +25,7 @@
   "crossTenantContentDenied": true,
   "crossTenantMediaDenied": true,
   "freshDatabaseMigrationsPassed": true,
-  "freshDatabase": "atlas_phase4b_test_2eb6875e73_fresh_test",
+  "freshDatabase": "contentdock_phase4b_test_2eb6875e73_fresh_test",
   "repeatedDeployPassed": true,
   "validIndexes": 2
 }

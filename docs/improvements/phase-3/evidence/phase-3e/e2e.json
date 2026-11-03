@@ -2,9 +2,9 @@
   "name": "e2e",
   "command": [
     "node",
-    "C:\\Projects\\webdev\\atlas-platform\\apps\\api\\node_modules\\jest\\bin\\jest.js",
+    "C:\\Projects\\webdev\\contentdock\\apps\\api\\node_modules\\jest\\bin\\jest.js",
     "--config",
-    "{\"moduleFileExtensions\":[\"js\",\"json\",\"ts\"],\"rootDir\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\test\",\"testEnvironment\":\"node\",\"testRegex\":\".e2e-spec.ts$\",\"transform\":{\"^.+\\\\.(t|j)s$\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\node_modules\\\\ts-jest\\\\dist\\\\index.js\",{\"tsconfig\":\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\apps\\\\api\\\\tsconfig.json\"}]},\"moduleNameMapper\":{\"^uuid$\":\"<rootDir>/e2e/__mocks__/uuid.ts\",\"^archiver$\":\"<rootDir>/e2e/__mocks__/archiver.ts\"},\"setupFiles\":[\"C:\\\\Projects\\\\webdev\\\\atlas-platform\\\\docs\\\\improvements\\\\phase-3\\\\evidence\\\\phase-3e\\\\isolate-vault.cjs\"]}",
+    "{\"moduleFileExtensions\":[\"js\",\"json\",\"ts\"],\"rootDir\":\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\test\",\"testEnvironment\":\"node\",\"testRegex\":\".e2e-spec.ts$\",\"transform\":{\"^.+\\\\.(t|j)s$\":[\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\node_modules\\\\ts-jest\\\\dist\\\\index.js\",{\"tsconfig\":\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\apps\\\\api\\\\tsconfig.json\"}]},\"moduleNameMapper\":{\"^uuid$\":\"<rootDir>/e2e/__mocks__/uuid.ts\",\"^archiver$\":\"<rootDir>/e2e/__mocks__/archiver.ts\"},\"setupFiles\":[\"C:\\\\Projects\\\\webdev\\\\contentdock\\\\docs\\\\improvements\\\\phase-3\\\\evidence\\\\phase-3e\\\\isolate-vault.cjs\"]}",
     "--runInBand"
   ],
   "node": "v22.18.0",

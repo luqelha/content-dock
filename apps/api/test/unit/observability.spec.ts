@@ -38,7 +38,7 @@ describe('Operational health and bounded telemetry', () => {
     expect(text).toContain('status_class="4xx"} 1');
     expect(text).not.toMatch(/user-secret|jwt-secret|authorization/);
     expect(next).toHaveBeenCalledTimes(1);
-    expect(text).toContain('atlas_http_inflight 0');
+    expect(text).toContain('contentdock_http_inflight 0');
   });
 
   it('does not infer consumer readiness from a broker TCP connection', () => {
@@ -179,8 +179,8 @@ describe('Worker instrumentation preserves fencing and settlement', () => {
         context(),
       );
       const text = await telemetry.registry.metrics();
-      expect(text).toContain(`atlas_export_worker_total{outcome="${outcome}"} 1`);
-      expect(text).toContain('atlas_export_worker_inflight 0');
+      expect(text).toContain(`contentdock_export_worker_total{outcome="${outcome}"} 1`);
+      expect(text).toContain('contentdock_export_worker_inflight 0');
       expect(text).not.toContain(id);
       if (outcome === 'draining') expect(prisma.exportTask.updateMany).not.toHaveBeenCalled();
     },

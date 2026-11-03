@@ -3,7 +3,7 @@
   "method": "Installed Codex Playwright MCP; user explicitly selected it after Browser Codex was unavailable",
   "target": "http://localhost:3000",
   "api": "http://127.0.0.1:4400/api",
-  "database": "atlas_test",
+  "database": "contentdock_test",
   "viewport": {
     "mobile": {
       "width": 375,

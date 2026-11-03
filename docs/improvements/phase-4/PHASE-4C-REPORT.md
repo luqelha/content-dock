@@ -41,7 +41,7 @@ Hasil final terstruktur, jumlah test, coverage, source hashes dan command ada pa
 ```powershell
 npm.cmd run typecheck
 npm.cmd run test:contracts
-npm.cmd run test:cov --workspace=@atlas/api -- --runInBand
+npm.cmd run test:cov --workspace=@contentdock/api -- --runInBand
 npm.cmd run lint
 npm.cmd run build
 npm.cmd run test:quality:db

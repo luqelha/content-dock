@@ -29,7 +29,7 @@ Global thresholds existing (statements/lines 40, branches/functions 30) tetap. G
 | Pemeriksaan | Hasil aktual |
 | --- | --- |
 | Clean root npm ci | Lulus; Windows Node 22.18.0, npm 11.18.0. Warning install-script policy npm dicatat; Prisma generate eksplisit lulus. |
-| Prisma generate + empat migration deploy | Lulus pada PostgreSQL tmpfs baru `atlas-phase3c-review`; applied migration existing tidak diedit. |
+| Prisma generate + empat migration deploy | Lulus pada PostgreSQL tmpfs baru `contentdock-phase3c-review`; applied migration existing tidak diedit. |
 | Lint API/web, typecheck API/web | Lulus. |
 | Format gate reliability | Lulus. Gate ini terbatas pada workflow, config/browser dan audit scripts; bukan klaim seluruh repo telah diformat. |
 | Unit + coverage gate | 23 suites / 153 lulus. |

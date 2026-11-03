@@ -7,13 +7,13 @@ export function authClientHeaders(
   email: string,
 ): Record<string, string> {
   const secret = process.env.AUTH_PROXY_SECRET;
-  const ip = headers.get("x-atlas-client-ip");
+  const ip = headers.get("x-contentdock-client-ip");
   if (!secret || secret.length < 32 || !ip || !isIP(ip)) return {};
   const timestamp = String(Date.now());
   return {
-    "x-atlas-client-ip": ip,
-    "x-atlas-auth-time": timestamp,
-    "x-atlas-auth-signature": createHmac("sha256", secret)
+    "x-contentdock-client-ip": ip,
+    "x-contentdock-auth-time": timestamp,
+    "x-contentdock-auth-signature": createHmac("sha256", secret)
       .update(`${timestamp}\n${ip}\n${email.trim().toLowerCase()}`)
       .digest("hex"),
   };

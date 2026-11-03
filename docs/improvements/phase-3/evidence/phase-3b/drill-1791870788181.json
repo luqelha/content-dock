@@ -8,17 +8,17 @@
       "at": "2026-10-13T05:51:30.817Z"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: effective runtime grants and eight denied operations",
+      "name": "contentdock-phase3b-source-e224cd2d8f: effective runtime grants and eight denied operations",
       "status": "passed",
       "at": "2026-10-13T05:51:49.396Z"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: resource isolation",
+      "name": "contentdock-phase3b-source-e224cd2d8f: resource isolation",
       "status": "passed",
       "at": "2026-10-13T05:51:58.299Z"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: seed smoke",
+      "name": "contentdock-phase3b-source-e224cd2d8f: seed smoke",
       "status": "passed",
       "at": "2026-10-13T05:51:59.849Z",
       "mode": "seed",
@@ -35,17 +35,17 @@
       "validationErrors": "passed"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: resource isolation",
+      "name": "contentdock-phase3b-source-e224cd2d8f: resource isolation",
       "status": "passed",
       "at": "2026-10-13T05:52:14.556Z"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: effective runtime grants and eight denied operations",
+      "name": "contentdock-phase3b-source-e224cd2d8f: effective runtime grants and eight denied operations",
       "status": "passed",
       "at": "2026-10-13T05:52:19.363Z"
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: verify smoke",
+      "name": "contentdock-phase3b-source-e224cd2d8f: verify smoke",
       "status": "passed",
       "at": "2026-10-13T05:52:20.501Z",
       "mode": "verify",
@@ -68,7 +68,7 @@
       "seconds": 20.489
     },
     {
-      "name": "atlas-phase3b-source-e224cd2d8f: verify smoke",
+      "name": "contentdock-phase3b-source-e224cd2d8f: verify smoke",
       "status": "passed",
       "at": "2026-10-13T05:52:34.577Z",
       "mode": "verify",
@@ -93,7 +93,7 @@
       "vaultSha256": "aa99dd470e79accdecbf7b5617087659e0c9e15d91033e50029890f5d6f2a420"
     },
     {
-      "name": "atlas-phase3b-restore-095f73d819: effective runtime grants and eight denied operations",
+      "name": "contentdock-phase3b-restore-095f73d819: effective runtime grants and eight denied operations",
       "status": "passed",
       "at": "2026-10-13T05:53:06.285Z"
     }
@@ -110,35 +110,35 @@
     }
   },
   "existingContainers": [
-    "671af2e721c4|atlas-phase3b-source-4404328cb1-rabbitmq-1|rabbitmq:3-management-alpine",
-    "8d7ddbaca3c9|atlas-phase3b-source-4404328cb1-postgres-1|postgres:15-alpine",
-    "a918fb3d633d|atlas-phase3b-source-4404328cb1-redis-1|redis:7-alpine",
-    "548b36a61083|atlas-phase2-production-mode-review|atlas-api:security-phase2",
-    "d0f2b1bdab25|atlas_postgres|postgres:15-alpine",
-    "fd3d808f9fb4|atlas_rabbitmq|rabbitmq:3-management-alpine",
-    "278591c7bf0c|atlas_redis|redis:7-alpine",
-    "126ffed29130|atlas-phase2-api-review|atlas-api:security-phase2",
-    "ffd41f8981bb|atlas-security-phase2-20261011-postgres-1|postgres:15-alpine",
-    "6001339dc3ef|atlas-security-phase2-20261011-redis-1|redis:7-alpine",
-    "3e9b1f30169d|atlas-security-phase2-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
-    "cfc3361320a5|atlas-security-phase1-api-final|atlas-api:security-phase1",
-    "b6268c8a66a3|atlas-security-phase1-20261011-redis-1|redis:7-alpine",
-    "97c42253a208|atlas-security-phase1-api|7e5f88923546",
-    "37c6a5f3e3a8|atlas-security-phase1-20261011-postgres-1|postgres:15-alpine",
-    "e1b91c7f52ac|atlas-security-phase1-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
-    "138bde452bb6|atlas-review-web|atlas-web:review",
-    "f175f24b8c17|atlas-review-api|atlas-api:review",
-    "4d238769769a|atlas-review-rabbitmq|rabbitmq:3-management-alpine",
-    "b2ddbff7720a|atlas-review-redis|redis:7-alpine",
-    "5d19607301cb|atlas-review-postgres|postgres:15-alpine",
+    "671af2e721c4|contentdock-phase3b-source-4404328cb1-rabbitmq-1|rabbitmq:3-management-alpine",
+    "8d7ddbaca3c9|contentdock-phase3b-source-4404328cb1-postgres-1|postgres:15-alpine",
+    "a918fb3d633d|contentdock-phase3b-source-4404328cb1-redis-1|redis:7-alpine",
+    "548b36a61083|contentdock-phase2-production-mode-review|contentdock-api:security-phase2",
+    "d0f2b1bdab25|contentdock_postgres|postgres:15-alpine",
+    "fd3d808f9fb4|contentdock_rabbitmq|rabbitmq:3-management-alpine",
+    "278591c7bf0c|contentdock_redis|redis:7-alpine",
+    "126ffed29130|contentdock-phase2-api-review|contentdock-api:security-phase2",
+    "ffd41f8981bb|contentdock-security-phase2-20261011-postgres-1|postgres:15-alpine",
+    "6001339dc3ef|contentdock-security-phase2-20261011-redis-1|redis:7-alpine",
+    "3e9b1f30169d|contentdock-security-phase2-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "cfc3361320a5|contentdock-security-phase1-api-final|contentdock-api:security-phase1",
+    "b6268c8a66a3|contentdock-security-phase1-20261011-redis-1|redis:7-alpine",
+    "97c42253a208|contentdock-security-phase1-api|7e5f88923546",
+    "37c6a5f3e3a8|contentdock-security-phase1-20261011-postgres-1|postgres:15-alpine",
+    "e1b91c7f52ac|contentdock-security-phase1-20261011-rabbitmq-1|rabbitmq:3-management-alpine",
+    "138bde452bb6|contentdock-review-web|contentdock-web:review",
+    "f175f24b8c17|contentdock-review-api|contentdock-api:review",
+    "4d238769769a|contentdock-review-rabbitmq|rabbitmq:3-management-alpine",
+    "b2ddbff7720a|contentdock-review-redis|redis:7-alpine",
+    "5d19607301cb|contentdock-review-postgres|postgres:15-alpine",
     "04a003f7ad92|pln-n8n|n8nio/n8n:latest",
     "e179d0aa565a|pln-ollama-pull|ollama/ollama:latest",
     "ac3d7d5f89bf|pln-postgres|postgres:16-alpine",
     "699834dc9d8c|pln-mailpit|axllent/mailpit",
     "34caec472a55|pln-ollama|ollama/ollama:latest",
-    "8d3946bed999|atlas-platform-api-1|atlas-platform-api",
-    "74a75827fd79|atlas-platform-api-2|atlas-platform-api",
-    "c6f7742ed06c|atlas_nginx|nginx:alpine",
+    "8d3946bed999|contentdock-api-1|contentdock-api",
+    "74a75827fd79|contentdock-api-2|contentdock-api",
+    "c6f7742ed06c|contentdock_nginx|nginx:alpine",
     "21b34e185cd8|api-gateway|asynclog-api",
     "bbe8bf51cc73|worker-service|asynclog-worker",
     "266c8a34481a|rabbitmq|rabbitmq:3-management",
@@ -189,11 +189,11 @@
   "status": "failed",
   "error": "docker compose failed (1): unknown flag: --no-deps\n",
   "projects": [
-    "atlas-phase3b-source-e224cd2d8f",
-    "atlas-phase3b-restore-095f73d819"
+    "contentdock-phase3b-source-e224cd2d8f",
+    "contentdock-phase3b-restore-095f73d819"
   ],
   "privateArtifacts": {
-    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\atlas-phase3b-2oSQmv",
+    "directory": "C:\\Users\\LENOVO\\AppData\\Local\\Temp\\contentdock-phase3b-2oSQmv",
     "warning": "Synthetic credentials/config; backup and fixture only when runtime drill executes. Never commit."
   },
   "finishedAt": "2026-10-13T05:53:08.180Z",

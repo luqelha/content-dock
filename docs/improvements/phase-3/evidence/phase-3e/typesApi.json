@@ -4,7 +4,7 @@
     "node",
     "npm-cli.js",
     "exec",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "tsc",
     "--noEmit",

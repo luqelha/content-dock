@@ -12,7 +12,7 @@ const API_URL =
 export async function createContent(data: CreateContentInput) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -46,7 +46,7 @@ export async function createContent(data: CreateContentInput) {
 export async function updateContent(id: string, data: UpdateContentInput) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -80,7 +80,7 @@ export async function updateContent(id: string, data: UpdateContentInput) {
 export async function deleteContent(id: string) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };

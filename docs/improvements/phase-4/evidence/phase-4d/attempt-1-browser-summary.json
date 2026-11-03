@@ -680,7 +680,7 @@
       "attempts": 1,
       "errors": [
         "Test timeout of 90000ms exceeded.",
-        "Error: locator.click: Test timeout of 90000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Add Category' })\n\n\n  50 |   await switchTo(\"Isolation Alpha\");\n  51 |   await page.goto(\"/dashboard/categories\");\n> 52 |   await page.getByRole(\"button\", { name: \"Add Category\" }).click();\n     |                                                            ^\n  53 |   const dialog = page.getByRole(\"dialog\");\n  54 |   await dialog\n  55 |     .getByLabel(\"Name\", { exact: true })\n    at C:\\Projects\\webdev\\atlas-platform\\tests\\browser\\security-flows.spec.ts:52:60"
+        "Error: locator.click: Test timeout of 90000ms exceeded.\nCall log:\n  - waiting for getByRole('button', { name: 'Add Category' })\n\n\n  50 |   await switchTo(\"Isolation Alpha\");\n  51 |   await page.goto(\"/dashboard/categories\");\n> 52 |   await page.getByRole(\"button\", { name: \"Add Category\" }).click();\n     |                                                            ^\n  53 |   const dialog = page.getByRole(\"dialog\");\n  54 |   await dialog\n  55 |     .getByLabel(\"Name\", { exact: true })\n    at C:\\Projects\\webdev\\contentdock\\tests\\browser\\security-flows.spec.ts:52:60"
       ],
       "scans": []
     },

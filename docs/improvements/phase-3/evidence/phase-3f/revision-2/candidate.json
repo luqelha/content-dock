@@ -161,7 +161,7 @@
     "apps/web-admin/src/app/layout.tsx",
     "apps/web-admin/src/app/page.tsx",
     "apps/web-admin/src/components/app-sidebar.tsx",
-    "apps/web-admin/src/components/atlas-mark.tsx",
+    "apps/web-admin/src/components/contentdock-mark.tsx",
     "apps/web-admin/src/components/auth-feedback.tsx",
     "apps/web-admin/src/components/dashboard/activity-chart.tsx",
     "apps/web-admin/src/components/dashboard/categories/categories-client.tsx",
@@ -1688,7 +1688,7 @@
       "oid": "60a2180ad11c21a7c9527ff532db09797c5be720"
     },
     {
-      "path": "apps/web-admin/src/components/atlas-mark.tsx",
+      "path": "apps/web-admin/src/components/contentdock-mark.tsx",
       "mode": "100644",
       "type": "blob",
       "oid": "977566e4e5aa382158e058b06397a887efede8e4"

@@ -197,7 +197,7 @@
 ?? apps/web-admin/src/app/dashboard/users/page.tsx
 ?? apps/web-admin/src/app/dashboard/workspaces/new/page.tsx
 ?? apps/web-admin/src/app/error.tsx
-?? apps/web-admin/src/components/atlas-mark.tsx
+?? apps/web-admin/src/components/contentdock-mark.tsx
 ?? apps/web-admin/src/components/auth-feedback.tsx
 ?? apps/web-admin/src/components/dashboard/exports-client.tsx
 ?? apps/web-admin/src/components/dashboard/list-pagination.tsx

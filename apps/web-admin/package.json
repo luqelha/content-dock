@@ -1,5 +1,5 @@
 {
-  "name": "@atlas/web-admin",
+  "name": "@contentdock/web-admin",
   "version": "0.1.0",
   "private": true,
   "scripts": {

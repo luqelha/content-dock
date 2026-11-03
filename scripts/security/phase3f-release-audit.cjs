@@ -125,11 +125,11 @@ async function main() {
   async function api(endpoint, project) {
     try {
       const response = await fetch(
-        `https://api.github.com/repos/luqelha/atlas-platform${endpoint}`,
+        `https://api.github.com/repos/luqelha/contentDock${endpoint}`,
         {
           headers: {
             Accept: "application/vnd.github+json",
-            "User-Agent": "atlas-release-gate-audit",
+            "User-Agent": "contentdock-release-gate-audit",
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
           },
           signal: AbortSignal.timeout(20000),
@@ -321,7 +321,7 @@ async function main() {
     status: "observed",
     filesPresent: configFiles.filter((f) => fs.existsSync(f)),
     environmentNamesPresent: Object.keys(process.env).filter((name) =>
-      /^(STAGING_|RESTORE_|RELEASE_|ATLAS_RELEASE_|AWS_PROFILE$|AWS_ACCESS_KEY_ID$)/.test(
+      /^(STAGING_|RESTORE_|RELEASE_|CONTENTDOCK_RELEASE_|AWS_PROFILE$|AWS_ACCESS_KEY_ID$)/.test(
         name,
       ),
     ),

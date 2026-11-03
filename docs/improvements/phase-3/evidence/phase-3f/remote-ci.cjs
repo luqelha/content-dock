@@ -62,7 +62,7 @@ function prepare() {
   const indexPath = git(["rev-parse", "--git-path", "index"]);
   const indexHash = hash(fs.readFileSync(indexPath));
   const privateDir = fs.mkdtempSync(
-    path.join(os.tmpdir(), "atlas-phase3f-index-"),
+    path.join(os.tmpdir(), "contentdock-phase3f-index-"),
   );
   const alt = { GIT_INDEX_FILE: path.join(privateDir, "index") };
   git(["read-tree", parentCommit], undefined, alt);
@@ -183,11 +183,11 @@ async function inspect() {
   async function api(endpoint) {
     console.log(`Reading ${endpoint.split("?")[0]}`);
     const r = await fetch(
-      `https://api.github.com/repos/luqelha/atlas-platform${endpoint}`,
+      `https://api.github.com/repos/luqelha/contentDock${endpoint}`,
       {
         headers: {
           Accept: "application/vnd.github+json",
-          "User-Agent": "atlas-phase3f-ci",
+          "User-Agent": "contentdock-phase3f-ci",
           Authorization: `Bearer ${token}`,
         },
         signal: AbortSignal.timeout(30000),
@@ -206,11 +206,11 @@ async function inspect() {
       for (const job of jobs.jobs) {
         try {
           const response = await fetch(
-            `https://api.github.com/repos/luqelha/atlas-platform/actions/jobs/${job.id}/logs`,
+            `https://api.github.com/repos/luqelha/contentDock/actions/jobs/${job.id}/logs`,
             {
               headers: {
                 Accept: "application/vnd.github+json",
-                "User-Agent": "atlas-phase3f-ci",
+                "User-Agent": "contentdock-phase3f-ci",
                 Authorization: `Bearer ${token}`,
               },
               redirect: "manual",

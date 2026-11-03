@@ -13,7 +13,7 @@ Prasyarat lokal:
 1. Docker Desktop engine Linux dan Compose yang mendukung `!reset` (preflight memakai Compose v5.5.1).
 2. Node sesuai root engines; dependency lokal untuk security tests.
 3. Ruang disk/memory cukup untuk dua project terpisah; source akan dihentikan sebelum restore untuk membatasi pemakaian. Semua volume dipertahankan.
-4. Candidate images dari working tree serta previous pair `atlas-api:security-phase2` / `atlas-web:security-phase2` tersedia. Ini previous local fixture, bukan release production resmi. Jangan tag image sembarang sebagai previous release.
+4. Candidate images dari working tree serta previous pair `contentdock-api:security-phase2` / `contentdock-web:security-phase2` tersedia. Ini previous local fixture, bukan release production resmi. Jangan tag image sembarang sebagai previous release.
 5. Simpan key/config/dump hanya pada private OS temp directory yang dicatat report. Direktori mengandung secret sintetis; jangan commit/upload. Windows mengandalkan ACL profil/temp pengguna, bukan semata POSIX mode 0600.
 
 ## 2. Build dan preflight yang aman diulang
@@ -21,8 +21,8 @@ Prasyarat lokal:
 Jalankan dari root repo:
 
 ```powershell
-docker build -f apps/api/Dockerfile -t atlas-api:phase3b-candidate .
-docker build -f apps/web-admin/Dockerfile -t atlas-web:phase3b-candidate .
+docker build -f apps/api/Dockerfile -t contentdock-api:phase3b-candidate .
+docker build -f apps/web-admin/Dockerfile -t contentdock-web:phase3b-candidate .
 node --check scripts/security/phase3b-drill.cjs
 node --check scripts/security/phase3b-smoke.cjs
 node scripts/security/phase3b-drill.cjs --preflight
@@ -46,13 +46,13 @@ Urutan yang akan dijalankan:
 
 1. Resolve candidate/previous API+web ke immutable image ID. Tolak remote Docker dan project/resource bernama sama yang sudah ada.
 2. Generate credential owner/runtime/JWT/proxy/broker/key yang terpisah. Render dan validasi config, tanpa menampilkan secret.
-3. Mulai PostgreSQL/Redis/RMQ baru; migrate dengan owner; provision `atlas_app` menggunakan SQL existing. Tidak menjalankan integration/E2E helper yang melakukan TRUNCATE fixture existing.
+3. Mulai PostgreSQL/Redis/RMQ baru; migrate dengan owner; provision `contentdock_app` menggunakan SQL existing. Tidak menjalankan integration/E2E helper yang melakukan TRUNCATE fixture existing.
 4. Jalankan verifier runtime read-only dan delapan negative SQL probes dalam rollback transaction. Setiap probe harus ditolak SQLSTATE `42501`; unexpected success menggagalkan drill. Periksa schema CREATE tambahan dan sequence grants.
 5. Mulai API production, web standalone dan Nginx. Inspect image ID, non-root app user, network tunggal internal, tanpa port host, volume prefix project. Smoke melalui Nginx dari dalam network.
 6. Buat dua akun/tenant terpisah, category/content, upload PNG dan export. Verifikasi auth, forged tenant, cross-tenant content/media/export access, unauthenticated downloads, decrypted ZIP tenant records, BFF file response, validasi error dan protected page redirect. Test tidak mengemulasikan login Server Action/browser Secure cookies.
 7. Quiesce ingress, web dan API/worker; deploy previous API+web ID secara terkoordinasi. Nginx dihentikan dan dimulai kembali agar upstream DNS di-resolve ulang ke container aplikasi yang aktif. Ulang smoke dan privileges, termasuk membuat export baru sampai selesai; migration history harus tetap sama. Kembalikan kandidat dan ulang verifikasi.
 8. Ambil manifest vault lalu stop semua app writers; baca manifest sembilan tabel. Buat custom-format `pg_dump`, tar encrypted vault read-only. Simpan digest backup; stop source infrastructure. Backup file membutuhkan database dan key/config dari checkpoint yang sama.
-9. Buat restore project baru. Pastikan public schema kosong; buat role non-owner dengan atribut yang sama. Restore dengan `pg_restore --exit-on-error --single-transaction`, tanpa `--clean`/`--no-acl`/`--no-owner`. Owner tetap `atlas_owner`; ACL aplikasi berasal dari dump; CONNECT runtime diberikan eksplisit.
+9. Buat restore project baru. Pastikan public schema kosong; buat role non-owner dengan atribut yang sama. Restore dengan `pg_restore --exit-on-error --single-transaction`, tanpa `--clean`/`--no-acl`/`--no-owner`. Owner tetap `contentdock_owner`; ACL aplikasi berasal dari dump; CONNECT runtime diberikan eksplisit.
 10. Compare hash+row count seluruh tabel, ulang privilege verifier. Restore vault hanya ke volume project baru yang tidak mengandung file, termasuk ownership file. Muat key/config dari private saved environment file. Mulai app tanpa menjalankan migrasi ulang terhadap backup.
 11. Compare semua hash file vault sebelum writes baru; ulang smoke atas data yang sama dan buat export baru sampai selesai pada worker yang dipulihkan. Media dan export plaintext harus identik. Key yang hilang dan salah harus ditolak oleh FileVault. Catat elapsed recovery, rollback, fixture rows dan kehilangan row; angka lokal bukan RTO/RPO production.
 12. Stop resource project yang dibuat, pertahankan semua volume dan backup. Report failed jika final stop gagal. Helper backup/restore yang berhasil sudah exited; tidak ada penghapusan volume.

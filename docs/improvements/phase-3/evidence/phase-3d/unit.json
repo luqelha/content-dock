@@ -4,7 +4,7 @@
     "npm",
     "run",
     "test",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "--runInBand"
   ],

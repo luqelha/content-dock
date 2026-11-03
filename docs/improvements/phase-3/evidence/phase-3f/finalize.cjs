@@ -99,7 +99,7 @@ for (const run of current.runs) {
       )
         testSummaries.push({ command: commandName, line });
       if (
-        /writing image sha256:|exporting (?:manifest|config) sha256:|naming to docker.io\/library\/atlas-/.test(
+        /writing image sha256:|exporting (?:manifest|config) sha256:|naming to docker.io\/library\/contentdock-/.test(
           line,
         )
       )
@@ -119,14 +119,14 @@ const requiredSteps = [
   "Run npm run test:security:db",
   "Run npm run format:check:reliability",
   "Run npm run lint",
-  "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
-  "Run npm run typecheck --workspace=@atlas/web-admin",
+  "Run npm exec --workspace=@contentdock/api -- tsc --noEmit",
+  "Run npm run typecheck --workspace=@contentdock/web-admin",
   "Run npm run test:security",
   "Run npm audit --omit=dev --audit-level=moderate",
   "Run npm run audit:dependencies",
-  "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
-  "Run npm run test:int --workspace=@atlas/api",
-  "Run npm run test:e2e --workspace=@atlas/api",
+  "Run npm run test:cov --workspace=@contentdock/api -- --runInBand",
+  "Run npm run test:int --workspace=@contentdock/api",
+  "Run npm run test:e2e --workspace=@contentdock/api",
   "Run npm run build",
   "Run npm run test:browser",
   "Build API container",

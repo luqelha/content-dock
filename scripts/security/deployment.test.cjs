@@ -27,11 +27,11 @@ test("every published development infrastructure port binds only to IPv4 loopbac
 test("production separates API runtime credentials from migration/bootstrap credentials", () => {
   const env = {
     ...process.env,
-    POSTGRES_USER: "atlas_owner",
+    POSTGRES_USER: "contentdock_owner",
     POSTGRES_PASSWORD: "test-owner-password",
-    POSTGRES_DB: "atlas_test",
+    POSTGRES_DB: "contentdock_test",
     DATABASE_APP_URL:
-      "postgresql://atlas_app:test-app-password@postgres:5432/atlas_test?schema=public",
+      "postgresql://contentdock_app:test-app-password@postgres:5432/contentdock_test?schema=public",
     RABBITMQ_PASS: "test",
     JWT_SECRET: "test",
     JWT_REFRESH_SECRET: "test",
@@ -54,7 +54,7 @@ test("production separates API runtime credentials from migration/bootstrap cred
   );
   const api = new URL(config.services.api.environment.DATABASE_URL);
   const owner = new URL(config.services.migrate.environment.DATABASE_URL);
-  assert.equal(api.username, "atlas_app");
+  assert.equal(api.username, "contentdock_app");
   assert.equal(owner.username, env.POSTGRES_USER);
   assert.notEqual(api.password, owner.password);
   assert.equal(api.pathname, owner.pathname);

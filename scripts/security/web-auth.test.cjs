@@ -124,14 +124,14 @@ test("successful login clears stale workspace selection before a protected-page 
       ok: true,
       json: async () => ({ access_token: "access", refresh_token: "refresh" }),
     },
-    "https://atlas.test/login?from=%2Fdashboard%2Fcategories",
+    "https://contentdock.test/login?from=%2Fdashboard%2Fcategories",
   );
-  app.cookies.set("atlas_active_tenant_id", "previous-session-workspace");
+  app.cookies.set("contentdock_active_tenant_id", "previous-session-workspace");
   await assert.rejects(
     app.actions.login(null, form(credentials)),
     /REDIRECT:\/dashboard\/categories$/,
   );
-  assert.equal(app.cookies.has("atlas_active_tenant_id"), false);
+  assert.equal(app.cookies.has("contentdock_active_tenant_id"), false);
 });
 
 test("failed login preserves the existing workspace selection", async () => {
@@ -139,10 +139,10 @@ test("failed login preserves the existing workspace selection", async () => {
     ok: false,
     json: async () => ({ message: "Invalid credentials" }),
   });
-  app.cookies.set("atlas_active_tenant_id", "existing-session-workspace");
+  app.cookies.set("contentdock_active_tenant_id", "existing-session-workspace");
   await app.actions.login(null, form(credentials));
   assert.equal(
-    app.cookies.get("atlas_active_tenant_id"),
+    app.cookies.get("contentdock_active_tenant_id"),
     "existing-session-workspace",
   );
 });
@@ -159,7 +159,7 @@ test("login rejects an external redirect target", async () => {
       ok: true,
       json: async () => ({ access_token: "access", refresh_token: "refresh" }),
     },
-    "https://atlas.test/login?from=https://external.test",
+    "https://contentdock.test/login?from=https://external.test",
   );
   await assert.rejects(
     app.actions.login(null, form(credentials)),
@@ -343,7 +343,7 @@ test("redirect validation rejects traversal, backslashes, and malformed Referer"
     "/dashboard/\nattack",
   ]) {
     const result = dashboardDestination(
-      "https://atlas.test/login?from=" + encodeURIComponent(from),
+      "https://contentdock.test/login?from=" + encodeURIComponent(from),
     );
     // Encoded slashes remain a local dashboard path; decoded traversal is rejected.
     assert.ok(result === "/dashboard" || result.startsWith("/dashboard/"));
@@ -352,7 +352,7 @@ test("redirect validation rejects traversal, backslashes, and malformed Referer"
   assert.equal(dashboardDestination("not a URL"), "/dashboard");
   assert.equal(
     dashboardDestination(
-      "https://atlas.test/login?from=%2Fdashboard%2Fcontent%3Fpage%3D2",
+      "https://contentdock.test/login?from=%2Fdashboard%2Fcontent%3Fpage%3D2",
     ),
     "/dashboard/content?page=2",
   );
@@ -361,7 +361,7 @@ test("redirect validation rejects traversal, backslashes, and malformed Referer"
 test("logout calls API and removes all session/workspace cookies", async () => {
   const app = loadActions({ ok: true });
   app.cookies.set("refresh_token", "refresh");
-  app.cookies.set("atlas_active_tenant_id", "tenant");
+  app.cookies.set("contentdock_active_tenant_id", "tenant");
   await assert.rejects(app.actions.logout(), /REDIRECT:\/login$/);
   assert.equal(app.calls[0][1].headers.Authorization, "Bearer old-token");
   assert.equal(app.cookies.size, 0);

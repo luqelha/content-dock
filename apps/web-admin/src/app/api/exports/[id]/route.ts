@@ -9,7 +9,7 @@ export async function GET(
     return new Response("Invalid export ID.", { status: 400 });
   const jar = await cookies();
   const token = jar.get("access_token")?.value;
-  const tenantId = jar.get("atlas_active_tenant_id")?.value;
+  const tenantId = jar.get("contentdock_active_tenant_id")?.value;
   if (!token || !tenantId) return new Response("Unauthorized", { status: 401 });
   const res = await fetch(`${API_URL}/export/download/${id}`, {
     headers: { Authorization: `Bearer ${token}`, "x-tenant-id": tenantId },

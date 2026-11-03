@@ -6,7 +6,7 @@
   "runs": [
     {
       "id": 38726724972,
-      "url": "https://github.com/luqelha/atlas-platform/actions/runs/38726724972",
+      "url": "https://github.com/luqelha/contentDock/actions/runs/38726724972",
       "workflowId": 328491478,
       "headSha": "a9183dfb8b8202b043cb555c97f7e7f6dd5d8356",
       "branch": "release/phase-3f-20261015112037",
@@ -23,7 +23,7 @@
           "name": "validate",
           "status": "in_progress",
           "conclusion": null,
-          "url": "https://github.com/luqelha/atlas-platform/actions/runs/38726724972/job/116394301998",
+          "url": "https://github.com/luqelha/contentDock/actions/runs/38726724972/job/116394301998",
           "startedAt": "2026-10-15T11:21:19Z",
           "completedAt": null,
           "steps": [
@@ -68,7 +68,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm run prisma:generate --workspace=@atlas/api",
+              "name": "Run npm run prisma:generate --workspace=@contentdock/api",
               "number": 6,
               "status": "pending",
               "conclusion": null,
@@ -116,7 +116,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm exec --workspace=@atlas/api -- tsc --noEmit",
+              "name": "Run npm exec --workspace=@contentdock/api -- tsc --noEmit",
               "number": 12,
               "status": "pending",
               "conclusion": null,
@@ -124,7 +124,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm run typecheck --workspace=@atlas/web-admin",
+              "name": "Run npm run typecheck --workspace=@contentdock/web-admin",
               "number": 13,
               "status": "pending",
               "conclusion": null,
@@ -156,7 +156,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm run test:cov --workspace=@atlas/api -- --runInBand",
+              "name": "Run npm run test:cov --workspace=@contentdock/api -- --runInBand",
               "number": 17,
               "status": "pending",
               "conclusion": null,
@@ -164,7 +164,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm run test:int --workspace=@atlas/api",
+              "name": "Run npm run test:int --workspace=@contentdock/api",
               "number": 18,
               "status": "pending",
               "conclusion": null,
@@ -172,7 +172,7 @@
               "completedAt": null
             },
             {
-              "name": "Run npm run test:e2e --workspace=@atlas/api",
+              "name": "Run npm run test:e2e --workspace=@contentdock/api",
               "number": 19,
               "status": "pending",
               "conclusion": null,

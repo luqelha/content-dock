@@ -11,18 +11,18 @@ const checks = {
   unit: [
     "run",
     "test:cov",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "--runInBand",
     "--coverageReporters=json-summary",
     "--coverageReporters=text",
   ],
   security: ["run", "test:security"],
-  lintApi: ["run", "lint", "--workspace=@atlas/api"],
-  lintWeb: ["run", "lint", "--workspace=@atlas/web-admin"],
+  lintApi: ["run", "lint", "--workspace=@contentdock/api"],
+  lintWeb: ["run", "lint", "--workspace=@contentdock/web-admin"],
   typesApi: [
     "exec",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "tsc",
     "--noEmit",
@@ -31,7 +31,7 @@ const checks = {
   ],
   typesWeb: [
     "exec",
-    "--workspace=@atlas/web-admin",
+    "--workspace=@contentdock/web-admin",
     "--",
     "tsc",
     "--noEmit",
@@ -41,13 +41,13 @@ const checks = {
   format: ["run", "format:check:reliability"],
   auditRuntime: ["audit", "--omit=dev", "--audit-level=moderate", "--json"],
   auditAll: ["audit", "--json"],
-  integration: ["run", "test:int", "--workspace=@atlas/api"],
-  e2e: ["run", "test:e2e", "--workspace=@atlas/api"],
+  integration: ["run", "test:int", "--workspace=@contentdock/api"],
+  e2e: ["run", "test:e2e", "--workspace=@contentdock/api"],
   grants: ["run", "test:security:db"],
-  generate: ["run", "prisma:generate", "--workspace=@atlas/api"],
+  generate: ["run", "prisma:generate", "--workspace=@contentdock/api"],
   migrate: [
     "exec",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "prisma",
     "migrate",
@@ -55,14 +55,14 @@ const checks = {
   ],
   migrationStatus: [
     "exec",
-    "--workspace=@atlas/api",
+    "--workspace=@contentdock/api",
     "--",
     "prisma",
     "migrate",
     "status",
   ],
-  buildApi: ["run", "build", "--workspace=@atlas/api"],
-  buildWeb: ["run", "build", "--workspace=@atlas/web-admin"],
+  buildApi: ["run", "build", "--workspace=@contentdock/api"],
+  buildWeb: ["run", "build", "--workspace=@contentdock/web-admin"],
   browser: ["run", "test:browser", "--", "--retries=0"],
 };
 const name = process.argv[2];
@@ -71,7 +71,7 @@ if (!checks[name] || !fs.existsSync(npmCli))
 const env = {
   ...process.env,
   DATABASE_URL:
-    "postgresql://atlas_test:atlas_test@127.0.0.1:55432/atlas_test?schema=public",
+    "postgresql://contentdock_test:contentdock_test@127.0.0.1:55432/contentdock_test?schema=public",
   REDIS_URL: "redis://127.0.0.1:56379",
   RABBITMQ_URL: "amqp://guest:guest@127.0.0.1:55672",
   QUEUE_NAME: "phase3e_test_exports",
@@ -88,7 +88,7 @@ delete env.DATABASE_APP_URL;
 delete env.CI;
 if (["grants", "browser"].includes(name))
   env.DATABASE_APP_URL =
-    "postgresql://atlas_app:phase3e-test-runtime-password-not-production@127.0.0.1:55432/atlas_test?schema=public";
+    "postgresql://contentdock_app:phase3e-test-runtime-password-not-production@127.0.0.1:55432/contentdock_test?schema=public";
 if (name === "browser") env.CI = "1";
 // Prevent cleanup suites from reaching any pre-existing stack on these ports.
 if (
@@ -114,7 +114,7 @@ if (
     if (
       c.Id !== saved.id ||
       !c.State.Running ||
-      c.Config.Labels["com.docker.compose.project"] !== "atlas-phase3e-review"
+      c.Config.Labels["com.docker.compose.project"] !== "contentdock-phase3e-review"
     )
       throw new Error("Fixture ownership mismatch");
     if (

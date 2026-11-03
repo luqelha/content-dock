@@ -3,7 +3,7 @@ const path = require("node:path");
 const cp = require("node:child_process");
 const { createHash } = require("node:crypto");
 const root = path.resolve(__dirname, "../..");
-const phase = process.env.ATLAS_QUALITY_PHASE || "phase-4c";
+const phase = process.env.CONTENTDOCK_QUALITY_PHASE || "phase-4c";
 if (!["phase-4c", "phase-4d"].includes(phase))
   throw Error("Unsupported quality phase");
 const evidence = path.join(root, "docs/improvements/phase-4/evidence", phase);

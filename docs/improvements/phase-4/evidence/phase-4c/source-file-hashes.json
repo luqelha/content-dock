@@ -771,7 +771,7 @@
       "sha256": "4573e8e8a004186d61e57f51667b36f42aed5b9c8e2149a863e6bcc124e68b34"
     },
     {
-      "file": "apps/web-admin/src/components/atlas-mark.tsx",
+      "file": "apps/web-admin/src/components/contentdock-mark.tsx",
       "sha256": "abbd44f29a7884d9d68051f649255b3a375c4a19606e800dd371345845bd80ff"
     },
     {

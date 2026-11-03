@@ -1,6 +1,6 @@
 # Fullstack architecture
 
-Atlas is a modular monolith for a B2B, multi-tenant headless CMS. The administrative interface follows an ERP workspace model: persistent navigation, tabular records, contextual actions, explicit permissions, and operational audit history.
+ContentDock is a modular monolith for a B2B, multi-tenant headless CMS. The administrative interface follows an ERP workspace model: persistent navigation, tabular records, contextual actions, explicit permissions, and operational audit history.
 
 ```mermaid
 flowchart LR

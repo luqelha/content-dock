@@ -10,8 +10,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      issuer: 'atlas-platform',
-      audience: 'atlas-api',
+      issuer: 'contentdock',
+      audience: 'contentdock-api',
       algorithms: ['HS256'],
       secretOrKey: configService.getOrThrow<string>('JWT_SECRET'),
     });

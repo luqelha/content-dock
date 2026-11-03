@@ -7,7 +7,7 @@ const os = require("node:os");
 const path = require("node:path");
 test("alert notifications persist, retain firing/resolved states, strip extra labels and remain bounded", async () => {
   const dir = fs.mkdtempSync(
-    path.join(os.tmpdir(), "atlas-alert-journal-test-"),
+    path.join(os.tmpdir(), "contentdock-alert-journal-test-"),
   );
   let child;
   async function start() {
@@ -52,7 +52,7 @@ test("alert notifications persist, retain firing/resolved states, strip extra la
             alerts: Array.from({ length: 100 }, () => ({
               status: batch === 2 ? "resolved" : "firing",
               labels: {
-                alertname: "AtlasDependencyUnavailable",
+                alertname: "ContentDockDependencyUnavailable",
                 dependency: "redis",
                 jobId: "must-not-persist",
                 authorization: "must-not-persist",

@@ -1,4 +1,4 @@
-# 🚀 Atlas Platform Roadmap
+# 🚀 ContentDock Roadmap
 
 > **Vision:** To become the default choice for developers building high-performance, multi-tenant enterprise applications.
 

@@ -281,7 +281,7 @@
   "database": [
     {
       "evidence": "database-regression-1792102389782.json",
-      "project": "atlas-phase4c-regression-4f9651f6",
+      "project": "contentdock-phase4c-regression-4f9651f6",
       "status": "passed",
       "volumesRetained": true,
       "checks": [

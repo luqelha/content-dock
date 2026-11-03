@@ -59,7 +59,7 @@
   "apps/web-admin/src/app/dashboard/users/page.tsx": "6c06cf0052c7d79aba1a7102edd97917549e63739bc11bd18b9ac7e702928556",
   "apps/web-admin/src/app/dashboard/workspaces/new/page.tsx": "17b69710cdf2c9aeac2a7ec6deccc45c55665bdc5ce168dd05fef55e7b65f7c3",
   "apps/web-admin/src/app/error.tsx": "0bd762ada1423cdd675d758f05fada18cdd31b553a51a10f42d8c5382d2c80bd",
-  "apps/web-admin/src/components/atlas-mark.tsx": "abbd44f29a7884d9d68051f649255b3a375c4a19606e800dd371345845bd80ff",
+  "apps/web-admin/src/components/contentdock-mark.tsx": "abbd44f29a7884d9d68051f649255b3a375c4a19606e800dd371345845bd80ff",
   "apps/web-admin/src/components/dashboard/exports-client.tsx": "e3dd41352d22294b88f1d2328b1385ce4941c28d426d9d75be6f466fc1cde2a8",
   "apps/web-admin/src/components/dashboard/list-pagination.tsx": "45d6e8db0e1e7e0de1898b27d8cbe05c5e51fac24ab04728e5694f58f7eb60a2",
   "apps/web-admin/src/components/dashboard/members-client.tsx": "c5a387271e632da30b77844f228dacbf4e4ec6928a6fc2920993061b56bab6ae",

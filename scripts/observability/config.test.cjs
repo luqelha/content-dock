@@ -6,11 +6,11 @@ test("monitoring ports stay on loopback, API metrics stay private, broker data m
   const root = path.resolve(__dirname, "../..");
   const env = {
     ...process.env,
-    POSTGRES_USER: "atlas_owner",
+    POSTGRES_USER: "contentdock_owner",
     POSTGRES_PASSWORD: "synthetic-owner",
-    POSTGRES_DB: "atlas_test",
+    POSTGRES_DB: "contentdock_test",
     DATABASE_APP_URL:
-      "postgresql://atlas_app:synthetic-app@postgres:5432/atlas_test",
+      "postgresql://contentdock_app:synthetic-app@postgres:5432/contentdock_test",
     RABBITMQ_PASS: "synthetic-broker",
     JWT_SECRET: "synthetic-access",
     JWT_REFRESH_SECRET: "synthetic-refresh",

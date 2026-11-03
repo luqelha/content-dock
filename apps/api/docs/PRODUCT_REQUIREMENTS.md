@@ -1,6 +1,6 @@
 # 📋 Product Requirements Document (PRD)
 
-> **Project Name:** Atlas Platform  
+> **Project Name:** ContentDock  
 > **Status:** 🟢 Active / Planning  
 > **Document Version:** 1.0.0  
 > **Target Release:** v1.0 MVP  
@@ -9,7 +9,7 @@
 
 ## 🎯 1. Product Vision & Overview
 
-**Atlas Platform** is an Enterprise Multi-Tenant Headless CMS designed to handle complex content structures across isolated tenant environments. It aims to bridge the gap between heavy monolithic CMS platforms and lightweight headless solutions by providing built-in asynchronous background processing, advanced caching, and a developer-friendly API-first architecture.
+**ContentDock** is an Enterprise Multi-Tenant Headless CMS designed to handle complex content structures across isolated tenant environments. It aims to bridge the gap between heavy monolithic CMS platforms and lightweight headless solutions by providing built-in asynchronous background processing, advanced caching, and a developer-friendly API-first architecture.
 
 ### 🌟 Key Objectives
 - **True Multi-Tenancy:** Provide robust data isolation and customizable environments for multiple clients under a single deployment.

@@ -16,7 +16,7 @@ export default async function EditContentPage({
   const { id } = await params;
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value || "";
-  const activeTenantId = cookieStore.get("atlas_active_tenant_id")?.value || "";
+  const activeTenantId = cookieStore.get("contentdock_active_tenant_id")?.value || "";
 
   let categories: Awaited<ReturnType<typeof fetchCategories>> = [];
   let initialData: ContentInitialData | null = null;

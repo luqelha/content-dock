@@ -1,8 +1,11 @@
 {
-  "uid": "atlas-operations",
-  "title": "Atlas — Operational Resilience",
+  "uid": "contentdock-operations",
+  "title": "ContentDock — Operational Resilience",
   "description": "Private operational telemetry. HTTP routes are templates; no tenant/user/job labels. Queue gauges repeat per API replica and use max. The alert journal is not human paging.",
-  "tags": ["atlas", "operations"],
+  "tags": [
+    "contentdock",
+    "operations"
+  ],
   "schemaVersion": 39,
   "version": 1,
   "editable": false,
@@ -19,7 +22,7 @@
       "type": "stat",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -30,7 +33,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "up{job=\"atlas-api\"}",
+          "expr": "up{job=\"contentdock-api\"}",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": true
         }
@@ -52,7 +55,9 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -66,7 +71,7 @@
       "type": "stat",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 6,
@@ -77,7 +82,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "min by (instance) (atlas_dependency_up{job=\"atlas-api\"})",
+          "expr": "min by (instance) (contentdock_dependency_up{job=\"contentdock-api\"})",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": true
         }
@@ -99,7 +104,9 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -113,7 +120,7 @@
       "type": "stat",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -124,7 +131,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "sum(atlas_export_worker_inflight)",
+          "expr": "sum(contentdock_export_worker_inflight)",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": true
         }
@@ -146,7 +153,9 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -160,7 +169,7 @@
       "type": "stat",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 18,
@@ -193,7 +202,9 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -207,7 +218,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -218,7 +229,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "sum by (route, status_class) (rate(atlas_http_requests_total[5m]))",
+          "expr": "sum by (route, status_class) (rate(contentdock_http_requests_total[5m]))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -254,7 +265,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -265,7 +276,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "histogram_quantile(0.95, sum by (route, le) (rate(atlas_http_request_duration_seconds_bucket[5m])))",
+          "expr": "histogram_quantile(0.95, sum by (route, le) (rate(contentdock_http_request_duration_seconds_bucket[5m])))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -301,7 +312,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -312,7 +323,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_dependency_up",
+          "expr": "contentdock_dependency_up",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -348,7 +359,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -359,7 +370,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "time() - atlas_dependency_last_check_timestamp_seconds{dependency=~\"database|redis|storage\"}",
+          "expr": "time() - contentdock_dependency_last_check_timestamp_seconds{dependency=~\"database|redis|storage\"}",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -395,7 +406,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -406,7 +417,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "histogram_quantile(0.95, sum by (operation, le) (rate(atlas_db_operation_duration_seconds_bucket[5m])))",
+          "expr": "histogram_quantile(0.95, sum by (operation, le) (rate(contentdock_db_operation_duration_seconds_bucket[5m])))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -442,7 +453,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -453,7 +464,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_db_inflight_operations",
+          "expr": "contentdock_db_inflight_operations",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -489,7 +500,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -500,7 +511,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "sum by (outcome) (rate(atlas_cache_access_total[5m]))",
+          "expr": "sum by (outcome) (rate(contentdock_cache_access_total[5m]))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -536,7 +547,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -547,7 +558,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "max by (status) (atlas_export_tasks)",
+          "expr": "max by (status) (contentdock_export_tasks)",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -583,7 +594,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -594,7 +605,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "(time() - max(atlas_export_oldest_pending_timestamp_seconds)) and (max(atlas_export_oldest_pending_timestamp_seconds) > 0)",
+          "expr": "(time() - max(contentdock_export_oldest_pending_timestamp_seconds)) and (max(contentdock_export_oldest_pending_timestamp_seconds) > 0)",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -630,7 +641,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -641,7 +652,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "max(atlas_export_expired_leases)",
+          "expr": "max(contentdock_export_expired_leases)",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -677,7 +688,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -688,7 +699,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "time() - atlas_export_dispatch_last_tick_timestamp_seconds",
+          "expr": "time() - contentdock_export_dispatch_last_tick_timestamp_seconds",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -724,7 +735,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -735,7 +746,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "sum by (outcome) (increase(atlas_export_worker_total[5m]))",
+          "expr": "sum by (outcome) (increase(contentdock_export_worker_total[5m]))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -771,7 +782,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -782,7 +793,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "histogram_quantile(0.95, sum by (le) (rate(atlas_export_worker_duration_seconds_bucket[5m])))",
+          "expr": "histogram_quantile(0.95, sum by (le) (rate(contentdock_export_worker_duration_seconds_bucket[5m])))",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -818,7 +829,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -865,7 +876,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -912,7 +923,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -923,7 +934,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_vault_available_bytes",
+          "expr": "contentdock_vault_available_bytes",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -959,7 +970,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -970,7 +981,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_process_resident_memory_bytes",
+          "expr": "contentdock_process_resident_memory_bytes",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -1006,7 +1017,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -1017,7 +1028,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "rate(atlas_process_cpu_seconds_total[5m])",
+          "expr": "rate(contentdock_process_cpu_seconds_total[5m])",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -1053,7 +1064,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -1064,7 +1075,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_nodejs_eventloop_lag_p99_seconds",
+          "expr": "contentdock_nodejs_eventloop_lag_p99_seconds",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -1100,7 +1111,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -1147,7 +1158,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 0,
@@ -1158,7 +1169,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_alert_journal_events",
+          "expr": "contentdock_alert_journal_events",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }
@@ -1194,7 +1205,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "atlas-prometheus"
+        "uid": "contentdock-prometheus"
       },
       "gridPos": {
         "x": 12,
@@ -1205,7 +1216,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "atlas_draining",
+          "expr": "contentdock_draining",
           "legendFormat": "{{instance}} {{route}} {{dependency}} {{status}} {{outcome}}",
           "instant": false
         }

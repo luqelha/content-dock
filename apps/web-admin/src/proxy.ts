@@ -55,7 +55,7 @@ export async function proxy(request: NextRequest) {
     return response;
   }
   const originalSelection = request.cookies.get(
-    "atlas_active_tenant_id",
+    "contentdock_active_tenant_id",
   )?.value;
   let selected = originalSelection;
   if (
@@ -82,8 +82,8 @@ export async function proxy(request: NextRequest) {
     request.cookies.set("access_token", tokens.access_token);
     request.cookies.set("refresh_token", tokens.refresh_token);
   }
-  if (selected) request.cookies.set("atlas_active_tenant_id", selected);
-  else request.cookies.delete("atlas_active_tenant_id");
+  if (selected) request.cookies.set("contentdock_active_tenant_id", selected);
+  else request.cookies.delete("contentdock_active_tenant_id");
   const headers = new Headers(request.headers);
   headers.set("cookie", request.cookies.toString());
   const needsWorkspace =
@@ -119,11 +119,11 @@ export async function proxy(request: NextRequest) {
   // overwrite their Set-Cookie response with the selection from the request.
   if (request.method === "GET" && selected !== originalSelection) {
     if (selected)
-      response.cookies.set("atlas_active_tenant_id", selected, {
+      response.cookies.set("contentdock_active_tenant_id", selected, {
         ...options,
         maxAge: 31536000,
       });
-    else response.cookies.delete("atlas_active_tenant_id");
+    else response.cookies.delete("contentdock_active_tenant_id");
   }
   return response;
 }

@@ -31,7 +31,7 @@ describe('Retention safety', () => {
   };
   let service: StorageRetentionService;
   beforeEach(async () => {
-    root = await mkdtemp(join(tmpdir(), 'atlas-retention-test-'));
+    root = await mkdtemp(join(tmpdir(), 'contentdock-retention-test-'));
     await mkdir(join(root, 'uploads'));
     await mkdir(join(root, 'exports'));
     for (const name of [

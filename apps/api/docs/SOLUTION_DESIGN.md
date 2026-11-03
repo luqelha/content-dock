@@ -1,7 +1,7 @@
 <div align="center">
   
 # 📐 Solution Design
-**Architecture & System Components for Atlas Platform**
+**Architecture & System Components for ContentDock**
 
 </div>
 
@@ -9,7 +9,7 @@
 
 ## 🏛️ 1. High-Level Architecture
 
-The Atlas Platform is designed as a modular monolith running on **NestJS**. It is built for scale, incorporating asynchronous processing and heavy caching to maintain high throughput even under load.
+ContentDock is designed as a modular monolith running on **NestJS**. It is built for scale, incorporating asynchronous processing and heavy caching to maintain high throughput even under load.
 
 ```mermaid
 graph TD
@@ -65,10 +65,10 @@ We utilize a containerized approach to guarantee consistency across development,
 
 ### 🐳 Docker Services
 
-| Container      | Role                                                                 |
-| :------------- | :------------------------------------------------------------------- |
-| `atlas-api`    | The main NestJS application.                                         |
-| `atlas-worker` | A separate NestJS instance dedicated purely to RabbitMQ consumption. |
+| Container            | Role                                                                 |
+| :------------------- | :------------------------------------------------------------------- |
+| `contentdock-api`    | The main NestJS application.                                         |
+| `contentdock-worker` | A separate NestJS instance dedicated purely to RabbitMQ consumption. |
 | `postgres`     | Primary relational data store.                                       |
 | `redis`        | In-memory cache and job status tracker.                              |
 | `rabbitmq`     | Message broker for microservice communication.                       |

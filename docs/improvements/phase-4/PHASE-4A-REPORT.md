@@ -2,7 +2,7 @@
 
 Tanggal: **15 Oktober 2026, Asia/Jakarta**. Objek: working tree pada HEAD `e78af99`, termasuk perubahan pengguna dari fase sebelumnya. Evidence Phase 3F tetap historis dan tidak dipakai sebagai CI untuk source Phase 4A.
 
-**Implementasi dan verifikasi lokal Phase 4A lulus.** [Drill final](evidence/phase-4a/drill-1792068888186.json) lulus **9/9 checkpoint** pada project baru `atlas-phase4a-765b8399c3`; seluruh notifikasi outage yang diperiksa diterima firing lalu resolved oleh journal internal. Tidak ada rollout staging/production atau paging manusia.
+**Implementasi dan verifikasi lokal Phase 4A lulus.** [Drill final](evidence/phase-4a/drill-1792068888186.json) lulus **9/9 checkpoint** pada project baru `contentdock-phase4a-765b8399c3`; seluruh notifikasi outage yang diperiksa diterima firing lalu resolved oleh journal internal. Tidak ada rollout staging/production atau paging manusia.
 
 | Verifikasi                          | Hasil aktual                                                                                                        |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
@@ -27,7 +27,7 @@ Implementasi metrics, private health listener, dashboard provisioned, alert pipe
 - Listener privat 9091 menyajikan metrics, liveness dan readiness/worker health. RMQ wrapper mengamati setup/close consumer channel, bukan hanya TCP. Probe deadline dan satu pending operation per dependency membatasi antrean probe. Readiness memakai freshness; metrics tidak memasukkan raw URL, tenant/user/job, email, token, SQL atau error-message sebagai label.
 - Redis offline queue dinonaktifkan dan connection/reconnect budget dibatasi. Cache failure log tidak lagi mencetak upstream error message. Auth tetap fail closed ketika Redis tidak tersedia; bukan klaim login always-available.
 - SIGTERM/SIGINT menghentikan admission/dispatcher, menunggu request/handler/publish aktif sebelum menutup DB/transport. Default grace 330 detik dengan Compose 360 detik; fixture menguji drain aktif pada grace 15 detik. Retention destructive tetap disabled/dry-run.
-- Stack Prometheus 3.15.0, Alertmanager 0.34.1, Grafana 13.2.4 dan durable internal alert journal. Dashboard UID `atlas-operations` berisi 26 panel dengan datasource provisioned. Port ops hanya loopback; metrics API dan journal tidak dipublish pada production Compose.
+- Stack Prometheus 3.15.0, Alertmanager 0.34.1, Grafana 13.2.4 dan durable internal alert journal. Dashboard UID `contentdock-operations` berisi 26 panel dengan datasource provisioned. Port ops hanya loopback; metrics API dan journal tidak dipublish pada production Compose.
 - Aturan alert operasional, 18 scenario timing/firing/recovery promtool, Node tests journal/exposure, 13 unit baru, dan gate `test:observability` pada workflow CI. Workflow belum dijalankan remote untuk source Phase 4A.
 
 Kontrak lengkap, interpretasi metric/replica dan perintah deployment ada pada [OBSERVABILITY.md](OBSERVABILITY.md). Penanganan incident, failure injection dan batas operasi ada pada [OPERATIONAL-RUNBOOKS.md](OPERATIONAL-RUNBOOKS.md).
@@ -36,7 +36,7 @@ Kontrak lengkap, interpretasi metric/replica dan perintah deployment ada pada [O
 
 `check-*.json` merekam command, waktu, exit code serta digest log; semua attempt dipertahankan. Unit/coverage saat implementasi lulus **193 tes / 25 suite**, termasuk seluruh 13 unit observability baru. Threshold coverage repository, termasuk worker 100% branches/lines, tidak diturunkan. Typecheck, lint API, security regression, runtime dependency audit, promtool/amtool config dan rule tests telah dijalankan; hasil akhir diverifikasi oleh summary, bukan diasumsikan dari daftar ini.
 
-Drill baru memakai runtime role `atlas_app` yang dibuktikan dengan verifier read-only, dataset/credential sintetis, project acak baru dan port loopback acak. Ia memeriksa real export sampai ZIP plaintext valid, privacy metrics, dependency outage dengan firing/resolved delivery, bounded full vault, crash/expired lease, active-job drain dan Grafana datasource/panel queries. Sukses hanya bila seluruh checkpoint terminal passed dan container existing terjaga.
+Drill baru memakai runtime role `contentdock_app` yang dibuktikan dengan verifier read-only, dataset/credential sintetis, project acak baru dan port loopback acak. Ia memeriksa real export sampai ZIP plaintext valid, privacy metrics, dependency outage dengan firing/resolved delivery, bounded full vault, crash/expired lease, active-job drain dan Grafana datasource/panel queries. Sukses hanya bila seluruh checkpoint terminal passed dan container existing terjaga.
 
 Fixture memakai sampling satu detik/scrape dua detik, **tanpa mengubah hold duration rules canonical**. DB berada pada tmpfs; vault memakai named tmpfs 64 MiB dan keeper agar arsip bertahan selama API crash/restart. Data fixture disposable setelah seluruh mount dilepas; volume retained bukan backup. Waktu recovery fixture bukan SLA RTO/RPO production.
 
@@ -44,7 +44,7 @@ Fixture memakai sampling satu detik/scrape dua detik, **tanpa mengubah hold dura
 
 1. `drill-1792068213259.json`: fixture Prometheus semula memakai scrape interval dua detik tetapi timeout lima detik. Config production 15/5 detik valid; fixture diperbaiki menjadi 2/1 detik. Belum ada fault dieksekusi.
 2. `drill-1792068399816.json`: runtime Prometheus sudah sehat, tetapi binding port network internal kosong. [Port probe](evidence/phase-4a/port-probe.json) membuktikan perilaku Docker Desktop ini. Fixture kini mempunyai network data internal dan network inspeksi baru; hanya API/ops yang mendapat binding loopback, sementara DB/broker tetap tidak dipublish.
-3. `drill-1792068691002.json` adalah snapshot nonterminal sebelum runner berakhir 0. [Interruption record](evidence/phase-4a/interruption-atlas-phase4a-730ac3d36d.json) mencatat tidak ada proses runner tersisa, readiness API/Prometheus 200 dari pemeriksaan read-only, serta stop sembilan container milik fixture. Tidak ada fault sempat dimulai. Keepalive runner kini menahan event loop sampai async checks dan final cleanup selesai.
+3. `drill-1792068691002.json` adalah snapshot nonterminal sebelum runner berakhir 0. [Interruption record](evidence/phase-4a/interruption-contentdock-phase4a-730ac3d36d.json) mencatat tidak ada proses runner tersisa, readiness API/Prometheus 200 dari pemeriksaan read-only, serta stop sembilan container milik fixture. Tidak ada fault sempat dimulai. Keepalive runner kini menahan event loop sampai async checks dan final cleanup selesai.
 
 Registry juga menyatakan paket `prom-client` deprecated saat preflight dependency. Dependency sementara itu dihapus dan diganti penerus resmi; lockfile akhir hanya menambah 38 baris dari snapshot Phase 3F, tanpa upgrade dependency unrelated. Audit runtime lulus setelah perubahan.
 

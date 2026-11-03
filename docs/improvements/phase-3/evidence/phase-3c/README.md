@@ -13,11 +13,11 @@ Tanggal pekerjaan: 13–14 Oktober 2026, Asia/Jakarta. Timestamp JSON/log memaka
 
 ## Reproduksi lokal
 
-Gunakan clone/worktree sendiri, Node >=22.12, npm dan Docker. Jangan menjalankan cleanup helpers terhadap database existing. Stack yang digunakan pada sesi ini dibuat **baru** dengan project `atlas-phase3c-review`, PostgreSQL tmpfs di 55432, Redis 56379 dan RabbitMQ 55672; tidak menggunakan volume/data development.
+Gunakan clone/worktree sendiri, Node >=22.12, npm dan Docker. Jangan menjalankan cleanup helpers terhadap database existing. Stack yang digunakan pada sesi ini dibuat **baru** dengan project `contentdock-phase3c-review`, PostgreSQL tmpfs di 55432, Redis 56379 dan RabbitMQ 55672; tidak menggunakan volume/data development.
 
-1. Jalankan `npm ci` dan `npm run prisma:generate --workspace=@atlas/api`.
-2. Pastikan nama project/port test bebas; buat project test baru dengan `docker compose -p atlas-phase3c-review -f docker-compose.test.yml up -d --wait`. Jangan menggunakan ulang project yang berisi data penting.
-3. Set `DATABASE_URL=postgresql://atlas_test:atlas_test@127.0.0.1:55432/atlas_test?schema=public`, deploy migration dari workspace API. Provision role melalui `scripts/database/create-runtime-role.sql` pada container test saja dengan fixture password yang tercantum di runner (tidak pernah gunakan di production). Script provisioning menolak role existing.
+1. Jalankan `npm ci` dan `npm run prisma:generate --workspace=@contentdock/api`.
+2. Pastikan nama project/port test bebas; buat project test baru dengan `docker compose -p contentdock-phase3c-review -f docker-compose.test.yml up -d --wait`. Jangan menggunakan ulang project yang berisi data penting.
+3. Set `DATABASE_URL=postgresql://contentdock_test:contentdock_test@127.0.0.1:55432/contentdock_test?schema=public`, deploy migration dari workspace API. Provision role melalui `scripts/database/create-runtime-role.sql` pada container test saja dengan fixture password yang tercantum di runner (tidak pernah gunakan di production). Script provisioning menolak role existing.
 4. Dari root: `node docs/improvements/phase-3/evidence/phase-3c/run-check.cjs <check>` untuk `unit`, `security`, `lint`, `typesApi`, `format`, `audit`, `auditRuntime`, `grants`, `integration`, `e2e`, `build`, `typesWeb`, `browser`. Integration/E2E/browser harus **berurutan** karena berbagi database; jangan jalankan browser saat fixture sedang direset.
 5. Setelah browser/API test berhenti, `node scripts/security/phase3c-recovery.cjs`. Harness memverifikasi label project dan tmpfs, memakai port API 4401 dan vault temp, menghentikan/menghidupkan broker test dan menghentikan/restart proses API miliknya. Jangan jalankan bersamaan dengan suite lain.
 
@@ -25,4 +25,4 @@ Runner menyetel fixture env eksplisit dan tidak mengubah `.env` pengguna. Playwr
 
 Raw logs dapat memuat ID/email akun sintetis serta stack error yang sengaja diinjeksikan. Tidak ada secret production dimasukkan dalam fixtures. Audit findings exception berlaku sampai 13 November 2026, bukan suppress permanen.
 
-Sesudah validasi final 14 Oktober, hanya tiga container project `atlas-phase3c-review` dihentikan; container/volume tidak dihapus. Database fixture memakai tmpfs, sehingga reproduksi berikutnya perlu migration/provisioning ulang. Stack development existing tidak dihentikan atau diubah oleh cleanup ini.
+Sesudah validasi final 14 Oktober, hanya tiga container project `contentdock-phase3c-review` dihentikan; container/volume tidak dihapus. Database fixture memakai tmpfs, sehingga reproduksi berikutnya perlu migration/provisioning ulang. Stack development existing tidak dihentikan atau diubah oleh cleanup ini.

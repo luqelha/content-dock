@@ -5,13 +5,13 @@ const net = require("node:net");
 const { randomBytes, createHash } = require("node:crypto");
 const root = path.resolve(__dirname, "../..");
 process.chdir(root);
-const phase = process.env.ATLAS_REGRESSION_PHASE || "phase-4a";
+const phase = process.env.CONTENTDOCK_REGRESSION_PHASE || "phase-4a";
 if (!["phase-4a", "phase-4c", "phase-4d"].includes(phase))
   throw Error("Unsupported regression phase");
 const evidence = path.join(root, "docs/improvements/phase-4/evidence", phase);
 fs.mkdirSync(evidence, { recursive: true });
 const project =
-  "atlas-" +
+  "contentdock-" +
   phase.replace("-", "") +
   "-regression-" +
   randomBytes(4).toString("hex");
@@ -29,7 +29,7 @@ const env = {
   NODE_ENV: "test",
   OBSERVABILITY_ENABLED: "false",
   DATABASE_URL:
-    "postgresql://atlas_test:atlas_test@127.0.0.1:55432/atlas_test?schema=public",
+    "postgresql://contentdock_test:contentdock_test@127.0.0.1:55432/contentdock_test?schema=public",
   REDIS_URL: "redis://127.0.0.1:56379",
   RABBITMQ_URL: "amqp://guest:guest@127.0.0.1:55672",
   JWT_SECRET: "phase4a-test-access-secret-not-production",
@@ -197,9 +197,9 @@ async function main() {
     "psql",
     "-X",
     "-U",
-    "atlas_test",
+    "contentdock_test",
     "-d",
-    "atlas_test",
+    "contentdock_test",
     "-At",
     "-c",
     "SELECT count(*) FROM pg_tables WHERE schemaname='public';",
@@ -229,9 +229,9 @@ async function main() {
       "-v",
       "ON_ERROR_STOP=1",
       "-U",
-      "atlas_test",
+      "contentdock_test",
       "-d",
-      "atlas_test",
+      "contentdock_test",
     ];
     docker(
       psql,
@@ -270,25 +270,25 @@ async function main() {
         "exec",
         "-i",
         "-e",
-        "ATLAS_APP_PASSWORD=" + password,
+        "CONTENTDOCK_APP_PASSWORD=" + password,
         database,
         "psql",
         "-X",
         "-v",
         "ON_ERROR_STOP=1",
         "-U",
-        "atlas_test",
+        "contentdock_test",
         "-d",
-        "atlas_test",
+        "contentdock_test",
       ],
       fs.readFileSync(
         path.join(root, "scripts/database/create-runtime-role.sql"),
         "utf8",
       ),
     );
-    env.DATABASE_APP_URL = `postgresql://atlas_app:${password}@127.0.0.1:55432/atlas_test?schema=public`;
+    env.DATABASE_APP_URL = `postgresql://contentdock_app:${password}@127.0.0.1:55432/contentdock_test?schema=public`;
     env.CI = "true";
-    env.ATLAS_BROWSER_NO_RETRIES = "1";
+    env.CONTENTDOCK_BROWSER_NO_RETRIES = "1";
     env.NEXT_TELEMETRY_DISABLED = "1";
     await runBrowser();
     report.status = "passed";

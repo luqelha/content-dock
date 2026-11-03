@@ -20,7 +20,7 @@ export async function uploadMedia(formData: FormData): Promise<{
 }> {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized. Please log in again." };
@@ -69,7 +69,7 @@ export async function getMediaList(page = 1): Promise<{
 }> {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -112,7 +112,7 @@ export async function deleteMedia(id: string): Promise<{
 }> {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -150,7 +150,7 @@ export async function deleteMultipleMedia(ids: string[]): Promise<{
 }> {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return {

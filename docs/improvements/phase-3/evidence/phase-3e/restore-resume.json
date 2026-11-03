@@ -2,7 +2,7 @@
   "name": "restore",
   "command": [
     "C:\\Program Files\\nodejs\\node.exe",
-    "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
+    "C:\\Projects\\webdev\\contentdock\\docs\\improvements\\phase-3\\evidence\\phase-3e\\restore.cjs",
     "--approved-isolated-local"
   ],
   "exitCode": 0,

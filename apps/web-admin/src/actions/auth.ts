@@ -57,7 +57,7 @@ export async function login(
     const cookieStore = await cookies();
 
     // Workspace selection belongs to the previous session, not the new login.
-    cookieStore.delete("atlas_active_tenant_id");
+    cookieStore.delete("contentdock_active_tenant_id");
 
     // Store tokens in HTTP-only cookies
     cookieStore.set("access_token", data.access_token, {
@@ -138,7 +138,7 @@ export async function logout() {
 
   cookieStore.delete("access_token");
   cookieStore.delete("refresh_token");
-  cookieStore.delete("atlas_active_tenant_id");
+  cookieStore.delete("contentdock_active_tenant_id");
 
   redirect("/login");
 }

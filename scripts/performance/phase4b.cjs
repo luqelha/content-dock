@@ -63,7 +63,7 @@ function compose(args) {
   return docker(["compose", "-p", state.project, "-f", state.config, ...args]);
 }
 function own(service) {
-  assert.match(state.project, /^atlas-phase4b-[a-f0-9]{10}$/);
+  assert.match(state.project, /^contentdock-phase4b-[a-f0-9]{10}$/);
   const c = JSON.parse(docker(["inspect", `${state.project}-${service}-1`]))[0];
   assert.equal(c.Config.Labels["com.docker.compose.project"], state.project);
   assert.equal(c.Config.Labels["com.docker.compose.service"], service);
@@ -87,7 +87,7 @@ function own(service) {
 }
 function sql(query, runtime = false) {
   const c = own("postgres");
-  assert.match(state.database, /^atlas_phase4b_test_[a-f0-9]{10}$/);
+  assert.match(state.database, /^contentdock_phase4b_test_[a-f0-9]{10}$/);
   return docker(
     [
       "exec",
@@ -99,7 +99,7 @@ function sql(query, runtime = false) {
       "-v",
       "ON_ERROR_STOP=1",
       "-U",
-      runtime ? "atlas_app" : "atlas_owner",
+      runtime ? "contentdock_app" : "contentdock_owner",
       "-d",
       state.database,
       "-At",
@@ -175,7 +175,7 @@ function series(text) {
   return Object.fromEntries(
     text
       .split("\n")
-      .filter((s) => /^atlas_/.test(s))
+      .filter((s) => /^contentdock_/.test(s))
       .map((s) => {
         const i = s.lastIndexOf(" ");
         return [s.slice(0, i), Number(s.slice(i + 1))];
@@ -215,7 +215,7 @@ async function setup() {
     const previous = JSON.parse(
       fs.readFileSync(fs.readFileSync(pointer, "utf8"), "utf8"),
     );
-    assert.match(previous.project, /^atlas-phase4b-[a-f0-9]{10}$/);
+    assert.match(previous.project, /^contentdock-phase4b-[a-f0-9]{10}$/);
     for (const id of Object.values(previous.ids)) {
       const c = JSON.parse(docker(["inspect", id]))[0];
       assert.equal(
@@ -232,19 +232,19 @@ async function setup() {
   const info = JSON.parse(docker(["context", "inspect", context]))[0];
   assert.match(info.Endpoints.docker.Host, /^(npipe:|unix:)/);
   const suffix = randomBytes(5).toString("hex");
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "atlas-phase4b-"));
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "contentdock-phase4b-"));
   const image = JSON.parse(
     docker([
       "image",
       "inspect",
-      process.env.PHASE4B_API_IMAGE || "atlas-api:phase4b-baseline",
+      process.env.PHASE4B_API_IMAGE || "contentdock-api:phase4b-baseline",
     ]),
   )[0];
   state = {
     file: path.join(dir, "state.json"),
     config: path.join(dir, "compose.json"),
-    project: "atlas-phase4b-" + suffix,
-    database: "atlas_phase4b_test_" + suffix,
+    project: "contentdock-phase4b-" + suffix,
+    database: "contentdock_phase4b_test_" + suffix,
     image: image.Id,
     ids: {},
     secrets: Object.fromEntries(
@@ -274,9 +274,9 @@ async function setup() {
     OBSERVABILITY_PORT: "9091",
     OBSERVABILITY_SAMPLE_INTERVAL_MS: "1000",
     SHUTDOWN_GRACE_MS: "15000",
-    DATABASE_URL: `postgresql://atlas_app:${state.secrets.runtime}@postgres:5432/${state.database}?schema=public&connection_limit=10&pool_timeout=5`,
+    DATABASE_URL: `postgresql://contentdock_app:${state.secrets.runtime}@postgres:5432/${state.database}?schema=public&connection_limit=10&pool_timeout=5`,
     REDIS_URL: "redis://redis:6379",
-    RABBITMQ_URL: `amqp://atlas:${state.secrets.broker}@rabbitmq:5672`,
+    RABBITMQ_URL: `amqp://contentdock:${state.secrets.broker}@rabbitmq:5672`,
     QUEUE_NAME: state.project,
     JWT_SECRET: state.secrets.jwt,
     JWT_REFRESH_SECRET: state.secrets.refresh,
@@ -297,7 +297,7 @@ async function setup() {
           "track_io_timing=on",
         ],
         environment: {
-          POSTGRES_USER: "atlas_owner",
+          POSTGRES_USER: "contentdock_owner",
           POSTGRES_PASSWORD: state.secrets.owner,
           POSTGRES_DB: state.database,
         },
@@ -309,7 +309,7 @@ async function setup() {
         image: "rabbitmq:3-management-alpine",
         volumes: ["rabbitmq_data:/var/lib/rabbitmq"],
         environment: {
-          RABBITMQ_DEFAULT_USER: "atlas",
+          RABBITMQ_DEFAULT_USER: "contentdock",
           RABBITMQ_DEFAULT_PASS: state.secrets.broker,
         },
       },
@@ -317,7 +317,7 @@ async function setup() {
         image: image.Id,
         command: ["npx", "prisma", "migrate", "deploy"],
         environment: {
-          DATABASE_URL: `postgresql://atlas_owner:${state.secrets.owner}@postgres:5432/${state.database}?schema=public`,
+          DATABASE_URL: `postgresql://contentdock_owner:${state.secrets.owner}@postgres:5432/${state.database}?schema=public`,
         },
       },
       api: {
@@ -352,14 +352,14 @@ async function setup() {
       "exec",
       "-i",
       "-e",
-      "ATLAS_APP_PASSWORD=" + state.secrets.runtime,
+      "CONTENTDOCK_APP_PASSWORD=" + state.secrets.runtime,
       own("postgres").Id,
       "psql",
       "-X",
       "-v",
       "ON_ERROR_STOP=1",
       "-U",
-      "atlas_owner",
+      "contentdock_owner",
       "-d",
       state.database,
     ],
@@ -551,7 +551,7 @@ function explain() {
 function pgStats() {
   return JSON.parse(
     sql(
-      `SELECT coalesce(json_agg(s),'[]') FROM (SELECT query,calls,round(total_exec_time::numeric,3) AS total_ms,round(mean_exec_time::numeric,3) AS mean_ms,rows,shared_blks_hit,shared_blks_read,temp_blks_written FROM pg_stat_statements WHERE userid=(SELECT oid FROM pg_roles WHERE rolname='atlas_app') ORDER BY total_exec_time DESC LIMIT 20) s`,
+      `SELECT coalesce(json_agg(s),'[]') FROM (SELECT query,calls,round(total_exec_time::numeric,3) AS total_ms,round(mean_exec_time::numeric,3) AS mean_ms,rows,shared_blks_hit,shared_blks_read,temp_blks_written FROM pg_stat_statements WHERE userid=(SELECT oid FROM pg_roles WHERE rolname='contentdock_app') ORDER BY total_exec_time DESC LIMIT 20) s`,
     ),
   );
 }
@@ -597,8 +597,8 @@ async function load(name, count, concurrency, request) {
       const values = series(await metrics());
       samples.push({
         at: performance.now(),
-        rssBytes: values.atlas_process_resident_memory_bytes,
-        eventLoopP99Seconds: values.atlas_nodejs_eventloop_lag_p99_seconds,
+        rssBytes: values.contentdock_process_resident_memory_bytes,
+        eventLoopP99Seconds: values.contentdock_nodejs_eventloop_lag_p99_seconds,
       });
     } finally {
       sampling = false;
@@ -647,7 +647,7 @@ async function load(name, count, concurrency, request) {
     p95Ms: p(0.95),
     p99Ms: p(0.99),
     apiCpuSeconds:
-      a.atlas_process_cpu_seconds_total - b.atlas_process_cpu_seconds_total,
+      a.contentdock_process_cpu_seconds_total - b.contentdock_process_cpu_seconds_total,
     peakSampledRssBytes: Math.max(...samples.map((s) => s.rssBytes || 0)),
     samples,
     metricsDelta: delta,
@@ -1018,7 +1018,7 @@ async function verify() {
   const mount =
     path.join(root, "apps/api/prisma").replaceAll("\\", "/") +
     ":/app/apps/api/prisma:ro";
-  const url = `postgresql://atlas_owner:${state.secrets.owner}@postgres:5432/${fresh}?schema=public`;
+  const url = `postgresql://contentdock_owner:${state.secrets.owner}@postgres:5432/${fresh}?schema=public`;
   compose([
     "run",
     "--no-deps",
@@ -1040,7 +1040,7 @@ async function verify() {
       "psql",
       "-X",
       "-U",
-      "atlas_owner",
+      "contentdock_owner",
       "-d",
       fresh,
       "-At",
@@ -1080,7 +1080,7 @@ async function main() {
   const resolved = path.resolve(file);
   assert.ok(
     resolved.startsWith(
-      path.resolve(os.tmpdir()) + path.sep + "atlas-phase4b-",
+      path.resolve(os.tmpdir()) + path.sep + "contentdock-phase4b-",
     ),
   );
   state = JSON.parse(fs.readFileSync(resolved, "utf8"));

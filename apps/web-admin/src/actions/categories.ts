@@ -15,7 +15,7 @@ export async function createCategory(data: {
 }) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -53,7 +53,7 @@ export async function updateCategory(
 ) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };
@@ -88,7 +88,7 @@ export async function updateCategory(
 export async function deleteCategory(id: string) {
   const cookieStore = await cookies();
   const token = cookieStore.get("access_token")?.value;
-  const tenantId = cookieStore.get("atlas_active_tenant_id")?.value;
+  const tenantId = cookieStore.get("contentdock_active_tenant_id")?.value;
 
   if (!token || !tenantId) {
     return { error: "Unauthorized" };

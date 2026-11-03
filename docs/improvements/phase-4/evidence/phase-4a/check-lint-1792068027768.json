@@ -7,7 +7,7 @@
     "/d",
     "/s",
     "/c",
-    "npm.cmd run lint --workspace=@atlas/api"
+    "npm.cmd run lint --workspace=@contentdock/api"
   ],
   "exitCode": 0,
   "log": "check-lint-1792068027768.log",

@@ -12,7 +12,7 @@ export default async function MembersPage({
   searchParams: Promise<{ page?: string }>;
 }) {
   const page = listPage((await searchParams).page);
-  const id = (await cookies()).get("atlas_active_tenant_id")?.value;
+  const id = (await cookies()).get("contentdock_active_tenant_id")?.value;
   if (!id) return <p className="p-6">Select a workspace first.</p>;
   const tenants = await workspaceRequest("/tenants", tenantsSchema);
   if (tenants.find((t) => t.id === id)?.role !== "ADMIN")

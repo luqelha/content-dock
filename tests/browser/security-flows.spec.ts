@@ -177,7 +177,7 @@ test("workspace dialogs support keyboard focus and export links survive refresh"
   ).toBe(201);
   await page.context().addCookies([
     {
-      name: "atlas_active_tenant_id",
+      name: "contentdock_active_tenant_id",
       value: randomUUID(),
       url: baseURL!,
       httpOnly: true,

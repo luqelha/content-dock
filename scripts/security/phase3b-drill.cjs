@@ -105,7 +105,7 @@ function sql(p, user, query) {
       "-U",
       user,
       "-d",
-      "atlas_phase3b_test",
+      "contentdock_phase3b_test",
       "-v",
       "ON_ERROR_STOP=1",
       "-At",
@@ -122,7 +122,7 @@ function override(p, images) {
   );
 }
 function freshProject(suffix, envText, images) {
-  const name = `atlas-phase3b-${suffix}-${randomBytes(5).toString("hex")}`;
+  const name = `contentdock-phase3b-${suffix}-${randomBytes(5).toString("hex")}`;
   assert.equal(
     run([
       "ps",
@@ -180,8 +180,8 @@ function freshProject(suffix, envText, images) {
   const owner = new URL(config.services.migrate.environment.DATABASE_URL);
   const app = new URL(apiEnv.DATABASE_URL);
   assert.equal(app.hostname, "postgres");
-  assert.equal(app.pathname, "/atlas_phase3b_test");
-  assert.equal(app.username, "atlas_app");
+  assert.equal(app.pathname, "/contentdock_phase3b_test");
+  assert.equal(app.username, "contentdock_app");
   assert.notEqual(app.password, owner.password);
   assert.equal(apiEnv.NODE_ENV, "production");
   assert.equal(apiEnv.STORAGE_RETENTION_ENABLED, "false");
@@ -243,7 +243,7 @@ function isolation(p) {
 function privileges(p) {
   sql(
     p,
-    "atlas_app",
+    "contentdock_app",
     fs.readFileSync(
       path.join(root, "scripts/database/verify-runtime-role.sql"),
       "utf8",
@@ -257,20 +257,20 @@ function privileges(p) {
     'UPDATE public."AuditLog" SET action=action WHERE false',
     'DELETE FROM public."ExportTask" WHERE false',
     "SELECT * FROM public._prisma_migrations",
-    "SET ROLE atlas_owner",
+    "SET ROLE contentdock_owner",
   ];
   // Each denied operation is trapped in a PL/pgSQL subtransaction and checked for 42501.
   // Unexpected success raises, rolling the entire outer transaction back.
   for (const probe of probes) {
     sql(
       p,
-      "atlas_app",
+      "contentdock_app",
       `BEGIN; DO $gate$ BEGIN BEGIN EXECUTE '${probe.replaceAll("'", "''")}'; EXCEPTION WHEN insufficient_privilege THEN RETURN; END; RAISE EXCEPTION 'Privilege probe unexpectedly succeeded'; END $gate$; ROLLBACK;`,
     );
   }
   const extras = sql(
     p,
-    "atlas_app",
+    "contentdock_app",
     `SELECT count(*) FROM pg_namespace WHERE nspname !~ '^pg_' AND nspname <> 'information_schema' AND has_schema_privilege(oid,'CREATE'); SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='public' AND CASE WHEN c.relkind='S' THEN has_sequence_privilege(c.oid,'USAGE,SELECT,UPDATE') ELSE false END;`,
   );
   assert.equal(extras.replaceAll("\r", ""), "0\n0");
@@ -325,7 +325,7 @@ function databaseManifest(p) {
     tables.map((table) => {
       const rows = sql(
         p,
-        "atlas_owner",
+        "contentdock_owner",
         `SELECT row_to_json(t)::text FROM public."${table}" t ORDER BY id;`,
       );
       return [
@@ -374,21 +374,21 @@ async function main() {
   const previous = {};
   for (const service of ["api", "web"]) {
     if (preflight) {
-      images[service] = `atlas-${service}:phase3b-candidate`;
-      previous[service] = `atlas-${service}:security-phase2`;
+      images[service] = `contentdock-${service}:phase3b-candidate`;
+      previous[service] = `contentdock-${service}:security-phase2`;
       continue;
     }
     images[service] = run([
       "image",
       "inspect",
-      `atlas-${service}:phase3b-candidate`,
+      `contentdock-${service}:phase3b-candidate`,
       "--format",
       "{{.Id}}",
     ]);
     previous[service] = run([
       "image",
       "inspect",
-      `atlas-${service}:security-phase2`,
+      `contentdock-${service}:security-phase2`,
       "--format",
       "{{.Id}}",
     ]);
@@ -402,14 +402,14 @@ async function main() {
     "--format",
     "{{.ID}}|{{.Names}}|{{.Image}}",
   ]).split("\n");
-  privateDir = fs.mkdtempSync(path.join(os.tmpdir(), "atlas-phase3b-"));
+  privateDir = fs.mkdtempSync(path.join(os.tmpdir(), "contentdock-phase3b-"));
   const secret = () => {
     const value = randomBytes(32).toString("hex");
     secrets.push(value);
     return value;
   };
   const appPassword = secret();
-  const envText = `POSTGRES_USER=atlas_owner\nPOSTGRES_DB=atlas_phase3b_test\nPOSTGRES_PASSWORD=${secret()}\nDATABASE_APP_URL=postgresql://atlas_app:${appPassword}@postgres:5432/atlas_phase3b_test?schema=public\nRABBITMQ_USER=atlas_drill\nRABBITMQ_PASS=${secret()}\nJWT_SECRET=${secret()}\nJWT_REFRESH_SECRET=${secret()}\nAUTH_PROXY_SECRET=${secret()}\nSTORAGE_ENCRYPTION_KEY=${secret()}\nSTORAGE_RETENTION_ENABLED=false\nCORS_ORIGINS=http://nginx\n`;
+  const envText = `POSTGRES_USER=contentdock_owner\nPOSTGRES_DB=contentdock_phase3b_test\nPOSTGRES_PASSWORD=${secret()}\nDATABASE_APP_URL=postgresql://contentdock_app:${appPassword}@postgres:5432/contentdock_phase3b_test?schema=public\nRABBITMQ_USER=contentdock_drill\nRABBITMQ_PASS=${secret()}\nJWT_SECRET=${secret()}\nJWT_REFRESH_SECRET=${secret()}\nAUTH_PROXY_SECRET=${secret()}\nSTORAGE_ENCRYPTION_KEY=${secret()}\nSTORAGE_RETENTION_ENABLED=false\nCORS_ORIGINS=http://nginx\n`;
   const source = freshProject("source", envText, images);
   record("fresh project config, secrets separation, no published ports");
   if (preflight) {
@@ -441,10 +441,10 @@ async function main() {
       "utf8",
     )
     .replace(
-      "\\getenv app_password ATLAS_APP_PASSWORD",
+      "\\getenv app_password CONTENTDOCK_APP_PASSWORD",
       `\\set app_password '${appPassword}'`,
     );
-  sql(source, "atlas_owner", provision);
+  sql(source, "contentdock_owner", provision);
   privileges(source);
   compose(source, "up", "-d", "--no-build", "--no-deps", "api", "web", "nginx");
   await ready(source);
@@ -481,9 +481,9 @@ async function main() {
   exec(source, "postgres", [
     "pg_dump",
     "-U",
-    "atlas_owner",
+    "contentdock_owner",
     "-d",
-    "atlas_phase3b_test",
+    "contentdock_phase3b_test",
     "-Fc",
     "-f",
     "/tmp/phase3b.dump",
@@ -543,7 +543,7 @@ async function main() {
   assert.equal(
     sql(
       restored,
-      "atlas_owner",
+      "contentdock_owner",
       "SELECT count(*) FROM pg_tables WHERE schemaname='public';",
     ),
     "0",
@@ -551,8 +551,8 @@ async function main() {
   // Roles are cluster-global and are not part of pg_dump; recreate the restricted identity first.
   sql(
     restored,
-    "atlas_owner",
-    `CREATE ROLE atlas_app LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOREPLICATION NOBYPASSRLS PASSWORD '${appPassword}'; GRANT CONNECT ON DATABASE atlas_phase3b_test TO atlas_app;`,
+    "contentdock_owner",
+    `CREATE ROLE contentdock_app LOGIN NOSUPERUSER NOCREATEDB NOCREATEROLE NOINHERIT NOREPLICATION NOBYPASSRLS PASSWORD '${appPassword}'; GRANT CONNECT ON DATABASE contentdock_phase3b_test TO contentdock_app;`,
   );
   compose(
     restored,
@@ -563,9 +563,9 @@ async function main() {
   exec(restored, "postgres", [
     "pg_restore",
     "-U",
-    "atlas_owner",
+    "contentdock_owner",
     "-d",
-    "atlas_phase3b_test",
+    "contentdock_phase3b_test",
     "--exit-on-error",
     "--single-transaction",
     "/tmp/phase3b.dump",

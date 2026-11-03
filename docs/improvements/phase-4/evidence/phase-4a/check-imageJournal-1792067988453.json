@@ -8,7 +8,7 @@
     "-f",
     "ops/observability/alert-journal.Dockerfile",
     "-t",
-    "atlas-alert-journal:phase4a",
+    "contentdock-alert-journal:phase4a",
     "."
   ],
   "exitCode": 0,

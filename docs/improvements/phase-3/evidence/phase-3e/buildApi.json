@@ -5,7 +5,7 @@
     "C:\\Users\\LENOVO\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js",
     "run",
     "build",
-    "--workspace=@atlas/api"
+    "--workspace=@contentdock/api"
   ],
   "node": "v22.18.0",
   "exitCode": 0,

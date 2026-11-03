@@ -2,13 +2,13 @@ const { test } = require("node:test");
 const assert = require("node:assert/strict");
 test("benchmark rejects remote targets and mismatched test databases before sending mutations", async () => {
   const { verifyBenchmarkTarget } = await import("../benchmark-safety.mjs");
-  const db = "postgresql://test:test@127.0.0.1/atlas_test";
+  const db = "postgresql://test:test@127.0.0.1/contentdock_test";
   let calls = 0;
   const fetcher = async () => {
     calls++;
     return {
       ok: true,
-      json: async () => ({ environment: "test", testDatabase: "atlas_test" }),
+      json: async () => ({ environment: "test", testDatabase: "contentdock_test" }),
     };
   };
   await assert.rejects(

@@ -25,7 +25,7 @@ function zipRecords(zip) {
 }
 async function main() {
   assert.equal(process.env.NODE_ENV, "production");
-  assert.equal(new URL(process.env.DATABASE_URL).username, "atlas_app");
+  assert.equal(new URL(process.env.DATABASE_URL).username, "contentdock_app");
   assert.equal(process.env.STORAGE_RETENTION_ENABLED, "false");
   const mode = process.argv[2];
   const fixturePath = "/tmp/phase3b-fixture.json";
@@ -239,7 +239,7 @@ async function main() {
   // BFF checks use the same production server, with cookies supplied by this HTTP probe.
   // Browser Secure-cookie/TLS behavior is a separate external gate.
   const cookie = {
-    Cookie: `access_token=${fixture.a.access_token}; atlas_active_tenant_id=${fixture.tenant}`,
+    Cookie: `access_token=${fixture.a.access_token}; contentdock_active_tenant_id=${fixture.tenant}`,
   };
   const bff = await call(`/api/files/${fixture.file}`, { headers: cookie });
   assert.equal(hash(Buffer.from(await bff.arrayBuffer())), fixture.mediaHash);

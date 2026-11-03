@@ -7,7 +7,7 @@
     "/d",
     "/s",
     "/c",
-    "npm.cmd run build --workspace=@atlas/api"
+    "npm.cmd run build --workspace=@contentdock/api"
   ],
   "exitCode": 0,
   "log": "check-build-1792069594579.log",

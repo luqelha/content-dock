@@ -12,11 +12,11 @@ const npm = (args) =>
     ? ["cmd.exe", ["/d", "/s", "/c", `npm.cmd ${args}`]]
     : ["npm", args.split(" ")];
 const directory = path.join(root, "ops/observability");
-const mount = `${directory.replaceAll("\\", "/")}:/etc/atlas:ro`;
+const mount = `${directory.replaceAll("\\", "/")}:/etc/contentdock:ro`;
 const commands = {
-  types: npm("exec --workspace=@atlas/api -- tsc --noEmit"),
-  lint: npm("run lint --workspace=@atlas/api"),
-  unit: npm("run test:cov --workspace=@atlas/api -- --runInBand"),
+  types: npm("exec --workspace=@contentdock/api -- tsc --noEmit"),
+  lint: npm("run lint --workspace=@contentdock/api"),
+  unit: npm("run test:cov --workspace=@contentdock/api -- --runInBand"),
   security: npm("run test:security"),
   journal: [
     process.execPath,
@@ -24,13 +24,13 @@ const commands = {
   ],
   observability: npm("run test:observability"),
   audit: npm("audit --omit=dev --audit-level=moderate"),
-  build: npm("run build --workspace=@atlas/api"),
+  build: npm("run build --workspace=@contentdock/api"),
   rules: [
     "docker",
     [
       "run",
       "--name",
-      `atlas-phase4a-rules-${Date.now()}`,
+      `contentdock-phase4a-rules-${Date.now()}`,
       "--network",
       "none",
       "--entrypoint",
@@ -38,7 +38,7 @@ const commands = {
       "-v",
       mount,
       "-w",
-      "/etc/atlas",
+      "/etc/contentdock",
       "prom/prometheus:v3.15.0",
       "test",
       "rules",
@@ -50,7 +50,7 @@ const commands = {
     [
       "run",
       "--name",
-      `atlas-phase4a-promcfg-${Date.now()}`,
+      `contentdock-phase4a-promcfg-${Date.now()}`,
       "--network",
       "none",
       "--entrypoint",
@@ -61,7 +61,7 @@ const commands = {
       "check",
       "config",
       "--syntax-only",
-      "/etc/atlas/prometheus.yml",
+      "/etc/contentdock/prometheus.yml",
     ],
   ],
   alertmanager: [
@@ -69,7 +69,7 @@ const commands = {
     [
       "run",
       "--name",
-      `atlas-phase4a-amcfg-${Date.now()}`,
+      `contentdock-phase4a-amcfg-${Date.now()}`,
       "--network",
       "none",
       "--entrypoint",
@@ -78,12 +78,12 @@ const commands = {
       mount,
       "prom/alertmanager:v0.34.1",
       "check-config",
-      "/etc/atlas/alertmanager.yml",
+      "/etc/contentdock/alertmanager.yml",
     ],
   ],
   imageApi: [
     "docker",
-    ["build", "-f", "apps/api/Dockerfile", "-t", "atlas-api:phase4a", "."],
+    ["build", "-f", "apps/api/Dockerfile", "-t", "contentdock-api:phase4a", "."],
   ],
   imageJournal: [
     "docker",
@@ -92,7 +92,7 @@ const commands = {
       "-f",
       "ops/observability/alert-journal.Dockerfile",
       "-t",
-      "atlas-alert-journal:phase4a",
+      "contentdock-alert-journal:phase4a",
       ".",
     ],
   ],

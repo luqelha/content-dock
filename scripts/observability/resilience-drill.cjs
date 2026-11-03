@@ -13,7 +13,7 @@ if (process.argv[2] !== "--run-isolated")
 if (process.env.DOCKER_HOST || process.env.DOCKER_CONTEXT)
   throw Error("Docker overrides are refused");
 const evidence = path.join(root, "docs/improvements/phase-4/evidence/phase-4a");
-const project = `atlas-phase4a-${randomBytes(5).toString("hex")}`;
+const project = `contentdock-phase4a-${randomBytes(5).toString("hex")}`;
 const privateDir = fs.mkdtempSync(path.join(os.tmpdir(), project + "-"));
 const secret = () => randomBytes(24).toString("hex");
 const secrets = {
@@ -26,8 +26,8 @@ const secrets = {
   key: randomBytes(32).toString("hex"),
   grafana: secret(),
 };
-const database = "atlas_phase4a_test";
-const queue = "atlas_phase4a_exports";
+const database = "contentdock_phase4a_test";
+const queue = "contentdock_phase4a_exports";
 const reportFile = path.join(evidence, `drill-${Date.now()}.json`);
 const report = {
   startedAt: new Date().toISOString(),
@@ -121,7 +121,7 @@ function refreshEndpoints() {
     path.join(privateDir, "preview.json"),
     JSON.stringify({
       endpoints,
-      grafanaUser: "atlas-operator",
+      grafanaUser: "contentdock-operator",
       grafanaPassword: secrets.grafana,
     }),
   );
@@ -182,7 +182,7 @@ function sql(query, runtime = false) {
       "-v",
       "ON_ERROR_STOP=1",
       "-U",
-      runtime ? "atlas_app" : "atlas_owner",
+      runtime ? "contentdock_app" : "contentdock_owner",
       "-d",
       database,
       "-At",
@@ -306,7 +306,7 @@ async function dependencyFault(service, dependency, action) {
         200,
       );
       const firing = await poll(
-        () => notification("AtlasDependencyUnavailable", "firing", dependency),
+        () => notification("ContentDockDependencyUnavailable", "firing", dependency),
         150000,
       );
       if (retainedJob)
@@ -321,7 +321,7 @@ async function dependencyFault(service, dependency, action) {
       await poll(ready, 90000);
       const resolved = await poll(
         () =>
-          notification("AtlasDependencyUnavailable", "resolved", dependency),
+          notification("ContentDockDependencyUnavailable", "resolved", dependency),
         150000,
       );
       if (retainedJob) await waitJob(retainedJob);
@@ -345,10 +345,10 @@ async function run() {
   report.containersBefore = inventory();
   assert.ok(!report.containersBefore.some((c) => c.name.startsWith(project)));
   const image = JSON.parse(
-    docker(["image", "inspect", "atlas-api:phase4a"]),
+    docker(["image", "inspect", "contentdock-api:phase4a"]),
   )[0];
   const journalImage = JSON.parse(
-    docker(["image", "inspect", "atlas-alert-journal:phase4a"]),
+    docker(["image", "inspect", "contentdock-alert-journal:phase4a"]),
   )[0];
   report.apiImage = image.Id;
   report.journalImage = journalImage.Id;
@@ -360,9 +360,9 @@ async function run() {
     OBSERVABILITY_PORT: "9091",
     OBSERVABILITY_SAMPLE_INTERVAL_MS: "1000",
     SHUTDOWN_GRACE_MS: "15000",
-    DATABASE_URL: `postgresql://atlas_app:${secrets.runtime}@postgres:5432/${database}?schema=public&connect_timeout=2&pool_timeout=2`,
+    DATABASE_URL: `postgresql://contentdock_app:${secrets.runtime}@postgres:5432/${database}?schema=public&connect_timeout=2&pool_timeout=2`,
     REDIS_URL: "redis://redis:6379",
-    RABBITMQ_URL: `amqp://atlas:${secrets.broker}@rabbitmq:5672`,
+    RABBITMQ_URL: `amqp://contentdock:${secrets.broker}@rabbitmq:5672`,
     QUEUE_NAME: queue,
     JWT_SECRET: secrets.jwt,
     JWT_REFRESH_SECRET: secrets.refresh,
@@ -387,13 +387,13 @@ async function run() {
       postgres: {
         image: "postgres:15-alpine",
         environment: {
-          POSTGRES_USER: "atlas_owner",
+          POSTGRES_USER: "contentdock_owner",
           POSTGRES_PASSWORD: secrets.owner,
           POSTGRES_DB: database,
         },
         tmpfs: ["/var/lib/postgresql/data"],
         healthcheck: {
-          test: ["CMD-SHELL", `pg_isready -U atlas_owner -d ${database}`],
+          test: ["CMD-SHELL", `pg_isready -U contentdock_owner -d ${database}`],
           interval: "2s",
           retries: 30,
         },
@@ -406,7 +406,7 @@ async function run() {
       rabbitmq: {
         image: "rabbitmq:3-management-alpine",
         environment: {
-          RABBITMQ_DEFAULT_USER: "atlas",
+          RABBITMQ_DEFAULT_USER: "contentdock",
           RABBITMQ_DEFAULT_PASS: secrets.broker,
         },
         volumes: [
@@ -418,7 +418,7 @@ async function run() {
         image: image.Id,
         command: ["npx", "prisma", "migrate", "deploy"],
         environment: {
-          DATABASE_URL: `postgresql://atlas_owner:${secrets.owner}@postgres:5432/${database}?schema=public`,
+          DATABASE_URL: `postgresql://contentdock_owner:${secrets.owner}@postgres:5432/${database}?schema=public`,
         },
       },
       api: {
@@ -469,7 +469,7 @@ async function run() {
       grafana: {
         image: "grafana/grafana:13.2.4",
         environment: {
-          GF_SECURITY_ADMIN_USER: "atlas-operator",
+          GF_SECURITY_ADMIN_USER: "contentdock-operator",
           GF_SECURITY_ADMIN_PASSWORD: secrets.grafana,
           GF_AUTH_ANONYMOUS_ENABLED: "false",
           GF_USERS_ALLOW_SIGN_UP: "false",
@@ -550,14 +550,14 @@ async function run() {
           "exec",
           "-i",
           "-e",
-          `ATLAS_APP_PASSWORD=${secrets.runtime}`,
+          `CONTENTDOCK_APP_PASSWORD=${secrets.runtime}`,
           identities.get("postgres"),
           "psql",
           "-X",
           "-v",
           "ON_ERROR_STOP=1",
           "-U",
-          "atlas_owner",
+          "contentdock_owner",
           "-d",
           database,
         ],
@@ -585,7 +585,7 @@ async function run() {
         vaultDriver: volume.Driver,
         vaultOptions: volume.Options,
         retentionEnabled: false,
-        runtimeRole: "atlas_app",
+        runtimeRole: "contentdock_app",
         ports: endpoints,
       };
     },
@@ -609,7 +609,7 @@ async function run() {
       await waitJob(canaryId);
       canaryHash = await download(canaryId);
       const text = await metric();
-      assert.match(text, /atlas_export_worker_total\{outcome="completed"\} 1/);
+      assert.match(text, /contentdock_export_worker_total\{outcome="completed"\} 1/);
       for (const value of [
         token,
         credentials.email,
@@ -660,7 +660,7 @@ async function run() {
       save();
       const failedJob = await job();
       await waitJob(failedJob, "Failed");
-      await poll(() => notification("AtlasVaultSpaceLow", "firing"), 150000);
+      await poll(() => notification("ContentDockVaultSpaceLow", "firing"), 150000);
       docker([
         "exec",
         c.Id,
@@ -669,7 +669,7 @@ async function run() {
         "const fs=require('fs');const p=require('path').resolve('storage/phase4a-owned-fill');if(p!=='/app/apps/api/storage/phase4a-owned-fill')throw Error('Wrong vault');fs.unlinkSync(p)",
       ]);
       await poll(ready);
-      await poll(() => notification("AtlasVaultSpaceLow", "resolved"), 150000);
+      await poll(() => notification("ContentDockVaultSpaceLow", "resolved"), 150000);
       assert.equal(await download(canaryId), canaryHash);
       const fresh = await job();
       await waitJob(fresh);
@@ -694,7 +694,7 @@ async function run() {
       });
       save();
       const recovered = seed("Processing");
-      await poll(() => notification("AtlasApiUnavailable", "firing"), 150000);
+      await poll(() => notification("ContentDockApiUnavailable", "firing"), 150000);
       compose(["start", "api"]);
       refreshEndpoints();
       await poll(ready);
@@ -707,7 +707,7 @@ async function run() {
       );
       await download(recovered);
       assert.equal(await download(canaryId), canaryHash);
-      await poll(() => notification("AtlasApiUnavailable", "resolved"), 150000);
+      await poll(() => notification("ContentDockApiUnavailable", "resolved"), 150000);
       return {
         recoveredLeaseJob: recovered,
         leaseCleared: true,
@@ -730,7 +730,7 @@ async function run() {
           "-v",
           "ON_ERROR_STOP=1",
           "-U",
-          "atlas_owner",
+          "contentdock_owner",
           "-d",
           database,
           "-c",
@@ -751,7 +751,7 @@ async function run() {
       const publish = `(async()=>{const c=await require('amqplib').connect(process.env.RABBITMQ_URL);const ch=await c.createConfirmChannel();ch.sendToQueue(process.env.QUEUE_NAME,Buffer.from(JSON.stringify({pattern:'export_logs',data:{jobId:'${activeJob}'}})),{persistent:true});await ch.waitForConfirms();await c.close();})().catch(()=>process.exit(1))`;
       docker(["exec", own("api").Id, "node", "-e", publish]);
       await poll(
-        async () => /atlas_export_worker_inflight 1\b/.test(await metric()),
+        async () => /contentdock_export_worker_inflight 1\b/.test(await metric()),
         5000,
       );
       docker(["kill", "--signal", "SIGTERM", identities.get("api")]);
@@ -794,14 +794,14 @@ async function run() {
       const headers = {
         Authorization:
           "Basic " +
-          Buffer.from("atlas-operator:" + secrets.grafana).toString("base64"),
+          Buffer.from("contentdock-operator:" + secrets.grafana).toString("base64"),
       };
       await poll(
         async () => (await fetchBounded(endpoints.grafana + "/api/health")).ok,
         90000,
       );
       const r = await fetchBounded(
-        endpoints.grafana + "/api/dashboards/uid/atlas-operations",
+        endpoints.grafana + "/api/dashboards/uid/contentdock-operations",
         { headers },
       );
       assert.equal(r.status, 200);
@@ -809,7 +809,7 @@ async function run() {
       assert.equal(data.meta.provisioned, true);
       assert.equal(data.dashboard.panels.length, 26);
       const source = await fetchBounded(
-        endpoints.grafana + "/api/datasources/uid/atlas-prometheus/health",
+        endpoints.grafana + "/api/datasources/uid/contentdock-prometheus/health",
         { headers },
       );
       assert.equal(source.status, 200);

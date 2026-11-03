@@ -15,7 +15,7 @@ assert.ok(
 );
 const url = new URL(process.env.DATABASE_APP_URL);
 assert.match(url.pathname, /(?:^|_)(?:test|review)(?:_|$)/i);
-assert.equal(url.username, "atlas_app");
+assert.equal(url.username, "contentdock_app");
 assert.ok(["127.0.0.1", "localhost", "[::1]"].includes(url.hostname));
 const prisma = new PrismaClient({ datasources: { db: { url: url.href } } });
 after(async () => prisma.$disconnect());

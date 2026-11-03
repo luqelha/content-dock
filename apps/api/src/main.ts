@@ -36,8 +36,8 @@ async function bootstrap() {
 
   // Set up Swagger
   const config = new DocumentBuilder()
-    .setTitle('Atlas Platform API')
-    .setDescription('The Atlas Platform API documentation')
+    .setTitle('ContentDock API')
+    .setDescription('The ContentDock API documentation')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
@@ -66,7 +66,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 4000;
   await app.listen(port, '0.0.0.0');
-  console.log(`🚀 Atlas Platform is running on: http://localhost:${port}/api`);
+  console.log(`🚀 ContentDock is running on: http://localhost:${port}/api`);
   console.log(`📚 Swagger documentation is available at: http://localhost:${port}/api/docs`);
 }
 bootstrap();

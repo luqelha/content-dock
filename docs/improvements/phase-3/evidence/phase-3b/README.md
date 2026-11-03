@@ -21,9 +21,9 @@ Log `*.log` mengikuti ignore rule repo existing; tersedia lokal, jangan diasumsi
 ## Reproduksi checks
 
 ```powershell
-docker build -f apps/api/Dockerfile -t atlas-api:phase3b-candidate .
-docker build -f apps/web-admin/Dockerfile -t atlas-web:phase3b-candidate .
-npm run test --workspace=@atlas/api -- --runInBand test/unit/security
+docker build -f apps/api/Dockerfile -t contentdock-api:phase3b-candidate .
+docker build -f apps/web-admin/Dockerfile -t contentdock-web:phase3b-candidate .
+npm run test --workspace=@contentdock/api -- --runInBand test/unit/security
 node --test scripts/security/benchmark-safety.test.cjs scripts/security/deployment.test.cjs scripts/security/export-archive.test.cjs scripts/security/web-auth.test.cjs scripts/security/web-data.test.cjs
 node --check scripts/security/phase3b-drill.cjs
 node --check scripts/security/phase3b-smoke.cjs

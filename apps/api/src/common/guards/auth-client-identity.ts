@@ -2,9 +2,9 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { isIP } from 'node:net';
 
 export function authClientIp(request: any, secret = process.env.AUTH_PROXY_SECRET): string {
-  const ip = request.headers?.['x-atlas-client-ip'];
-  const timestamp = request.headers?.['x-atlas-auth-time'];
-  const signature = request.headers?.['x-atlas-auth-signature'];
+  const ip = request.headers?.['x-contentdock-client-ip'];
+  const timestamp = request.headers?.['x-contentdock-auth-time'];
+  const signature = request.headers?.['x-contentdock-auth-signature'];
   if (
     secret &&
     secret.length >= 32 &&

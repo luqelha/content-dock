@@ -2,7 +2,7 @@
   "name": "recovery",
   "command": [
     "C:\\Program Files\\nodejs\\node.exe",
-    "C:\\Projects\\webdev\\atlas-platform\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
+    "C:\\Projects\\webdev\\contentdock\\docs\\improvements\\phase-3\\evidence\\phase-3e\\recovery.cjs"
   ],
   "exitCode": 0,
   "durationMs": 84398,

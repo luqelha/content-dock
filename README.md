@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # ContentDock
 
@@ -7,7 +7,7 @@
 An open-source, multi-tenant headless CMS for publishing content,<br />
 managing private media, and collaborating across workspaces.
 
-[![CI](https://github.com/luqelha/atlas-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/luqelha/atlas-platform/actions/workflows/ci.yml)
+[![CI](https://github.com/luqelha/contentDock/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/luqelha/contentDock/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-18181b?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-24-417e38?style=flat-square)](.node-version)
 [![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?style=flat-square&logo=typescript&logoColor=white)](package.json)
@@ -70,8 +70,8 @@ Workspace authorization is enforced by the API. Export jobs run asynchronously t
 ### 1. Clone and install
 
 ```sh
-git clone https://github.com/luqelha/atlas-platform.git
-cd atlas-platform
+git clone https://github.com/luqelha/contentDock.git
+cd contentDock
 npm ci
 cp apps/api/.env.example apps/api/.env
 cp apps/web-admin/.env.example apps/web-admin/.env.local
@@ -91,7 +91,7 @@ The environment examples already match the local Compose services. The frontend 
 
 ```sh
 docker compose up -d
-npm run prisma:generate --workspace=@atlas/api
+npm run prisma:generate --workspace=@contentdock/api
 cd apps/api
 npx prisma migrate deploy
 cd ../..
@@ -113,24 +113,22 @@ Open **[localhost:3000](http://localhost:3000)**, register an account, and creat
 
 - On PowerShell, use `Copy-Item` instead of `cp` if preferred. Use `npm.cmd` and `npx.cmd` if execution policy blocks their PowerShell wrappers.
 - Run the root `npm run dev` once: it starts both applications. If Next.js reports another development server, stop the previous process in its terminal before restarting.
-- If `apps/api/dist/main` is missing during production-style startup, run `npm run build --workspace=@atlas/api` before `npm run start:prod --workspace=@atlas/api`. Avoid building the API while its development watcher is running.
+- If `apps/api/dist/main` is missing during production-style startup, run `npm run build --workspace=@contentdock/api` before `npm run start:prod --workspace=@contentdock/api`. Avoid building the API while its development watcher is running.
 - If you change the API port, update the frontend's `API_URL`, retaining the `/api` suffix. Local infrastructure binds to loopback; adjust Compose mappings if ports are occupied.
 
 </details>
-
-The `@atlas/*` workspace names and repository URL are existing internal identifiers. The product is **ContentDock**; use the identifiers shown above when running commands.
 
 ## Development & testing
 
 Run commands from the repository root. Both applications share the root `package-lock.json`.
 
-| Command                                              | Purpose                                     |
-| :--------------------------------------------------- | :------------------------------------------ |
-| `npm run dev`                                        | Start the API and admin in development mode |
-| `npm run build`                                      | Build both applications                     |
-| `npm run lint`                                       | Lint both workspaces                        |
-| `npm run typecheck`                                  | Check application types                     |
-| `npm run test --workspace=@atlas/api -- --runInBand` | Run API unit tests                          |
+| Command                                                    | Purpose                                     |
+| :--------------------------------------------------------- | :------------------------------------------ |
+| `npm run dev`                                              | Start the API and admin in development mode |
+| `npm run build`                                            | Build both applications                     |
+| `npm run lint`                                             | Lint both workspaces                        |
+| `npm run typecheck`                                        | Check application types                     |
+| `npm run test --workspace=@contentdock/api -- --runInBand` | Run API unit tests                          |
 | `npm run test:contracts`                             | Verify API and consumer contracts           |
 | `npm run test:security`                              | Run security regression checks              |
 | `npm run test:browser`                               | Run Playwright browser tests                |

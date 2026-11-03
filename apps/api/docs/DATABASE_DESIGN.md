@@ -1,7 +1,7 @@
 <div align="center">
   
 # 🗄️ Database Design
-**Schema & Entity Relationships for Atlas Platform**
+**Schema & Entity Relationships for ContentDock**
 
 </div>
 
@@ -9,7 +9,7 @@
 
 ## 🏗️ 1. Architecture Overview
 
-Atlas Platform utilizes a robust relational database model powered by **PostgreSQL**, managed via **Prisma ORM**.
+ContentDock utilizes a robust relational database model powered by **PostgreSQL**, managed via **Prisma ORM**.
 The design enforces strict foreign key constraints, indexes for high-performance querying, and a robust multi-tenant architecture utilizing a shared database with `tenant_id` isolation.
 
 ## 🗃️ 2. Core Entities

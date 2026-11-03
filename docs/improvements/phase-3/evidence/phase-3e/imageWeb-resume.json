@@ -6,7 +6,7 @@
     "-f",
     "apps/web-admin/Dockerfile",
     "-t",
-    "atlas-web:phase3e-verify",
+    "contentdock-web:phase3e-verify",
     "."
   ],
   "exitCode": 0,
