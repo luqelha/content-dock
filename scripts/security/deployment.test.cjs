@@ -66,21 +66,21 @@ test("resolved and locked security dependencies meet the reviewed versions", () 
   const api = createRequire(path.join(root, "apps/api/package.json"));
   const platform = createRequire(api.resolve("@nestjs/platform-express"));
   assert.equal(api("compression/package.json").version, "1.8.2");
-  assert.equal(api("multer/package.json").version, "2.4.0");
-  assert.equal(platform("multer/package.json").version, "2.4.0");
-  assert.equal(require("next/package.json").version, "16.3.8");
+  assert.equal(api("multer/package.json").version, "2.5.0");
+  assert.equal(platform("multer/package.json").version, "2.5.0");
+  assert.equal(require("next/package.json").version, "16.4.4");
   const eslintManifest = path.join(
     path.dirname(require.resolve("eslint-config-next")),
     "../package.json",
   );
   assert.equal(
     JSON.parse(fs.readFileSync(eslintManifest, "utf8")).version,
-    "16.3.8",
+    "16.4.4",
   );
   const lock = JSON.parse(
     fs.readFileSync(path.join(root, "package-lock.json"), "utf8"),
   );
-  const versions = { next: "16.3.8", compression: "1.8.2", multer: "2.4.0" };
+  const versions = { next: "16.4.4", compression: "1.8.2", multer: "2.5.0" };
   for (const [location, entry] of Object.entries(lock.packages)) {
     for (const [name, version] of Object.entries(versions)) {
       if (
